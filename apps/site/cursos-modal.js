@@ -495,10 +495,25 @@ var CURSOS_DB = {
 // ─────────────────────────────────────────────────────────
 // CARRITO
 // ─────────────────────────────────────────────────────────
-var PQL_carrito = JSON.parse(localStorage.getItem('pq_cart') || '[]');
+var PQL_carrito = [];
+
+// El carrito vive en localStorage (clave pq_cart) y lo comparten todas las páginas.
+// Aquí los precios se manejan como número; al guardar se añade también el texto «S/ n».
+function PQL_leerCarrito() {
+  var raw = [];
+  try { raw = JSON.parse(localStorage.getItem('pq_cart') || '[]'); } catch (e) { raw = []; }
+  PQL_carrito = raw.filter(function(i) { return i && i.slug; }).map(function(i) {
+    var n = typeof i.precioNum === 'number' ? i.precioNum : (parseFloat(String(i.precio).replace(/[^\d.]/g, '')) || 0);
+    return Object.assign({}, i, { precio: n, precioNum: n });
+  });
+  return PQL_carrito;
+}
+PQL_leerCarrito();
 
 function PQL_guardarCarrito() {
-  localStorage.setItem('pq_cart', JSON.stringify(PQL_carrito));
+  localStorage.setItem('pq_cart', JSON.stringify(PQL_carrito.map(function(i) {
+    return Object.assign({}, i, { precio: 'S/ ' + i.precio, precioNum: i.precio });
+  })));
 }
 
 function PQL_totalCarrito() {
@@ -520,6 +535,7 @@ function PQL_actualizarBadges() {
 }
 
 function PQL_renderCarritoPanel() {
+  PQL_leerCarrito();
   var list = document.getElementById('PQL_cartItems');
   var totalEl = document.getElementById('PQL_cartTotal');
   if (!list) return;
@@ -565,6 +581,7 @@ function PQL_cerrarCarrito() {
 }
 
 function PQL_quitarItem(idx) {
+  PQL_leerCarrito();
   PQL_carrito.splice(idx, 1);
   PQL_guardarCarrito();
   PQL_actualizarBadges();
@@ -572,6 +589,7 @@ function PQL_quitarItem(idx) {
 }
 
 function PQL_agregarAlCarrito(slug, modalidadElegida) {
+  PQL_leerCarrito();
   var c = CURSOS_DB[slug];
   if (!c) return;
   var existe = PQL_carrito.find(function(i) { return i.slug === slug; });
@@ -780,6 +798,10 @@ function PQL_modalAgregarCarrito() {
 // CHECKOUT — Resumen + selección de método
 // ─────────────────────────────────────────────────────────
 function PQL_abrirCheckout() {
+  PQL_leerCarrito();
+  if (PQL_carrito.length === 0) { alert('Tu carrito está vacío.'); return; }
+  location.href = 'checkout.html';
+  return;
   if (PQL_carrito.length === 0) { alert('Tu carrito está vacío.'); return; }
   PQL_cerrarCarrito();
   var total = PQL_totalCarrito();
