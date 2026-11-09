@@ -4,7 +4,7 @@ export const BRAND = {
   appName: 'Aula Consulting',
   organization: 'PROTEQLIFE',
   whatsapp: '51950950304',
-  supportEmail: 'soporte@aula.demo',
+  supportEmail: 'soporte@proteqlife.com',
   timezone: 'America/Lima',
 } as const
 

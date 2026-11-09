@@ -379,13 +379,3 @@ img,video,iframe{max-width:100%}
 /* Dialogs always sit above the phone drawer menu (z-index 30). */
 .modal-backdrop{z-index:45}
 
-/* Modo demo: accesos rápidos por rol en la pantalla de ingreso */
-.demo-panel { display: grid; gap: 8px; margin: 0 0 18px; padding: 14px; border: 1px dashed color-mix(in srgb, currentColor 28%, transparent); border-radius: 14px; background: color-mix(in srgb, currentColor 4%, transparent); }
-.demo-head { display: grid; gap: 2px; }
-.demo-head span { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .12em; }
-.demo-head small { font-size: 12.5px; opacity: .75; }
-.demo-account { display: grid; gap: 1px; padding: 9px 12px; text-align: left; border: 1px solid color-mix(in srgb, currentColor 18%, transparent); border-radius: 10px; background: transparent; color: inherit; cursor: pointer; font: inherit; }
-.demo-account:hover:not(:disabled) { background: color-mix(in srgb, currentColor 7%, transparent); }
-.demo-account strong { font-size: 13.5px; }
-.demo-account span { font-size: 12px; opacity: .7; }
-.demo-reset { justify-self: start; padding: 2px 0; border: 0; background: none; color: inherit; font: inherit; font-size: 12px; text-decoration: underline; opacity: .65; cursor: pointer; }

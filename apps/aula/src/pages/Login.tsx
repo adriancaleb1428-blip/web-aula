@@ -1,15 +1,11 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { ArrowRight, Eye, EyeOff, LockKeyhole, Mail, MessageCircle, ShieldCheck, Sparkles } from 'lucide-react'
-import { backend, isDemoMode } from '../lib/backend'
-import { DEMO_ACCOUNTS, DEMO_PASSWORD } from '../lib/demo/seed'
-import { resetDemo } from '../lib/demo/db'
+import { backend } from '../lib/backend'
 import { markActivityNow, readIdleLogoutFlag, setIdleLogoutFlag } from '../lib/idle'
 import { SupportModal } from '../components/SupportModal'
 import { Brand } from '../components/Brand'
 import { COPYRIGHT } from '../config/brand'
-
-const showDemoAccounts = isDemoMode || import.meta.env.VITE_SHOW_DEMO_ACCOUNTS === 'true'
 
 export function Login({ error, clearError }: { error: string; clearError: () => void }) {
   const [email, setEmail] = useState('')
@@ -42,9 +38,6 @@ export function Login({ error, clearError }: { error: string; clearError: () => 
       <div className="welcome-kicker"><span className="kicker-line"/> TU AULA, A TU RITMO</div>
       <h2>Qué bueno tenerte aquí.</h2>
       <p className="login-subtitle">Ingresa a tu espacio de capacitación.</p>
-      {showDemoAccounts && <div className="demo-panel" role="group" aria-label="Cuentas de demostración"><div className="demo-head"><span><Sparkles size={14}/> {isDemoMode ? 'MODO DEMO' : 'DATOS DE EJEMPLO'}</span><small>{isDemoMode ? 'Datos de ejemplo guardados en tu navegador.' : 'Cuentas de ejemplo del entorno de desarrollo.'} Elige un perfil para entrar:</small></div>
-        {DEMO_ACCOUNTS.map(account => <button type="button" key={account.email} className="demo-account" disabled={busy} onClick={() => { setEmail(account.email); setPassword(DEMO_PASSWORD); void signIn(account.email, DEMO_PASSWORD) }}><strong>{account.role}</strong><span>{account.hint}</span></button>)}
-        {isDemoMode && <button type="button" className="demo-reset" onClick={() => { if (window.confirm('¿Restablecer todos los datos de ejemplo? Se perderá lo que hayas creado en esta demo.')) void resetDemo() }}>Restablecer datos de ejemplo</button>}</div>}
       <form className="login-form" onSubmit={submit}>
         <label htmlFor="email">Correo electrónico</label><div className="input-shell"><Mail size={17}/><input id="email" type="email" autoComplete="email" placeholder="nombre@empresa.com" value={email} onChange={e => setEmail(e.target.value)} required/></div>
         <div className="label-row"><label htmlFor="password">Contraseña</label><span className="access-note">Acceso entregado por PROTEQLIFE</span></div><div className="input-shell"><LockKeyhole size={17}/><input id="password" type={showPassword ? 'text' : 'password'} autoComplete="current-password" placeholder="Ingresa tu contraseña" value={password} onChange={e => setPassword(e.target.value)} required/><button className="icon-button reveal" type="button" aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'} onClick={() => setShowPassword(v => !v)}>{showPassword ? <EyeOff size={17}/> : <Eye size={17}/>}</button></div>

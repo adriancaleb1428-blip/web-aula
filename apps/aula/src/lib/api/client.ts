@@ -1,6 +1,6 @@
-// Cliente del servidor propio (apps/api, PostgreSQL). Expone la misma interfaz que el modo demo:
+// Cliente del servidor propio (apps/api, PostgreSQL). Expone una interfaz de consultas encadenadas:
 // auth, from().select/insert/update/upsert/delete, rpc, functions.invoke, storage y canales en vivo.
-import type { Row } from '../demo/db'
+type Row = Record<string, unknown>
 
 const API = String(import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '')
 const TOKEN_KEY = 'aula-token'
@@ -206,7 +206,7 @@ export const apiClient = {
     try { const { json } = await post(`/rpc/${name}`, args); return json as Result } catch { return { data: null, error: networkError } }
   },
   functions: {
-    // Igual que en el modo demo: los errores de negocio llegan en `data.error`.
+    // Los errores de negocio llegan en `data.error`.
     async invoke(name: string, options?: { body?: Record<string, unknown> }) {
       try { const { json } = await post(`/fn/${name}`, options?.body, name !== 'support-request' || Boolean(readToken())); return { data: json, error: null } } catch { return { data: null, error: networkError } }
     },

@@ -3,7 +3,7 @@ import { rmSync } from 'node:fs'
 import { DATABASE_URL, STORAGE_DIR } from './config.js'
 import { migrate, pool, query, resetSchema } from './db.js'
 import { startDevDatabase, stopDevDatabase } from './devdb.js'
-import { seedDemo } from './seed.js'
+import { seedInitial } from './seed.js'
 import { loadCatalog } from './shop.js'
 
 const command = process.argv[2]
@@ -16,7 +16,7 @@ async function main() {
     if (command === 'catalog') console.log(`[catalog] ${await loadCatalog()} cursos cargados`)
     if (command === 'seed' || command === 'reset') {
       if (command === 'seed' && Number((await query('select count(*) from users')).rows[0].count) > 0) console.log('[seed] ya hay usuarios; usa «db:reset» para empezar de cero.')
-      else await seedDemo()
+      else await seedInitial()
     }
   } finally {
     await pool.end()

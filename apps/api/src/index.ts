@@ -10,7 +10,7 @@ import { events, listenForChanges } from './events.js'
 import { runFunction, runRpc } from './functions.js'
 import { loadSchema, runQuery } from './rest.js'
 import type { QueryRequest } from './rest.js'
-import { seedDemo } from './seed.js'
+import { seedInitial } from './seed.js'
 import { shop } from './shop.js'
 import { storage } from './storage.js'
 import { hashPassword, passwordProblem } from './auth.js'
@@ -19,7 +19,7 @@ async function main() {
   if (!DATABASE_URL) await startDevDatabase()
   await migrate()
   await loadSchema()
-  if (!DATABASE_URL && Number((await query('select count(*) from users')).rows[0].count) === 0) await seedDemo()
+  if (!DATABASE_URL && Number((await query('select count(*) from users')).rows[0].count) === 0) await seedInitial()
   const stopListening = await listenForChanges()
 
   const app = express()

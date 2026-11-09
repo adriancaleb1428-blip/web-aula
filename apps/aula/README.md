@@ -4,14 +4,10 @@ Frontend del aula virtual (React 19, TypeScript, Vite, Tailwind). Habla con la A
 
 ## Desarrollo
 
-1. Inicia la API: `pnpm api:dev` desde la raíz (crea la base de datos de desarrollo y datos de ejemplo).
+1. Inicia la API: `pnpm api:dev` desde la raíz.
 2. `pnpm install && pnpm dev`. Vite redirige `/api` a `http://localhost:3001` (cambiable con `VITE_API_PROXY`).
 
-Cuentas demo (contraseña `Aula-Demo-2026`): `admin@aula.demo`, `carlos.mendoza@aula.demo` (facilitador), `ana.torres@aula.demo` (participante).
-
-## Modo sin servidor
-
-`VITE_BACKEND=demo pnpm dev` simula todo en el navegador (`src/lib/demo/`, localStorage + IndexedDB), útil para demostraciones sin API.
+Las cuentas de prueba están en el README de la raíz.
 
 ## Producción
 

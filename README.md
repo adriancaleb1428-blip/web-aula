@@ -29,8 +29,16 @@ pnpm api:dev
 pnpm aula:dev
 ```
 
-Abre http://localhost:5173. La primera vez la API crea el esquema (`apps/api/sql`) y datos de ejemplo.
-Cuentas demo (contraseña `Aula-Demo-2026`): `admin@aula.demo`, `carlos.mendoza@aula.demo` (facilitador), `ana.torres@aula.demo` (participante).
+Abre http://localhost:5173. La primera vez la API crea el esquema (`apps/api/sql`), las cuentas de prueba y el catálogo de cursos.
+Cuentas de prueba (se crean con `pnpm api:reset`; los datos están en `apps/api/src/seed.ts`):
+
+| Rol | Correo | Contraseña |
+| --- | --- | --- |
+| Administrador | `admin@proteqlife.test` | `Admin-Aula-2026` |
+| Facilitador (gestiona IPERC, ATS y EPP) | `facilitador@proteqlife.test` | `Facilitador-2026` |
+| Participante (matriculado en IPERC) | `participante@proteqlife.test` | `Participante-2026` |
+
+También puedes crear tu propia cuenta de participante comprando un curso en la web de ventas.
 
 Para volver a los datos iniciales: `pnpm api:reset`.
 
@@ -45,8 +53,6 @@ Los precios salen siempre de la base de datos. El catálogo (49 cursos) vive en 
 
 **Pagos:** aún no hay pasarela. En desarrollo el pago es simulado (no se piden datos de tarjeta). En producción `POST /shop/checkout` responde 503 hasta que conectes una pasarela o definas `ALLOW_SIMULATED_PAYMENTS=true`.
 
-Modo sin servidor (solo navegador, datos en localStorage): `VITE_BACKEND=demo pnpm aula:dev`.
-
 ## Producción
 
 API (`apps/api`), variables de entorno:
@@ -59,7 +65,7 @@ API (`apps/api`), variables de entorno:
 | `CORS_ORIGINS` | Orígenes del aula, separados por comas |
 | `PORT` | Por defecto 3001 |
 
-Comandos: `pnpm --dir apps/api db:migrate`, `db:seed`, `start`. En producción no se siembran datos demo automáticamente con `DATABASE_URL`; créa el primer administrador con SQL o `db:seed` en un entorno de pruebas.
+Comandos: `pnpm --dir apps/api db:migrate`, `db:seed`, `start`. En producción nada se siembra automáticamente con `DATABASE_URL`; crea el primer administrador con `db:seed` con `ADMIN_EMAIL` y `ADMIN_PASSWORD` definidos (crea solo ese administrador y el catálogo).
 
 Aula: `pnpm aula:build` y definir `VITE_API_URL` con la URL pública de la API. Actualiza la CSP de `apps/aula/vercel.json` (`connect-src`) con ese dominio.
 
