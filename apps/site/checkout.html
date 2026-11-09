@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizar inscripción — PROTEQLIFE Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#05192D;--blue:#1565C0;--blue-bright:#2196F3;--gray-100:#F5F7FA;--gray-200:#E8ECF0;--gray-400:#9BA3AD;--gray-600:#5A6472;--gray-800:#2C3540;--red:#C62828}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--gray-100);line-height:1.6}
+h1,h2{font-family:'Syne',sans-serif;line-height:1.2;color:var(--navy)}
+a{color:var(--blue);text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:96px 24px 64px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:24px;align-items:start}
+.card{background:#fff;border-radius:16px;padding:26px;box-shadow:0 4px 16px rgba(5,25,45,.08)}
+.card h2{font-size:18px;margin-bottom:14px}
+.item{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-200);font-size:14px}
+.item:last-of-type{border-bottom:none}
+.item .emoji{font-size:22px}.item .n{flex:1}.item .p{font-weight:700;color:var(--blue);white-space:nowrap}
+.item button{background:none;border:none;cursor:pointer;color:var(--gray-400);font-size:15px}
+.total{display:flex;justify-content:space-between;font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--navy);border-top:2px solid var(--gray-200);margin-top:10px;padding-top:12px}
+label{display:block;font-size:12px;font-weight:600;color:var(--gray-600);margin:12px 0 5px}
+input{width:100%;padding:11px 12px;border:1px solid var(--gray-200);border-radius:8px;font:inherit;font-size:14px}
+input:focus{outline:2px solid var(--blue-bright);border-color:transparent}
+.hint{font-size:12px;color:var(--gray-400);margin-top:4px}
+button.pay{width:100%;margin-top:18px;padding:14px;border:none;border-radius:10px;background:var(--blue);color:#fff;font-family:'Syne',sans-serif;font-size:16px;font-weight:700;cursor:pointer}
+button.pay:hover{background:var(--navy)}button.pay:disabled{background:var(--gray-400);cursor:not-allowed}
+.notice{background:#FFF8E1;border:1px solid #FFE082;color:#6D4C00;border-radius:10px;padding:10px 12px;font-size:12.5px;margin-top:14px}
+.error{background:#FDECEA;color:var(--red);border-radius:8px;padding:10px 12px;font-size:13px;margin-top:12px;display:none}
+.empty{text-align:center;padding:30px 10px;color:var(--gray-600)}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script src="nav.js"></script>
+<script src="config.js"></script>
+<main class="wrap">
+  <h1>Finalizar inscripción</h1>
+  <p style="color:var(--gray-600);margin-top:6px">Crea tu acceso y entra al aula virtual con los cursos que elegiste.</p>
+  <div class="grid">
+    <section class="card">
+      <h2>Tus datos</h2>
+      <form id="form" novalidate>
+        <label for="name">Nombre completo</label><input id="name" autocomplete="name" required>
+        <label for="email">Correo electrónico</label><input id="email" type="email" autocomplete="email" required>
+        <label for="phone">Teléfono / WhatsApp (opcional)</label><input id="phone" type="tel" autocomplete="tel">
+        <label for="password">Contraseña del aula</label>
+        <input id="password" type="password" autocomplete="new-password" required minlength="8">
+        <p class="hint">Crea una contraseña (mínimo 8 caracteres, con letras y números). Si ya tienes cuenta, escribe aquí la tuya.</p>
+        <div class="error" id="error" role="alert"></div>
+        <button class="pay" id="pay" type="submit">Confirmar inscripción</button>
+        <p class="notice">Modo de demostración: el pago está simulado. No se solicitan ni se guardan datos de tarjeta.</p>
+      </form>
+    </section>
+    <aside class="card">
+      <h2>Tu pedido</h2>
+      <div id="items"></div>
+      <div class="total"><span>Total</span><span id="total">S/ 0</span></div>
+      <p class="hint" style="margin-top:12px"><a href="cursos-sso.html">← Seguir viendo cursos</a></p>
+    </aside>
+  </div>
+</main>
+<script>
+var KEY = 'pq_cart';
+function cart() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function render() {
+  var items = cart().filter(function (c) { return c.slug; });
+  var total = items.reduce(function (s, c) { return s + (c.precioNum || 0); }, 0);
+  document.getElementById('total').textContent = 'S/ ' + total;
+  document.getElementById('items').innerHTML = items.length ? items.map(function (c, i) {
+    return '<div class="item"><span class="emoji">' + esc(c.emoji || '📚') + '</span><span class="n">' + esc(c.nombre) + '</span><span class="p">' + esc(c.precio) + '</span><button type="button" title="Quitar" onclick="quitar(' + i + ')">🗑</button></div>';
+  }).join('') : '<div class="empty">Tu carrito está vacío.<br><a href="cursos-sso.html">Explorar cursos</a></div>';
+  document.getElementById('pay').disabled = !items.length;
+}
+function quitar(i) { var c = cart(); c.splice(i, 1); localStorage.setItem(KEY, JSON.stringify(c)); render(); }
+function showError(msg) { var e = document.getElementById('error'); e.textContent = msg; e.style.display = msg ? 'block' : 'none'; }
+document.getElementById('form').addEventListener('submit', async function (ev) {
+  ev.preventDefault(); showError('');
+  var items = cart().map(function (c) { return c.slug; }).filter(Boolean);
+  if (!items.length) return;
+  var btn = document.getElementById('pay'); btn.disabled = true; btn.textContent = 'Procesando…';
+  try {
+    var res = await fetch(PQL.API + '/shop/checkout', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ full_name: document.getElementById('name').value, email: document.getElementById('email').value, phone: document.getElementById('phone').value, password: document.getElementById('password').value, items: items })
+    });
+    var data = await res.json().catch(function () { return {}; });
+    if (!res.ok) { showError(data.error || 'No pudimos completar la inscripción. Inténtalo de nuevo.'); return; }
+    localStorage.removeItem(KEY);
+    // Entra directo al primer curso comprado; el token viaja en el fragmento de la URL.
+    location.href = PQL.AULA + '/#token=' + encodeURIComponent(data.access_token) + '&curso=' + encodeURIComponent(data.courses[0].code);
+  } catch (e) {
+    showError('No hay conexión con el servidor. Comprueba que la API esté encendida.');
+  } finally { btn.disabled = !cart().length; btn.textContent = 'Confirmar inscripción'; }
+});
+render();
+</script>
+</body>
+</html>

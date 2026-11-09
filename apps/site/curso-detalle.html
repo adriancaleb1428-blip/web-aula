@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Curso — PROTEQLIFE Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#05192D;--navy-mid:#0C3254;--blue:#1565C0;--blue-bright:#2196F3;
+  --blue-light:#E3F2FD;--accent:#FF6B35;--accent-light:#FFF3EE;
+  --gold:#F59E0B;--gold-light:#FFFBEB;
+  --green:#1B5E20;--green-light:#E8F5E9;
+  --gray-100:#F5F7FA;--gray-200:#E8ECF0;--gray-400:#9BA3AD;
+  --gray-600:#5A6472;--gray-800:#2C3540;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;
+  --shadow-sm:0 1px 3px rgba(5,25,45,.08);
+  --shadow-md:0 4px 16px rgba(5,25,45,.10);
+  --shadow-lg:0 12px 40px rgba(5,25,45,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--gray-100);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.2}
+a{text-decoration:none;color:inherit}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* LAYOUT */
+.detalle-wrap{padding:36px 0 64px}
+.detalle-grid{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+
+/* MAIN */
+.d-hero-img{width:100%;height:200px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:72px;margin-bottom:20px;background:var(--blue-light)}
+.d-area-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:4px 12px;border-radius:20px;margin-bottom:10px}
+.d-title{font-size:26px;font-weight:800;color:var(--navy);margin-bottom:12px;line-height:1.3}
+.d-desc{font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:22px}
+
+.d-meta-bar{display:flex;gap:20px;flex-wrap:wrap;padding:14px 18px;background:#fff;border-radius:var(--radius-md);border:1px solid var(--gray-200);margin-bottom:26px}
+.d-meta-item{display:flex;align-items:center;gap:8px}
+.dmi-icon{font-size:15px}
+.dmi-lbl{font-size:11px;color:var(--gray-400)}
+.dmi-val{font-size:13px;font-weight:600;color:var(--navy)}
+
+/* TABS */
+.d-tabs{display:flex;border-bottom:2px solid var(--gray-200);margin-bottom:22px;overflow-x:auto}
+.d-tab{font-size:14px;font-weight:600;color:var(--gray-400);padding:10px 18px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s}
+.d-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.d-panel{display:none}
+.d-panel.active{display:block}
+
+.temario-list{display:flex;flex-direction:column}
+.t-item{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--gray-200)}
+.t-item:last-child{border-bottom:none}
+.t-num{width:24px;height:24px;border-radius:50%;background:var(--blue-light);color:var(--blue);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.t-txt{font-size:13px;color:var(--gray-700);line-height:1.5}
+
+.dirigido-list{display:flex;flex-direction:column;gap:8px}
+.d-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-700);padding:10px 14px;background:#fff;border-radius:var(--radius-md);border:1px solid var(--gray-200)}
+.d-item::before{content:'✓';color:var(--blue);font-weight:700;flex-shrink:0;margin-top:1px}
+
+.objetivo-txt{font-size:14px;color:var(--gray-600);line-height:1.8;padding:16px;background:#fff;border-radius:var(--radius-md);border:1px solid var(--gray-200)}
+
+/* SIDEBAR */
+.sidebar-card{background:#fff;border-radius:var(--radius-lg);border:1px solid var(--gray-200);overflow:hidden;position:sticky;top:76px}
+.s-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:56px}
+.s-body{padding:20px}
+.s-precio-old{font-size:12px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px}
+.s-precio{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.s-incl{font-size:11px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px;margin-bottom:16px}
+.s-btn{display:block;width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-md);font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer;text-align:center;transition:background .2s;margin-bottom:8px}
+.s-btn:hover{background:var(--navy-mid)}
+.s-btn-wa{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:var(--radius-md);font-size:14px;font-weight:600;cursor:pointer;margin-bottom:16px;transition:background .2s}
+.s-btn-wa:hover{background:#1da851}
+.s-info{display:flex;flex-direction:column;gap:7px;padding-top:14px;border-top:1px solid var(--gray-200)}
+.si-row{display:flex;justify-content:space-between;font-size:12px}
+.si-lbl{color:var(--gray-400)}
+.si-val{font-weight:600;color:var(--navy)}
+.s-cert{background:var(--green-light);border-radius:var(--radius-sm);padding:10px 12px;display:flex;align-items:center;gap:8px;margin-top:12px}
+.s-cert span{font-size:12px;font-weight:600;color:var(--green)}
+.s-corp{background:var(--navy);padding:18px 20px;text-align:center}
+.s-corp p{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:10px}
+.s-corp-btn{display:block;background:rgba(255,255,255,.15);color:#fff;padding:9px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;text-align:center;cursor:pointer;transition:background .2s}
+.s-corp-btn:hover{background:rgba(255,255,255,.25)}
+
+/* NOTIFICACIÓN CARRITO */
+.cart-notif{position:fixed;top:80px;right:24px;background:var(--green);color:#fff;padding:12px 20px;border-radius:var(--radius-md);font-size:13px;font-weight:600;box-shadow:var(--shadow-lg);z-index:2000;display:none;align-items:center;gap:8px;transition:all .3s}
+
+/* CARRITO FLOTANTE */
+.cart-float{position:fixed;bottom:24px;right:24px;background:var(--blue);color:#fff;border:none;border-radius:50px;padding:12px 20px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-lg);display:none;align-items:center;gap:8px;z-index:500;transition:all .2s}
+.cart-float:hover{background:var(--navy-mid);transform:translateY(-2px)}
+.cart-float-count{background:#fff;color:var(--blue);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+
+/* RELACIONADOS */
+.relacionados{padding:0 0 64px}
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.rel-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:all .2s;display:block;color:inherit;cursor:pointer}
+.rel-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.rel-thumb{height:90px;display:flex;align-items:center;justify-content:center;font-size:32px}
+.rel-body{padding:14px}
+.rel-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.4}
+.rel-footer{display:flex;justify-content:space-between;align-items:center}
+.rel-precio{font-size:14px;font-weight:700;color:var(--blue)}
+.rel-btn{font-size:11px;font-weight:600;padding:5px 12px;background:var(--blue-light);color:var(--blue);border-radius:var(--radius-sm);border:none;cursor:pointer}
+
+/* LOADING */
+.loading-skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:skeleton 1.5s infinite}
+@keyframes skeleton{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-box{border-radius:var(--radius-sm);height:20px;margin-bottom:10px}
+
+/* PANEL CARRITO */
+.cart-panel{display:none;position:fixed;top:0;right:0;bottom:0;width:380px;max-width:100%;background:#fff;box-shadow:-8px 0 40px rgba(5,25,45,.15);z-index:9000;flex-direction:column}
+.cart-panel.open{display:flex}
+.cp-header{padding:18px 22px;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;justify-content:space-between}
+.cp-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--navy)}
+.cp-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--gray-400)}
+.cp-items{flex:1;overflow-y:auto;padding:14px 22px;display:flex;flex-direction:column;gap:10px}
+.cp-item{background:var(--gray-100);border-radius:var(--radius-md);padding:12px;display:flex;gap:10px;align-items:flex-start}
+.cp-emoji{font-size:22px;flex-shrink:0}
+.cp-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px;line-height:1.3}
+.cp-price{font-size:13px;font-weight:700;color:var(--blue)}
+.cp-remove{margin-left:auto;background:none;border:none;font-size:16px;cursor:pointer;color:var(--gray-400);flex-shrink:0}
+.cp-remove:hover{color:#E24B4A}
+.cp-empty{text-align:center;padding:40px 20px;color:var(--gray-400)}
+.cp-footer{padding:18px 22px;border-top:1px solid var(--gray-200)}
+.cp-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cp-total-lbl{font-size:14px;color:var(--gray-600)}
+.cp-total-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--navy)}
+.cp-pay-btn{width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-md);font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:8px;transition:background .2s}
+.cp-pay-btn:hover{background:var(--navy-mid)}
+.cp-wa-btn{width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:var(--radius-md);font-size:14px;font-weight:600;cursor:pointer;transition:background .2s}
+.cp-wa-btn:hover{background:#1da851}
+
+/* PAGO MODAL */
+.pago-overlay{display:none;position:fixed;inset:0;background:rgba(5,25,45,.65);z-index:10000;align-items:center;justify-content:center;padding:20px}
+.pago-overlay.open{display:flex}
+.pago-box{background:#fff;border-radius:var(--radius-lg);max-width:440px;width:100%;padding:28px;position:relative;max-height:90vh;overflow-y:auto}
+.pago-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--gray-400)}
+.pago-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.pago-sub{font-size:13px;color:var(--gray-600);margin-bottom:18px}
+.pago-resumen{background:var(--gray-100);border-radius:var(--radius-md);padding:14px;margin-bottom:18px}
+.pr-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gray-400);margin-bottom:8px}
+.pr-item{display:flex;justify-content:space-between;font-size:13px;padding:3px 0}
+.pr-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:var(--navy);border-top:1px solid var(--gray-200);margin-top:8px;padding-top:8px}
+.pf-group{margin-bottom:12px}
+.pf-label{display:block;font-size:12px;font-weight:600;color:var(--gray-600);margin-bottom:5px}
+.pf-input{width:100%;padding:10px 12px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--gray-800);outline:none;transition:border-color .15s}
+.pf-input:focus{border-color:var(--blue-bright)}
+.pf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pago-secure{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray-400);margin-bottom:14px}
+.pago-submit{width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-md);font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s}
+.pago-submit:hover{background:var(--navy-mid)}
+.pago-submit:disabled{background:var(--gray-400);cursor:not-allowed}
+
+/* FOOTER */
+footer{background:var(--navy);padding:32px 0 20px}
+.ft-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ft-logo{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#fff}
+.ft-links{display:flex;gap:20px}
+.ft-links a{font-size:12px;color:rgba(255,255,255,.5);transition:color .15s}
+.ft-links a:hover{color:#fff}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.3)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .detalle-grid{grid-template-columns:1fr}
+  .sidebar-card{position:static}
+  .rel-grid{grid-template-columns:repeat(2,1fr)}
+  .cart-panel{width:100%}
+}
+@media(max-width:600px){
+  .d-title{font-size:22px}
+  .d-meta-bar{flex-direction:column;gap:10px}
+  .rel-grid{grid-template-columns:1fr}
+  .pf-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<script src="nav.js"></script>
+<script src="config.js"></script>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner" id="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span class="bc-sep">›</span>
+      <a href="index.html#areas" id="bcArea">Cursos</a>
+      <span class="bc-sep">›</span>
+      <span class="bc-current" id="bcNombre">Cargando...</span>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFICACIÓN -->
+<div class="cart-notif" id="cartNotif">✅ Agregado al carrito</div>
+
+<!-- DETALLE -->
+<section class="detalle-wrap">
+  <div class="container">
+    <div class="detalle-grid">
+
+      <!-- COLUMNA PRINCIPAL -->
+      <div>
+        <div class="d-hero-img" id="dHeroImg">📚</div>
+        <div class="d-area-badge" id="dAreaBadge"></div>
+        <h1 class="d-title" id="dTitulo">Cargando...</h1>
+        <p class="d-desc" id="dDesc"></p>
+
+        <div class="d-meta-bar" id="dMetaBar"></div>
+
+        <div class="d-tabs">
+          <div class="d-tab active" onclick="switchTab(0,this)">📋 Temario</div>
+          <div class="d-tab"        onclick="switchTab(1,this)">🎯 Objetivos</div>
+          <div class="d-tab"        onclick="switchTab(2,this)">👥 Dirigido a</div>
+        </div>
+
+        <div class="d-panel active" id="panelTemario">
+          <div class="temario-list" id="temarioList"></div>
+        </div>
+        <div class="d-panel" id="panelObjetivos">
+          <p class="objetivo-txt" id="objetivoTxt"></p>
+        </div>
+        <div class="d-panel" id="panelDirigido">
+          <div class="dirigido-list" id="dirigidoList"></div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="sidebar-card" id="sidebarCard">
+          <div class="s-thumb" id="sThumb" style="background:var(--blue-light)">📚</div>
+          <div class="s-body">
+            <span class="s-precio-old" id="sPrecioOld"></span>
+            <div class="s-precio" id="sPrecio">S/ --</div>
+            <div class="s-incl">✅ Incluye certificado digital</div>
+            <button class="s-btn" id="sBtnCarrito" onclick="agregarAlCarrito()">🛒 Agregar al carrito</button>
+            <button class="s-btn-wa" onclick="inscribirWA()">📱 Inscribirse por WhatsApp</button>
+            <div class="s-info" id="sInfo"></div>
+            <div class="s-cert">
+              <span style="font-size:18px">🏅</span>
+              <span>Certificado digital con código QR validable</span>
+            </div>
+          </div>
+          <div class="s-corp">
+            <p>¿Necesitas capacitar a tu equipo?</p>
+            <div class="s-corp-btn" onclick="solicitarCorporativo()">Solicitar precio corporativo</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS RELACIONADOS -->
+<section class="relacionados">
+  <div class="container">
+    <h2 style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:20px">Cursos relacionados</h2>
+    <div class="rel-grid" id="relacionadosGrid"></div>
+  </div>
+</section>
+
+<!-- CARRITO FLOTANTE -->
+<button class="cart-float" id="cartFloat" onclick="toggleCarrito()">
+  🛒 Ver carrito <span class="cart-float-count" id="cartFloatCount">0</span>
+</button>
+
+<!-- PANEL CARRITO LATERAL -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cp-header">
+    <div class="cp-title">🛒 Mi carrito</div>
+    <button class="cp-close" onclick="toggleCarrito()">✕</button>
+  </div>
+  <div class="cp-items" id="cpItems"></div>
+  <div class="cp-footer">
+    <div class="cp-total">
+      <span class="cp-total-lbl">Total:</span>
+      <span class="cp-total-val" id="cpTotal">S/ 0</span>
+    </div>
+    <button class="cp-pay-btn" onclick="abrirPago()">Finalizar inscripción</button>
+    <button class="cp-wa-btn" onclick="pagarWhatsApp()">📱 Coordinar por WhatsApp</button>
+  </div>
+</div>
+
+<!-- MODAL PAGO -->
+<div class="pago-overlay" id="pagoModal">
+  <div class="pago-box">
+    <button class="pago-close" onclick="cerrarPago()">✕</button>
+    <div class="pago-title">Consulta tu inscripción</div>
+    <div class="pago-sub">El pago en línea con Culqi todavía se está configurando.</div>
+    <div class="pago-resumen" id="pagoResumen"></div>
+    <p role="status">No ingreses datos de tarjeta aquí. La inscripción se confirmará únicamente después de verificar el pago.</p>
+    <button class="pago-submit" type="button" onclick="pagarWhatsApp()">Consultar inscripción por WhatsApp →</button>
+    <a href="contacto.html">Ver otros medios de contacto</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="ft-inner">
+      <div class="ft-logo">PROTEQLIFE Consulting</div>
+      <div class="ft-links">
+        <a href="index.html">Inicio</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="aula-virtual.html">Aula Virtual</a>
+      </div>
+      <div class="ft-copy">© 2026 PROTEQLIFE. Todos los derechos reservados.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════
+// BASE DE DATOS DE CURSOS (modo estático / offline)
+// Cuando el backend esté activo, se carga desde la API
+// ══════════════════════════════════════════════
+var DB = {
+  'ley-29783':{
+    titulo:'Introducción a la Ley 29783 de Seguridad y Salud en el Trabajo',
+    desc:'Conocerás el marco legal aplicable a la SST en Perú, tus derechos, obligaciones y cómo aplicar la Ley 29783 en tu organización para reducir accidentes y enfermedades ocupacionales.',
+    emoji:'⚖️', bg:'#DBEAFE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'8 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 50', precioOld:'S/ 80', precioNum:50,
+    temario:['Antecedentes y contexto de la seguridad laboral en Perú','Marco legal: Ley 29783 y D.S. 005-2012-TR','Principios de la seguridad y salud en el trabajo','Derechos y obligaciones del trabajador','Obligaciones del empleador','Rol del supervisor de SST','Comité de SST: funciones y responsabilidades','Sanciones e infracciones laborales','Documentación mínima requerida por ley','Casos prácticos y aplicación en MYPES'],
+    objetivo:'Al finalizar el curso, el participante identificará el marco legal de SST en Perú, conocerá sus derechos y obligaciones, y aplicará los lineamientos de la Ley 29783 en su organización.',
+    dirigido:['Trabajadores de todos los sectores','Supervisores y jefes de área','Personal de Recursos Humanos','Jefes de Seguridad y Salud Ocupacional','Empresarios y emprendedores'],
+    relacionados:['iperc','primeros-auxilios','gestion-incidentes']
+  },
+  'gestion-accidentes':{
+    titulo:'Gestión de Accidentes de Trabajo',
+    desc:'Aprende los procedimientos correctos para notificar, investigar y registrar accidentes laborales conforme a la normativa peruana vigente.',
+    emoji:'🚨', bg:'#E0F2FE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 60', precioOld:'S/ 90', precioNum:60,
+    temario:['Conceptos: accidente, incidente y enfermedad ocupacional','Marco legal para la notificación de accidentes','Procedimiento de notificación al MINTRA (SAT)','Investigación de accidentes: pasos y responsables','Elaboración del informe de investigación','Árbol de causas básico','Medidas correctivas y preventivas','Registro de accidentes laborales','Estadísticas de accidentabilidad','Casos prácticos de empresas peruanas'],
+    objetivo:'El participante aplicará correctamente los procedimientos de notificación, investigación y registro de accidentes conforme a la normativa peruana, reduciendo riesgos legales para la empresa.',
+    dirigido:['Supervisores de SST','Jefes de área','Médicos ocupacionales','Personal de RRHH','Profesionales de SST en general'],
+    relacionados:['ley-29783','gestion-incidentes','investigacion-accidentes']
+  },
+  'gestion-incidentes':{
+    titulo:'Gestión de Incidentes e Incidentes Peligrosos',
+    desc:'Metodología para clasificar, registrar y analizar incidentes peligrosos con el fin de prevenir accidentes futuros en el entorno laboral.',
+    emoji:'⚠️', bg:'#E0F2FE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'6 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 55', precioOld:'S/ 80', precioNum:55,
+    temario:['Diferencias entre incidente y accidente','Tipos de incidentes: peligrosos y no peligrosos','Obligación legal de notificación','Registro en el SAT — MINTRA','Metodología de análisis: 5 Por Qué','Causas inmediatas y causas básicas','Medidas de control y seguimiento','Indicadores de incidentabilidad','Reportes para la alta dirección','Simulacro de gestión de incidente'],
+    objetivo:'El participante gestionará correctamente la clasificación, registro y análisis de incidentes, implementando acciones preventivas eficaces para evitar accidentes laborales.',
+    dirigido:['Supervisores de SST','Jefes de producción y operaciones','Comités de SST','Auditores internos'],
+    relacionados:['ley-29783','gestion-accidentes','iperc']
+  },
+  'iperc':{
+    titulo:'Identificación de Peligros, Evaluación de Riesgos y Control (IPERC)',
+    desc:'Aprende a identificar peligros en el entorno laboral, evaluar los riesgos y aplicar medidas de control conforme a la normativa peruana.',
+    emoji:'🔍', bg:'#DBEAFE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'10 horas', modalidad:'En vivo', nivel:'Básico-Intermedio', precio:'S/ 70', precioOld:'S/ 100', precioNum:70,
+    temario:['Conceptos: peligro, riesgo y daño','Tipos de peligros: físicos, químicos, biológicos, ergonómicos','Metodología IPERC paso a paso','Elaboración de la matriz IPERC','Jerarquía de controles','Evaluación cuantitativa y cualitativa de riesgos','IPERC continuo en campo','Participación de los trabajadores','Revisión y actualización','Casos prácticos por industria'],
+    objetivo:'El participante elaborará y actualizará la matriz IPERC de su organización, estableciendo controles efectivos para reducir accidentes.',
+    dirigido:['Supervisores de SST','Ingenieros de seguridad','Técnicos y operarios','Consultores y auditores'],
+    relacionados:['ley-29783','ats','investigacion-accidentes']
+  },
+  'ats':{
+    titulo:'Análisis de Trabajo Seguro (ATS)',
+    desc:'Aprende a elaborar el ATS para identificar los riesgos de cada tarea y establecer medidas preventivas antes de iniciar trabajos.',
+    emoji:'📋', bg:'#DBEAFE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 50', precioOld:'S/ 75', precioNum:50,
+    temario:['¿Qué es el ATS y para qué sirve?','Marco legal: cuando es obligatorio','Pasos para elaborar un ATS','Identificación de pasos críticos de la tarea','Identificación de peligros por paso','Medidas de control y responsables','Revisión y aprobación del ATS','Diferencias entre ATS e IPERC','ATS para trabajos de alto riesgo','Ejercicio práctico completo'],
+    objetivo:'El participante elaborará un ATS correcto y completo para cualquier tarea laboral, garantizando que los trabajadores identifiquen los riesgos antes de iniciar su trabajo.',
+    dirigido:['Supervisores de área','Trabajadores operativos','Jefes de turno','Coordinadores de SST'],
+    relacionados:['iperc','ley-29783','comite-supervisor-sst']
+  },
+  'primeros-auxilios':{
+    titulo:'Primeros Auxilios y Evacuación',
+    desc:'Curso práctico para aprender a responder ante emergencias médicas en el trabajo. Incluye RCP básico, atención de heridas y simulaciones de evacuación.',
+    emoji:'🚑', bg:'#FFF3EE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'8 horas', modalidad:'Presencial', nivel:'Básico', precio:'S/ 55', precioOld:'', precioNum:55,
+    temario:['Principios de primeros auxilios y marco legal','Evaluación primaria: ABC del accidentado','RCP básico adulto (cadena de supervivencia)','Uso del DEA (Desfibrilador Externo Automático)','Manejo de heridas, cortes y hemorragias','Atención a fracturas y luxaciones','Quemaduras: clasificación y primeros cuidados','Desmayos, convulsiones y emergencias médicas','Plan de evacuación: rutas y puntos de encuentro','Roles en la brigada de emergencias'],
+    objetivo:'El participante actuará como primer respondedor ante emergencias médicas y situaciones de evacuación, reduciendo complicaciones hasta la llegada de los servicios de emergencia.',
+    dirigido:['Brigadistas de emergencias','Personal administrativo y operativo','Supervisores de área','Cualquier trabajador interesado'],
+    relacionados:['ley-29783','iperc','prevencion-burnout']
+  },
+  'ergonomia':{
+    titulo:'Ergonomía Laboral',
+    desc:'Comprende los principios ergonómicos, evalúa la postura de trabajo y aplica medidas para prevenir trastornos musculoesqueléticos en el trabajo.',
+    emoji:'🪑', bg:'#E8F5E9', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 55', precioOld:'S/ 80', precioNum:55,
+    temario:['¿Qué es la ergonomía? Definición y tipos','Normativa nacional: R.M. 375-2008-TR','Factores de riesgo ergonómico','Evaluación postural: método REBA y OWAS','Levantamiento manual de cargas','Diseño de puestos de trabajo','Ergonomía en oficinas y trabajo remoto','Herramientas informáticas (mouse, teclado, monitor)','Medidas de control ergonómico','Programa de ergonomía en la empresa'],
+    objetivo:'El participante identificará los factores de riesgo ergonómico, aplicará métodos de evaluación y diseñará medidas de control para prevenir enfermedades ocupacionales.',
+    dirigido:['Supervisores de SST','Trabajadores de oficina y operaciones','Médicos ocupacionales','Fisioterapeutas empresariales'],
+    relacionados:['ley-29783','prevencion-burnout','iperc']
+  },
+  'prevencion-burnout':{
+    titulo:'Prevención del Burnout',
+    desc:'Aprende a identificar las señales del Burnout, implementa estrategias de prevención y gestiona el agotamiento laboral en tu organización.',
+    emoji:'😓', bg:'#FDE8E8', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'6 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 50', precioOld:'S/ 75', precioNum:50,
+    temario:['¿Qué es el síndrome de Burnout?','Diferencia entre estrés y Burnout','Las 3 dimensiones: agotamiento, cinismo y eficacia','Factores de riesgo organizacionales','Señales de alerta en el trabajador','Herramientas de evaluación (MBI)','Estrategias individuales de prevención','Estrategias organizacionales','Inteligencia emocional en el trabajo','Plan de intervención para empresas'],
+    objetivo:'El participante identificará los signos del Burnout, aplicará estrategias de prevención y promoverá una cultura de bienestar organizacional.',
+    dirigido:['Jefes y gerentes de área','Responsables de RRHH','Supervisores de SST','Trabajadores en general'],
+    relacionados:['ergonomia','primeros-auxilios','ley-29783']
+  },
+  'manejo-defensivo':{
+    titulo:'Manejo Defensivo',
+    desc:'Domina las técnicas de conducción segura, gestión del riesgo vial y prevención de accidentes de tránsito en el entorno laboral.',
+    emoji:'🚗', bg:'#FFF3EE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'8 horas', modalidad:'Presencial', nivel:'Básico', precio:'S/ 65', precioOld:'S/ 90', precioNum:65,
+    temario:['¿Qué es el manejo defensivo?','Estadísticas de accidentes viales en el Perú','Factores de riesgo: humano, vehículo y entorno','Velocidad segura y distancia de seguimiento','Puntos ciegos y ángulos muertos','Conducción en condiciones adversas','Fatiga al volante: reconocimiento y prevención','Maniobras de emergencia','Revisión técnica del vehículo','Práctica en campo (simulador o ruta)'],
+    objetivo:'El participante aplicará técnicas de manejo defensivo para reducir el riesgo de accidentes viales en sus desplazamientos laborales.',
+    dirigido:['Conductores de vehículos de empresa','Repartidores y personal de logística','Supervisores de flota','Trabajadores con vehículo asignado'],
+    relacionados:['primeros-auxilios','ley-29783','iperc']
+  },
+  // CALIDAD
+  'tecnica-5s':{
+    titulo:'Técnica de las 5S — Organización y orden en el trabajo',
+    desc:'Aprende la metodología 5S (Seiri, Seiton, Seiso, Seiketsu, Shitsuke) y cómo implementarla para mejorar productividad y seguridad en tu organización.',
+    emoji:'✅', bg:'#FFF3EE', area:'Sist. Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 60', precioOld:'S/ 90', precioNum:60,
+    temario:['Origen e historia de las 5S','Seiri — Clasificar','Seiton — Ordenar','Seiso — Limpiar','Seiketsu — Estandarizar','Shitsuke — Autodisciplina','Auditoría de las 5S','Fotografías antes y después','Pasos para implementar en tu área','Resistencia al cambio y cómo superarla'],
+    objetivo:'El participante liderará la implementación de las 5S en su área de trabajo, mejorando productividad, seguridad y ambiente laboral.',
+    dirigido:['Supervisores y jefes de área','Personal de operaciones y almacén','Responsables de calidad','Gerentes y directivos'],
+    relacionados:['iso-9001','auditorias-internas','kpi-calidad']
+  },
+  'iso-9001':{
+    titulo:'ISO 9001:2015 — Sistema de Gestión de la Calidad',
+    desc:'Conoce los requisitos de la norma ISO 9001:2015 e identifica cómo implementar un Sistema de Gestión de la Calidad en tu organización.',
+    emoji:'📊', bg:'#FFF3EE', area:'Sist. Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Intermedio', precio:'S/ 75', precioOld:'S/ 110', precioNum:75,
+    temario:['Historia y evolución de ISO 9001','Estructura de Alto Nivel (HLS)','Términos y definiciones clave','Contexto de la organización','Liderazgo y compromiso','Planificación: riesgos y oportunidades','Soporte: recursos y competencia','Operación y control de procesos','Evaluación del desempeño','Mejora continua y no conformidades'],
+    objetivo:'El participante comprenderá los requisitos de ISO 9001:2015 y será capaz de iniciar el proceso de implementación y certificación en su organización.',
+    dirigido:['Gerentes y directivos','Responsables de calidad','Consultores y asesores','Supervisores de procesos'],
+    relacionados:['tecnica-5s','auditorias-internas','iso-14001']
+  },
+  'auditorias-internas':{
+    titulo:'Auditorías Internas de Calidad',
+    desc:'Aprende a planificar, ejecutar e informar auditorías internas del SGC conforme a la norma ISO 19011.',
+    emoji:'🔍', bg:'#FFF3EE', area:'Sist. Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Intermedio', precio:'S/ 70', precioOld:'S/ 100', precioNum:70,
+    temario:['¿Qué es una auditoría interna?','Tipos de auditoría: 1ra, 2da y 3ra parte','Norma ISO 19011:2018','Programa anual de auditorías','Preparación: check-list y plan','Técnicas de entrevista','Recopilación de evidencias','Identificación de no conformidades','Elaboración del informe de auditoría','Seguimiento de acciones correctivas'],
+    objetivo:'El participante planificará y ejecutará auditorías internas del SGC, identificando no conformidades y oportunidades de mejora.',
+    dirigido:['Auditores internos designados','Responsables de calidad','Supervisores de procesos','Consultores ISO'],
+    relacionados:['iso-9001','tecnica-5s','kpi-calidad']
+  },
+  'iso-14001':{
+    titulo:'Gestión de Medio Ambiente — ISO 14001',
+    desc:'Comprende los requisitos de la norma ISO 14001:2015 e implementa un Sistema de Gestión Ambiental efectivo en tu organización.',
+    emoji:'🌿', bg:'#E8F5E9', area:'Sist. Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Intermedio', precio:'S/ 75', precioOld:'S/ 110', precioNum:75,
+    temario:['Gestión ambiental: conceptos y legislación peruana','Estructura ISO 14001:2015','Aspectos e impactos ambientales','Evaluación de la significancia','Objetivos y metas ambientales','Control operacional ambiental','Preparación y respuesta ante emergencias ambientales','Auditorías internas del SGA','Revisión por la dirección','Integración ISO 14001 + ISO 9001'],
+    objetivo:'El participante implementará un SGA conforme a ISO 14001:2015, contribuyendo al cumplimiento legal ambiental y la sostenibilidad empresarial.',
+    dirigido:['Jefes de medio ambiente','Supervisores de operaciones','Auditores internos','Gerentes de planta'],
+    relacionados:['iso-9001','auditorias-internas','tecnica-5s']
+  },
+  // LIDERAZGO
+  'ia-fundamentos':{
+    titulo:'Fundamentos de Inteligencia Artificial para empresas',
+    desc:'Entiende qué es la IA, cómo funciona y cómo aplicarla estratégicamente en tu negocio para automatizar procesos y ser más competitivo.',
+    emoji:'🤖', bg:'#EDE9FE', area:'Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#B45309',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 80', precioOld:'S/ 120', precioNum:80,
+    temario:['¿Qué es la Inteligencia Artificial?','Machine Learning y Deep Learning','IA generativa: ChatGPT, Gemini, Copilot','Casos de uso en empresas peruanas','Automatización de procesos con IA','Análisis de datos con IA','Herramientas no-code con IA','Consideraciones éticas y legales','Hoja de ruta para adoptar IA','Taller práctico con herramientas IA'],
+    objetivo:'El participante comprenderá la IA y sus aplicaciones empresariales, identificando oportunidades concretas para implementarla de forma práctica en su organización.',
+    dirigido:['Gerentes y directivos','Emprendedores y dueños de negocio','Personal de tecnología','Equipos de transformación digital'],
+    relacionados:['marketing-digital','startup-emprendimiento','talento-humano']
+  },
+  'marketing-digital':{
+    titulo:'Marketing Digital y Ventas',
+    desc:'Aprende las estrategias de marketing digital más efectivas: SEO, redes sociales, Google Ads y técnicas de ventas para hacer crecer tu negocio.',
+    emoji:'📱', bg:'#FFF3EE', area:'Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#B45309',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 75', precioOld:'S/ 110', precioNum:75,
+    temario:['Ecosistema del marketing digital','SEO y posicionamiento web','Google Ads y Meta Ads básicos','Estrategia de contenidos','Redes sociales para empresas','Email marketing efectivo','Embudo de ventas digital','Técnicas de cierre de ventas','Métricas y analítica digital','Caso práctico: plan de marketing'],
+    objetivo:'El participante diseñará una estrategia de marketing digital integral para su empresa, aumentando su visibilidad y ventas online.',
+    dirigido:['Emprendedores y dueños de negocio','Ejecutivos de ventas y marketing','Community managers','Estudiantes de negocios'],
+    relacionados:['ia-fundamentos','startup-emprendimiento','talento-humano']
+  },
+  'startup-emprendimiento':{
+    titulo:'Creación de StartUp y Emprendimiento',
+    desc:'Aprende a validar tu idea de negocio, elaborar un Business Model Canvas, crear tu MVP y lanzar tu startup con estrategias probadas.',
+    emoji:'🚀', bg:'#ECFDF5', area:'Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#B45309',
+    duracion:'10 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 99', precioOld:'S/ 150', precioNum:99,
+    temario:['Mentalidad emprendedora','Ideación y validación de tu idea','Design Thinking aplicado','Business Model Canvas','Producto Mínimo Viable (MVP)','Métricas de una startup (KPIs)','Financiamiento y acceso a capital','Constitución legal de empresa en Perú','Pitch y presentación a inversores','Casos de startups peruanas exitosas'],
+    objetivo:'El participante lanzará su startup con una metodología probada, habiendo validado su idea, definido su modelo de negocio y preparado su pitch.',
+    dirigido:['Emprendedores con ideas de negocio','Profesionales que quieran independizarse','Estudiantes universitarios','Dueños de negocios que quieran escalar'],
+    relacionados:['ia-fundamentos','marketing-digital','talento-humano']
+  },
+  'talento-humano':{
+    titulo:'Talento Humano y Desarrollo de Equipos de Alto Rendimiento',
+    desc:'Desarrolla habilidades de liderazgo, comunicación efectiva e inteligencia emocional para liderar equipos de alto rendimiento.',
+    emoji:'👥', bg:'#FFFBEB', area:'Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#B45309',
+    duracion:'8 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 65', precioOld:'S/ 100', precioNum:65,
+    temario:['Liderazgo situacional','Inteligencia emocional en el trabajo','Comunicación efectiva y asertiva','Formación de equipos de alto rendimiento','Gestión del conflicto','Delegación y motivación','Metodologías ágiles: Scrum básico','Feedback constructivo','Evaluación de desempeño 360°','Plan de desarrollo individual'],
+    objetivo:'El participante liderará equipos de alto rendimiento aplicando herramientas de liderazgo, comunicación e inteligencia emocional.',
+    dirigido:['Gerentes y jefes de área','Supervisores y líderes de equipo','Personal de RRHH','Emprendedores con equipo'],
+    relacionados:['startup-emprendimiento','marketing-digital','ia-fundamentos']
+  },
+
+  'comite-supervisor-sst': {
+    titulo:'Comité o Supervisor de Seguridad y Salud en el Trabajo',
+    desc:'Aprende a constituir, elegir y gestionar el Comité o Supervisor de SST según la Ley 29783. Conoce sus funciones, responsabilidades y obligaciones legales.',
+    emoji:'👥', bg:'#FFF3EE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'8 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 65', precioOld:'', precioNum:65,
+    temario:['¿Cuándo se forma Comité y cuándo Supervisor de SST?','Marco legal: Ley 29783 y D.S. 005-2012-TR','Proceso de elección de representantes de los trabajadores','Funciones y responsabilidades del Comité de SST','Reuniones obligatorias: frecuencia, agenda y actas','Reglamento interno del Comité','Resolución de conflictos en el Comité','Sanciones por incumplimiento','Libro de actas: estructura y llenado correcto','Casos prácticos: empresas con menos y más de 20 trabajadores'],
+    objetivo:'El participante constituirá correctamente el Comité o nombrará al Supervisor de SST, gestionará sus reuniones y documentación obligatoria conforme a la Ley 29783.',
+    dirigido:['Responsables de RRHH','Supervisores de SST','Representantes de los trabajadores','Dueños y gerentes de MYPES','Coordinadores de seguridad'],
+    relacionados:['ley-29783','iperc','ats']
+  },
+  'investigacion-accidentes': {
+    titulo:'Herramientas para la Investigación de Accidentes',
+    desc:'Domina las metodologías más efectivas para investigar accidentes laborales: árbol de causas, diagrama de Ishikawa y los 5 Por Qué. Identifica causas raíz y propón medidas correctivas.',
+    emoji:'🔎', bg:'#E0F2FE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Intermedio', precio:'S/ 65', precioOld:'S/ 90', precioNum:65,
+    temario:['Principios y objetivos de la investigación de accidentes','Marco legal: obligaciones del empleador','Metodología 5 Por Qué: paso a paso','Árbol de causas: construcción e interpretación','Diagrama de Ishikawa (espina de pescado)','Causas inmediatas, básicas y raíz','Análisis de factores humanos y organizacionales','Elaboración del informe de investigación','Medidas correctivas: planteamiento y seguimiento','Casos reales de accidentes en Perú: análisis práctico'],
+    objetivo:'El participante aplicará las principales metodologías de investigación de accidentes para identificar causas raíz y proponer medidas correctivas que eviten la repetición de incidentes.',
+    dirigido:['Supervisores de SST','Ingenieros de seguridad','Jefes de área y producción','Auditores internos','Profesionales de SST en general'],
+    relacionados:['gestion-accidentes','iperc','ats']
+  },
+  'epps': {
+    titulo:"Entrega, Conservación y Reposición de EPP's",
+    desc:"Gestiona correctamente el equipo de protección personal: selección, entrega, registro, conservación y reposición conforme a la normativa peruana vigente.",
+    emoji:'🦺', bg:'#DBEAFE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'4 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 40', precioOld:'S/ 60', precioNum:40,
+    temario:["Obligación legal de entrega de EPP (Ley 29783)","Tipos de EPP según el riesgo: cabeza, oídos, ojos, respiratorio, manos y pies","Criterios de selección del EPP adecuado","Registro de entrega: formatos y firma del trabajador","Instrucción al trabajador sobre uso correcto","Conservación, mantenimiento y limpieza del EPP","Vida útil y criterios de reposición","Reposición por desgaste, pérdida o daño","Responsabilidades del empleador y del trabajador","Auditoría del programa de EPP"],
+    objetivo:"El participante implementará un programa completo de gestión de EPP's en su organización, cumpliendo requisitos legales y garantizando la protección efectiva de los trabajadores.",
+    dirigido:['Supervisores de SST','Responsables de logística y almacén','Jefes de operaciones','Personal de RRHH','Cualquier profesional que gestione EPPs'],
+    relacionados:['iperc','ley-29783','seguridad-comportamiento']
+  },
+  'seguridad-comportamiento': {
+    titulo:'Seguridad Basada en el Comportamiento (SBC)',
+    desc:'Implementa programas SBC para transformar la cultura de seguridad en tu organización. Aprende a observar, retroalimentar y reforzar comportamientos seguros en el trabajo.',
+    emoji:'🧠', bg:'#F3E5F5', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'10 horas', modalidad:'Grabado', nivel:'Intermedio', precio:'S/ 70', precioOld:'S/ 100', precioNum:70,
+    temario:['Fundamentos de psicología del comportamiento aplicada a SST','El triángulo de la conducta segura','Diferencia entre condición insegura y acto inseguro','El modelo ABC: Antecedente, Comportamiento, Consecuencia','Proceso de observación conductual en campo','Técnicas de retroalimentación positiva y correctiva','Diseño de un programa SBC paso a paso','Indicadores de comportamiento vs indicadores de resultado','Cómo superar la resistencia al cambio','Casos de éxito en empresas peruanas'],
+    objetivo:'El participante diseñará e implementará un programa SBC en su organización, transformando comportamientos para construir una cultura de seguridad sostenible y reducir accidentes.',
+    dirigido:['Jefes y supervisores de SST','Gerentes de operaciones','Psicólogos organizacionales','Líderes de equipo','Profesionales de SST con experiencia'],
+    relacionados:['iperc','ley-29783','comite-supervisor-sst']
+  },
+  'ley-27942': {
+    titulo:'Ley 27942 — Prevención y Sanción del Hostigamiento Sexual',
+    desc:'Conoce el marco legal del hostigamiento sexual en el trabajo: la Ley 27942, sus modificatorias, obligaciones del empleador, procedimientos de denuncia y sanciones aplicables en el Perú.',
+    emoji:'⚖️', bg:'#FCE4EC', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'4 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 40', precioOld:'S/ 60', precioNum:40,
+    temario:['Definición y tipos de hostigamiento sexual laboral','Marco legal: Ley 27942 y sus modificatorias','Principios que rigen la Ley','Manifestaciones del hostigamiento sexual','Obligaciones del empleador: prevención y sanción','Canales de denuncia y confidencialidad','Procedimiento de investigación y sanción','Plazos y etapas del proceso','Medidas de protección para la víctima','Sanciones al hostigador y responsabilidad del empleador'],
+    objetivo:'El participante comprenderá el marco legal del hostigamiento sexual laboral, identificará sus manifestaciones, conocerá los procedimientos de denuncia y cumplirá las obligaciones legales del empleador.',
+    dirigido:['Responsables de RRHH','Comité de intervención','Jefes y supervisores de área','Profesionales legales de la empresa','Todo el personal de la organización'],
+    relacionados:['hostigamiento-sexual','ley-29783','comite-supervisor-sst']
+  },
+  'hostigamiento-sexual': {
+    titulo:'Capacitación Especializada de Hostigamiento Sexual en el Trabajo',
+    desc:'Profundiza en los protocolos internos para prevenir y atender el hostigamiento sexual. Aprende a gestionar denuncias, investigar casos y proteger a las personas involucradas en tu empresa.',
+    emoji:'🤝', bg:'#FCE4EC', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'6 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 50', precioOld:'S/ 75', precioNum:50,
+    temario:['Revisión del marco normativo: Ley 27942 y reglamento vigente','Diseño del protocolo interno de prevención','Conformación y funciones del Comité de Intervención','Recepción y registro de la denuncia','Procedimiento de investigación: pasos y plazos','Manejo de la confidencialidad y protección del denunciante','Medidas cautelares durante la investigación','Resolución del caso y comunicación a las partes','Sanciones y acciones de mejora organizacional','Difusión interna: campañas de sensibilización'],
+    objetivo:'El participante implementará un protocolo completo para prevenir y atender el hostigamiento sexual en su organización, protegiendo a las víctimas y cumpliendo la normativa peruana.',
+    dirigido:['Comité de Intervención','Responsables de RRHH','Jefes de área','Abogados laborales','Gestores de bienestar organizacional'],
+    relacionados:['ley-27942','ley-29783','comite-supervisor-sst']
+  },
+  'reuniones-sst': {
+    titulo:'Desarrollo de las Reuniones Mensuales Obligatorias de SST',
+    desc:'Planifica, conduce y documenta las reuniones mensuales del Comité de SST de forma eficaz y conforme a la Ley 29783. Incluye formatos de actas y mejores prácticas.',
+    emoji:'📅', bg:'#E8F5E9', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'4 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 35', precioOld:'S/ 55', precioNum:35,
+    temario:['Obligatoriedad legal: art. 42 del D.S. 005-2012-TR','Frecuencia y convocatoria de las reuniones','Quórum mínimo y condiciones de validez','Estructura de la agenda mensual obligatoria','Temas que debe abordar el Comité cada mes','Conducción efectiva de la reunión','Llenado correcto del libro de actas','Seguimiento de acuerdos y compromisos','Participación de la alta dirección','Infracciones y multas por incumplimiento'],
+    objetivo:'El participante gestionará las reuniones mensuales del Comité de SST cumpliendo todos los requisitos legales, documentando correctamente los acuerdos y garantizando el seguimiento de compromisos.',
+    dirigido:['Presidente del Comité de SST','Secretario del Comité','Supervisores de SST','Representantes de los trabajadores','Responsables de RRHH'],
+    relacionados:['comite-supervisor-sst','ley-29783','iperc']
+  },
+  'fatiga-somnolencia': {
+    titulo:'Fatiga y Somnolencia en el Trabajo',
+    desc:'Identifica y gestiona la fatiga y somnolencia como factores de riesgo críticos para la seguridad laboral. Implementa programas de prevención para proteger a tus trabajadores.',
+    emoji:'😴', bg:'#E0F2FE', area:'Seguridad Integral', areaHref:'cursos-sso.html',
+    areaBg:'#E3F2FD', areaColor:'#1565C0',
+    duracion:'4 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 35', precioOld:'S/ 55', precioNum:35,
+    temario:['Definición de fatiga laboral: física, mental y emocional','Somnolencia: causas fisiológicas y laborales','Relación entre fatiga y accidentabilidad: estadísticas','Sectores de mayor riesgo: minería, transporte, construcción','Síntomas y señales de alerta en el trabajador','Evaluación de la fatiga: herramientas prácticas','Estrategias de prevención individual: sueño, nutrición, ejercicio','Estrategias organizacionales: turnos, pausas activas, rotaciones','Marco legal aplicable en Perú','Diseño de un programa de gestión de fatiga'],
+    objetivo:'El participante identificará factores de fatiga y somnolencia, implementará medidas de prevención individuales y organizacionales, y reducirá el riesgo de accidentes asociados.',
+    dirigido:['Supervisores de SST','Operadores de maquinaria y vehículos','Trabajadores en turnos nocturnos','Médicos y enfermeras ocupacionales','Gerentes de operaciones'],
+    relacionados:['prevencion-burnout','manejo-defensivo','ley-29783']
+  },
+  'ciclo-deming': {
+    titulo:'Ciclo de Deming (PHVA) — Mejora Continua',
+    desc:'Domina el ciclo PHVA (Planificar, Hacer, Verificar, Actuar) como herramienta fundamental para la mejora continua en sistemas de gestión de calidad, SST y operaciones.',
+    emoji:'🔄', bg:'#FFF3EE', area:'Sistema Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'6 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 50', precioOld:'S/ 75', precioNum:50,
+    temario:['Historia y evolución del ciclo PHVA: Shewhart y Deming','Planificar: diagnóstico, objetivos y planes de acción','Hacer: implementación y ejecución del plan','Verificar: medición, análisis y comparación con objetivos','Actuar: estandarización de mejoras y nuevo ciclo','Aplicación del PHVA en ISO 9001:2015','PHVA en gestión de SST (ISO 45001)','Herramientas de análisis para cada etapa','Indicadores de seguimiento del ciclo','Caso práctico: mejora de proceso en empresa peruana'],
+    objetivo:'El participante aplicará el ciclo PHVA como metodología de mejora continua en los procesos de su organización, vinculándolo con ISO 9001 e ISO 45001.',
+    dirigido:['Responsables de calidad','Supervisores de operaciones','Auditores internos','Jefes de área','Estudiantes de gestión empresarial'],
+    relacionados:['iso-9001','tecnica-5s','auditorias-internas']
+  },
+  'cantidad-calidad': {
+    titulo:'Cantidad vs Calidad — Equilibrio en la Gestión Empresarial',
+    desc:'Comprende la relación entre producción y calidad, aprende a medir el costo de la no calidad y desarrolla estrategias para mantener estándares sin sacrificar la productividad.',
+    emoji:'⚖️', bg:'#FFF3EE', area:'Sistema Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'4 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 40', precioOld:'S/ 60', precioNum:40,
+    temario:['El falso dilema: ¿cantidad o calidad?','Conceptos clave: calidad, productividad y eficiencia','Costo de la no calidad: tipos y cálculo','Modelo PAF: Prevención, Evaluación y Fallos','Herramientas de control de calidad en producción','Gráficos de control estadístico básico','Indicadores clave: tasa de defectos, retrabajo y scrap','Cómo construir cultura de calidad sin frenar la producción','Casos de estudio: empresas que lograron el equilibrio','Plan de acción para tu organización'],
+    objetivo:'El participante establecerá un equilibrio efectivo entre producción y calidad en su organización, reduciendo el costo de la no calidad y mejorando la satisfacción del cliente.',
+    dirigido:['Jefes de producción y operaciones','Supervisores de calidad','Gerentes de planta','Técnicos de control de calidad','Emprendedores con negocios en crecimiento'],
+    relacionados:['iso-9001','ciclo-deming','tecnica-5s']
+  },
+  'info-documentada': {
+    titulo:'Creación, Actualización y Codificación de la Información Documentada',
+    desc:'Gestiona la información documentada según ISO 9001:2015: diseña un sistema de codificación, control de versiones y distribución controlada de documentos y registros.',
+    emoji:'📁', bg:'#FFF3EE', area:'Sistema Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico-Intermedio', precio:'S/ 55', precioOld:'S/ 80', precioNum:55,
+    temario:['¿Qué es la información documentada según ISO 9001:2015?','Tipos: documentos y registros','Requisitos de creación y actualización (cláusula 7.5)','Sistema de codificación: criterios y estructura','Control de versiones: numeración y aprobaciones','Distribución y acceso: quién ve qué y cómo','Almacenamiento físico y digital: buenas prácticas','Protección y confidencialidad de documentos','Retención y disposición de registros','Práctica: diseño de un procedimiento documentado completo'],
+    objetivo:'El participante diseñará e implementará un sistema de gestión documental conforme a ISO 9001:2015, con criterios de codificación, control de versiones y acceso que garanticen trazabilidad.',
+    dirigido:['Responsables de calidad','Auditores internos','Asistentes administrativos','Jefes de área','Coordinadores de sistemas de gestión'],
+    relacionados:['iso-9001','ciclo-deming','auditorias-internas']
+  },
+  'auditoria-interna': {
+    titulo:'Ejecución de Auditorías Internas bajo ISO 19011',
+    desc:'Forma auditores internos competentes para planificar, ejecutar y reportar auditorías de sistemas de gestión de calidad, SST y ambiental según ISO 19011:2018.',
+    emoji:'🔍', bg:'#FFF3EE', area:'Sistema Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'12 horas', modalidad:'Presencial', nivel:'Intermedio', precio:'S/ 110', precioOld:'S/ 150', precioNum:110,
+    temario:['Principios de la auditoría según ISO 19011:2018','Tipos de auditoría: primera, segunda y tercera parte','Gestión del programa de auditorías','Planificación: objetivo, alcance y criterios','Elaboración del plan de auditoría','Preparación de listas de verificación (checklists)','Apertura: reunión de inicio y roles','Recolección de evidencia: observación, entrevista y revisión documental','Hallazgos: conformidades, no conformidades y oportunidades','Informe de auditoría y reunión de cierre','Seguimiento de acciones correctivas','Competencias del auditor interno'],
+    objetivo:'El participante planificará y ejecutará auditorías internas conforme a ISO 19011:2018, identificará hallazgos, elaborará informes de calidad y gestionará el seguimiento de acciones correctivas.',
+    dirigido:['Auditores internos en formación','Responsables de calidad','Supervisores de SST','Gerentes de operaciones','Profesionales que deseen certificarse como auditores'],
+    relacionados:['iso-9001','info-documentada','ciclo-deming']
+  },
+  'anticorrupcion': {
+    titulo:'Anticorrupción y Sistemas de Gestión Antisoborno',
+    desc:'Conoce la norma ISO 37001 y la Ley 30424, implementa controles antisoborno, diseña canales de denuncia y construye una cultura ética en tu organización.',
+    emoji:'🚫', bg:'#E8F5E9', area:'Sistema Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'6 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 50', precioOld:'S/ 75', precioNum:50,
+    temario:['¿Qué es el soborno y la corrupción? Definiciones legales','ISO 37001:2016 — Sistema de Gestión Antisoborno','Ley 30424: responsabilidad penal de personas jurídicas en Perú','Factores de riesgo de soborno por industria','Evaluación de riesgo de soborno: metodología','Controles antisoborno: políticas, procedimientos y capacitación','Canal de denuncias anónimas: diseño e implementación','Debida diligencia en terceros (proveedores y socios)','Investigación interna de incidentes de corrupción','Cultura ética y liderazgo en integridad'],
+    objetivo:'El participante implementará un sistema de gestión antisoborno conforme a ISO 37001 y la Ley 30424, reduciendo el riesgo legal y construyendo una cultura de integridad sostenible.',
+    dirigido:['Gerentes generales y directivos','Responsables de cumplimiento (compliance)','Auditores internos','Abogados corporativos','Responsables de compras y logística'],
+    relacionados:['iso-9001','auditorias-internas','info-documentada']
+  },
+  'kpis': {
+    titulo:"Creación de Indicadores KPI's para la Gestión Empresarial",
+    desc:"Diseña, implementa y monitorea indicadores clave de desempeño para calidad, seguridad y operaciones. Incluye construcción de dashboards básicos en Excel.",
+    emoji:'📈', bg:'#FFF3EE', area:'Sistema Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'8 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 65', precioOld:'S/ 90', precioNum:65,
+    temario:["¿Qué es un KPI y para qué sirve?","Características de un buen indicador: metodología SMART","Tipos de KPI: de resultado, proceso y entrada","KPI's de calidad: defectos, satisfacción del cliente, tiempos","KPI's de SST: frecuencia, gravedad, días perdidos","KPI's operativos: productividad, eficiencia y disponibilidad","Diseño de fichas de indicador: formato y contenido","Construcción de dashboard básico (Excel / Google Sheets)","Análisis de desviaciones y planes de acción","Revisión por la dirección: presentación de indicadores"],
+    objetivo:"El participante diseñará un sistema de KPI's alineado a los objetivos organizacionales, con fichas de seguimiento y un dashboard básico para la toma de decisiones basada en datos.",
+    dirigido:['Responsables de calidad y SST','Jefes de área y supervisores','Gerentes de operaciones','Analistas de procesos','Estudiantes de ingeniería y administración'],
+    relacionados:['iso-9001','ciclo-deming','auditorias-internas']
+  },
+  'ia-gestion': {
+    titulo:'Uso de la Inteligencia Artificial en Sistema Integrado de Gestión',
+    desc:'Descubre cómo la IA transforma la gestión de calidad, SST y medio ambiente. Aplica herramientas para automatizar procesos, analizar datos y mejorar la toma de decisiones.',
+    emoji:'🤖', bg:'#EDE7F6', area:'Sistema Integrado de Gestión', areaHref:'cursos-calidad.html',
+    areaBg:'#FFF3EE', areaColor:'#FF6B35',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 75', precioOld:'S/ 100', precioNum:75,
+    temario:['¿Qué es la IA y por qué importa en gestión empresarial?','IA en control de calidad: visión artificial e inspección automática','Análisis predictivo para mantenimiento y prevención de accidentes','ChatGPT para redacción de procedimientos y análisis de no conformidades','Automatización de auditorías con herramientas IA','IA en gestión ambiental: monitoreo y reportes','Análisis de datos con IA (Big Data básico)','Herramientas no-code con IA para sistemas de gestión','Casos de uso en empresas peruanas','Consideraciones éticas y limitaciones de la IA'],
+    objetivo:'El participante identificará oportunidades concretas para aplicar IA en su sistema de gestión, usará herramientas accesibles para automatizar tareas y mejorará la toma de decisiones con datos.',
+    dirigido:['Responsables de calidad y SST','Auditores internos','Gerentes de operaciones','Profesionales de transformación digital','Estudiantes de ingeniería industrial'],
+    relacionados:['iso-9001','kpis','auditorias-internas']
+  },
+  'chatgpt-productividad': {
+    titulo:'ChatGPT y Herramientas IA para la Productividad Profesional',
+    desc:'Aprende a usar ChatGPT, Gemini, Copilot y otras herramientas de IA generativa con técnicas de prompting avanzado para automatizar tareas y multiplicar tu productividad.',
+    emoji:'💬', bg:'#EDE9FE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 65', precioOld:'S/ 100', precioNum:65,
+    temario:['Panorama de las herramientas IA generativa en 2024-2025','Cómo funciona ChatGPT: conceptos básicos','Ingeniería de prompts: técnicas para mejores resultados','ChatGPT para redacción: correos, informes y presentaciones','Gemini de Google: usos con Google Workspace','Microsoft Copilot: IA en Word, Excel y Teams','Análisis de datos con IA: subir archivos y extraer insights','Generación de imágenes con IA: DALL-E básico','Automatización de tareas repetitivas con IA','Casos prácticos: SST, ventas, RRHH y administración'],
+    objetivo:'El participante usará ChatGPT, Gemini y Copilot con técnicas de prompting para reducir hasta un 50% el tiempo en tareas administrativas y mejorar la calidad de sus entregables.',
+    dirigido:['Profesionales de todas las áreas','Emprendedores y dueños de negocio','Estudiantes universitarios','Personal administrativo','Cualquier persona que quiera ser más productiva'],
+    relacionados:['automatizacion-ia','ia-fundamentos','marketing-digital']
+  },
+  'automatizacion-ia': {
+    titulo:'Automatización de Procesos con IA y Herramientas No-Code',
+    desc:'Crea flujos de trabajo automatizados con Make, Zapier y Notion AI. Conecta aplicaciones y elimina tareas repetitivas sin necesidad de programar.',
+    emoji:'⚙️', bg:'#EDE9FE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'10 horas', modalidad:'Grabado', nivel:'Básico-Intermedio', precio:'S/ 90', precioOld:'S/ 130', precioNum:90,
+    temario:['¿Qué es la automatización y el no-code?','Ecosistema de herramientas: Make, Zapier, n8n y Pabbly','Make (Integromat): creación de escenarios básicos y avanzados','Zapier: automatización de apps populares (Gmail, Sheets, Slack)','Notion AI: gestión de proyectos con inteligencia artificial','Airtable: bases de datos conectadas con automatizaciones','Integración de IA en flujos: ChatGPT API vía Make','Chatbots sin código para atención al cliente','Automatización de ventas: CRM + correo + WhatsApp','Caso práctico: automatización completa de un proceso empresarial'],
+    objetivo:'El participante creará flujos de automatización funcionales con Make y Zapier, integrará IA en sus procesos sin código y reducirá el tiempo en tareas manuales de su negocio.',
+    dirigido:['Emprendedores y dueños de negocio','Profesionales de marketing y ventas','Responsables de operaciones','Asistentes administrativos','Cualquier persona que quiera digitalizar su trabajo'],
+    relacionados:['chatgpt-productividad','ia-fundamentos','ciberseguridad-basica']
+  },
+  'ciberseguridad-basica': {
+    titulo:'Ciberseguridad Básica para Empresas y Profesionales',
+    desc:'Protege tu empresa de amenazas digitales: phishing, ransomware y fraudes en línea. Aprende a gestionar contraseñas, asegurar tu red y establecer políticas de seguridad digital básicas.',
+    emoji:'🔒', bg:'#EDE9FE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 70', precioOld:'S/ 100', precioNum:70,
+    temario:['¿Por qué la ciberseguridad importa a toda empresa?','Principales amenazas: phishing, ransomware, ingeniería social','Cómo reconocer correos y mensajes fraudulentos','Gestión segura de contraseñas: reglas y gestores','Autenticación de dos factores (2FA): activación y uso','Seguridad en redes Wi-Fi: pública vs privada','Backup y recuperación: la regla 3-2-1','Seguridad en dispositivos móviles y trabajo remoto','Política de seguridad digital básica para tu empresa','Respuesta ante un incidente de seguridad: qué hacer'],
+    objetivo:'El participante identificará amenazas de ciberseguridad, implementará medidas básicas de protección y reducirá el riesgo de pérdida de datos, fraudes y ataques digitales en su empresa.',
+    dirigido:['Dueños de MYPES','Profesionales independientes','Responsables de TI sin experiencia en seguridad','Personal administrativo y operativo','Emprendedores con negocios en línea'],
+    relacionados:['automatizacion-ia','control-interno','proteccion-datos']
+  },
+  'ventas-efectivas': {
+    titulo:'Técnicas de Ventas Efectivas y Cierre de Negocios',
+    desc:'Domina metodologías de ventas probadas: SPIN Selling, técnicas de cierre, manejo de objeciones y fidelización de clientes para multiplicar tus resultados comerciales.',
+    emoji:'💰', bg:'#FFF3EE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'8 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 70', precioOld:'S/ 100', precioNum:70,
+    temario:['Mentalidad del vendedor exitoso: actitud y disciplina','El proceso de ventas: etapas y gestión del embudo','Prospección efectiva: cómo encontrar clientes ideales','SPIN Selling: Situación, Problema, Implicación y Necesidad','Presentación de valor: beneficios, no características','Manejo de objeciones: técnicas y respuestas efectivas','Técnicas de cierre: 10 métodos probados','Seguimiento postventa y fidelización del cliente','Ventas B2B vs B2C: diferencias y estrategias','Role play: práctica con casos reales peruanos'],
+    objetivo:'El participante aplicará metodologías de ventas profesionales para incrementar su tasa de cierre, manejar objeciones con confianza y construir relaciones comerciales duraderas.',
+    dirigido:['Vendedores y ejecutivos comerciales','Emprendedores con negocio propio','Profesionales que negocian contratos','Dueños de negocios con fuerza de ventas','Cualquier persona que quiera vender mejor'],
+    relacionados:['atencion-cliente','marketing-digital','startup-emprendimiento']
+  },
+  'redes-sociales': {
+    titulo:'Redes Sociales para Empresas y Marcas Personales',
+    desc:'Gestiona profesionalmente Instagram, Facebook, LinkedIn y TikTok para tu negocio o marca personal. Aprende estrategia de contenidos, comunidades y métricas de rendimiento.',
+    emoji:'📣', bg:'#FFF3EE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 65', precioOld:'S/ 95', precioNum:65,
+    temario:['Estrategia de redes sociales: por qué y cómo','Instagram para negocios: perfil, posts, reels y stories','Facebook: páginas, grupos y gestión de comunidades','LinkedIn para B2B y marca personal: optimización de perfil','TikTok empresarial: algoritmo, tendencias y contenido viral','Planificación de contenidos: calendario editorial','Herramientas de diseño: Canva para redes sociales','Métricas clave: alcance, engagement y conversión','Gestión de comentarios negativos y crisis en redes','Caso práctico: plan de redes para MYPE peruana'],
+    objetivo:'El participante creará una estrategia de redes sociales coherente, producirá contenido de valor consistente y medirá el rendimiento para mejorar continuamente los resultados de su negocio.',
+    dirigido:['Dueños de MYPES','Community managers','Emprendedores y marcas personales','Responsables de marketing','Profesionales que quieren visibilidad digital'],
+    relacionados:['marketing-digital','ventas-efectivas','startup-emprendimiento']
+  },
+  'atencion-cliente': {
+    titulo:'Atención al Cliente y Fidelización',
+    desc:'Transforma la experiencia de tus clientes con estrategias profesionales de atención, manejo de quejas y fidelización que generen recomendaciones y retención.',
+    emoji:'😊', bg:'#FFF3EE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 55', precioOld:'S/ 80', precioNum:55,
+    temario:['¿Qué es la experiencia del cliente (CX) y por qué importa?','El customer journey: mapeo de la experiencia','Comunicación efectiva: escucha activa y empatía','Canales de atención: presencial, teléfono, chat y redes','Manejo de quejas y reclamos: protocolo profesional','Clientes difíciles: técnicas de desescalada','Libro de reclamaciones virtual (INDECOPI)','NPS (Net Promoter Score): cómo medirlo y mejorarlo','Estrategias de fidelización: programas y beneficios','Caso práctico: diseño de protocolo para MYPE peruana'],
+    objetivo:'El participante diseñará e implementará protocolos de atención al cliente de alta calidad, gestionará quejas de forma efectiva y establecerá estrategias de fidelización que incrementen la retención.',
+    dirigido:['Personal de atención al cliente','Supervisores de tiendas y servicios','Emprendedores con negocio de cara al público','Responsables de postventa','Cualquier profesional que interactúe con clientes'],
+    relacionados:['ventas-efectivas','marketing-digital','redes-sociales']
+  },
+  'plan-negocios': {
+    titulo:'Plan de Negocios y Modelo Canvas',
+    desc:'Elabora un plan de negocios profesional usando el Business Model Canvas. Aprende a validar tu idea, proyectar financieramente y presentar ante inversores o instituciones financieras.',
+    emoji:'📋', bg:'#ECFDF5', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 65', precioOld:'S/ 90', precioNum:65,
+    temario:['¿Para qué sirve un plan de negocios?','Business Model Canvas: los 9 bloques','Propuesta de valor: cómo diferenciar tu negocio','Análisis de mercado: TAM, SAM y SOM','Análisis competitivo: Porter y FODA','Modelo de ingresos y estructura de costos','Proyecciones financieras básicas: 3 años','Plan de marketing y estrategia de ventas','Plan operativo y recursos clave','Estructura del plan para inversores y bancos'],
+    objetivo:'El participante elaborará un plan de negocios completo usando el Business Model Canvas y proyecciones financieras básicas, listo para presentar ante inversores o solicitar financiamiento.',
+    dirigido:['Emprendedores con idea de negocio','Estudiantes de administración y negocios','Dueños de negocios que quieren formalizar','Profesionales que buscan financiamiento','Participantes de programas de aceleración'],
+    relacionados:['startup-emprendimiento','financiamiento-startup','costos-empresariales']
+  },
+  'financiamiento-startup': {
+    titulo:'Financiamiento y Acceso a Capital para Startups',
+    desc:'Conoce todas las fuentes de financiamiento para startups y MYPES en Perú: Startupperú, capital ángel, crowdfunding y fondos. Aprende a preparar tu pitch para conseguir capital.',
+    emoji:'💼', bg:'#ECFDF5', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 60', precioOld:'S/ 85', precioNum:60,
+    temario:['Panorama del ecosistema emprendedor peruano','Bootstrapping: cómo crecer con recursos propios','Programas del Estado: Startupperú, COFIDE, PRODUCE','Capital semilla: fondos concursables y convocatorias 2025','Inversores ángeles: cómo encontrarlos en Perú','Fondos de capital de riesgo (Venture Capital) en Latam','Crowdfunding: plataformas y tipos','Préstamos bancarios y productos MYPE','El pitch deck: estructura y contenido para cada tipo de inversor','Errores comunes al buscar financiamiento'],
+    objetivo:'El participante identificará las mejores fuentes de financiamiento para su etapa de negocio, preparará materiales convincentes para atraer inversión y conocerá los programas de apoyo en Perú.',
+    dirigido:['Emprendedores en etapa temprana','Fundadores de startups','Dueños de MYPES que buscan crecer','Estudiantes de negocios e innovación','Participantes de incubadoras y aceleradoras'],
+    relacionados:['startup-emprendimiento','plan-negocios','costos-empresariales']
+  },
+  'costos-empresariales': {
+    titulo:'Gestión de Costos y Presupuestos Empresariales',
+    desc:'Aprende a estructurar los costos de tu negocio, calcular el punto de equilibrio, elaborar presupuestos anuales y tomar decisiones financieras basadas en datos para mejorar la rentabilidad.',
+    emoji:'📊', bg:'#FFFBEB', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 70', precioOld:'S/ 100', precioNum:70,
+    temario:['Conceptos básicos: costos, gastos e inversión','Costos fijos vs variables: clasificación y ejemplos','Costeo directo y costeo por absorción','Punto de equilibrio: cálculo e interpretación','Margen de contribución y análisis costo-volumen-utilidad','Estructura del presupuesto anual','Presupuesto de ventas, producción y gastos','Flujo de caja: elaboración y análisis','Análisis de variaciones presupuestarias','Indicadores financieros clave para MYPES: ROI, ROE, margen neto'],
+    objetivo:'El participante elaborará la estructura de costos de su negocio, calculará el punto de equilibrio y construirá un presupuesto anual básico para tomar decisiones que mejoren la rentabilidad.',
+    dirigido:['Dueños y gerentes de MYPES','Emprendedores con negocio en marcha','Contadores y asistentes contables','Responsables de administración','Estudiantes de contabilidad y administración'],
+    relacionados:['plan-negocios','financiamiento-startup','tributacion-basica']
+  },
+  'marco-legal': {
+    titulo:'Marco Legal para Empresas y Emprendedores en Perú',
+    desc:'Conoce el marco legal esencial para operar en Perú: tipos de empresa, formalización, contratos laborales, INDECOPI y propiedad intelectual básica para proteger tu negocio.',
+    emoji:'⚖️', bg:'#FFFBEB', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'6 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 55', precioOld:'S/ 80', precioNum:55,
+    temario:['Formas jurídicas: Persona Natural, EIRL, SRL, SAC','Proceso de constitución: pasos y costos','Registro en SUNAT y obtención de RUC','Licencias municipales y permisos sectoriales','Contratos laborales: tipos, beneficios y obligaciones','Régimen MYPE: beneficios y condiciones','Ley del Consumidor e INDECOPI','Libro de reclamaciones: obligaciones del proveedor','Propiedad intelectual: marcas, patentes y derechos de autor','Resolución de conflictos empresariales'],
+    objetivo:'El participante elegirá la forma jurídica más adecuada para su negocio, cumplirá con los requisitos legales de constitución y operación, y conocerá sus derechos ante el Estado peruano.',
+    dirigido:['Emprendedores con negocio en formación','Dueños de MYPES en crecimiento','Profesionales independientes','Estudiantes de negocios y derecho','Cualquier persona que quiera formalizar su actividad'],
+    relacionados:['tributacion-basica','plan-negocios','startup-emprendimiento']
+  },
+  'tributacion-basica': {
+    titulo:'Tributación Básica para Negocios y Emprendedores',
+    desc:'Comprende los regímenes tributarios del Perú, declara correctamente el IGV e Impuesto a la Renta, y gestiona las planillas sin necesidad de ser contador.',
+    emoji:'🏛️', bg:'#FFFBEB', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'6 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 55', precioOld:'S/ 80', precioNum:55,
+    temario:['Regímenes tributarios: NRUS, RER, RMT y Régimen General','Criterios para elegir tu régimen tributario','Impuesto General a las Ventas (IGV): cómo funciona','Emisión de comprobantes: factura, boleta y recibo por honorarios','Declaración mensual al SUNAT: PDT y SUNAT Virtual','Impuesto a la Renta: cálculo básico para MYPES','Gastos deducibles: qué puedo descontar','Planillas y beneficios sociales: CTS, gratificaciones y vacaciones','Régimen MYPE tributario: ventajas','Infracciones tributarias comunes y cómo evitarlas'],
+    objetivo:'El participante elegirá el régimen tributario adecuado para su negocio, declarará correctamente sus impuestos al SUNAT y gestionará las obligaciones laborales básicas de su empresa.',
+    dirigido:['Emprendedores y dueños de MYPES','Personas que quieren aprender contabilidad básica','Profesionales independientes','Estudiantes de administración y contabilidad','Cualquier persona que inicie un negocio en Perú'],
+    relacionados:['marco-legal','costos-empresariales','plan-negocios']
+  },
+  'control-interno': {
+    titulo:'Control Interno y Gestión de Riesgos Empresariales',
+    desc:'Implementa un sistema de control interno efectivo usando el marco COSO: identifica riesgos, diseña controles, detecta fraudes y mejora la eficiencia operativa de tu organización.',
+    emoji:'🛡️', bg:'#EDE9FE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'8 horas', modalidad:'Grabado', nivel:'Intermedio', precio:'S/ 80', precioOld:'S/ 120', precioNum:80,
+    temario:['¿Qué es el control interno y por qué es crucial?','Marco COSO: cinco componentes','Entorno de control: cultura y valores organizacionales','Evaluación de riesgos: identificación, análisis y respuesta','Actividades de control: preventivos y detectivos','Información y comunicación en el sistema de control','Actividades de supervisión y monitoreo','Riesgos de fraude: tipos y señales de alerta','Control interno en procesos clave: compras, tesorería, ventas','Auditoría interna como herramienta de control'],
+    objetivo:'El participante diseñará e implementará un sistema de control interno basado en COSO, identificando riesgos de su organización y estableciendo controles que prevengan fraudes y mejoren la eficiencia.',
+    dirigido:['Gerentes generales y directivos','Auditores internos','Responsables de finanzas y contabilidad','Responsables de operaciones','Estudiantes de contaduría y administración'],
+    relacionados:['anticorrupcion','costos-empresariales','auditoria-interna']
+  },
+  'seguridad-empresarial': {
+    titulo:'Seguridad Empresarial y Protección de Activos',
+    desc:'Diseña estrategias integrales de seguridad para proteger los activos físicos, humanos e información de tu empresa. Incluye protocolos de emergencia y gestión de riesgos de seguridad.',
+    emoji:'🔒', bg:'#EDE9FE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'8 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 85', precioOld:'S/ 130', precioNum:85,
+    temario:['Concepto de seguridad empresarial integral','Análisis de riesgos de seguridad: metodología','Seguridad física: accesos, perímetros y vigilancia','Sistemas de CCTV: tipos, instalación y gestión','Control de acceso: tarjetas, biometría y visitantes','Seguridad del personal: protocolos y capacitación','Protección de activos físicos de alto valor','Planes de emergencia y evacuación empresarial','Seguridad de la información: lo básico para gerentes','Coordinación con fuerzas de seguridad y autoridades'],
+    objetivo:'El participante diseñará un plan integral de seguridad empresarial, estableciendo protocolos de protección de activos físicos y humanos, sistemas de control de acceso y planes de respuesta ante emergencias.',
+    dirigido:['Gerentes y dueños de empresa','Jefes de seguridad','Administradores de instalaciones','Responsables de logística y activos','Supervisores operativos'],
+    relacionados:['control-interno','ciberseguridad-basica','proteccion-datos']
+  },
+  'proteccion-datos': {
+    titulo:'Protección de Datos Personales — Ley 29733',
+    desc:'Conoce y cumple la Ley 29733 en el Perú: registra bancos de datos, gestiona el consentimiento, atiende los derechos ARCO y evita sanciones de la ANPD.',
+    emoji:'🔐', bg:'#EDE9FE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'6 horas', modalidad:'Grabado', nivel:'Básico', precio:'S/ 50', precioOld:'', precioNum:50,
+    temario:['Ley 29733 y su Reglamento (D.S. 003-2013-JUS)','Datos personales vs datos sensibles: diferencias','Principios rectores del tratamiento de datos','Consentimiento: cómo obtenerlo correctamente','Bancos de datos: registro ante la ANPD','Derechos ARCO: Acceso, Rectificación, Cancelación y Oposición','Procedimiento para atender solicitudes ARCO','Transferencia internacional de datos personales','Medidas de seguridad técnicas y organizativas','Sanciones de la ANPD y casos recientes en Perú'],
+    objetivo:'El participante implementará un sistema de cumplimiento de la Ley 29733, gestionando correctamente el consentimiento, registrando bancos de datos y atendiendo los derechos ARCO de los titulares.',
+    dirigido:['Gerentes generales y directivos','Responsables de TI y sistemas','Abogados corporativos','Responsables de marketing y ventas','Cualquier empresa que maneje datos de clientes o empleados'],
+    relacionados:['ciberseguridad-basica','control-interno','anticorrupcion']
+  },
+  'habilidades-blandas': {
+    titulo:'Taller de Habilidades Blandas para Profesionales',
+    desc:'Desarrolla las habilidades interpersonales más demandadas: comunicación efectiva, inteligencia emocional, trabajo en equipo, resolución de conflictos y gestión del tiempo.',
+    emoji:'🧠', bg:'#FFF3EE', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'8 horas', modalidad:'En vivo', nivel:'Básico', precio:'S/ 65', precioOld:'S/ 100', precioNum:65,
+    temario:['¿Qué son las habilidades blandas y por qué son clave hoy?','Comunicación efectiva: verbal, no verbal y escrita','Escucha activa: técnicas y práctica','Inteligencia emocional: los 5 componentes de Goleman','Autogestión emocional en situaciones de presión','Trabajo en equipo: roles y colaboración','Resolución de conflictos: negociación y mediación','Gestión del tiempo: matriz Eisenhower y técnicas','Adaptabilidad y resiliencia ante el cambio','Plan de mejora personal: compromiso con el desarrollo'],
+    objetivo:'El participante fortalecerá sus habilidades interpersonales más demandadas, mejorando su comunicación, gestión emocional y capacidad de trabajo colaborativo para avanzar profesionalmente.',
+    dirigido:['Profesionales de cualquier área','Estudiantes universitarios','Líderes y supervisores','Personal en transición de carrera','Cualquier persona que quiera mejorar su empleabilidad'],
+    relacionados:['mentoria-profesional','formacion-equipos','talento-humano']
+  },
+  'formacion-equipos': {
+    titulo:'Formación de Equipos de Alto Rendimiento',
+    desc:'Construye, lidera y potencia equipos de alto rendimiento. Domina el modelo Tuckman, los roles Belbin, las metodologías ágiles y las técnicas para maximizar resultados colectivos.',
+    emoji:'🤝', bg:'#ECFDF5', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'8 horas', modalidad:'Presencial', nivel:'Básico', precio:'S/ 90', precioOld:'S/ 130', precioNum:90,
+    temario:['¿Qué diferencia a un equipo de alto rendimiento?','Modelo de Tuckman: formación, conflicto, normalización y desempeño','Roles de equipo: modelo Belbin','Dinámica de grupo: confianza, cohesión y sinergia','Comunicación efectiva dentro del equipo','Gestión de conflictos interpersonales','Metodologías ágiles: Scrum y Kanban aplicados','Delegación y empoderamiento (empowerment)','Reconocimiento y motivación del equipo','Caso práctico: diagnóstico y plan de mejora para tu equipo'],
+    objetivo:'El participante aplicará metodologías y herramientas para construir y liderar equipos de alto rendimiento, gestionando conflictos, fomentando la colaboración y alineando al equipo hacia objetivos comunes.',
+    dirigido:['Jefes y supervisores de equipo','Gerentes de área','Líderes de proyectos','Coordinadores de RRHH','Profesionales que aspiran a roles de liderazgo'],
+    relacionados:['talento-humano','mentoria-profesional','habilidades-blandas']
+  },
+  'mentoria-profesional': {
+    titulo:'Mentoría Profesional y Coaching Laboral',
+    desc:'Desarrolla competencias de mentor y coach para potenciar a tus colaboradores. Aprende el modelo GROW, feedback efectivo y diseño de planes de desarrollo individual.',
+    emoji:'🎯', bg:'#FFFBEB', area:'Centro de Desarrollo Empresarial & Liderazgo', areaHref:'cursos-liderazgo.html',
+    areaBg:'#FFFBEB', areaColor:'#F59E0B',
+    duracion:'10 horas', modalidad:'En vivo', nivel:'Intermedio', precio:'S/ 95', precioOld:'S/ 140', precioNum:95,
+    temario:['Diferencias entre mentoría, coaching, consultoría y psicoterapia','El rol del mentor: características y competencias','El modelo GROW: Goal, Reality, Options, Will','Preguntas poderosas: el arte de preguntar en coaching','Escucha activa: niveles y técnicas','Feedback efectivo: modelos SBI y Hamburguesa','Diseño del Plan de Desarrollo Individual (PDI)','Seguimiento y evaluación del progreso del mentorado','Ética en la mentoría y el coaching','Cómo establecer un programa de mentoría interna'],
+    objetivo:'El participante aplicará el modelo GROW y técnicas de coaching para conducir conversaciones de desarrollo efectivas, elaborar planes de desarrollo individuales y establecer relaciones de mentoría productivas.',
+    dirigido:['Gerentes y líderes de equipo','Profesionales de RRHH','Coaches en formación','Mentores internos de empresas','Profesionales con más de 5 años de experiencia'],
+    relacionados:['talento-humano','formacion-equipos','habilidades-blandas']
+  },
+
+};
+
+// Carrito
+var carrito = JSON.parse(localStorage.getItem('pq_cart') || '[]');
+var cursoActual = null;
+
+// ══ INICIALIZAR ════════════════════════════════
+window.addEventListener('DOMContentLoaded', function() {
+  var params  = new URLSearchParams(window.location.search);
+  var slug    = params.get('slug') || params.get('id') || 'ley-29783';
+  var nombre  = params.get('nombre');
+
+  // Si viene por nombre, buscar slug aproximado
+  if (nombre && !DB[slug]) {
+    var n = nombre.toLowerCase();
+    Object.keys(DB).forEach(function(k) {
+      if (DB[k].titulo.toLowerCase().includes(n.substring(0,15))) slug = k;
+    });
+  }
+
+  var curso = DB[slug];
+  if (!curso) {
+    // Intentar con API
+    cargarDesdeAPI(slug);
+    return;
+  }
+  renderCurso(slug, curso);
+  actualizarCarritoUI();
+});
+
+// ══ RENDER ══════════════════════════════════════
+function renderCurso(slug, c) {
+  cursoActual = { slug: slug, ...c };
+
+  document.title = c.titulo + ' — PROTEQLIFE';
+  document.getElementById('pageTitle').textContent = c.titulo + ' — PROTEQLIFE';
+  document.getElementById('bcArea').textContent = c.area;
+  document.getElementById('bcArea').href = c.areaHref || '#';
+  document.getElementById('bcNombre').textContent = c.titulo.length > 50 ? c.titulo.substring(0,47)+'...' : c.titulo;
+
+  // Hero
+  var heroEl = document.getElementById('dHeroImg');
+  heroEl.textContent = c.emoji;
+  heroEl.style.background = c.bg;
+
+  // Badge
+  var badge = document.getElementById('dAreaBadge');
+  badge.textContent = c.area;
+  badge.style.background = c.areaBg;
+  badge.style.color = c.areaColor;
+
+  document.getElementById('dTitulo').textContent = c.titulo;
+  document.getElementById('dDesc').textContent = c.desc;
+
+  // Meta bar
+  var modTag = { vivo:'🟢 En vivo', grabado:'🎬 Grabado', presencial:'🏢 Presencial', mixto:'📹 Mixto' };
+  document.getElementById('dMetaBar').innerHTML =
+    metaItem('⏱', 'Duración', c.duracion) +
+    metaItem('📹', 'Modalidad', modTag[c.modalidad] || c.modalidad) +
+    metaItem('📊', 'Nivel', c.nivel) +
+    metaItem('🏅', 'Certificado', 'Incluido');
+
+  // Temario
+  document.getElementById('temarioList').innerHTML = (c.temario || []).map(function(t, i) {
+    return '<div class="t-item"><div class="t-num">' + (i + 1) + '</div><div class="t-txt">' + escHtml(t) + '</div></div>';
+  }).join('');
+
+  // Objetivo
+  document.getElementById('objetivoTxt').textContent = c.objetivo || 'Información disponible próximamente.';
+
+  // Dirigido a
+  document.getElementById('dirigidoList').innerHTML = (c.dirigido || []).map(function(d) {
+    return '<div class="d-item">' + escHtml(d) + '</div>';
+  }).join('');
+
+  // Sidebar
+  var sThumb = document.getElementById('sThumb');
+  sThumb.textContent = c.emoji;
+  sThumb.style.background = c.bg;
+
+  document.getElementById('sPrecio').textContent = c.precio;
+  var oldEl = document.getElementById('sPrecioOld');
+  oldEl.textContent = c.precioOld || '';
+  oldEl.style.display = c.precioOld ? 'block' : 'none';
+
+  document.getElementById('sInfo').innerHTML =
+    siRow('Duración', c.duracion) +
+    siRow('Modalidad', c.modalidad) +
+    siRow('Nivel', c.nivel) +
+    siRow('Certificado', 'Sí, incluido');
+
+  // Relacionados
+  var relGrid = document.getElementById('relacionadosGrid');
+  var relHTML = '';
+  (c.relacionados || []).forEach(function(rslug) {
+    var r = DB[rslug];
+    if (!r) return;
+    relHTML += '<div class="rel-card" onclick="irACurso(\'' + rslug + '\')">' +
+      '<div class="rel-thumb" style="background:' + r.bg + '">' + r.emoji + '</div>' +
+      '<div class="rel-body">' +
+        '<div class="rel-name">' + escHtml(r.titulo) + '</div>' +
+        '<div class="rel-footer">' +
+          '<div class="rel-precio">' + r.precio + '</div>' +
+          '<button class="rel-btn">Ver curso →</button>' +
+        '</div>' +
+      '</div></div>';
+  });
+  relGrid.innerHTML = relHTML || '<p style="font-size:13px;color:var(--gray-400)">No hay cursos relacionados disponibles.</p>';
+}
+
+// ══ HELPERS ══════════════════════════════════════
+function metaItem(icon, lbl, val) {
+  return '<div class="d-meta-item"><span class="dmi-icon">' + icon + '</span>' +
+    '<div><div class="dmi-lbl">' + lbl + '</div><div class="dmi-val">' + escHtml(val) + '</div></div></div>';
+}
+function siRow(lbl, val) {
+  return '<div class="si-row"><span class="si-lbl">' + lbl + '</span><span class="si-val">' + escHtml(val) + '</span></div>';
+}
+function escHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ══ TABS ══════════════════════════════════════════
+function switchTab(idx, el) {
+  document.querySelectorAll('.d-tab').forEach(function(t, i) { t.classList.toggle('active', i === idx); });
+  document.querySelectorAll('.d-panel').forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+}
+
+// ══ CARRITO ═══════════════════════════════════════
+function agregarAlCarrito() {
+  if (!cursoActual) return;
+
+  var existe = carrito.find(function(c) { return c.slug === cursoActual.slug; });
+  if (!existe) {
+    carrito.push({
+      slug: cursoActual.slug,
+      nombre: cursoActual.titulo,
+      precio: cursoActual.precio,
+      precioNum: cursoActual.precioNum,
+      emoji: cursoActual.emoji
+    });
+    localStorage.setItem('pq_cart', JSON.stringify(carrito));
+  }
+
+  // Cambiar botón
+  var btn = document.getElementById('sBtnCarrito');
+  btn.textContent = '✓ En el carrito';
+  btn.style.background = 'var(--green)';
+
+  mostrarNotif('✅ "' + cursoActual.titulo.substring(0, 35) + '..." agregado al carrito');
+  actualizarCarritoUI();
+  renderCarritoPanel();
+  setTimeout(function() { toggleCarrito(); }, 600);
+}
+
+function actualizarCarritoUI() {
+  var count = carrito.length;
+  var floatBtn = document.getElementById('cartFloat');
+  var countEl  = document.getElementById('cartFloatCount');
+  if (floatBtn) { floatBtn.style.display = count > 0 ? 'flex' : 'none'; }
+  if (countEl)  { countEl.textContent = count; }
+
+  // Si el curso actual ya está en carrito, marcar botón
+  if (cursoActual) {
+    var existe = carrito.find(function(c) { return c.slug === cursoActual.slug; });
+    var btn = document.getElementById('sBtnCarrito');
+    if (btn && existe) {
+      btn.textContent = '✓ En el carrito';
+      btn.style.background = 'var(--green)';
+    }
+  }
+}
+
+function renderCarritoPanel() {
+  var total  = carrito.reduce(function(s, c) { return s + c.precioNum; }, 0);
+  var totalEl = document.getElementById('cpTotal');
+  if (totalEl) totalEl.textContent = 'S/ ' + total;
+
+  var html = '';
+  if (!carrito.length) {
+    html = '<div class="cp-empty"><div style="font-size:36px;margin-bottom:10px">🛒</div><p>Tu carrito está vacío.</p></div>';
+  } else {
+    carrito.forEach(function(item, idx) {
+      html += '<div class="cp-item">' +
+        '<span class="cp-emoji">' + item.emoji + '</span>' +
+        '<div style="flex:1">' +
+          '<div class="cp-name">' + escHtml(item.nombre.substring(0,50)) + '...</div>' +
+          '<div class="cp-price">' + item.precio + '</div>' +
+        '</div>' +
+        '<button class="cp-remove" onclick="quitarDelCarrito(' + idx + ')">🗑</button>' +
+        '</div>';
+    });
+  }
+  var itemsEl = document.getElementById('cpItems');
+  if (itemsEl) itemsEl.innerHTML = html;
+}
+
+function quitarDelCarrito(idx) {
+  carrito.splice(idx, 1);
+  localStorage.setItem('pq_cart', JSON.stringify(carrito));
+  actualizarCarritoUI();
+  renderCarritoPanel();
+}
+
+function toggleCarrito() {
+  var panel = document.getElementById('cartPanel');
+  if (!panel) return;
+  renderCarritoPanel();
+  panel.classList.toggle('open');
+}
+
+// ══ PAGO ══════════════════════════════════════════
+function abrirPago() {
+  if (!carrito.length) return;
+  location.href = 'checkout.html';
+  return;
+  document.getElementById('cartPanel').classList.remove('open');
+
+  var resumen = '<div class="pr-title">Resumen del pedido</div>';
+  var total = 0;
+  carrito.forEach(function(c) {
+    resumen += '<div class="pr-item"><span>' + escHtml(c.nombre.substring(0,40)) + '...</span><span>' + c.precio + '</span></div>';
+    total += c.precioNum;
+  });
+  resumen += '<div class="pr-total"><span>Total</span><span>S/ ' + total + '</span></div>';
+  document.getElementById('pagoResumen').innerHTML = resumen;
+
+  document.getElementById('pagoModal').classList.add('open');
+}
+
+function cerrarPago() {
+  document.getElementById('pagoModal').classList.remove('open');
+}
+
+function fmtCard(el) {
+  var v = el.value.replace(/\D/g,'').substring(0,16);
+  el.value = v.replace(/(.{4})/g,'$1 ').trim();
+}
+function fmtExpiry(el) {
+  var v = el.value.replace(/\D/g,'');
+  if (v.length >= 2) v = v.substring(0,2) + '/' + v.substring(2,4);
+  el.value = v;
+}
+
+function procesarPago() {
+  alert('El pago en línea aún no está habilitado. No ingreses datos de tarjeta.');
+}
+
+function pagarWhatsApp() {
+  var lista = carrito.map(function(c) { return '• ' + c.nombre + ' (' + c.precio + ')'; }).join('\n');
+  var total = carrito.reduce(function(s, c) { return s + c.precioNum; }, 0);
+  var msg   = 'Hola PROTEQLIFE, quiero consultar mi inscripción en:%0A%0A' + encodeURIComponent(lista + '\n\nTotal referencial: S/ ' + total);
+  window.open('https://wa.me/51950950304?text=' + msg, '_blank', 'noopener');
+  document.getElementById('cartPanel').classList.remove('open');
+}
+
+function inscribirWA() {
+  if (!cursoActual) return;
+  window.open('https://wa.me/51950950304?text=' + encodeURIComponent('Hola, me interesa el curso: ' + cursoActual.titulo), '_blank', 'noopener');
+}
+
+function solicitarCorporativo() { window.location.href = 'contacto.html'; }
+
+function irACurso(slug) {
+  window.location.href = 'curso-detalle.html?slug=' + slug;
+}
+
+// ══ NOTIFICACIÓN ══════════════════════════════════
+function mostrarNotif(msg) {
+  var el = document.getElementById('cartNotif');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = 'flex';
+  setTimeout(function() { el.style.display = 'none'; }, 2500);
+}
+
+// ══ CARGAR DESDE API (cuando backend esté activo) ══
+async function cargarDesdeAPI(slug) {
+  try {
+    var res  = await fetch(PQL.API + '/shop/courses/' + encodeURIComponent(slug));
+    var data = await res.json();
+    if (res.ok && data.course) {
+      var c = data.course;
+      DB[slug] = {
+        titulo: c.title, desc: c.description || '',
+        emoji: c.emoji || '📚', bg: '#E3F2FD',
+        area: c.category, areaHref: 'cursos-sso.html',
+        areaBg: '#E3F2FD', areaColor: '#1565C0',
+        duracion: c.duration || '', modalidad: c.modality || '', nivel: c.level || '',
+        precio: 'S/ ' + Number(c.price).toFixed(0),
+        precioOld: c.listPrice ? 'S/ ' + Number(c.listPrice).toFixed(0) : '',
+        precioNum: Number(c.price),
+        temario: c.syllabus || [], dirigido: c.audience || [],
+        objetivo: c.objective || '',
+        relacionados: []
+      };
+      renderCurso(slug, DB[slug]);
+    } else {
+      renderCursoNoEncontrado();
+    }
+  } catch (e) {
+    renderCursoNoEncontrado();
+  }
+}
+
+function renderCursoNoEncontrado() {
+  document.getElementById('dTitulo').textContent = 'Curso no encontrado';
+  document.getElementById('dDesc').textContent = 'El curso que buscas no existe o no está disponible. Explora nuestro catálogo.';
+  document.getElementById('sidebarCard').innerHTML = '<div style="padding:24px;text-align:center"><p style="font-size:13px;color:var(--gray-600);margin-bottom:16px">Este curso no está disponible.</p><a href="cursos-sso.html" style="display:block;background:var(--blue);color:#fff;padding:12px;border-radius:var(--radius-md);font-weight:600;text-decoration:none">Ver todos los cursos →</a></div>';
+}
+
+// Cerrar panel al hacer click fuera
+window.addEventListener('click', function(e) {
+  var panel = document.getElementById('cartPanel');
+  if (panel?.classList.contains('open') && !panel.contains(e.target) && !e.target.closest('.cart-float')) {
+    panel.classList.remove('open');
+  }
+  if (e.target === document.getElementById('pagoModal')) cerrarPago();
+});
+</script>
+</body>
+</html>

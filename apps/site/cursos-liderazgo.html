@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro de Desarrollo Empresarial & Liderazgo — PROTEQLIFE Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#05192D; --navy-mid:#0C3254; --blue:#1565C0; --blue-bright:#2196F3;
+  --blue-light:#E3F2FD; --accent:#FF6B35; --accent-light:#FFF3EE;
+  --gold:#F59E0B; --gold-light:#FFFBEB; --gold-dark:#B45309;
+  --green:#1B5E20; --green-light:#E8F5E9;
+  --gray-100:#F5F7FA; --gray-200:#E8ECF0; --gray-400:#9BA3AD;
+  --gray-600:#5A6472; --gray-800:#2C3540; --white:#FFFFFF;
+  --radius-sm:6px; --radius-md:10px; --radius-lg:16px;
+  --shadow-sm:0 1px 3px rgba(5,25,45,0.08);
+  --shadow-md:0 4px 16px rgba(5,25,45,0.10);
+  --shadow-lg:0 12px 40px rgba(5,25,45,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--white);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.2}
+a{text-decoration:none;color:inherit}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200)}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--gray-100);padding:12px 0;border-bottom:1px solid var(--gray-200)}
+.breadcrumb-inner{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-400)}
+.breadcrumb-inner a{color:var(--gray-400);transition:color .15s}
+.breadcrumb-inner a:hover{color:var(--gold)}
+.breadcrumb-inner span{color:var(--navy);font-weight:600}
+
+/* PAGE HERO */
+.page-hero{background:var(--navy);padding:56px 0 48px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(245,158,11,.12) 0%,transparent 65%);pointer-events:none}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold) 0%,#FCD34D 100%)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:#FCD34D;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.page-hero h1{font-size:34px;font-weight:800;color:#fff;margin-bottom:12px}
+.page-hero p{font-size:15px;color:rgba(255,255,255,.65);max-width:600px;line-height:1.7;margin-bottom:28px}
+.hero-meta{display:flex;gap:24px;flex-wrap:wrap}
+.hm-item{display:flex;align-items:center;gap:8px}
+.hm-item span{font-size:13px;color:rgba(255,255,255,.7)}
+
+/* FILTROS */
+.filtros-bar{background:#fff;border-bottom:1px solid var(--gray-200);padding:14px 0;position:sticky;top:62px;z-index:100}
+.filtros-inner{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.filtro-label{font-size:12px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-right:4px}
+.filtro{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--gray-200);background:#fff;color:var(--gray-600);cursor:pointer;transition:all .15s}
+.filtro:hover{border-color:var(--accent,#FF6B35);color:var(--accent,#FF6B35)}
+.filtro.active{background:var(--accent,#FF6B35);color:#fff;border-color:var(--accent,#FF6B35)}
+
+/* CURSOS */
+.cursos-section{padding:40px 0 64px;background:var(--gray-100)}
+.subcat-section{margin-bottom:52px}
+.subcat-title{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--gold-light)}
+.subcat-title h3{font-size:16px;font-weight:800;color:var(--navy)}
+.subcat-title .subcat-count{font-size:11px;font-weight:600;color:var(--gold-dark);background:var(--gold-light);padding:3px 10px;border-radius:20px}
+.cursos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.curso-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:all .25s}
+.curso-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.cc-thumb{height:110px;display:flex;align-items:center;justify-content:center;font-size:36px;position:relative}
+.cc-thumb-badges{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.tag-vivo{background:#E8F5E9;color:#1B5E20;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}
+.tag-grabado{background:#E3F2FD;color:#1565C0;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}
+.tag-presencial{background:#FFF3EE;color:#E64A19;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}
+.tag-nuevo{background:#FFF8E1;color:#F57F17;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}
+.cc-body{padding:16px}
+.cc-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.4}
+.cc-desc{font-size:12px;color:var(--gray-600);line-height:1.6;margin-bottom:10px}
+.cc-meta{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.cc-meta span{font-size:11px;color:var(--gray-400)}
+.cc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--gray-200)}
+.cc-precio-old{font-size:11px;color:var(--gray-400);text-decoration:line-through;display:block}
+.cc-precio{font-size:15px;font-weight:700;color:var(--navy)}
+.cc-btn{font-size:12px;font-weight:600;padding:7px 14px;border-radius:var(--radius-sm);background:var(--gold-light);color:var(--gold-dark);border:none;cursor:pointer;transition:all .15s}
+.cc-btn:hover{background:var(--gold);color:#fff}
+
+/* MODAL DETALLE */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,25,45,.65);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.modal-box{background:#fff;border-radius:var(--radius-lg);max-width:520px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--gray-400);z-index:10}
+.modal-header{padding:24px 24px 0}
+.modal-header-tag{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.modal-title-curso{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.modal-desc{font-size:13px;color:var(--gray-600);line-height:1.6;margin-bottom:16px}
+.modal-meta-row{display:flex;gap:16px;flex-wrap:wrap;padding:14px 24px;background:var(--gray-100);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200)}
+.modal-meta-item{font-size:12px;color:var(--gray-600)}
+.modal-body{padding:20px 24px}
+.modal-body h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+.modal-temas{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.modal-tema{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-700);padding:8px 12px;background:var(--gray-100);border-radius:var(--radius-sm)}
+.modal-tema::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
+.modal-footer{padding:16px 24px;border-top:1px solid var(--gray-200);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.modal-precio-wrap{display:flex;flex-direction:column}
+.modal-precio-old{font-size:12px;color:var(--gray-400);text-decoration:line-through}
+.modal-precio{font-size:22px;font-weight:800;color:var(--navy);font-family:'Syne',sans-serif}
+.modal-add-btn{background:var(--gold);color:#fff;border:none;padding:12px 24px;border-radius:var(--radius-md);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.modal-add-btn:hover{background:var(--gold-dark)}
+.modal-add-btn.added{background:var(--green)}
+
+/* CARRITO FLOTANTE */
+.cart-btn{position:fixed;bottom:28px;right:28px;background:var(--gold);color:#fff;border:none;border-radius:50px;padding:12px 20px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:8px;z-index:500;transition:all .2s}
+.cart-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.cart-count{background:#fff;color:var(--gold-dark);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
+
+/* CTA */
+.cta-bottom{background:var(--navy);padding:48px 0;text-align:center}
+.cta-bottom h2{font-size:24px;font-weight:800;color:#fff;margin-bottom:10px}
+.cta-bottom p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:24px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-white{display:inline-block;background:#fff;color:var(--navy);padding:12px 28px;border-radius:var(--radius-md);font-size:14px;font-weight:700}
+.btn-ghost{display:inline-block;background:transparent;color:#fff;padding:11px 26px;border-radius:var(--radius-md);font-size:14px;font-weight:600;border:1.5px solid rgba(255,255,255,.4)}
+
+/* FOOTER */
+footer{background:var(--navy);padding:40px 0 24px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+.footer-logo-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff}
+.footer-logo-tag{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:12px}
+.footer-desc{font-size:12px;color:rgba(255,255,255,.5);line-height:1.7}
+.footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);margin-bottom:12px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul li a{font-size:12px;color:rgba(255,255,255,.55);transition:color .15s}
+.footer-col ul li a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,.3)}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){
+  .page-hero h1{font-size:24px}
+  .cursos-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Inicio</a><span style="color:var(--gray-400)">›</span>
+      <a href="index.html#areas">Áreas</a><span style="color:var(--gray-400)">›</span>
+      <span>Centro de Desarrollo Empresarial & Liderazgo</span>
+    </div>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-badge">🎯 Desarrollo Empresarial & Liderazgo</div>
+    <h1>Centro de Desarrollo Empresarial & Liderazgo</h1>
+    <p>Innovación, tecnología, emprendimiento y desarrollo del talento humano para profesionales y empresas que quieren crecer en el entorno actual.</p>
+    <div class="hero-meta">
+      <div class="hm-item"><span>📚</span><span>+20 cursos disponibles</span></div>
+      <div class="hm-item"><span>🎓</span><span>Certificado incluido</span></div>
+      <div class="hm-item"><span>📹</span><span>En vivo, grabado y presencial</span></div>
+      <div class="hm-item"><span>📍</span><span>Lima, Perú</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="filtros-bar">
+  <div class="container">
+    <div class="filtros-inner">
+      <span class="filtro-label">ÁREA:</span>
+      <a href="cursos-sso.html"       class="filtro">🛡️ Seguridad Integral</a>
+      <a href="cursos-calidad.html"   class="filtro">📊 Sist. Integrado de Gestión</a>
+      <a href="cursos-liderazgo.html" class="filtro active">🎯 Desarrollo Empresarial</a>
+    </div>
+  </div>
+</div>
+
+<section class="cursos-section">
+  <div class="container">
+
+    <!-- 1. INTELIGENCIA ARTIFICIAL Y TECNOLOGÍA -->
+    <div class="subcat-section">
+      <div class="subcat-title">
+        <span style="font-size:20px">🤖</span>
+        <h3>Inteligencia Artificial y Tecnología</h3>
+        <span class="subcat-count">4 cursos</span>
+      </div>
+      <div class="cursos-grid">
+        <div class="curso-card" data-modal="IA Fundamentos" data-mod="grabado">
+          <div class="cc-thumb" style="background:#EDE9FE">🤖
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span><span class="tag-nuevo">Nuevo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Fundamentos de Inteligencia Artificial para empresas</div>
+            <div class="cc-desc">Entiende qué es la IA, cómo funciona y cómo aplicarla en tu negocio para mejorar procesos.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📹 4 sesiones</span><span>⭐ 4.9</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 120</span><span class="cc-precio">S/ 80</span></div>
+              <button class="cc-btn" onclick="verCurso('ia-fundamentos')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="ChatGPT Productividad" data-mod="vivo">
+          <div class="cc-thumb" style="background:#EDE9FE">💬
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span><span class="tag-nuevo">Nuevo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">ChatGPT y herramientas IA para la productividad</div>
+            <div class="cc-desc">Aprende a usar ChatGPT, Gemini y Copilot para automatizar tareas, redactar y analizar datos.</div>
+            <div class="cc-meta"><span>⏱ 6 horas</span><span>📅 Próximamente</span><span>👥 20 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 100</span><span class="cc-precio">S/ 65</span></div>
+              <button class="cc-btn" onclick="verCurso('chatgpt-productividad')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Automatizacion Procesos" data-mod="grabado">
+          <div class="cc-thumb" style="background:#EDE9FE">⚙️
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Automatización de procesos con IA y herramientas no-code</div>
+            <div class="cc-desc">Conecta aplicaciones y automatiza flujos de trabajo sin necesidad de programar.</div>
+            <div class="cc-meta"><span>⏱ 10 horas</span><span>📹 5 sesiones</span><span>⭐ 4.8</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 130</span><span class="cc-precio">S/ 90</span></div>
+              <button class="cc-btn" onclick="verCurso('automatizacion-ia')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Ciberseguridad Basica" data-mod="vivo">
+          <div class="cc-thumb" style="background:#EDE9FE">🔐
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Ciberseguridad básica para empresas</div>
+            <div class="cc-desc">Protege tu empresa de amenazas digitales. Contraseñas seguras, phishing, backups y más.</div>
+            <div class="cc-meta"><span>⏱ 4 horas</span><span>📅 Próximamente</span><span>👥 15 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio">S/ 50</span></div>
+              <button class="cc-btn" onclick="verCurso('ciberseguridad-basica')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. MARKETING DIGITAL Y VENTAS -->
+    <div class="subcat-section">
+      <div class="subcat-title">
+        <span style="font-size:20px">📱</span>
+        <h3>Marketing Digital y Ventas</h3>
+        <span class="subcat-count">4 cursos</span>
+      </div>
+      <div class="cursos-grid">
+        <div class="curso-card" data-modal="Marketing Digital Intro" data-mod="grabado">
+          <div class="cc-thumb" style="background:#FFF3EE">📱
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Introducción al Marketing Digital</div>
+            <div class="cc-desc">Estrategias digitales, redes sociales, SEO y publicidad en línea para hacer crecer tu negocio.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📹 4 sesiones</span><span>⭐ 4.7</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 110</span><span class="cc-precio">S/ 75</span></div>
+              <button class="cc-btn" onclick="verCurso('marketing-digital')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Ventas Efectivas" data-mod="vivo">
+          <div class="cc-thumb" style="background:#FFF3EE">💼
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Técnicas de ventas efectivas y cierre de negocios</div>
+            <div class="cc-desc">Metodologías de ventas consultivas, manejo de objeciones y cierre efectivo.</div>
+            <div class="cc-meta"><span>⏱ 6 horas</span><span>📅 Próximamente</span><span>👥 20 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 90</span><span class="cc-precio">S/ 60</span></div>
+              <button class="cc-btn" onclick="verCurso('ventas-efectivas')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Redes Sociales Empresa" data-mod="grabado">
+          <div class="cc-thumb" style="background:#FFF3EE">📸
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span><span class="tag-nuevo">Nuevo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Redes sociales para empresas y marcas personales</div>
+            <div class="cc-desc">Crea contenido de valor, crece tu audiencia y convierte seguidores en clientes.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📹 4 sesiones</span><span>⭐ 4.8</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 100</span><span class="cc-precio">S/ 65</span></div>
+              <button class="cc-btn" onclick="verCurso('redes-sociales')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Atencion Cliente" data-mod="vivo">
+          <div class="cc-thumb" style="background:#FFF3EE">🤝
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Atención al cliente y fidelización</div>
+            <div class="cc-desc">Brinda experiencias memorables, maneja quejas y construye relaciones a largo plazo.</div>
+            <div class="cc-meta"><span>⏱ 4 horas</span><span>📅 Próximamente</span><span>👥 25 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio">S/ 45</span></div>
+              <button class="cc-btn" onclick="verCurso('atencion-cliente')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. STARTUP Y EMPRENDIMIENTO -->
+    <div class="subcat-section">
+      <div class="subcat-title">
+        <span style="font-size:20px">🚀</span>
+        <h3>Creación de StartUp y Emprendimiento</h3>
+        <span class="subcat-count">3 cursos</span>
+      </div>
+      <div class="cursos-grid">
+        <div class="curso-card" data-modal="Startup Fundamentos" data-mod="grabado">
+          <div class="cc-thumb" style="background:#ECFDF5">🚀
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span><span class="tag-nuevo">Nuevo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Cómo crear tu StartUp desde cero</div>
+            <div class="cc-desc">Validación de ideas, modelo de negocio, MVP y primeros pasos para lanzar tu emprendimiento.</div>
+            <div class="cc-meta"><span>⏱ 10 horas</span><span>📹 5 sesiones</span><span>⭐ 4.9</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 150</span><span class="cc-precio">S/ 99</span></div>
+              <button class="cc-btn" onclick="verCurso('startup-emprendimiento')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Plan de Negocios" data-mod="vivo">
+          <div class="cc-thumb" style="background:#ECFDF5">📄
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Plan de negocios y modelo Canvas</div>
+            <div class="cc-desc">Elabora un plan de negocios sólido con el Business Model Canvas y métricas clave.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📅 Próximamente</span><span>👥 15 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 110</span><span class="cc-precio">S/ 70</span></div>
+              <button class="cc-btn" onclick="verCurso('plan-negocios')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Financiamiento Startup" data-mod="presencial">
+          <div class="cc-thumb" style="background:#ECFDF5">💰
+            <div class="cc-thumb-badges"><span class="tag-presencial">Presencial</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Financiamiento y acceso a capital para startups</div>
+            <div class="cc-desc">Conoce las fuentes de financiamiento disponibles: ángeles inversores, fondos, créditos y más.</div>
+            <div class="cc-meta"><span>⏱ 6 horas</span><span>📍 Lima</span><span>👥 12 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 120</span><span class="cc-precio">S/ 80</span></div>
+              <button class="cc-btn" onclick="verCurso('financiamiento-startup')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ASESORÍA EN COSTOS Y LEGAL -->
+    <div class="subcat-section">
+      <div class="subcat-title">
+        <span style="font-size:20px">⚖️</span>
+        <h3>Asesoría en Costos y Legal</h3>
+        <span class="subcat-count">3 cursos</span>
+      </div>
+      <div class="cursos-grid">
+        <div class="curso-card" data-modal="Costos Empresariales" data-mod="grabado">
+          <div class="cc-thumb" style="background:#FFFBEB">💹
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Gestión de costos y presupuestos empresariales</div>
+            <div class="cc-desc">Aprende a estructurar costos, calcular márgenes y elaborar presupuestos para tu empresa.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📹 4 sesiones</span><span>⭐ 4.7</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 120</span><span class="cc-precio">S/ 80</span></div>
+              <button class="cc-btn" onclick="verCurso('costos-empresariales')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Marco Legal Empresa" data-mod="vivo">
+          <div class="cc-thumb" style="background:#FFFBEB">📜
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span><span class="tag-nuevo">Nuevo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Marco legal para empresas y emprendedores en Perú</div>
+            <div class="cc-desc">Tipos de empresa, contratos, obligaciones tributarias y protección de propiedad intelectual.</div>
+            <div class="cc-meta"><span>⏱ 6 horas</span><span>📅 Próximamente</span><span>👥 20 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 100</span><span class="cc-precio">S/ 65</span></div>
+              <button class="cc-btn" onclick="verCurso('marco-legal')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Tributacion Basica" data-mod="grabado">
+          <div class="cc-thumb" style="background:#FFFBEB">🧾
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Tributación básica para negocios y emprendedores</div>
+            <div class="cc-desc">Regímenes tributarios en Perú, obligaciones con SUNAT y cómo formalizar tu negocio.</div>
+            <div class="cc-meta"><span>⏱ 4 horas</span><span>📹 2 sesiones</span><span>⭐ 4.6</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio">S/ 50</span></div>
+              <button class="cc-btn" onclick="verCurso('tributacion-basica')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. TEQLIFE - CONTROL Y SEGURIDAD -->
+    <div class="subcat-section">
+      <div class="subcat-title">
+        <span style="font-size:20px">🔒</span>
+        <h3>TEQLIFE — Control y Seguridad</h3>
+        <span class="subcat-count">3 cursos</span>
+      </div>
+      <div class="cursos-grid">
+        <div class="curso-card" data-modal="Control Interno" data-mod="grabado">
+          <div class="cc-thumb" style="background:#E0F2FE">🔒
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span><span class="tag-nuevo">Nuevo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Control interno y gestión de riesgos empresariales</div>
+            <div class="cc-desc">Implementa controles efectivos para proteger los activos y operaciones de tu empresa.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📹 4 sesiones</span><span>⭐ 4.8</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 120</span><span class="cc-precio">S/ 80</span></div>
+              <button class="cc-btn" onclick="verCurso('control-interno')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Seguridad Empresarial" data-mod="presencial">
+          <div class="cc-thumb" style="background:#E0F2FE">🛡️
+            <div class="cc-thumb-badges"><span class="tag-presencial">Presencial</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Seguridad empresarial y protección de activos</div>
+            <div class="cc-desc">Estrategias integrales de seguridad física, digital y de la información en la empresa.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📍 Lima</span><span>👥 15 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 130</span><span class="cc-precio">S/ 85</span></div>
+              <button class="cc-btn" onclick="verCurso('seguridad-empresarial')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Proteccion Datos" data-mod="vivo">
+          <div class="cc-thumb" style="background:#E0F2FE">🔐
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span><span class="tag-nuevo">Nuevo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Protección de datos personales — Ley 29733</div>
+            <div class="cc-desc">Cumple con la ley de protección de datos en Perú. Políticas de privacidad y tratamiento de datos.</div>
+            <div class="cc-meta"><span>⏱ 4 horas</span><span>📅 Próximamente</span><span>👥 20 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio">S/ 50</span></div>
+              <button class="cc-btn" onclick="verCurso('proteccion-datos')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. DESARROLLO DE TALENTO HUMANO -->
+    <div class="subcat-section">
+      <div class="subcat-title">
+        <span style="font-size:20px">👥</span>
+        <h3>Desarrollo de Talento Humano</h3>
+        <span class="subcat-count">4 cursos</span>
+      </div>
+      <div class="cursos-grid">
+        <div class="curso-card" data-modal="Habilidades Blandas" data-mod="vivo">
+          <div class="cc-thumb" style="background:var(--gold-light)">🧠
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Taller de habilidades blandas para profesionales</div>
+            <div class="cc-desc">Comunicación efectiva, inteligencia emocional, adaptabilidad y resolución de conflictos.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📅 Próximamente</span><span>👥 20 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 100</span><span class="cc-precio">S/ 65</span></div>
+              <button class="cc-btn" onclick="verCurso('habilidades-blandas')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Formacion Equipos" data-mod="presencial">
+          <div class="cc-thumb" style="background:var(--gold-light)">🤜
+            <div class="cc-thumb-badges"><span class="tag-presencial">Presencial</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Formación de equipos de alto rendimiento</div>
+            <div class="cc-desc">Dinámicas de integración, roles de equipo, sinergia y metodologías ágiles de trabajo.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📍 Lima</span><span>👥 20 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 130</span><span class="cc-precio">S/ 90</span></div>
+              <button class="cc-btn" onclick="verCurso('formacion-equipos')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Mentoria Profesional" data-mod="grabado">
+          <div class="cc-thumb" style="background:var(--gold-light)">🎯
+            <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span><span class="tag-nuevo">Nuevo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Mentoría profesional y coaching laboral</div>
+            <div class="cc-desc">Herramientas de coaching para potenciar el desempeño individual y organizacional.</div>
+            <div class="cc-meta"><span>⏱ 10 horas</span><span>📹 5 sesiones</span><span>⭐ 4.9</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 140</span><span class="cc-precio">S/ 95</span></div>
+              <button class="cc-btn" onclick="verCurso('mentoria-profesional')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+        <div class="curso-card" data-modal="Liderazgo Situacional" data-mod="vivo">
+          <div class="cc-thumb" style="background:var(--gold-light)">👑
+            <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-name">Liderazgo situacional y gestión de equipos</div>
+            <div class="cc-desc">Adapta tu estilo de liderazgo según el equipo, el contexto y los objetivos organizacionales.</div>
+            <div class="cc-meta"><span>⏱ 8 horas</span><span>📅 Próximamente</span><span>👥 18 cupos</span></div>
+            <div class="cc-footer">
+              <div><span class="cc-precio-old">S/ 110</span><span class="cc-precio">S/ 75</span></div>
+              <button class="cc-btn" onclick="verCurso('talento-humano')">Ver curso</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-bottom">
+  <div class="container">
+    <h2>¿Tu empresa necesita capacitación corporativa?</h2>
+    <p>Diseñamos programas a medida para equipos de trabajo. Contáctanos para una cotización.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/51999000000" target="_blank" class="btn-white">📱 WhatsApp</a>
+      <a href="contacto.html" class="btn-ghost">Solicitar información</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-name">PROTEQLIFE</div>
+        <div class="footer-logo-tag">Consulting — Cursos Certificados</div>
+        <p class="footer-desc">Empresa especializada en capacitaciones certificadas en Seguridad, Gestión y Desarrollo Empresarial.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Otras áreas</h4>
+        <ul>
+          <li><a href="cursos-sso.html">Seguridad Integral</a></li>
+          <li><a href="cursos-calidad.html">Sistema Integrado de Gestión</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="index.html#servicios">Homologaciones</a></li>
+          <li><a href="index.html#servicios">Certificación ISO 9001</a></li>
+          <li><a href="index.html#servicios">Asesoría SST</a></li>
+          <li><a href="index.html#servicios">Auditorías Internas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Soporte</h4>
+        <ul>
+          <li><a href="index.html">Aula Virtual</a></li>
+          <li><a href="#">Validar certificado</a></li>
+          <li><a href="contacto.html">Contáctanos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PROTEQLIFE Consulting — Todos los derechos reservados.</p>
+      <p>Lima, Perú</p>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTÓN CARRITO FLOTANTE -->
+<button class="cart-btn" id="cartFloatBtn" onclick="abrirCarrito()" style="display:none">
+  🛒 Carrito <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<!-- MODAL DETALLE CURSO -->
+<div class="modal-overlay" id="cursoModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="cerrarCursoModal()">✕</button>
+    <div class="modal-header">
+      <div class="modal-header-tag" id="modalTags"></div>
+      <div class="modal-title-curso" id="modalNombre"></div>
+      <div class="modal-desc" id="modalDescripcion"></div>
+    </div>
+    <div class="modal-meta-row" id="modalMeta"></div>
+    <div class="modal-body">
+      <h4>Temario del curso</h4>
+      <div class="modal-temas" id="modalTemas"></div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-precio-wrap">
+        <span class="modal-precio-old" id="modalPrecioOld"></span>
+        <span class="modal-precio" id="modalPrecio"></span>
+      </div>
+      <button class="modal-add-btn" id="modalAddBtn" onclick="agregarAlCarrito()">+ Agregar al carrito</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Sistema de modal, carrito y pagos compartido -->
+<script src="cursos-modal.js"></script>
+
+<script>
+function filtrar(el, tipo) {
+  document.querySelectorAll('.filtro').forEach(function(f){ f.classList.remove('active'); });
+  el.classList.add('active');
+  var cards = document.querySelectorAll('.curso-card');
+  cards.forEach(function(c){
+    c.style.display = (tipo === 'todos' || c.dataset.modalidad === tipo) ? '' : 'none';
+  });
+}
+function toggleMenu() { navToggleMob && navToggleMob(); }
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>

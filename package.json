@@ -1,0 +1,12 @@
+{
+  "name": "web-aula",
+  "private": true,
+  "description": "Sitio corporativo PROTEQLIFE + Aula Consulting (LMS) con API Node + PostgreSQL",
+  "scripts": {
+    "api:dev": "pnpm --dir apps/api dev",
+    "api:reset": "pnpm --dir apps/api db:reset",
+    "aula:dev": "pnpm --dir apps/aula dev",
+    "aula:build": "pnpm --dir apps/aula build",
+    "site:dev": "python -m http.server 5500 --directory apps/site"
+  }
+}

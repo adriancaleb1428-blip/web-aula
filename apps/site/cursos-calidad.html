@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Integrado de Gestión — PROTEQLIFE Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05192D; --navy-mid: #0C3254; --blue: #1565C0; --blue-bright: #2196F3;
+  --blue-light: #E3F2FD; --accent: #FF6B35; --accent-light: #FFF3EE;
+  --green: #1B5E20; --green-light: #E8F5E9;
+  --gray-100: #F5F7FA; --gray-200: #E8ECF0; --gray-400: #9BA3AD;
+  --gray-600: #5A6472; --gray-800: #2C3540; --white: #FFFFFF;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(5,25,45,0.08);
+  --shadow-md: 0 4px 16px rgba(5,25,45,0.10);
+  --shadow-lg: 0 12px 40px rgba(5,25,45,0.14);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; color: var(--gray-800); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+h1,h2,h3,h4 { font-family: 'Syne', sans-serif; line-height: 1.2; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+nav { position:sticky; top:0; z-index:1000; background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); border-bottom:1px solid var(--gray-200); }
+.nav-inner { display:flex; align-items:center; justify-content:space-between; height:64px; }
+.nav-logo { display:flex; align-items:center; gap:10px; }
+.logo-box { width:38px; height:38px; background:var(--navy); border-radius:8px; display:flex; align-items:center; justify-content:center; }
+.logo-box span { font-family:'Syne',sans-serif; font-size:13px; font-weight:800; color:#fff; }
+.logo-name { font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:var(--navy); }
+.logo-tagline { font-size:10px; color:var(--gray-400); margin-top:-2px; }
+.nav-links { display:flex; gap:6px; align-items:center; }
+.nav-links a { font-size:13px; font-weight:500; color:var(--gray-600); padding:6px 12px; border-radius:6px; transition:all 0.15s; }
+.nav-links a:hover { background:var(--gray-100); color:var(--navy); }
+.nav-links a.active { color:var(--accent); font-weight:600; }
+.nav-links .nav-cta { background:var(--blue); color:#fff; padding:8px 16px; border-radius:var(--radius-md); }
+.nav-links .nav-cta:hover { background:var(--navy-mid); }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; border:none; background:none; }
+.hamburger span { display:block; width:22px; height:2px; background:var(--navy); border-radius:2px; }
+.mobile-menu { display:none; flex-direction:column; gap:4px; background:#fff; border-top:1px solid var(--gray-200); padding:12px 24px 16px; }
+.mobile-menu a { font-size:14px; font-weight:500; color:var(--gray-600); padding:8px 0; border-bottom:1px solid var(--gray-200); }
+.breadcrumb { background:var(--gray-100); padding:12px 0; border-bottom:1px solid var(--gray-200); }
+.breadcrumb-inner { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--gray-400); }
+.breadcrumb-inner a { color:var(--gray-400); transition:color 0.15s; }
+.breadcrumb-inner a:hover { color:var(--accent); }
+.breadcrumb-inner span { color:var(--navy); font-weight:600; }
+.page-hero { background:var(--navy); padding:56px 0 48px; position:relative; overflow:hidden; }
+.page-hero::before { content:''; position:absolute; top:-80px; right:-80px; width:500px; height:500px; background:radial-gradient(circle, rgba(255,107,53,0.12) 0%, transparent 65%); pointer-events:none; }
+.page-hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--accent) 0%, #FF8C5A 100%); }
+.hero-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,107,53,0.15); border:1px solid rgba(255,107,53,0.3); color:#FF8C5A; font-size:11px; font-weight:600; padding:4px 12px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
+.page-hero h1 { font-size:34px; font-weight:800; color:#fff; margin-bottom:12px; }
+.page-hero p { font-size:15px; color:rgba(255,255,255,0.65); max-width:600px; line-height:1.7; margin-bottom:28px; }
+.hero-meta { display:flex; gap:24px; flex-wrap:wrap; }
+.hm-item { display:flex; align-items:center; gap:8px; }
+.hm-item span { font-size:13px; color:rgba(255,255,255,0.7); }
+.filtros-bar { background:#fff; border-bottom:1px solid var(--gray-200); padding:16px 0; position:sticky; top:62px; z-index:100; }
+.filtros-inner { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.filtro-label { font-size:12px; font-weight:600; color:var(--gray-400); text-transform:uppercase; letter-spacing:1px; margin-right:4px; }
+.filtro { font-size:12px; font-weight:500; padding:7px 16px; border-radius:20px; border:1px solid var(--gray-200); background:#fff; color:var(--gray-600); cursor:pointer; transition:all 0.15s; display:inline-block; text-decoration:none; }
+.filtro:hover { border-color:var(--accent); color:var(--accent); }
+.filtro.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+.cursos-section { padding:48px 0 64px; background:var(--gray-100); }
+.cursos-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+.cursos-count { font-size:13px; color:var(--gray-400); }
+.cursos-count strong { color:var(--navy); }
+.cursos-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:20px; }
+.curso-card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius-lg); overflow:hidden; transition:all 0.25s; }
+.curso-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+.cc-thumb { height:120px; display:flex; align-items:center; justify-content:center; font-size:40px; position:relative; }
+.cc-thumb-badges { position:absolute; top:10px; right:10px; display:flex; flex-direction:column; gap:4px; align-items:flex-end; }
+.tag-vivo      { background:#E8F5E9; color:#1B5E20; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.tag-grabado   { background:#E3F2FD; color:#1565C0; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.tag-presencial{ background:#FFF3EE; color:#E64A19; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.tag-nuevo     { background:#FFF8E1; color:#F57F17; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.cc-body { padding:18px; }
+.cc-name { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:8px; line-height:1.4; }
+.cc-desc { font-size:12px; color:var(--gray-600); line-height:1.6; margin-bottom:12px; }
+.cc-meta { display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.cc-meta span { font-size:11px; color:var(--gray-400); }
+.cc-footer { display:flex; align-items:center; justify-content:space-between; padding-top:12px; border-top:1px solid var(--gray-200); }
+.cc-precio-old { font-size:11px; color:var(--gray-400); text-decoration:line-through; display:block; }
+.cc-precio { font-size:16px; font-weight:700; color:var(--navy); }
+.cc-btn { font-size:12px; font-weight:600; padding:8px 16px; border-radius:var(--radius-sm); background:var(--accent-light); color:var(--accent); border:none; cursor:pointer; transition:all 0.15s; }
+.cc-btn:hover { background:var(--accent); color:#fff; }
+.cta-bottom { background:var(--navy); padding:48px 0; text-align:center; }
+.cta-bottom h2 { font-size:24px; font-weight:800; color:#fff; margin-bottom:10px; }
+.cta-bottom p { font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:24px; }
+.cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn-white { display:inline-block; background:#fff; color:var(--navy); padding:12px 28px; border-radius:var(--radius-md); font-size:14px; font-weight:700; cursor:pointer; }
+.btn-ghost { display:inline-block; background:transparent; color:#fff; padding:11px 26px; border-radius:var(--radius-md); font-size:14px; font-weight:600; border:1.5px solid rgba(255,255,255,0.4); }
+footer { background:var(--navy); padding:40px 0 24px; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:32px; margin-bottom:32px; }
+.footer-logo-name { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#fff; }
+.footer-logo-tag { font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:12px; }
+.footer-desc { font-size:12px; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:14px; }
+.footer-col h4 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.5); margin-bottom:12px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.footer-col ul li a { font-size:12px; color:rgba(255,255,255,0.55); transition:color 0.15s; }
+.footer-col ul li a:hover { color:#fff; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+.footer-bottom p { font-size:11px; color:rgba(255,255,255,0.3); }
+.modal-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(5,25,45,0.6); z-index:9999; align-items:center; justify-content:center; }
+.modal-box { background:#fff; border-radius:var(--radius-lg); padding:28px; max-width:420px; width:90%; position:relative; }
+.modal-close { position:absolute; top:12px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--gray-400); }
+.modal-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:var(--navy); margin-bottom:6px; }
+.modal-sub { font-size:13px; color:var(--gray-600); margin-bottom:20px; }
+.modal-btn-wa { display:block; background:#25D366; color:#fff; padding:12px; border-radius:var(--radius-md); text-align:center; font-weight:600; font-size:14px; margin-bottom:8px; }
+.modal-btn-email { display:block; background:var(--blue-light); color:var(--blue); padding:12px; border-radius:var(--radius-md); text-align:center; font-weight:600; font-size:14px; }
+@media(max-width:900px){ .footer-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:600px){
+  .nav-links { display:none; } .hamburger { display:flex; }
+  .page-hero h1 { font-size:24px; }
+  .cursos-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Inicio</a><span style="color:var(--gray-400)">›</span>
+      <a href="index.html#areas">Áreas</a><span style="color:var(--gray-400)">›</span>
+      <span>Sistema Integrado de Gestión</span>
+    </div>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-badge">📊 Área de Calidad</div>
+    <h1>Sistema Integrado de Gestión</h1>
+    <p>Cursos certificados en mejora continua, normas ISO y herramientas de gestión empresarial. Aplica estándares internacionales en tu organización.</p>
+    <div class="hero-meta">
+      <div class="hm-item"><span>📚</span><span>12 cursos disponibles</span></div>
+      <div class="hm-item"><span>🎓</span><span>Certificado incluido</span></div>
+      <div class="hm-item"><span>📹</span><span>En vivo, grabado y presencial</span></div>
+      <div class="hm-item"><span>📍</span><span>Lima, Perú</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="filtros-bar">
+  <div class="container">
+    <div class="filtros-inner">
+      <span class="filtro-label">ÁREA:</span>
+      <a href="cursos-sso.html"       class="filtro">🛡️ Seguridad Integral</a>
+      <a href="cursos-calidad.html"   class="filtro active">📊 Sist. Integrado de Gestión</a>
+      <a href="cursos-liderazgo.html" class="filtro">🎯 Desarrollo Empresarial</a>
+    </div>
+  </div>
+</div>
+
+<section class="cursos-section">
+  <div class="container">
+    <div class="cursos-header">
+      <div>
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:4px">Catálogo completo</div>
+        <div style="font-size:20px;font-weight:800;color:var(--navy)">Sistema Integrado de Gestión</div>
+      </div>
+      <div class="cursos-count">Mostrando <strong id="countVisible">12</strong> de <strong>12</strong> cursos</div>
+    </div>
+    <div class="cursos-grid" id="cursosGrid">
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#FFF3EE">5️⃣
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Técnica de las 5'S</div>
+          <div class="cc-desc">Metodología japonesa de organización, orden, limpieza, estandarización y disciplina en el trabajo.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📅 Próximamente</span><span>👥 20 cupos</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 75</span><span class="cc-precio">S/ 50</span></div><button class="cc-btn" onclick="verCurso('tecnica-5s')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#FFF3EE">🔄
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Ciclo de Deming (PHVA)</div>
+          <div class="cc-desc">Planificar, Hacer, Verificar y Actuar: base de la mejora continua en sistemas de gestión.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📹 3 sesiones</span><span>⭐ 4.8</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 75</span><span class="cc-precio">S/ 50</span></div><button class="cc-btn" onclick="verCurso('ciclo-deming')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#FFF3EE">⚖️
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Cantidad vs Calidad</div>
+          <div class="cc-desc">Equilibrio entre productividad y estándares de calidad en procesos organizacionales.</div>
+          <div class="cc-meta"><span>⏱ 4 horas</span><span>📅 Próximamente</span><span>👥 25 cupos</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 60</span><span class="cc-precio">S/ 40</span></div><button class="cc-btn" onclick="verCurso('cantidad-calidad')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#E3F2FD">🏆
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span><span class="tag-nuevo">Completo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">ISO 9001:2015 — Curso Completo</div>
+          <div class="cc-desc">Contexto de la organización, Liderazgo, Planificación, Apoyo, Operación, Auditoría Interna y Mejora Continua (Cap. 4–10).</div>
+          <div class="cc-meta"><span>⏱ 20 horas</span><span>📹 7 módulos</span><span>⭐ 4.9</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 250</span><span class="cc-precio">S/ 180</span></div><button class="cc-btn" onclick="verCurso('iso-9001')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#FFF3EE">📁
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Creación, Actualización y Codificación de la Información Documentada</div>
+          <div class="cc-desc">Gestión documental según ISO 9001: estructura, control de versiones y trazabilidad.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📅 Próximamente</span><span>👥 20 cupos</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 80</span><span class="cc-precio">S/ 55</span></div><button class="cc-btn" onclick="verCurso('info-documentada')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="presencial">
+        <div class="cc-thumb" style="background:#FFF3EE">🔍
+          <div class="cc-thumb-badges"><span class="tag-presencial">Presencial</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Ejecución de Auditorías Internas</div>
+          <div class="cc-desc">Planificación, conducción y reporte de auditorías internas bajo la norma ISO 19011.</div>
+          <div class="cc-meta"><span>⏱ 12 horas</span><span>📍 Lima</span><span>🎓 Certificado</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 150</span><span class="cc-precio">S/ 110</span></div><button class="cc-btn" onclick="verCurso('auditoria-interna')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#E8F5E9">🚫
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Anticorrupción</div>
+          <div class="cc-desc">Sistemas de gestión antisoborno, cumplimiento normativo y ética organizacional.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📹 3 sesiones</span><span>⭐ 4.7</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 75</span><span class="cc-precio">S/ 50</span></div><button class="cc-btn" onclick="verCurso('anticorrupcion')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#FFF3EE">📈
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span><span class="tag-nuevo">Nuevo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Creación de Indicadores KPI's</div>
+          <div class="cc-desc">Diseño, implementación y seguimiento de indicadores clave de desempeño en la gestión.</div>
+          <div class="cc-meta"><span>⏱ 8 horas</span><span>📅 Próximamente</span><span>👥 18 cupos</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 90</span><span class="cc-precio">S/ 65</span></div><button class="cc-btn" onclick="verCurso('kpis')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#EDE7F6">🤖
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span><span class="tag-nuevo">Nuevo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Uso de la Inteligencia Artificial en Sistema Integrado de Gestión</div>
+          <div class="cc-desc">Aplicación práctica de herramientas de IA para análisis de datos, automatización y mejora de procesos.</div>
+          <div class="cc-meta"><span>⏱ 8 horas</span><span>📹 4 sesiones</span><span>⭐ 5.0</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 100</span><span class="cc-precio">S/ 75</span></div><button class="cc-btn" onclick="verCurso('ia-gestion')">Ver curso</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-bottom">
+  <div class="container">
+    <h2>¿Necesitas formación ISO para tu empresa?</h2>
+    <p>Diseñamos programas de implementación y capacitación a medida para tu organización.</p>
+    <div class="cta-btns">
+      <a href="contacto.html" class="btn-white">Solicitar programa corporativo</a>
+      <a href="https://wa.me/51999000000" target="_blank" class="btn-ghost">📱 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-name">PROTEQLIFE</div>
+        <div class="footer-logo-tag">Consulting — Cursos Certificados</div>
+        <p class="footer-desc">Empresa especializada en capacitaciones certificadas en modalidad virtual en vivo, grabaciones y presencial.</p>
+      </div>
+      <div class="footer-col"><h4>Áreas</h4><ul>
+        <li><a href="cursos-sso.html">Seguridad Integral</a></li>
+        <li><a href="cursos-calidad.html">Sistema Integrado de Gestión</a></li>
+        <li><a href="cursos-liderazgo.html">Desarrollo & Liderazgo</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Empresa</h4><ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+        <li><a href="#">Quiénes somos</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Soporte</h4><ul>
+        <li><a href="#">Aula virtual</a></li>
+        <li><a href="#">Validar certificado</a></li>
+        <li><a href="#">Libro de reclamaciones</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PROTEQLIFE Consulting — Todos los derechos reservados.</p>
+      <p>Lima, Perú</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Sistema de modal, carrito y pagos compartido -->
+<script src="cursos-modal.js"></script>
+
+<script>
+function filtrar(el, tipo) {
+  document.querySelectorAll('.filtro').forEach(function(f){ f.classList.remove('active'); });
+  el.classList.add('active');
+  document.querySelectorAll('.curso-card').forEach(function(c){
+    c.style.display = (tipo === 'todos' || c.dataset.modalidad === tipo) ? '' : 'none';
+  });
+  var visibles = document.querySelectorAll('.curso-card:not([style*="none"])').length;
+  var cnt = document.getElementById('countVisible');
+  if (cnt) cnt.textContent = visibles;
+}
+function toggleMenu() { navToggleMob && navToggleMob(); }
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>

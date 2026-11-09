@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contáctanos — PROTEQLIFE Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── VARIABLES ── */
+:root {
+  --navy:       #05192D;
+  --navy-mid:   #0C3254;
+  --blue:       #1565C0;
+  --blue-light: #E3F2FD;
+  --orange:     #FF6B35;
+  --gold:       #F59E0B;
+  --green:      #16A34A;
+  --gray-50:    #F8FAFC;
+  --gray-100:   #F1F5F9;
+  --gray-200:   #E2E8F0;
+  --gray-400:   #94A3B8;
+  --gray-600:   #475569;
+  --gray-800:   #1E293B;
+  --white:      #FFFFFF;
+  --radius:     12px;
+  --shadow:     0 4px 20px rgba(5,25,45,.10);
+  --shadow-lg:  0 12px 40px rgba(5,25,45,.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--gray-50); color: var(--gray-800); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 60px 0 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(21,101,192,.35) 0%, transparent 65%);
+}
+.breadcrumb {
+  font-size: 12px; color: rgba(255,255,255,.45);
+  margin-bottom: 20px; display: flex; gap: 6px; align-items: center;
+  position: relative;
+}
+.breadcrumb a { color: rgba(255,255,255,.45); text-decoration: none; }
+.breadcrumb a:hover { color: rgba(255,255,255,.7); }
+.breadcrumb span { opacity: .4; }
+.hero-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 12px; position: relative;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800; color: #fff; line-height: 1.15;
+  margin-bottom: 14px; position: relative;
+}
+.hero p {
+  font-size: 15px; color: rgba(255,255,255,.65);
+  max-width: 520px; line-height: 1.7; position: relative;
+}
+
+/* ── MAIN LAYOUT ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 36px;
+  padding: 48px 0 80px;
+  align-items: start;
+}
+
+/* ── SIDEBAR INFO ── */
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.info-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--navy); margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-100);
+}
+.ci { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.ci:last-child { margin-bottom: 0; }
+.ci-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: var(--blue-light); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.ci-label { font-size: 11px; color: var(--gray-400); font-weight: 500; margin-bottom: 2px; }
+.ci-val   { font-size: 13px; color: var(--navy); font-weight: 600; }
+
+.wa-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #25D366; color: #fff; border: none; border-radius: 10px;
+  padding: 13px; width: 100%; cursor: pointer;
+  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+  text-decoration: none; transition: background .15s;
+}
+.wa-btn:hover { background: #1da851; }
+
+.guarantee-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: var(--radius); padding: 22px;
+  color: #fff;
+}
+.guarantee-card h4 {
+  font-family: 'Syne', sans-serif; font-size: 14px;
+  font-weight: 700; margin-bottom: 12px;
+}
+.guarantee-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 12px; color: rgba(255,255,255,.75);
+  line-height: 1.5; margin-bottom: 8px;
+}
+.guarantee-item:last-child { margin-bottom: 0; }
+.g-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(22,163,74,.3); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 10px; flex-shrink: 0; margin-top: 1px;
+}
+
+/* ── FORMULARIO ── */
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+.form-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px; font-weight: 800;
+  color: var(--navy); margin-bottom: 6px;
+}
+.form-card-sub {
+  font-size: 13px; color: var(--gray-600);
+  margin-bottom: 24px;
+}
+
+/* Tipo de consulta tabs */
+.tipo-tabs {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; margin-bottom: 24px;
+}
+.tipo-tab {
+  border: 2px solid var(--gray-200);
+  border-radius: 10px; padding: 14px 10px;
+  cursor: pointer; text-align: center;
+  transition: all .18s; background: var(--white);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+}
+.tipo-tab:hover { border-color: var(--blue); background: var(--blue-light); }
+.tipo-tab.active {
+  border-color: var(--blue);
+  background: var(--blue-light);
+  box-shadow: 0 0 0 3px rgba(21,101,192,.12);
+}
+.tipo-tab .tab-icon { font-size: 22px; }
+.tipo-tab .tab-label {
+  font-size: 12px; font-weight: 700;
+  color: var(--gray-600); line-height: 1.3;
+}
+.tipo-tab.active .tab-label { color: var(--blue); }
+
+/* Campos base */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block; font-size: 12px; font-weight: 600;
+  color: var(--gray-600); margin-bottom: 6px;
+  letter-spacing: .2px;
+}
+.form-group label .req { color: #E24B4A; margin-left: 2px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 10px 13px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px; font-size: 13px;
+  color: var(--gray-800); background: #fff;
+  transition: border-color .15s;
+  font-family: 'Inter', sans-serif;
+  outline: none; appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--blue); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394A3B8' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  padding-right: 36px;
+}
+
+/* Secciones dinámicas */
+.dyn-section {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 16px;
+  animation: fadeIn .2s ease;
+}
+@keyframes fadeIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+.dyn-section-title {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .5px;
+  color: var(--gray-400); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* Checkbox cursos */
+.cursos-grid {
+  display: flex; flex-direction: column; gap: 6px;
+  max-height: 220px; overflow-y: auto;
+  padding-right: 4px;
+}
+.cursos-grid::-webkit-scrollbar { width: 4px; }
+.cursos-grid::-webkit-scrollbar-track { background: transparent; }
+.cursos-grid::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
+
+.curso-check-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 8px;
+  border: 1.5px solid var(--gray-200);
+  cursor: pointer; transition: all .15s;
+  background: #fff;
+}
+.curso-check-item:hover { border-color: var(--blue); background: var(--blue-light); }
+.curso-check-item.checked { border-color: var(--blue); background: var(--blue-light); }
+.curso-check-item input[type="checkbox"] { display: none; }
+.cc-box {
+  width: 18px; height: 18px; border-radius: 5px;
+  border: 2px solid var(--gray-200); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; transition: all .15s;
+}
+.curso-check-item.checked .cc-box {
+  background: var(--blue); border-color: var(--blue); color: #fff;
+}
+.cc-nombre { font-size: 12px; font-weight: 500; color: var(--gray-800); flex: 1; }
+
+/* Área tab buttons para corporativa */
+.area-tabs-corp {
+  display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;
+}
+.area-tab-btn {
+  padding: 7px 14px; border-radius: 20px;
+  border: 1.5px solid var(--gray-200);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+  background: #fff; color: var(--gray-600);
+  display: flex; align-items: center; gap: 5px;
+}
+.area-tab-btn:hover { border-color: var(--blue); color: var(--blue); }
+.area-tab-btn.active {
+  background: var(--navy); border-color: var(--navy); color: #fff;
+}
+.area-tab-btn .ab-count {
+  background: var(--orange); color: #fff;
+  font-size: 10px; border-radius: 10px;
+  padding: 1px 6px; font-weight: 700;
+  display: none;
+}
+.area-tab-btn.active .ab-count { display: inline-block; }
+
+/* Modalidad chips */
+.modalidad-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.mod-chip {
+  padding: 8px 16px; border-radius: 20px;
+  border: 1.5px solid var(--gray-200);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+  background: #fff; color: var(--gray-600);
+  display: flex; align-items: center; gap: 6px;
+}
+.mod-chip:hover { border-color: var(--blue); color: var(--blue); }
+.mod-chip.active {
+  background: var(--blue); border-color: var(--blue); color: #fff;
+}
+
+/* Servicio cards */
+.servicios-grid { display: flex; flex-direction: column; gap: 8px; }
+.servicio-opt {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 10px;
+  border: 1.5px solid var(--gray-200);
+  cursor: pointer; transition: all .15s; background: #fff;
+}
+.servicio-opt:hover { border-color: var(--blue); background: var(--blue-light); }
+.servicio-opt.selected { border-color: var(--blue); background: var(--blue-light); }
+.servicio-opt input[type="radio"] { display: none; }
+.srv-radio {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--gray-200); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.servicio-opt.selected .srv-radio {
+  border-color: var(--blue); background: var(--blue);
+}
+.servicio-opt.selected .srv-radio::after {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: #fff;
+}
+.srv-icon { font-size: 18px; }
+.srv-info { flex: 1; }
+.srv-nombre { font-size: 13px; font-weight: 600; color: var(--navy); }
+.srv-desc   { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
+
+/* Submit */
+.form-submit {
+  width: 100%; padding: 14px;
+  background: var(--blue); color: #fff; border: none;
+  border-radius: 10px; font-family: 'Syne', sans-serif;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: background .15s; margin-top: 8px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.form-submit:hover { background: var(--navy-mid); }
+.form-submit:disabled { background: var(--gray-400); cursor: not-allowed; }
+
+.secure-badge {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; font-size: 11px; color: var(--gray-400);
+  margin-top: 10px;
+}
+
+/* Mensaje de éxito */
+.success-msg {
+  display: none; text-align: center; padding: 40px 20px;
+  animation: fadeIn .3s ease;
+}
+.success-msg .success-icon { font-size: 48px; margin-bottom: 16px; }
+.success-msg h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px; font-weight: 800;
+  color: var(--navy); margin-bottom: 8px;
+}
+.success-msg p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+
+/* Divisor */
+.divider {
+  border: none; border-top: 1px solid var(--gray-200);
+  margin: 20px 0;
+}
+
+/* Nota de selección */
+.select-hint {
+  font-size: 11px; color: var(--gray-400);
+  margin-top: 6px; font-style: italic;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .form-row  { grid-template-columns: 1fr; }
+  .tipo-tabs { grid-template-columns: 1fr; }
+  .hero { padding: 40px 0 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,.75)">Contáctanos</span>
+    </div>
+    <div class="hero-eyebrow">¿Listo para empezar?</div>
+    <h1>Contáctanos o<br>inscríbete</h1>
+    <p>Escríbenos para información sobre cursos, precios corporativos o capacitación in-house para tu empresa. Te respondemos en menos de 24 horas.</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="container">
+  <div class="main-grid">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="info-card">
+        <div class="info-card-title">📋 Información de contacto</div>
+        <div class="ci">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">Correo</div>
+            <div class="ci-val">analista.procesos@proteqlife.com.pe</div>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">WhatsApp</div>
+            <div class="ci-val">+51 950 950 304</div>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Sede</div>
+            <div class="ci-val">Lima, Perú</div>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">Horario de atención</div>
+            <div class="ci-val">Lun–Vie: 9am–6pm · Sáb: 9am–1pm</div>
+          </div>
+        </div>
+        <hr class="divider">
+        <a href="https://wa.me/51950950304" target="_blank" class="wa-btn">
+          📲 Escribir por WhatsApp
+        </a>
+      </div>
+
+      <div class="guarantee-card">
+        <h4>🛡️ Tu información está segura</h4>
+        <div class="guarantee-item">
+          <div class="g-check">✓</div>
+          <span>Respondemos en menos de 24 horas hábiles</span>
+        </div>
+        <div class="guarantee-item">
+          <div class="g-check">✓</div>
+          <span>No compartimos tu información con terceros</span>
+        </div>
+        <div class="guarantee-item">
+          <div class="g-check">✓</div>
+          <span>Cotizaciones corporativas sin costo ni compromiso</span>
+        </div>
+        <div class="guarantee-item">
+          <div class="g-check">✓</div>
+          <span>Certificados digitales con código QR verificable</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- FORMULARIO -->
+    <div class="form-card" id="formCard">
+
+      <!-- Formulario principal -->
+      <div id="formContent">
+        <div class="form-card-title">Solicitar información</div>
+        <div class="form-card-sub">Cuéntanos qué necesitas y te contactamos a la brevedad.</div>
+
+        <!-- Tipo de consulta -->
+        <div class="tipo-tabs">
+          <div class="tipo-tab active" onclick="setTipo('cursos',this)">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">Cursos</span>
+          </div>
+          <div class="tipo-tab" onclick="setTipo('servicios',this)">
+            <span class="tab-icon">🔧</span>
+            <span class="tab-label">Servicios de Consultoría</span>
+          </div>
+          <div class="tipo-tab" onclick="setTipo('corporativo',this)">
+            <span class="tab-icon">🏢</span>
+            <span class="tab-label">Capacitación Corporativa</span>
+          </div>
+        </div>
+
+        <!-- Datos personales -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo <span class="req">*</span></label>
+            <input type="text" id="fNombre" placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label>DNI / RUC</label>
+            <input type="text" id="fDni" placeholder="Nº documento">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Correo electrónico <span class="req">*</span></label>
+            <input type="email" id="fEmail" placeholder="correo@empresa.com">
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp <span class="req">*</span></label>
+            <input type="tel" id="fTel" placeholder="+51 9XX XXX XXX">
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- ── SECCIÓN DINÁMICA: CURSOS ── -->
+        <div id="sec-cursos" class="dyn-section">
+          <div class="dyn-section-title">📚 ¿Qué área te interesa?</div>
+
+          <!-- Tabs de área -->
+          <div class="area-tabs-corp" id="cursoAreaTabs">
+            <button class="area-tab-btn active" onclick="setCursoArea('sso',this)">🛡️ Seguridad Integral</button>
+            <button class="area-tab-btn" onclick="setCursoArea('calidad',this)">📊 Sist. Gestión</button>
+            <button class="area-tab-btn" onclick="setCursoArea('liderazgo',this)">🎯 Desarrollo Empresarial</button>
+          </div>
+
+          <!-- Lista de cursos -->
+          <div class="cursos-grid" id="cursosListaUno"></div>
+          <p class="select-hint">Puedes seleccionar uno o más cursos</p>
+
+          <!-- Modalidad -->
+          <div style="margin-top:16px">
+            <div class="dyn-section-title" style="margin-bottom:10px">🎓 Modalidad preferida</div>
+            <div class="modalidad-chips">
+              <div class="mod-chip active" onclick="setModalidad(this,'En vivo (Zoom)')">📹 En vivo</div>
+              <div class="mod-chip" onclick="setModalidad(this,'Grabado (Aula Virtual)')">🎬 Grabado</div>
+              <div class="mod-chip" onclick="setModalidad(this,'Presencial (Lima)')">🏢 Presencial</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECCIÓN DINÁMICA: SERVICIOS ── -->
+        <div id="sec-servicios" class="dyn-section" style="display:none">
+          <div class="dyn-section-title">🔧 ¿Qué servicio necesitas?</div>
+          <div class="servicios-grid">
+            <label class="servicio-opt" onclick="toggleServicio(this)">
+              <input type="radio" name="servicio">
+              <div class="srv-radio"></div>
+              <span class="srv-icon">✅</span>
+              <div class="srv-info">
+                <div class="srv-nombre">Homologaciones de Proveedores</div>
+                <div class="srv-desc">Gestión y superación del proceso de homologación</div>
+              </div>
+            </label>
+            <label class="servicio-opt" onclick="toggleServicio(this)">
+              <input type="radio" name="servicio">
+              <div class="srv-radio"></div>
+              <span class="srv-icon">🔄</span>
+              <div class="srv-info">
+                <div class="srv-nombre">Actualización Gestión SST</div>
+                <div class="srv-desc">Sistema de seguridad actualizado y vigente</div>
+              </div>
+            </label>
+            <label class="servicio-opt" onclick="toggleServicio(this)">
+              <input type="radio" name="servicio">
+              <div class="srv-radio"></div>
+              <span class="srv-icon">🏆</span>
+              <div class="srv-info">
+                <div class="srv-nombre">Certificación ISO 9001</div>
+                <div class="srv-desc">Acompañamiento completo hasta la certificación</div>
+              </div>
+            </label>
+            <label class="servicio-opt" onclick="toggleServicio(this)">
+              <input type="radio" name="servicio">
+              <div class="srv-radio"></div>
+              <span class="srv-icon">📋</span>
+              <div class="srv-info">
+                <div class="srv-nombre">Asesoría Especializada en SST</div>
+                <div class="srv-desc">Consultoría adaptada a tu empresa</div>
+              </div>
+            </label>
+            <label class="servicio-opt" onclick="toggleServicio(this)">
+              <input type="radio" name="servicio">
+              <div class="srv-radio"></div>
+              <span class="srv-icon">🏠</span>
+              <div class="srv-info">
+                <div class="srv-nombre">Seguimiento SST In House</div>
+                <div class="srv-desc">Gestión continua dentro de tu organización</div>
+              </div>
+            </label>
+            <label class="servicio-opt" onclick="toggleServicio(this)">
+              <input type="radio" name="servicio">
+              <div class="srv-radio"></div>
+              <span class="srv-icon">🔍</span>
+              <div class="srv-info">
+                <div class="srv-nombre">Auditorías Internas</div>
+                <div class="srv-desc">Evaluación y diagnóstico organizacional</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- ── SECCIÓN DINÁMICA: CORPORATIVO ── -->
+        <div id="sec-corporativo" class="dyn-section" style="display:none">
+          <div class="dyn-section-title">🏢 Selecciona hasta 2 áreas de interés</div>
+
+          <div class="area-tabs-corp" id="corpAreaTabs">
+            <button class="area-tab-btn" id="corpBtnSso"       onclick="toggleCorpArea('sso',this)">
+              🛡️ Seguridad Integral <span class="ab-count" id="cntSso">0</span>
+            </button>
+            <button class="area-tab-btn" id="corpBtnCalidad"   onclick="toggleCorpArea('calidad',this)">
+              📊 Sist. Gestión <span class="ab-count" id="cntCalidad">0</span>
+            </button>
+            <button class="area-tab-btn" id="corpBtnLiderazgo" onclick="toggleCorpArea('liderazgo',this)">
+              🎯 Desarrollo Empresarial <span class="ab-count" id="cntLiderazgo">0</span>
+            </button>
+          </div>
+
+          <!-- Paneles de cursos por área -->
+          <div id="corpPanel-sso"       class="corp-panel" style="display:none"></div>
+          <div id="corpPanel-calidad"   class="corp-panel" style="display:none"></div>
+          <div id="corpPanel-liderazgo" class="corp-panel" style="display:none"></div>
+
+          <div id="corpHint" style="font-size:12px;color:var(--gray-400);margin-top:8px">
+            👆 Selecciona un área para ver sus cursos
+          </div>
+
+          <div style="margin-top:14px;padding:14px;background:#fff;border:1px solid var(--gray-200);border-radius:10px">
+            <div class="form-group" style="margin:0">
+              <label>Número de participantes</label>
+              <select id="fParticipantes">
+                <option value="">Selecciona rango</option>
+                <option>1–5 personas</option>
+                <option>6–15 personas</option>
+                <option>16–30 personas</option>
+                <option>31–50 personas</option>
+                <option>Más de 50 personas</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empresa (visible para corporativo) -->
+        <div id="sec-empresa" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre de la empresa <span class="req">*</span></label>
+              <input type="text" id="fEmpresa" placeholder="Tu empresa S.A.C.">
+            </div>
+            <div class="form-group">
+              <label>Cargo / Puesto</label>
+              <input type="text" id="fCargo" placeholder="Gerente de RRHH">
+            </div>
+          </div>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-group">
+          <label>Mensaje adicional (opcional)</label>
+          <textarea id="fMensaje" placeholder="¿Tienes alguna duda o requerimiento especial?"></textarea>
+        </div>
+
+        <button class="form-submit" id="btnSubmit" onclick="enviarContacto()">
+          Enviar solicitud →
+        </button>
+        <div class="secure-badge">🔒 Tu información es confidencial y segura</div>
+      </div>
+
+      <!-- Mensaje de éxito -->
+      <div class="success-msg" id="successMsg">
+        <div class="success-icon">✅</div>
+        <h3>¡Solicitud enviada!</h3>
+        <p>Gracias por contactarnos. Un asesor de PROTEQLIFE se comunicará contigo en menos de 24 horas hábiles.</p>
+        <br>
+        <a href="https://wa.me/51950950304" class="wa-btn" style="display:inline-flex;width:auto;padding:12px 24px;margin-top:8px">
+          📲 Contactar por WhatsApp ahora
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── DATA DE CURSOS (extraída de cursos-modal.js) ────────────────────────────
+var CURSOS_CONTACTO = {
+  sso: [
+    'Introducción a la Ley 29783 de SST',
+    'IPERC — Identificación de Peligros y Evaluación de Riesgos',
+    'Gestión de Accidentes de Trabajo',
+    'Gestión de Incidentes e Incidentes Peligrosos',
+    'Comité o Supervisor de SST',
+    'Análisis de Trabajo Seguro (ATS)',
+    'Herramientas para la Investigación de Accidentes',
+    "Entrega, Conservación y Reposición de EPP's",
+    'Seguridad Basada en el Comportamiento (SBC)',
+    'Ergonomía Laboral',
+    'Primeros Auxilios',
+    'Prevención del Burnout',
+    'Ley 27942 — Prevención del Hostigamiento Sexual',
+    'Manejo Defensivo',
+    'Fatiga y Somnolencia',
+    'Reuniones Mensuales Obligatorias de SST',
+  ],
+  calidad: [
+    'Técnica de las 5S — Organización y orden en el trabajo',
+    'ISO 9001:2015 — Sistema de Gestión de la Calidad',
+    'Auditorías Internas de Calidad',
+    'Gestión de Medio Ambiente — ISO 14001',
+    'Indicadores KPI de Calidad',
+    'Ciclo de Deming (PHVA)',
+    'Cantidad vs Calidad',
+    'Atención al Cliente y Calidad de Servicio',
+    'Gestión Documental según ISO 9001',
+  ],
+  liderazgo: [
+    'Fundamentos de Inteligencia Artificial para empresas',
+    'ChatGPT y herramientas IA para la productividad',
+    'Automatización de procesos con IA y no-code',
+    'Marketing Digital y Ventas',
+    'Creación de StartUp y Emprendimiento',
+    'Talento Humano y Equipos de Alto Rendimiento',
+    'Taller de Habilidades Blandas',
+    'Marco Legal para Empresas y Emprendedores en Perú',
+    'Tributación Básica para Empresas',
+    'Liderazgo Situacional',
+    'Ciberseguridad básica para empresas',
+  ]
+};
+
+// ── ESTADO ─────────────────────────────────────────────────────────────────
+var _tipo       = 'cursos';
+var _cursoArea  = 'sso';
+var _modalidad  = 'En vivo';
+var _corpAreas  = [];           // hasta 2 áreas activas en corporativo
+var _corpCursos = {};           // { sso: Set, calidad: Set, liderazgo: Set }
+
+// ── TIPO DE CONSULTA ───────────────────────────────────────────────────────
+function setTipo(tipo, el) {
+  _tipo = tipo;
+  document.querySelectorAll('.tipo-tab').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+
+  document.getElementById('sec-cursos').style.display     = tipo === 'cursos'      ? '' : 'none';
+  document.getElementById('sec-servicios').style.display  = tipo === 'servicios'   ? '' : 'none';
+  document.getElementById('sec-corporativo').style.display= tipo === 'corporativo' ? '' : 'none';
+  document.getElementById('sec-empresa').style.display    = tipo === 'corporativo' ? '' : 'none';
+}
+
+// ── SECCIÓN CURSOS: cambiar área ───────────────────────────────────────────
+function setCursoArea(area, el) {
+  _cursoArea = area;
+  document.querySelectorAll('#cursoAreaTabs .area-tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  renderCursosLista('cursosListaUno', area, 'single');
+}
+
+function renderCursosLista(containerId, area, mode) {
+  var lista = CURSOS_CONTACTO[area] || [];
+  var html = lista.map(function(nombre) {
+    return '<label class="curso-check-item" onclick="toggleCheck(this)">' +
+      '<input type="checkbox">' +
+      '<div class="cc-box"></div>' +
+      '<span class="cc-nombre">' + nombre + '</span>' +
+      '</label>';
+  }).join('');
+  document.getElementById(containerId).innerHTML = html;
+}
+
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  if (el.closest('.corp-panel')) {
+    var panel = el.closest('.corp-panel');
+    var area  = panel.id.replace('corpPanel-','');
+    actualizarContadorCorp(area);
+  }
+}
+
+// ── MODALIDAD ──────────────────────────────────────────────────────────────
+function setModalidad(el, val) {
+  _modalidad = val;
+  document.querySelectorAll('.mod-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+}
+
+// ── SERVICIOS ──────────────────────────────────────────────────────────────
+function toggleServicio(el) {
+  document.querySelectorAll('.servicio-opt').forEach(function(s){ s.classList.remove('selected'); });
+  el.classList.add('selected');
+}
+
+// ── CORPORATIVO: toggle de hasta 2 áreas ──────────────────────────────────
+function toggleCorpArea(area, el) {
+  var panel = document.getElementById('corpPanel-' + area);
+  var hint  = document.getElementById('corpHint');
+
+  if (el.classList.contains('active')) {
+    // Desactivar área
+    el.classList.remove('active');
+    panel.style.display = 'none';
+    _corpAreas = _corpAreas.filter(function(a){ return a !== area; });
+  } else {
+    if (_corpAreas.length >= 2) {
+      // Ya hay 2 áreas — quitar la primera
+      var primera = _corpAreas.shift();
+      document.getElementById('corpPanel-' + primera).style.display = 'none';
+      document.getElementById('corpBtn' + capitalize(primera)).classList.remove('active');
+    }
+    el.classList.add('active');
+    _corpAreas.push(area);
+
+    // Renderizar cursos si el panel está vacío
+    if (!panel.innerHTML.trim()) {
+      panel.innerHTML = '<div class="cursos-grid" id="corpCursos-' + area + '">' +
+        (CURSOS_CONTACTO[area] || []).map(function(n){
+          return '<label class="curso-check-item" onclick="toggleCheck(this)">' +
+            '<input type="checkbox">' +
+            '<div class="cc-box"></div>' +
+            '<span class="cc-nombre">' + n + '</span>' +
+            '</label>';
+        }).join('') +
+        '</div><p class="select-hint" style="margin-top:6px">Puedes elegir varios cursos</p>';
+    }
+    panel.style.display = '';
+    if (hint) hint.style.display = 'none';
+  }
+}
+
+function capitalize(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function actualizarContadorCorp(area) {
+  var panel   = document.getElementById('corpPanel-' + area);
+  var checked = panel ? panel.querySelectorAll('.curso-check-item.checked').length : 0;
+  var cnt     = document.getElementById('cnt' + capitalize(area));
+  if (cnt) {
+    cnt.textContent = checked;
+    cnt.style.display = checked > 0 ? 'inline-block' : 'none';
+  }
+}
+
+// ── ENVIAR FORMULARIO ──────────────────────────────────────────────────────
+function enviarContacto() {
+  var nombre = document.getElementById('fNombre').value.trim();
+  var email  = document.getElementById('fEmail').value.trim();
+  var tel    = document.getElementById('fTel').value.trim();
+
+  if (!nombre || !email || !tel) {
+    alert('Por favor completa los campos obligatorios: nombre, correo y teléfono.');
+    return;
+  }
+
+  var btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  // Construir resumen para WhatsApp
+  var lineas = ['Hola PROTEQLIFE, me gustaría recibir información:',
+    '',
+    '👤 Nombre: ' + nombre,
+    '📧 Correo: ' + email,
+    '📱 Tel: ' + tel,
+  ];
+
+  if (_tipo === 'cursos') {
+    var cursosElegidos = Array.from(document.querySelectorAll('#cursosListaUno .curso-check-item.checked'))
+      .map(function(el){ return el.querySelector('.cc-nombre').textContent; });
+    lineas.push('📚 Tipo: Cursos individuales');
+    if (cursosElegidos.length) lineas.push('Cursos: ' + cursosElegidos.join(', '));
+    lineas.push('🎓 Modalidad: ' + _modalidad);
+
+  } else if (_tipo === 'servicios') {
+    var srv = document.querySelector('.servicio-opt.selected .srv-nombre');
+    lineas.push('🔧 Tipo: Servicio de consultoría');
+    if (srv) lineas.push('Servicio: ' + srv.textContent);
+
+  } else if (_tipo === 'corporativo') {
+    var empresa = document.getElementById('fEmpresa').value.trim();
+    var partic  = document.getElementById('fParticipantes').value;
+    lineas.push('🏢 Tipo: Capacitación corporativa');
+    if (empresa) lineas.push('Empresa: ' + empresa);
+    if (partic)  lineas.push('Participantes: ' + partic);
+    _corpAreas.forEach(function(area) {
+      var panel = document.getElementById('corpPanel-' + area);
+      var curs  = Array.from(panel ? panel.querySelectorAll('.curso-check-item.checked') : [])
+        .map(function(el){ return el.querySelector('.cc-nombre').textContent; });
+      if (curs.length) lineas.push('Área ' + area + ': ' + curs.join(', '));
+    });
+  }
+
+  var msg = document.getElementById('fMensaje').value.trim();
+  if (msg) lineas.push('💬 Mensaje: ' + msg);
+
+  // Simular envío (en producción: fetch al backend)
+  setTimeout(function() {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMsg').style.display  = 'block';
+
+    // Abrir WhatsApp con el resumen
+    var waText = encodeURIComponent(lineas.join('\n'));
+    window.open('https://wa.me/51999000000?text=' + waText, '_blank');
+  }, 1200);
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  // Cargar cursos de SST por defecto
+  renderCursosLista('cursosListaUno', 'sso', 'single');
+});
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Servicio — PROTEQLIFE Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   VARIABLES & RESET
+═══════════════════════════════════════════════ */
+:root {
+  --navy:        #05192D;
+  --navy-mid:    #0C3254;
+  --navy-light:  #102B4E;
+  --blue:        #1565C0;
+  --blue-bright: #2196F3;
+  --blue-light:  #E3F2FD;
+  --accent:      #FF6B35;
+  --accent-light:#FFF3EE;
+  --green:       #1B5E20;
+  --green-light: #E8F5E9;
+  --gold:        #F59E0B;
+  --gray-50:     #FAFBFC;
+  --gray-100:    #F5F7FA;
+  --gray-200:    #E8ECF0;
+  --gray-300:    #D1D9E0;
+  --gray-400:    #9BA3AD;
+  --gray-600:    #5A6472;
+  --gray-800:    #2C3540;
+  --white:       #FFFFFF;
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --shadow-sm:   0 1px 4px rgba(5,25,45,.07);
+  --shadow-md:   0 4px 20px rgba(5,25,45,.09);
+  --shadow-lg:   0 12px 48px rgba(5,25,45,.13);
+  --shadow-xl:   0 24px 80px rgba(5,25,45,.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--gray-800);
+  background: var(--white);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+/* ═══════════════════════════════════════════════
+   NAV (igual al resto de páginas)
+═══════════════════════════════════════════════ */
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: 0 1px 0 rgba(5,25,45,.04);
+}
+  display: flex; gap: 24px; justify-content: flex-end;
+  font-size: 11px; color: rgba(255,255,255,.6);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+
+/* ═══════════════════════════════════════════════
+   BREADCRUMB
+═══════════════════════════════════════════════ */
+.breadcrumb { background: var(--gray-100); padding: 13px 0; border-bottom: 1px solid var(--gray-200); }
+.bc-inner { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gray-400); }
+.bc-inner a { color: var(--gray-400); transition: color .15s; }
+.bc-inner a:hover { color: var(--blue); }
+.bc-sep { opacity: .5; }
+.bc-current { color: var(--navy); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════
+   HERO DEL SERVICIO
+═══════════════════════════════════════════════ */
+.s-hero {
+  background: var(--navy);
+  padding: 80px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+/* Decoración fondo */
+.s-hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(33,150,243,.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.s-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 60px; left: -80px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,107,53,.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.s-hero-inner { position: relative; z-index: 2; }
+.s-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--blue-bright);
+  background: rgba(33,150,243,.1);
+  border: 1px solid rgba(33,150,243,.25);
+  padding: 5px 14px; border-radius: 20px; margin-bottom: 22px;
+}
+.s-hero h1 {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 800; color: #fff;
+  max-width: 760px; margin-bottom: 20px;
+  line-height: 1.1;
+}
+.s-hero h1 em { color: var(--blue-bright); font-style: normal; }
+.s-hero-desc {
+  font-size: 17px; color: rgba(255,255,255,.68);
+  max-width: 620px; line-height: 1.75; margin-bottom: 36px;
+}
+.s-hero-stats {
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 32px; margin-top: 8px;
+  flex-wrap: wrap;
+}
+.s-stat {
+  padding: 0 36px 32px 0;
+  border-right: 1px solid rgba(255,255,255,.08);
+  margin-right: 36px;
+}
+.s-stat:last-child { border-right: none; }
+.s-stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.s-stat-num span { color: var(--blue-bright); }
+.s-stat-lbl { font-size: 12px; color: rgba(255,255,255,.5); }
+
+/* Imagen decorativa del hero */
+.s-hero-img-strip {
+  margin-top: 48px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-bright) 40%, var(--accent) 100%);
+  border-radius: 3px 3px 0 0;
+}
+
+/* ═══════════════════════════════════════════════
+   SECCIÓN: QUÉ ES / DESCRIPCIÓN
+═══════════════════════════════════════════════ */
+.s-que-es { padding: 80px 0; background: var(--white); }
+.s-qe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.s-qe-left {}
+.s-section-eyebrow {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--blue-bright); margin-bottom: 14px;
+}
+.s-section-title { font-size: clamp(22px, 3vw, 32px); font-weight: 800; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+.s-section-title em { color: var(--accent); font-style: normal; }
+.s-section-body { font-size: 15px; color: var(--gray-600); line-height: 1.8; }
+.s-section-body p + p { margin-top: 14px; }
+
+/* Tarjeta visual del lado derecho */
+.s-qe-right { position: relative; }
+.s-visual-card {
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.s-visual-card::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(33,150,243,.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.s-vc-title {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: rgba(255,255,255,.5); margin-bottom: 20px;
+}
+.s-vc-items { display: flex; flex-direction: column; gap: 12px; }
+.s-vc-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius-sm);
+  transition: background .2s;
+}
+.s-vc-item:hover { background: rgba(255,255,255,.09); }
+.s-vc-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+  background: rgba(33,150,243,.18);
+}
+.s-vc-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.s-vc-sub  { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.45; }
+
+/* ═══════════════════════════════════════════════
+   SECCIÓN: PROCESO (PASOS) — tipo Keyrus
+═══════════════════════════════════════════════ */
+.s-proceso { padding: 80px 0; background: var(--gray-50); }
+.s-proceso-header { text-align: center; margin-bottom: 60px; }
+.s-steps { display: flex; flex-direction: column; gap: 0; }
+.s-step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0;
+  position: relative;
+}
+.s-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 39px; top: 80px; bottom: -1px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--blue) 0%, var(--gray-200) 100%);
+}
+.s-step-num-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 4px;
+}
+.s-step-num {
+  width: 48px; height: 48px;
+  background: var(--navy); color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800;
+  flex-shrink: 0; position: relative; z-index: 1;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 3px var(--blue);
+}
+.s-step-content {
+  padding: 4px 0 52px 28px;
+}
+.s-step:last-child .s-step-content { padding-bottom: 8px; }
+.s-step-tag {
+  display: inline-flex; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--blue); background: var(--blue-light);
+  padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;
+}
+.s-step-title { font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.s-step-body { font-size: 14px; color: var(--gray-600); line-height: 1.75; max-width: 680px; }
+.s-step-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.s-chip {
+  font-size: 12px; font-weight: 500; color: var(--gray-600);
+  background: var(--white); border: 1px solid var(--gray-200);
+  padding: 5px 12px; border-radius: 20px;
+}
+
+/* ═══════════════════════════════════════════════
+   SECCIÓN: BENEFICIOS / RESULTADOS
+═══════════════════════════════════════════════ */
+.s-beneficios { padding: 80px 0; background: var(--white); }
+.s-ben-header { max-width: 560px; margin-bottom: 48px; }
+.s-ben-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.s-ben-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: all .25s;
+  position: relative; overflow: hidden;
+}
+.s-ben-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--blue);
+  opacity: 0; transition: opacity .25s;
+}
+.s-ben-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.s-ben-card:hover::before { opacity: 1; }
+.s-ben-icon { font-size: 28px; margin-bottom: 14px; }
+.s-ben-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.s-ben-body { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+.s-ben-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px; font-weight: 800;
+  color: var(--blue); margin-bottom: 4px;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════
+   SECCIÓN: CASOS DE USO / ¿PARA QUIÉN ES?
+═══════════════════════════════════════════════ */
+.s-casos { padding: 80px 0; background: var(--navy); position: relative; overflow: hidden; }
+.s-casos::before {
+  content: '';
+  position: absolute; top: -100px; right: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(33,150,243,.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+.s-casos-header { text-align: center; margin-bottom: 52px; }
+.s-casos-header .s-section-eyebrow { color: var(--blue-bright); }
+.s-casos-header .s-section-title { color: #fff; }
+.s-casos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.s-caso-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: all .2s;
+}
+.s-caso-card:hover {
+  background: rgba(255,255,255,.09);
+  border-color: rgba(33,150,243,.4);
+  transform: translateY(-3px);
+}
+.s-caso-tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--blue-bright); background: rgba(33,150,243,.12);
+  border: 1px solid rgba(33,150,243,.2);
+  padding: 3px 10px; border-radius: 20px; margin-bottom: 12px;
+}
+.s-caso-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.s-caso-body { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.65; }
+.s-caso-icon { font-size: 24px; margin-bottom: 12px; display: block; }
+
+/* ═══════════════════════════════════════════════
+   SECCIÓN: ENTREGABLES / QUÉ RECIBES
+═══════════════════════════════════════════════ */
+.s-entrega { padding: 80px 0; background: var(--gray-50); }
+.s-entrega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.s-entrega-list { display: flex; flex-direction: column; gap: 14px; }
+.s-entrega-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md); padding: 18px 20px;
+  transition: all .2s;
+}
+.s-entrega-item:hover { border-color: var(--blue-bright); box-shadow: var(--shadow-md); }
+.s-ei-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--blue-light); color: var(--blue);
+  font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.s-ei-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.s-ei-body { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+/* CTA box derecha */
+.s-cta-box {
+  position: sticky; top: 84px;
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  overflow: hidden;
+}
+.s-cta-box::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(33,150,243,.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.s-cta-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue-bright); margin-bottom: 12px; }
+.s-cta-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.25; }
+.s-cta-body { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 28px; }
+.s-cta-btn {
+  display: block; width: 100%;
+  padding: 14px; background: var(--blue); color: #fff;
+  border: none; border-radius: var(--radius-md);
+  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; text-align: center; transition: background .2s;
+  margin-bottom: 10px; text-decoration: none;
+}
+.s-cta-btn:hover { background: #0C3254; }
+.s-cta-btn-wa {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 12px; background: #25D366; color: #fff;
+  border: none; border-radius: var(--radius-md);
+  font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s;
+}
+.s-cta-btn-wa:hover { background: #1da851; }
+.s-cta-sep { border: none; border-top: 1px solid rgba(255,255,255,.1); margin: 22px 0; }
+.s-cta-info { display: flex; flex-direction: column; gap: 10px; }
+.s-ci-row { display: flex; align-items: center; gap: 10px; }
+.s-ci-icon { width: 30px; height: 30px; border-radius: 6px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.s-ci-text { font-size: 12px; color: rgba(255,255,255,.6); }
+.s-ci-bold { font-weight: 600; color: rgba(255,255,255,.9); }
+
+/* ═══════════════════════════════════════════════
+   SECCIÓN: OTROS SERVICIOS
+═══════════════════════════════════════════════ */
+.s-otros { padding: 72px 0; background: var(--white); border-top: 1px solid var(--gray-200); }
+.s-otros-header { margin-bottom: 36px; }
+.s-otros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.s-otro-card {
+  display: flex; flex-direction: column;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  transition: all .2s; cursor: pointer; text-decoration: none;
+}
+.s-otro-card:hover { border-color: var(--blue-bright); background: var(--white); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.s-otro-icon { font-size: 24px; margin-bottom: 10px; }
+.s-otro-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.s-otro-desc { font-size: 12px; color: var(--gray-600); line-height: 1.6; flex: 1; }
+.s-otro-arrow { font-size: 13px; color: var(--blue); font-weight: 600; margin-top: 12px; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer { background: var(--navy); padding: 44px 0 22px; }
+.ft { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+.ft-logo { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: #fff; }
+.ft-links { display: flex; gap: 24px; }
+.ft-links a { font-size: 12px; color: rgba(255,255,255,.5); transition: color .15s; }
+.ft-links a:hover { color: #fff; }
+.ft-copy { font-size: 11px; color: rgba(255,255,255,.3); text-align: center; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width:900px) {
+  .s-hero { padding: 56px 0 0; }
+  .s-qe-grid { grid-template-columns: 1fr; gap: 40px; }
+  .s-ben-grid { grid-template-columns: 1fr 1fr; }
+  .s-casos-grid { grid-template-columns: 1fr; }
+  .s-entrega-grid { grid-template-columns: 1fr; }
+  .s-cta-box { position: static; }
+  .s-otros-grid { grid-template-columns: 1fr 1fr; }
+  .s-stat { padding-right: 24px; margin-right: 24px; }
+}
+@media(max-width:600px) {
+  .s-hero h1 { font-size: 26px; }
+  .s-section-title { font-size: 22px; }
+  .s-ben-grid { grid-template-columns: 1fr; }
+  .s-otros-grid { grid-template-columns: 1fr; }
+  .s-hero-stats { flex-direction: column; gap: 20px; }
+  .s-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 20px; margin-right: 0; }
+  .s-stat:last-child { border-bottom: none; }
+  .s-step-content { padding-left: 18px; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container">
+    <div class="bc-inner" id="bcInner">
+      <a href="index.html">Inicio</a>
+      <span class="bc-sep">›</span>
+      <a href="index.html#servicios">Servicios</a>
+      <span class="bc-sep">›</span>
+      <span class="bc-current" id="bcNombre">Cargando...</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="s-hero">
+  <div class="container">
+    <div class="s-hero-inner">
+      <div class="s-hero-eyebrow" id="heroEyebrow">Servicio Especializado</div>
+      <h1 id="heroTitulo">Cargando...</h1>
+      <p class="s-hero-desc" id="heroDesc"></p>
+      <div class="s-hero-stats" id="heroStats"></div>
+    </div>
+    <div class="s-hero-img-strip"></div>
+  </div>
+</section>
+
+<!-- ══════════════ QUÉ ES ══════════════ -->
+<section class="s-que-es">
+  <div class="container">
+    <div class="s-qe-grid">
+      <div class="s-qe-left">
+        <div class="s-section-eyebrow">¿En qué consiste?</div>
+        <h2 class="s-section-title" id="qeTitle">Cargando...</h2>
+        <div class="s-section-body" id="qeBody"></div>
+      </div>
+      <div class="s-qe-right">
+        <div class="s-visual-card">
+          <div class="s-vc-title">Puntos clave del servicio</div>
+          <div class="s-vc-items" id="vcItems"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROCESO ══════════════ -->
+<section class="s-proceso">
+  <div class="container">
+    <div class="s-proceso-header">
+      <div class="s-section-eyebrow">Metodología</div>
+      <h2 class="s-section-title" id="procesoTitle">Cómo lo ejecutamos</h2>
+      <p style="font-size:15px;color:var(--gray-600);max-width:520px;margin:0 auto;line-height:1.7" id="procesoSubtitle"></p>
+    </div>
+    <div class="s-steps" id="stepsContainer"></div>
+  </div>
+</section>
+
+<!-- ══════════════ BENEFICIOS ══════════════ -->
+<section class="s-beneficios">
+  <div class="container">
+    <div class="s-ben-header">
+      <div class="s-section-eyebrow">Resultados concretos</div>
+      <h2 class="s-section-title">Beneficios que obtienes con <em id="benServicio">este servicio</em></h2>
+    </div>
+    <div class="s-ben-grid" id="beneficiosGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════════ CASOS DE USO ══════════════ -->
+<section class="s-casos">
+  <div class="container">
+    <div class="s-casos-header">
+      <div class="s-section-eyebrow">¿Para quién es?</div>
+      <h2 class="s-section-title" id="casosTitle">Empresas y contextos donde aplica</h2>
+    </div>
+    <div class="s-casos-grid" id="casosGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════════ ENTREGABLES + CTA ══════════════ -->
+<section class="s-entrega">
+  <div class="container">
+    <div class="s-entrega-grid">
+      <div>
+        <div class="s-section-eyebrow">Entregables</div>
+        <h2 class="s-section-title" style="margin-bottom:28px">¿Qué recibes al contratar<br>este servicio?</h2>
+        <div class="s-entrega-list" id="entregablesList"></div>
+      </div>
+      <div>
+        <div class="s-cta-box">
+          <div class="s-cta-eyebrow">¿Interesado?</div>
+          <div class="s-cta-title">Conversemos sobre tu empresa</div>
+          <div class="s-cta-body">Cuéntanos tu situación y te preparamos una propuesta personalizada sin compromiso. Respondemos en menos de 24 horas.</div>
+          <a href="contacto.html" class="s-cta-btn">📋 Solicitar propuesta gratuita</a>
+          <button class="s-cta-btn-wa" onclick="contactarWA()">📱 Escribir por WhatsApp</button>
+          <hr class="s-cta-sep">
+          <div class="s-cta-info">
+            <div class="s-ci-row"><div class="s-ci-icon">📍</div><div><div class="s-ci-bold">Lima, Perú</div><div class="s-ci-text">Atendemos a nivel nacional</div></div></div>
+            <div class="s-ci-row"><div class="s-ci-icon">🕐</div><div><div class="s-ci-bold">Respuesta rápida</div><div class="s-ci-text">Lun–Vie: 8am–6pm, Sáb: 9am–1pm</div></div></div>
+            <div class="s-ci-row"><div class="s-ci-icon">✅</div><div><div class="s-ci-bold">Sin compromiso</div><div class="s-ci-text">Primera consulta 100% gratuita</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ OTROS SERVICIOS ══════════════ -->
+<section class="s-otros">
+  <div class="container">
+    <div class="s-otros-header">
+      <div class="s-section-eyebrow">Explora más</div>
+      <h2 class="s-section-title">Otros servicios de PROTEQLIFE</h2>
+    </div>
+    <div class="s-otros-grid" id="otrosGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="ft">
+      <div class="ft-logo">PROTEQLIFE Consulting</div>
+      <div class="ft-links">
+        <a href="index.html">Inicio</a>
+        <a href="cursos-sso.html">Cursos</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="aula-virtual.html">Aula Virtual</a>
+      </div>
+    </div>
+    <p class="ft-copy">© 2026 PROTEQLIFE Consulting — Todos los derechos reservados. Lima, Perú.</p>
+  </div>
+</footer>
+
+<!-- ══════════════ JAVASCRIPT ══════════════ -->
+<script>
+// ═══════════════════════════════════════════════
+// BASE DE DATOS DE SERVICIOS
+// ═══════════════════════════════════════════════
+var SERVICIOS = {
+
+  'homologaciones': {
+    titulo: 'Homologaciones de Proveedores y Contratistas',
+    tituloCorto: 'Homologaciones',
+    eyebrow: 'Gestión de Proveedores',
+    emoji: '✅',
+    desc: 'Te ayudamos a gestionar y superar el proceso de homologación exigido por tus clientes corporativos. Revisamos tus documentos, identificamos brechas y te guiamos hasta obtener la calificación aprobada.',
+    stats: [
+      { num: '+200', suffix: '', lbl: 'empresas homologadas' },
+      { num: '98', suffix: '%', lbl: 'tasa de aprobación' },
+      { num: '15', suffix: ' días', lbl: 'tiempo promedio' }
+    ],
+    qeTitle: 'Supera la homologación de tus clientes con respaldo profesional',
+    qeBody: [
+      'La homologación es el proceso mediante el cual una empresa evalúa a sus proveedores y contratistas para verificar que cumplen con los estándares de calidad, seguridad, medioambiente y gestión empresarial.',
+      'En PROTEQLIFE, analizamos tu situación actual, identificamos las brechas respecto a los requisitos del cliente y elaboramos un plan de acción concreto para que logres la calificación aprobatoria en el menor tiempo posible.'
+    ],
+    puntosClave: [
+      { icon: '📋', titulo: 'Revisión documental completa', sub: 'Levantamiento de toda la documentación existente y detección de faltantes.' },
+      { icon: '🔍', titulo: 'Análisis de brechas', sub: 'Comparación con los requisitos del cliente o entidad homologadora.' },
+      { icon: '⚡', titulo: 'Plan de acción priorizado', sub: 'Hoja de ruta clara con tiempos y responsables para cada mejora.' },
+      { icon: '🤝', titulo: 'Acompañamiento hasta la aprobación', sub: 'Soporte durante todo el proceso de evaluación y respuesta a observaciones.' }
+    ],
+    procesoSubtitle: 'Nuestra metodología asegura que tu empresa esté preparada antes de que el cliente realice la evaluación.',
+    pasos: [
+      {
+        tag: 'Diagnóstico',
+        titulo: 'Levantamiento y análisis inicial',
+        body: 'Recopilamos toda la documentación de tu empresa: sistemas de gestión, registros SST, certificaciones, contratos laborales, pólizas de seguro y estados financieros. Analizamos qué solicita específicamente el cliente o entidad homologadora.',
+        chips: ['Revisión documental', 'Análisis de requisitos', 'Check-list de brechas']
+      },
+      {
+        tag: 'Planificación',
+        titulo: 'Diseño del plan de mejora',
+        body: 'Con base en las brechas identificadas, elaboramos un plan de acción con prioridades, plazos y responsables. Definimos qué documentos crear, qué procesos implementar y qué capacitaciones ejecutar.',
+        chips: ['Plan de acción', 'Cronograma', 'Asignación de responsables']
+      },
+      {
+        tag: 'Implementación',
+        titulo: 'Desarrollo de documentación y evidencias',
+        body: 'Elaboramos o mejoramos los procedimientos, registros, matrices y políticas que requiere la homologación. Capacitamos al personal clave y generamos las evidencias que demuestren el cumplimiento real.',
+        chips: ['Elaboración de documentos', 'Capacitación de personal', 'Generación de evidencias']
+      },
+      {
+        tag: 'Presentación',
+        titulo: 'Carga y seguimiento del expediente',
+        body: 'Te guiamos en la carga del expediente en el sistema de la entidad homologadora, respondemos observaciones y realizamos el seguimiento hasta obtener el resultado de aprobación.',
+        chips: ['Carga en plataforma', 'Respuesta a observaciones', 'Obtención de calificación']
+      }
+    ],
+    beneficios: [
+      { icon: '🏆', titulo: 'Acceso a nuevos contratos', body: 'Cumple los requisitos de tus clientes más exigentes y amplía tu cartera de contratos corporativos.', num: '+35%', numLbl: 'en contratos ganados' },
+      { icon: '⏱', titulo: 'Ahorro de tiempo significativo', body: 'Nuestro equipo conoce el proceso a fondo. Evitas meses de intentos fallidos y correcciones repetitivas.', num: '60%', numLbl: 'menos tiempo invertido' },
+      { icon: '📉', titulo: 'Reducción de riesgo legal', body: 'Al homologarte, implementas sistemas que reducen accidentes, multas y sanciones laborales.', num: '0', numLbl: 'multas post-proceso' },
+      { icon: '📋', titulo: 'Documentación ordenada', body: 'Tu empresa queda con todos los documentos organizados, actualizados y listos para futuras auditorías.', num: '100%', numLbl: 'documentos en orden' },
+      { icon: '💼', titulo: 'Credibilidad empresarial', body: 'Una calificación de homologación aprobada es una señal de madurez y formalidad que distingue tu empresa.', num: '', numLbl: '' },
+      { icon: '🔄', titulo: 'Proceso sostenible', body: 'Implementamos sistemas que facilitan las renovaciones futuras de homologación de forma autónoma.', num: '', numLbl: '' }
+    ],
+    casos: [
+      { tag: 'Empresas proveedoras', icon: '🏭', titulo: 'Proveedor de empresa minera o petrolera', body: 'Tu cliente te exige homologación con Prevecon, Bureau Veritas, SGS o similar para renovar el contrato.' },
+      { tag: 'Contratistas', icon: '🔧', titulo: 'Contratista de construcción o servicios', body: 'Trabajas con clientes del sector retail, banca o gobierno que exigen evaluación de proveedores.' },
+      { tag: 'MYPES y PYMES', icon: '🌱', titulo: 'Empresa pequeña que quiere crecer', body: 'Tienes la capacidad técnica pero te falta la documentación para acceder a contratos corporativos.' },
+      { tag: 'Renovación', icon: '🔄', titulo: 'Empresa con homologación vencida', body: 'Tu calificación expiró o recibiste una calificación C/D y necesitas mejorarla rápidamente.' }
+    ],
+    entregables: [
+      { titulo: 'Informe de diagnóstico', body: 'Reporte detallado del estado actual vs. requisitos del cliente, con las brechas identificadas y su impacto.' },
+      { titulo: 'Plan de acción documentado', body: 'Hoja de ruta priorizada con actividades, responsables y fechas para cerrar cada brecha.' },
+      { titulo: 'Documentación elaborada', body: 'Todos los procedimientos, registros, matrices y políticas requeridas, listos para presentar.' },
+      { titulo: 'Evidencias de cumplimiento', body: 'Registros, fotos, actas y constancias que demuestran la implementación real en tu empresa.' },
+      { titulo: 'Asesoría hasta la aprobación', body: 'Soporte continuo para responder observaciones y garantizar la calificación aprobatoria.' }
+    ]
+  },
+
+  'gestion-sst': {
+    titulo: 'Actualización del Sistema de Gestión SST',
+    tituloCorto: 'Gestión SST',
+    eyebrow: 'Cumplimiento Legal SST',
+    emoji: '🔄',
+    desc: 'Revisamos y actualizamos integralmente tu Sistema de Gestión de Seguridad y Salud en el Trabajo conforme a la Ley 29783 y su reglamento, dejando tu empresa en regla y lista para cualquier inspección.',
+    stats: [
+      { num: '+300', suffix: '', lbl: 'sistemas implementados' },
+      { num: '100', suffix: '%', lbl: 'conformidad legal' },
+      { num: '48h', suffix: '', lbl: 'respuesta de emergencia' }
+    ],
+    qeTitle: 'Tu sistema SST actualizado, conforme y listo para auditorías',
+    qeBody: [
+      'La Ley 29783 exige a todas las empresas implementar y mantener vigente un Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST). Sin embargo, muchas empresas tienen documentación desactualizada, incompleta o que no refleja su operación real.',
+      'Nuestro equipo realiza un diagnóstico completo del estado actual de tu sistema, identifica las brechas legales y elabora o actualiza toda la documentación necesaria para que estés en regla, con registros válidos y un sistema que realmente funcione.'
+    ],
+    puntosClave: [
+      { icon: '⚖️', titulo: 'Conformidad con Ley 29783', sub: 'Cumplimiento total del D.S. 005-2012-TR y sus modificatorias vigentes.' },
+      { icon: '📁', titulo: 'Documentación completa', sub: 'Política, IPERC, RISST, registros obligatorios y planes de emergencia.' },
+      { icon: '👥', titulo: 'Comité o supervisor SST', sub: 'Formación, elecciones y funcionamiento del Comité o Supervisor de SST.' },
+      { icon: '📊', titulo: 'Indicadores de gestión', sub: 'Dashboard de KPIs SST para monitorear el desempeño mensualmente.' }
+    ],
+    procesoSubtitle: 'Un proceso estructurado que garantiza conformidad legal y un sistema que funciona en la práctica, no solo en papel.',
+    pasos: [
+      { tag: 'Evaluación', titulo: 'Diagnóstico legal y documental', body: 'Auditamos el estado actual de tu SG-SST contra los requisitos de la Ley 29783 y el D.S. 005-2012-TR. Verificamos todos los documentos y registros obligatorios, identificando cuáles están vigentes, cuáles necesitan actualización y cuáles faltan.', chips: ['Auditoría documental', 'Check-list legal', 'Informe de brechas'] },
+      { tag: 'Diseño', titulo: 'Actualización y elaboración documental', body: 'Elaboramos o actualizamos la Política SST, Reglamento Interno, Matriz IPERC, Mapa de riesgos, Plan de emergencias, Programa anual SST y todos los registros obligatorios adaptados a tu actividad económica.', chips: ['Política SST', 'IPERC actualizado', 'RISST', 'Programa anual', 'Registros obligatorios'] },
+      { tag: 'Implementación', titulo: 'Funcionamiento del Comité o Supervisor', body: 'Asesoramos el proceso de elección o designación del Comité o Supervisor de SST, elaboramos el libro de actas, planificamos las reuniones mensuales y capacitamos a los miembros en sus funciones legales.', chips: ['Proceso de elección', 'Libro de actas', 'Plan de reuniones', 'Capacitación'] },
+      { tag: 'Cierre', titulo: 'Entrega y capacitación del equipo', body: 'Entregamos el sistema completo y capacitamos al responsable de SST en el mantenimiento autónomo del sistema. Explicamos cómo actualizar registros, conducir inspecciones y responder ante una inspección de SUNAFIL.', chips: ['Transferencia de conocimiento', 'Guía de mantenimiento', 'Simulacro de inspección'] }
+    ],
+    beneficios: [
+      { icon: '⚖️', titulo: 'Cero multas de SUNAFIL', body: 'Sistema documentado conforme a ley que protege a tu empresa de sanciones que pueden llegar a 100 UIT.', num: '0', numLbl: 'riesgo de multas' },
+      { icon: '🛡️', titulo: 'Protección ante accidentes', body: 'Un sistema activo reduce la probabilidad de accidentes graves y protege al empleador legalmente.', num: '-70%', numLbl: 'accidentes reportados' },
+      { icon: '📋', titulo: 'Documentación siempre vigente', body: 'Tus documentos reflejan la realidad de tu empresa y están actualizados según la norma vigente.', num: '100%', numLbl: 'documentos vigentes' },
+      { icon: '🏆', titulo: 'Ventaja competitiva', body: 'Empresas con SG-SST robusto califican mejor en procesos de licitación y homologación.', num: '', numLbl: '' },
+      { icon: '👥', titulo: 'Cultura de seguridad', body: 'Un sistema bien implementado genera compromiso del personal y reduce comportamientos inseguros.', num: '', numLbl: '' },
+      { icon: '🔄', titulo: 'Mantenimiento autónomo', body: 'Capacitamos a tu equipo para mantener el sistema actualizado sin depender siempre de consultores externos.', num: '', numLbl: '' }
+    ],
+    casos: [
+      { tag: 'Empresas formales', icon: '🏢', titulo: 'Empresa con sistema desactualizado', body: 'Tienes documentos de hace años que no reflejan tu operación actual ni la norma vigente.' },
+      { tag: 'Nuevas empresas', icon: '🌱', titulo: 'Empresa que debe implementar por primera vez', body: 'Abriste una empresa y necesitas cumplir con la Ley 29783 antes de iniciar operaciones.' },
+      { tag: 'Previo a inspección', icon: '⚠️', titulo: 'Empresa próxima a ser inspeccionada', body: 'Recibiste aviso de visita de SUNAFIL o tu cliente realizará una auditoría SST próximamente.' },
+      { tag: 'Post-accidente', icon: '🚨', titulo: 'Empresa que tuvo un accidente', body: 'Después de un incidente grave necesitas demostrar que tienes un sistema SST robusto y funcionando.' }
+    ],
+    entregables: [
+      { titulo: 'Informe de diagnóstico SST', body: 'Evaluación del estado actual vs. requisitos legales con calificación y plan de acción.' },
+      { titulo: 'Sistema documental completo', body: 'Política, IPERC, RISST, Plan de emergencias, Mapa de riesgos y todos los registros obligatorios.' },
+      { titulo: 'Programa Anual de SST', body: 'Plan de actividades SST para el año, con objetivos, metas, responsables y presupuesto.' },
+      { titulo: 'Comité/Supervisor operativo', body: 'Proceso de elección documentado, libro de actas y plan de reuniones para el año.' },
+      { titulo: 'Capacitación al responsable', body: 'Transferencia de conocimiento para que tu equipo mantenga el sistema de forma autónoma.' }
+    ]
+  },
+
+  'iso9001': {
+    titulo: 'Certificación ISO 9001:2015',
+    tituloCorto: 'Certificación ISO 9001',
+    eyebrow: 'Calidad y Excelencia',
+    emoji: '🏆',
+    desc: 'Te acompañamos en todo el proceso de implementación y certificación ISO 9001:2015: desde el diagnóstico inicial hasta el día de la auditoría de certificación, garantizando que obtengas el certificado.',
+    stats: [
+      { num: '+80', suffix: '', lbl: 'empresas certificadas' },
+      { num: '9', suffix: ' meses', lbl: 'tiempo promedio' },
+      { num: '100', suffix: '%', lbl: 'tasa de certificación' }
+    ],
+    qeTitle: 'De cero a certificado ISO 9001 con acompañamiento experto',
+    qeBody: [
+      'ISO 9001:2015 es la norma internacional de gestión de la calidad más reconocida del mundo. Obtener esta certificación demuestra que tu organización tiene procesos estructurados, orientados al cliente y en mejora continua.',
+      'Nuestro equipo de consultores certificados te guía en cada etapa: diseñamos el sistema de gestión adaptado a tu empresa, capacitamos a tu equipo, ejecutamos las auditorías internas de preparación y te acompañamos el día de la auditoría de certificación con el organismo certificador.'
+    ],
+    puntosClave: [
+      { icon: '📐', titulo: 'Diseño del SGC a medida', sub: 'Sistema adaptado a tu sector, tamaño y procesos, no plantillas genéricas.' },
+      { icon: '🎓', titulo: 'Capacitación del equipo', sub: 'Formación práctica para que tu equipo comprenda y viva la norma.' },
+      { icon: '🔍', titulo: 'Auditorías de preparación', sub: 'Simulacros de auditoría antes del día real para que todo salga perfecto.' },
+      { icon: '🤝', titulo: 'Acompañamiento el día de la auditoría', sub: 'Nuestro consultor presente durante la auditoría de certificación.' }
+    ],
+    procesoSubtitle: 'Un acompañamiento integral que garantiza la certificación, no solo la documentación.',
+    pasos: [
+      { tag: 'Diagnóstico', titulo: 'GAP Analysis — Estado actual vs. ISO 9001', body: 'Realizamos un análisis de brechas comparando los procesos y documentación actuales de tu empresa contra los requisitos de la norma ISO 9001:2015. El resultado es un porcentaje de conformidad y un mapa de trabajo claro.', chips: ['Análisis de brechas', 'Mapa de procesos', 'Plan de proyecto'] },
+      { tag: 'Diseño', titulo: 'Diseño e implementación del SGC', body: 'Diseñamos el Sistema de Gestión de Calidad adaptado a tu empresa: mapa de procesos, fichas de proceso, indicadores (KPI), política de calidad, objetivos, procedimientos y formularios. Todo en el lenguaje de tu equipo.', chips: ['Manual de calidad', 'Procedimientos', 'Indicadores KPI', 'Registros'] },
+      { tag: 'Capacitación', titulo: 'Formación del equipo y puesta en marcha', body: 'Capacitamos a la alta dirección, responsables de proceso y al equipo auditor interno. Ejecutamos el sistema en vivo durante al menos 3 meses para generar evidencias reales de funcionamiento.', chips: ['Formación alta dirección', 'Auditores internos', 'Puesta en marcha', 'Generación de evidencias'] },
+      { tag: 'Certificación', titulo: 'Auditorías internas y certificación', body: 'Ejecutamos las auditorías internas, la revisión por la dirección y cerramos las no conformidades identificadas. Coordinamos con el organismo certificador y te acompañamos durante toda la auditoría Stage 1 y Stage 2 hasta obtener el certificado.', chips: ['Auditoría interna', 'Revisión por dirección', 'Auditoría Stage 1 y 2', 'Obtención del certificado'] }
+    ],
+    beneficios: [
+      { icon: '🌐', titulo: 'Reconocimiento internacional', body: 'ISO 9001 es reconocida en más de 170 países, abriendo puertas a mercados y clientes globales.', num: '170+', numLbl: 'países donde es válida' },
+      { icon: '📈', titulo: 'Mejora de procesos reales', body: 'El proceso de certificación no es solo papel: genera mejoras concretas en productividad y reducción de errores.', num: '-40%', numLbl: 'en errores de proceso' },
+      { icon: '💼', titulo: 'Ventaja en licitaciones', body: 'Muchas licitaciones públicas y privadas exigen o puntúan mejor a empresas certificadas ISO 9001.', num: '+60%', numLbl: 'más licitaciones ganadas' },
+      { icon: '😊', titulo: 'Satisfacción del cliente', body: 'Procesos estandarizados significan entregas consistentes, menos reclamos y clientes más satisfechos.', num: '+25%', numLbl: 'satisfacción del cliente' },
+      { icon: '🔄', titulo: 'Cultura de mejora continua', body: 'Tu equipo aprende a identificar y resolver problemas sistemáticamente, mejorando mes a mes.', num: '', numLbl: '' },
+      { icon: '🛡️', titulo: 'Reducción de riesgos', body: 'La gestión de riesgos integrada en ISO 9001 protege a tu empresa de problemas antes de que ocurran.', num: '', numLbl: '' }
+    ],
+    casos: [
+      { tag: 'Empresas en crecimiento', icon: '📈', titulo: 'Empresa que quiere escalar operaciones', body: 'Necesitas procesos estandarizados para crecer sin perder calidad ni aumentar el caos operativo.' },
+      { tag: 'Licitaciones', icon: '📋', titulo: 'Empresa que participa en licitaciones', body: 'El cliente o el pliego de bases exige certificación ISO 9001 para poder presentar tu propuesta.' },
+      { tag: 'Exportación', icon: '🌐', titulo: 'Empresa que quiere exportar', body: 'Tus clientes internacionales o potenciales socios comerciales requieren evidencia de un SGC certificado.' },
+      { tag: 'Mejora interna', icon: '⚙️', titulo: 'Empresa con problemas de calidad recurrentes', body: 'Tienes reclamos frecuentes, reprocesos costosos o entregas inconsistentes que afectan tu reputación.' }
+    ],
+    entregables: [
+      { titulo: 'GAP Analysis documentado', body: 'Informe completo del estado actual vs. requisitos ISO 9001:2015 con plan de trabajo detallado.' },
+      { titulo: 'Sistema de Gestión de Calidad completo', body: 'Manual, procedimientos, fichas de proceso, indicadores, formularios y política de calidad.' },
+      { titulo: 'Capacitación certificada', body: 'Formación del equipo directivo, responsables de proceso y auditores internos con constancias.' },
+      { titulo: 'Informe de auditoría interna', body: 'Reporte de hallazgos, no conformidades y acciones correctivas previas a la certificación.' },
+      { titulo: 'Certificado ISO 9001:2015', body: 'El certificado internacional emitido por el organismo certificador acreditado de tu elección.' }
+    ]
+  },
+
+  'asesoria-sst': {
+    titulo: 'Asesoría Especializada en SST',
+    tituloCorto: 'Asesoría SST',
+    eyebrow: 'Consultoría Especializada',
+    emoji: '📋',
+    desc: 'Consultoría especializada en Seguridad y Salud en el Trabajo adaptada a las necesidades reales de tu empresa. Respondemos tus dudas, resolvemos tus problemas y te damos soluciones concretas.',
+    stats: [
+      { num: '+500', suffix: '', lbl: 'empresas asesoradas' },
+      { num: '10+', suffix: '', lbl: 'años de experiencia' },
+      { num: '24h', suffix: '', lbl: 'tiempo de respuesta' }
+    ],
+    qeTitle: 'El experto en SST que tu empresa necesita, cuando lo necesita',
+    qeBody: [
+      'Muchas empresas tienen un responsable de SST interno, pero no siempre cuenta con el conocimiento especializado para resolver situaciones complejas: una inspección de SUNAFIL, un accidente grave, la implementación de un nuevo requisito legal o la respuesta a una observación de un cliente.',
+      'Nuestra asesoría especializada te brinda acceso a consultores con años de experiencia en SST, que conocen la normativa peruana a fondo y pueden orientarte con soluciones prácticas y aplicables a tu realidad empresarial.'
+    ],
+    puntosClave: [
+      { icon: '🎯', titulo: 'Asesoría a medida', sub: 'No damos respuestas genéricas: analizamos tu caso específico y damos soluciones aplicables.' },
+      { icon: '⚡', titulo: 'Respuesta rápida', sub: 'Consultas atendidas en 24 horas, con soluciones concretas y accionables.' },
+      { icon: '📚', titulo: 'Normativa actualizada', sub: 'Conocemos las últimas modificaciones legales y los criterios actuales de SUNAFIL.' },
+      { icon: '💡', titulo: 'Soluciones prácticas', sub: 'Enfocados en lo que funciona en la práctica, no en lo que dice el papel.' }
+    ],
+    procesoSubtitle: 'Cada asesoría se adapta a tu problema específico, con un proceso claro y orientado a resultados.',
+    pasos: [
+      { tag: 'Consulta', titulo: 'Recepción y análisis del caso', body: 'Recibes la consulta o problema y lo analizamos a fondo. Revisamos la documentación relevante, la normativa aplicable y los antecedentes del caso. Si es una situación de emergencia (accidente, inspección), activamos respuesta inmediata.', chips: ['Análisis del caso', 'Revisión normativa', 'Respuesta de emergencia disponible'] },
+      { tag: 'Diagnóstico', titulo: 'Evaluación y diagnóstico técnico', body: 'Emitimos un diagnóstico técnico-legal de la situación: ¿cuál es el riesgo real?, ¿qué dice la norma?, ¿qué ha resuelto SUNAFIL en casos similares? Te damos el contexto completo para que entiendas tu situación.', chips: ['Diagnóstico técnico', 'Análisis legal', 'Riesgo estimado'] },
+      { tag: 'Solución', titulo: 'Plan de acción y recomendaciones', body: 'Entregamos las recomendaciones concretas: qué hacer, en qué orden, qué documentar, qué comunicar y qué evitar. Si implica elaborar documentos, te los preparamos directamente.', chips: ['Plan de acción', 'Documentos de soporte', 'Guía paso a paso'] },
+      { tag: 'Seguimiento', titulo: 'Acompañamiento en la implementación', body: 'Si necesitas apoyo durante la implementación de las recomendaciones, estamos disponibles para resolver dudas, revisar los avances y ajustar el plan según la evolución de la situación.', chips: ['Soporte continuo', 'Revisión de avances', 'Ajuste del plan'] }
+    ],
+    beneficios: [
+      { icon: '🧠', titulo: 'Conocimiento especializado al instante', body: 'Accedes a más de 10 años de experiencia en SST sin contratar un consultor a tiempo completo.', num: '10+', numLbl: 'años de experiencia' },
+      { icon: '💰', titulo: 'Ahorro frente a multas y sanciones', body: 'Una asesoría oportuna puede evitar multas de SUNAFIL que van desde 1 UIT hasta 100 UIT.', num: 'Hasta 100', numLbl: 'UIT en multas evitadas' },
+      { icon: '⚡', titulo: 'Respuesta en situaciones de crisis', body: 'Cuando ocurre un accidente o llega una inspección, tienes un experto disponible de inmediato.', num: '24h', numLbl: 'tiempo de respuesta' },
+      { icon: '📋', titulo: 'Soluciones documentadas', body: 'Cada asesoría incluye el respaldo documental necesario para sustentar tus decisiones.', num: '', numLbl: '' },
+      { icon: '🔍', titulo: 'Visión objetiva e independiente', body: 'Un consultor externo detecta problemas que el equipo interno no ve por familiaridad.', num: '', numLbl: '' },
+      { icon: '📈', titulo: 'Mejora continua del sistema', body: 'Con asesoría regular, tu sistema SST evoluciona y mejora mes a mes de forma sostenida.', num: '', numLbl: '' }
+    ],
+    casos: [
+      { tag: 'Inspección SUNAFIL', icon: '⚠️', titulo: 'Empresa ante una inspección de SUNAFIL', body: 'Recibiste una carta de citación de SUNAFIL o están realizando una visita inspectiva y necesitas orientación urgente.' },
+      { tag: 'Accidente laboral', icon: '🚨', titulo: 'Ocurrió un accidente en la empresa', body: 'Un trabajador se accidentó y necesitas saber exactamente qué hacer: notificar, investigar y documentar correctamente.' },
+      { tag: 'Consultas técnicas', icon: '💬', titulo: 'Dudas técnicas y legales recurrentes', body: 'Tu responsable de SST tiene preguntas frecuentes que necesitan respuesta de un experto con criterio práctico.' },
+      { tag: 'Nuevos proyectos', icon: '🚀', titulo: 'Inicio de nueva actividad o proyecto', body: 'Vas a iniciar un proyecto con nuevos riesgos (trabajo en altura, espacios confinados, etc.) y necesitas orientación.' }
+    ],
+    entregables: [
+      { titulo: 'Informe técnico-legal', body: 'Documento con el análisis del caso, los fundamentos normativos y las recomendaciones concretas.' },
+      { titulo: 'Plan de acción priorizado', body: 'Lista de acciones concretas con responsables y plazos para resolver el problema identificado.' },
+      { titulo: 'Documentos de soporte', body: 'Los procedimientos, cartas, registros o formatos que necesitas para sustentar la solución.' },
+      { titulo: 'Disponibilidad de consultas', body: 'Canal directo para consultas adicionales durante la implementación de las recomendaciones.' },
+      { titulo: 'Resumen ejecutivo', body: 'Resumen claro y sin tecnicismos para presentar la situación y la solución a la alta dirección.' }
+    ]
+  },
+
+  'seguimiento-sst': {
+    titulo: 'Seguimiento SST In House',
+    tituloCorto: 'Seguimiento In House',
+    eyebrow: 'Gestión Continua',
+    emoji: '🏠',
+    desc: 'Un profesional de PROTEQLIFE trabaja dentro de tu empresa de forma periódica para gestionar, mantener y mejorar tu Sistema de Gestión SST de manera continua, como si fuera parte de tu equipo.',
+    stats: [
+      { num: '+150', suffix: '', lbl: 'empresas en programa' },
+      { num: '0', suffix: '', lbl: 'multas en clientes activos' },
+      { num: '12', suffix: ' meses', lbl: 'programa mínimo' }
+    ],
+    qeTitle: 'Tu sistema SST gestionado por expertos, sin contratar personal propio',
+    qeBody: [
+      'Mantener activo un Sistema de Gestión SST requiere dedicación constante: inspecciones periódicas, registros actualizados, reuniones del Comité, capacitaciones al personal, investigación de incidentes y preparación para inspecciones externas.',
+      'Nuestro servicio de Seguimiento In House coloca a un consultor especialista en tus instalaciones de forma regular (semanal, quincenal o mensual) para ejecutar todas estas actividades, manteniendo tu sistema funcionando correctamente y libre de observaciones.'
+    ],
+    puntosClave: [
+      { icon: '📅', titulo: 'Visitas programadas periódicas', sub: 'Frecuencia adaptada a tu tamaño y necesidad: semanal, quincenal o mensual.' },
+      { icon: '📊', titulo: 'Reporte de gestión mensual', sub: 'Informe ejecutivo del estado del sistema y los indicadores SST del período.' },
+      { icon: '🔔', titulo: 'Alertas de vencimiento', sub: 'Notificaciones anticipadas de documentos y registros por vencer o renovar.' },
+      { icon: '🚨', titulo: 'Atención de emergencias', sub: 'Respuesta prioritaria ante accidentes, inspecciones o situaciones de crisis.' }
+    ],
+    procesoSubtitle: 'Un modelo de gestión continua que garantiza que tu sistema SST esté siempre activo, actualizado y listo.',
+    pasos: [
+      { tag: 'Inicio', titulo: 'Diagnóstico y plan de trabajo anual', body: 'Iniciamos con un diagnóstico completo del sistema actual y diseñamos el plan de trabajo anual: qué actividades realizaremos, con qué frecuencia y qué indicadores mediremos. Definimos los roles del equipo interno y el consultor.', chips: ['Diagnóstico inicial', 'Plan de trabajo', 'Roles y responsabilidades'] },
+      { tag: 'Operación', titulo: 'Visitas periódicas de gestión', body: 'En cada visita, el consultor ejecuta un conjunto de actividades: revisión de registros, inspecciones de campo, seguimiento a acciones correctivas, preparación de material para capacitaciones y actualización de documentos.', chips: ['Inspecciones de campo', 'Actualización de registros', 'Seguimiento de acciones', 'Capacitaciones'] },
+      { tag: 'Seguimiento', titulo: 'Informes y revisiones mensuales', body: 'Al cierre de cada mes, emitimos un informe ejecutivo con los indicadores SST: índice de frecuencia, días perdidos, inspecciones realizadas, observaciones abiertas y cerradas, y estado de cumplimiento legal.', chips: ['KPIs SST mensuales', 'Estado de cumplimiento', 'Alertas y pendientes'] },
+      { tag: 'Mejora', titulo: 'Revisión anual y planificación siguiente año', body: 'Al cierre del año, realizamos una revisión gerencial del sistema, evaluamos el cumplimiento de objetivos y metas, e identificamos oportunidades de mejora para el siguiente período.', chips: ['Revisión gerencial', 'Evaluación de objetivos', 'Planificación anual'] }
+    ],
+    beneficios: [
+      { icon: '💰', titulo: 'Ahorro vs. contratar personal propio', body: 'El costo del servicio es significativamente menor que el salario y beneficios de un responsable SST a tiempo completo.', num: '-60%', numLbl: 'vs. personal propio' },
+      { icon: '🔒', titulo: 'Cero brechas de cumplimiento', body: 'Con un experto gestionando el sistema de forma activa, los documentos nunca vencen y los registros están siempre al día.', num: '0', numLbl: 'observaciones legales' },
+      { icon: '📈', titulo: 'Sistema que mejora mes a mes', body: 'La gestión continua permite identificar y corregir problemas antes de que se conviertan en incidentes o multas.', num: '-45%', numLbl: 'incidentes en 12 meses' },
+      { icon: '🎯', titulo: 'Enfoque en tu negocio', body: 'Tu equipo interno se concentra en la operación mientras el experto gestiona el sistema SST de forma autónoma.', num: '', numLbl: '' },
+      { icon: '🔔', titulo: 'Nunca más vencimientos perdidos', body: 'Sistema de alertas que evita que documentos, exámenes médicos o certificaciones vayan caducando sin que nadie lo note.', num: '', numLbl: '' },
+      { icon: '🤝', titulo: 'Acceso a todo el equipo de PROTEQLIFE', body: 'Si surge una situación que requiere especialización adicional, tienes respaldo de todo nuestro equipo.', num: '', numLbl: '' }
+    ],
+    casos: [
+      { tag: 'MYPES', icon: '🌱', titulo: 'Empresa pequeña sin personal SST propio', body: 'Tienes entre 10 y 100 trabajadores y la ley te exige un sistema SST pero no puedes contratar un especialista.' },
+      { tag: 'Mediana empresa', icon: '🏢', titulo: 'Empresa mediana con responsable SST ocupado', body: 'Tu responsable SST tiene otras funciones y el sistema se va quedando desactualizado por falta de tiempo.' },
+      { tag: 'Alta rotación', icon: '🔄', titulo: 'Empresa con alta rotación de personal SST', body: 'Has tenido varios responsables SST que se van y cada cambio reinicia el sistema desde cero.' },
+      { tag: 'Clientes exigentes', icon: '🏭', titulo: 'Proveedor de grandes empresas o mineras', body: 'Tus clientes realizan auditorías SST periódicas y necesitas que el sistema esté siempre en óptimas condiciones.' }
+    ],
+    entregables: [
+      { titulo: 'Plan de trabajo anual', body: 'Cronograma detallado de todas las actividades SST del año con responsables y frecuencias.' },
+      { titulo: 'Informe mensual de gestión', body: 'Reporte ejecutivo con indicadores SST, actividades realizadas y estado de cumplimiento legal.' },
+      { titulo: 'Registros y documentos actualizados', body: 'Todos los registros obligatorios al día, firmados y correctamente archivados (físico y/o digital).' },
+      { titulo: 'Alertas de vencimiento', body: 'Sistema de avisos anticipados para renovaciones de documentos, exámenes y certificaciones.' },
+      { titulo: 'Atención de emergencias incluida', body: 'Respuesta prioritaria ante accidentes, inspecciones de SUNAFIL o situaciones de crisis durante la vigencia del contrato.' }
+    ]
+  },
+
+  'auditorias': {
+    titulo: 'Auditorías Internas de SST y Calidad',
+    tituloCorto: 'Auditorías Internas',
+    eyebrow: 'Evaluación y Mejora',
+    emoji: '🔍',
+    desc: 'Realizamos auditorías internas de tu Sistema de Gestión SST o Calidad para identificar no conformidades, fortalezas y oportunidades de mejora antes de que lo hagan tus clientes o SUNAFIL.',
+    stats: [
+      { num: '+400', suffix: '', lbl: 'auditorías ejecutadas' },
+      { num: '95', suffix: '%', lbl: 'conformidad post-auditoría' },
+      { num: '3', suffix: ' semanas', lbl: 'plazo de entrega' }
+    ],
+    qeTitle: 'Una auditoría interna honesta y técnica que impulsa la mejora real',
+    qeBody: [
+      'Las auditorías internas son una herramienta fundamental para verificar que el sistema de gestión funciona en la práctica, no solo en el papel. Permiten detectar problemas antes de que los encuentren los auditores externos, los clientes o los inspectores de SUNAFIL.',
+      'Nuestro equipo de auditores certificados (ISO 9001, ISO 14001 y Ley 29783) realiza auditorías independientes, objetivas y con un enfoque constructivo: no buscamos solo encontrar fallas, sino entender las causas raíz y proponer mejoras concretas.'
+    ],
+    puntosClave: [
+      { icon: '🎓', titulo: 'Auditores certificados', sub: 'Equipo con formación en ISO 19011, ISO 9001, ISO 14001 y normativa SST peruana.' },
+      { icon: '📋', titulo: 'Metodología estructurada', sub: 'Proceso riguroso basado en ISO 19011: planificación, ejecución, informe y seguimiento.' },
+      { icon: '🔍', titulo: 'Enfoque en causas raíz', sub: 'No solo reportamos hallazgos, analizamos por qué ocurren y cómo prevenirlos.' },
+      { icon: '📊', titulo: 'Informe ejecutivo', sub: 'Reporte claro con hallazgos clasificados, riesgo asociado y plan de acciones correctivas.' }
+    ],
+    procesoSubtitle: 'Una auditoría rigurosa, documentada y orientada a la mejora continua de tu sistema.',
+    pasos: [
+      { tag: 'Planificación', titulo: 'Plan de auditoría y preparación', body: 'Definimos el alcance de la auditoría, los criterios aplicables (norma o normativa legal), el plan de visita y los check-lists. Comunicamos al equipo auditado la agenda con anticipación para garantizar su disponibilidad.', chips: ['Alcance definido', 'Check-lists personalizados', 'Agenda de auditoría', 'Comunicación previa'] },
+      { tag: 'Ejecución', titulo: 'Auditoría de campo', body: 'El equipo auditor visita las instalaciones, entrevista al personal, revisa registros y documentos, y observa los procesos en campo. Se recopilan evidencias objetivas (fotos, documentos, declaraciones) para sustentar cada hallazgo.', chips: ['Entrevistas', 'Revisión documental', 'Observación de campo', 'Recopilación de evidencias'] },
+      { tag: 'Informe', titulo: 'Clasificación de hallazgos y reunión de cierre', body: 'Clasificamos los hallazgos según su tipo (No Conformidad Mayor, No Conformidad Menor, Observación, Fortaleza) y los presentamos en una reunión de cierre con el equipo directivo y los responsables de proceso.', chips: ['Clasificación de hallazgos', 'Reunión de cierre', 'Presentación ejecutiva'] },
+      { tag: 'Seguimiento', titulo: 'Plan de acciones correctivas y seguimiento', body: 'Entregamos el informe formal de auditoría y colaboramos en el diseño del Plan de Acciones Correctivas. Realizamos una revisión de cierre para verificar que las acciones se implementaron correctamente y los hallazgos fueron cerrados.', chips: ['Informe formal', 'Plan de acciones correctivas', 'Revisión de cierre'] }
+    ],
+    beneficios: [
+      { icon: '🔍', titulo: 'Detectar antes que el externo', body: 'Identifica problemas antes de que los encuentren auditores de certificación, clientes o SUNAFIL.', num: '-80%', numLbl: 'no conformidades externas' },
+      { icon: '📋', titulo: 'Cumplimiento de requisitos legales', body: 'ISO 9001 e ISO 14001 exigen auditorías internas periódicas. Cumple este requisito con profesionales.', num: '100%', numLbl: 'requisito cumplido' },
+      { icon: '💡', titulo: 'Visión externa e independiente', body: 'Nuestros auditores ven lo que el equipo interno no nota por costumbre o familiaridad.', num: '+3x', numLbl: 'hallazgos vs. auditoría interna propia' },
+      { icon: '📈', titulo: 'Mejora continua accionable', body: 'El informe no solo lista problemas, propone soluciones concretas con prioridades claras.', num: '', numLbl: '' },
+      { icon: '🎓', titulo: 'Capacitación de auditores internos', body: 'La auditoría es también una oportunidad para formar a tu equipo en la metodología de auditoría.', num: '', numLbl: '' },
+      { icon: '📊', titulo: 'Base para decisiones de gestión', body: 'Los resultados de la auditoría alimentan la revisión por la dirección y el ciclo de mejora continua.', num: '', numLbl: '' }
+    ],
+    casos: [
+      { tag: 'Pre-certificación', icon: '🏆', titulo: 'Empresa próxima a auditoría de certificación', body: 'Antes de la auditoría externa de ISO 9001 o ISO 14001, necesitas una auditoría de preparación rigurosa.' },
+      { tag: 'Requisito periódico', icon: '📅', titulo: 'Empresa certificada con auditoría vencida', body: 'La norma exige auditorías internas anuales y necesitas ejecutarla con objetividad e independencia.' },
+      { tag: 'Auditoría cliente', icon: '🏭', titulo: 'Empresa antes de auditoría de cliente', body: 'Tu cliente anunció una auditoría de proveedor y quieres identificar y cerrar las brechas antes.' },
+      { tag: 'Investigación', icon: '🔍', titulo: 'Empresa con problemas de calidad recurrentes', body: 'Tienes no conformidades o reclamos que se repiten y necesitas una auditoría profunda que encuentre la causa raíz.' }
+    ],
+    entregables: [
+      { titulo: 'Plan de auditoría', body: 'Documento con el alcance, criterios, agenda, equipo auditor y metodología a utilizar.' },
+      { titulo: 'Informe formal de auditoría', body: 'Reporte con todos los hallazgos clasificados, evidencias objetivas y conclusiones del equipo auditor.' },
+      { titulo: 'Plan de Acciones Correctivas', body: 'Documento con las acciones propuestas para cada No Conformidad, responsables y plazos.' },
+      { titulo: 'Presentación ejecutiva', body: 'Resumen claro para la alta dirección con los hallazgos más críticos y las prioridades de mejora.' },
+      { titulo: 'Revisión de cierre', body: 'Verificación posterior del cierre efectivo de las acciones correctivas implementadas.' }
+    ]
+  }
+};
+
+// ═══════════════════════════════════════════════
+// TODOS LOS SERVICIOS (para el carrusel "Otros")
+// ═══════════════════════════════════════════════
+var TODOS = [
+  { key: 'homologaciones',  icon: '✅', titulo: 'Homologaciones',           desc: 'Supera el proceso de homologación de tus clientes corporativos.' },
+  { key: 'gestion-sst',     icon: '🔄', titulo: 'Actualización SST',        desc: 'Sistema de Gestión SST actualizado y conforme a ley.' },
+  { key: 'iso9001',         icon: '🏆', titulo: 'Certificación ISO 9001',    desc: 'Acompañamiento completo hasta obtener tu certificado.' },
+  { key: 'asesoria-sst',    icon: '📋', titulo: 'Asesoría de SST',           desc: 'Consultoría especializada para situaciones complejas.' },
+  { key: 'seguimiento-sst', icon: '🏠', titulo: 'Seguimiento In House',      desc: 'Tu sistema SST gestionado por expertos de forma continua.' },
+  { key: 'auditorias',      icon: '🔍', titulo: 'Auditorías Internas',       desc: 'Identifica brechas antes que auditores externos o SUNAFIL.' }
+];
+
+// ═══════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════
+(function init() {
+  var params  = new URLSearchParams(window.location.search);
+  var key     = params.get('s') || 'homologaciones';
+  var sv      = SERVICIOS[key] || SERVICIOS['homologaciones'];
+
+  // Meta
+  document.title = sv.tituloCorto + ' — PROTEQLIFE Consulting';
+  document.getElementById('pageTitle').textContent = sv.tituloCorto + ' — PROTEQLIFE Consulting';
+  document.getElementById('bcNombre').textContent  = sv.tituloCorto;
+
+  // Hero
+  document.getElementById('heroEyebrow').textContent = sv.eyebrow;
+  document.getElementById('heroTitulo').innerHTML    = sv.titulo.replace(/(SST|ISO\s9001|Homologación|In House)/g, '<em>$1</em>');
+  document.getElementById('heroDesc').textContent    = sv.desc;
+  document.getElementById('heroStats').innerHTML     = sv.stats.map(function(s) {
+    return '<div class="s-stat"><div class="s-stat-num">' + s.num + '<span>' + s.suffix + '</span></div><div class="s-stat-lbl">' + s.lbl + '</div></div>';
+  }).join('');
+
+  // Qué es
+  document.getElementById('qeTitle').textContent = sv.qeTitle;
+  document.getElementById('qeBody').innerHTML    = sv.qeBody.map(function(p) { return '<p>' + p + '</p>'; }).join('');
+  document.getElementById('vcItems').innerHTML   = sv.puntosClave.map(function(p) {
+    return '<div class="s-vc-item">' +
+      '<div class="s-vc-icon">' + p.icon + '</div>' +
+      '<div><div class="s-vc-name">' + esc(p.titulo) + '</div><div class="s-vc-sub">' + esc(p.sub) + '</div></div>' +
+    '</div>';
+  }).join('');
+
+  // Proceso
+  document.getElementById('procesoTitle').textContent    = 'Cómo ejecutamos el servicio';
+  document.getElementById('procesoSubtitle').textContent = sv.procesoSubtitle;
+  document.getElementById('stepsContainer').innerHTML = sv.pasos.map(function(paso, i) {
+    return '<div class="s-step">' +
+      '<div class="s-step-num-wrap"><div class="s-step-num">' + (i+1) + '</div></div>' +
+      '<div class="s-step-content">' +
+        '<span class="s-step-tag">' + paso.tag + '</span>' +
+        '<div class="s-step-title">' + esc(paso.titulo) + '</div>' +
+        '<div class="s-step-body">' + esc(paso.body) + '</div>' +
+        '<div class="s-step-chips">' + paso.chips.map(function(c) { return '<span class="s-chip">' + esc(c) + '</span>'; }).join('') + '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  // Beneficios
+  document.getElementById('benServicio').textContent = sv.tituloCorto;
+  document.getElementById('beneficiosGrid').innerHTML = sv.beneficios.map(function(b) {
+    return '<div class="s-ben-card">' +
+      (b.num ? '<span class="s-ben-num">' + esc(b.num) + ' <span style="font-size:14px;color:var(--gray-400);font-weight:500">' + esc(b.numLbl) + '</span></span>' : '') +
+      '<div class="s-ben-icon">' + b.icon + '</div>' +
+      '<div class="s-ben-title">' + esc(b.titulo) + '</div>' +
+      '<div class="s-ben-body">' + esc(b.body) + '</div>' +
+    '</div>';
+  }).join('');
+
+  // Casos de uso
+  document.getElementById('casosTitle').textContent = '¿Para quién es ' + sv.tituloCorto + '?';
+  document.getElementById('casosGrid').innerHTML = sv.casos.map(function(c) {
+    return '<div class="s-caso-card">' +
+      '<span class="s-caso-tag">' + esc(c.tag) + '</span>' +
+      '<span class="s-caso-icon">' + c.icon + '</span>' +
+      '<div class="s-caso-title">' + esc(c.titulo) + '</div>' +
+      '<div class="s-caso-body">' + esc(c.body) + '</div>' +
+    '</div>';
+  }).join('');
+
+  // Entregables
+  document.getElementById('entregablesList').innerHTML = sv.entregables.map(function(e, i) {
+    return '<div class="s-entrega-item">' +
+      '<div class="s-ei-num">' + (i+1) + '</div>' +
+      '<div><div class="s-ei-title">' + esc(e.titulo) + '</div><div class="s-ei-body">' + esc(e.body) + '</div></div>' +
+    '</div>';
+  }).join('');
+
+  // Otros servicios
+  var otros = TODOS.filter(function(t) { return t.key !== key; }).slice(0, 3);
+  document.getElementById('otrosGrid').innerHTML = otros.map(function(o) {
+    return '<a href="servicio.html?s=' + o.key + '" class="s-otro-card">' +
+      '<div class="s-otro-icon">' + o.icon + '</div>' +
+      '<div class="s-otro-title">' + esc(o.titulo) + '</div>' +
+      '<div class="s-otro-desc">' + esc(o.desc) + '</div>' +
+      '<div class="s-otro-arrow">Ver servicio →</div>' +
+    '</a>';
+  }).join('');
+})();
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function contactarWA() {
+  var params = new URLSearchParams(window.location.search);
+  var key    = params.get('s') || 'homologaciones';
+  var sv     = SERVICIOS[key];
+  window.open('https://wa.me/51999000000?text=Hola PROTEQLIFE, me interesa el servicio de ' + encodeURIComponent(sv.tituloCorto) + '. Me gustaría recibir más información.', '_blank');
+}
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>

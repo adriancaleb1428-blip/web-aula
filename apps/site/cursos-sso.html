@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguridad Integral — PROTEQLIFE Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05192D; --navy-mid: #0C3254; --blue: #1565C0; --blue-bright: #2196F3;
+  --blue-light: #E3F2FD; --accent: #FF6B35; --accent-light: #FFF3EE;
+  --green: #1B5E20; --green-light: #E8F5E9;
+  --gray-100: #F5F7FA; --gray-200: #E8ECF0; --gray-400: #9BA3AD;
+  --gray-600: #5A6472; --gray-800: #2C3540; --white: #FFFFFF;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(5,25,45,0.08);
+  --shadow-md: 0 4px 16px rgba(5,25,45,0.10);
+  --shadow-lg: 0 12px 40px rgba(5,25,45,0.14);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; color: var(--gray-800); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+h1,h2,h3,h4 { font-family: 'Syne', sans-serif; line-height: 1.2; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* BREADCRUMB */
+.breadcrumb { background:var(--gray-100); padding:12px 0; border-bottom:1px solid var(--gray-200); }
+.breadcrumb-inner { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--gray-400); }
+.breadcrumb-inner a { color:var(--gray-400); transition:color 0.15s; }
+.breadcrumb-inner a:hover { color:var(--blue); }
+.breadcrumb-inner span { color:var(--navy); font-weight:600; }
+
+/* PAGE HERO */
+.page-hero { background:var(--navy); padding:56px 0 48px; position:relative; overflow:hidden; }
+.page-hero::before { content:''; position:absolute; top:-80px; right:-80px; width:500px; height:500px; background:radial-gradient(circle, rgba(33,150,243,0.15) 0%, transparent 65%); pointer-events:none; }
+.page-hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--blue) 0%, var(--blue-bright) 100%); }
+.hero-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(33,150,243,0.15); border:1px solid rgba(33,150,243,0.3); color:var(--blue-bright); font-size:11px; font-weight:600; padding:4px 12px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
+.page-hero h1 { font-size:34px; font-weight:800; color:#fff; margin-bottom:12px; }
+.page-hero p { font-size:15px; color:rgba(255,255,255,0.65); max-width:600px; line-height:1.7; margin-bottom:28px; }
+.hero-meta { display:flex; gap:24px; flex-wrap:wrap; }
+.hm-item { display:flex; align-items:center; gap:8px; }
+.hm-item span { font-size:13px; color:rgba(255,255,255,0.7); }
+.hm-icon { font-size:16px; }
+
+/* FILTROS */
+.filtros-bar { background:#fff; border-bottom:1px solid var(--gray-200); padding:16px 0; position:sticky; top:62px; z-index:100; }
+.filtros-inner { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.filtro-label { font-size:12px; font-weight:600; color:var(--gray-400); text-transform:uppercase; letter-spacing:1px; margin-right:4px; }
+.filtro { font-size:12px; font-weight:500; padding:7px 16px; border-radius:20px; border:1px solid var(--gray-200); background:#fff; color:var(--gray-600); cursor:pointer; transition:all 0.15s; display:inline-block; text-decoration:none; }
+.filtro:hover { border-color:var(--accent); color:var(--accent); }
+.filtro.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+/* CURSOS GRID */
+.cursos-section { padding:48px 0 64px; background:var(--gray-100); }
+.cursos-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+.cursos-count { font-size:13px; color:var(--gray-400); }
+.cursos-count strong { color:var(--navy); }
+.cursos-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:20px; }
+
+/* CURSO CARD */
+.curso-card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius-lg); overflow:hidden; transition:all 0.25s; }
+.curso-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+.cc-thumb { height:120px; display:flex; align-items:center; justify-content:center; font-size:40px; position:relative; background:var(--blue-light); }
+.cc-thumb-badges { position:absolute; top:10px; right:10px; display:flex; flex-direction:column; gap:4px; align-items:flex-end; }
+.tag-vivo      { background:#E8F5E9; color:#1B5E20; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.tag-grabado   { background:#E3F2FD; color:#1565C0; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.tag-presencial{ background:#FFF3EE; color:#E64A19; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.tag-nuevo     { background:#FFF8E1; color:#F57F17; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.cc-body { padding:18px; }
+.cc-name { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:8px; line-height:1.4; }
+.cc-desc { font-size:12px; color:var(--gray-600); line-height:1.6; margin-bottom:12px; }
+.cc-meta { display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.cc-meta span { font-size:11px; color:var(--gray-400); display:flex; align-items:center; gap:3px; }
+.cc-footer { display:flex; align-items:center; justify-content:space-between; padding-top:12px; border-top:1px solid var(--gray-200); }
+.cc-precio-old { font-size:11px; color:var(--gray-400); text-decoration:line-through; display:block; }
+.cc-precio { font-size:16px; font-weight:700; color:var(--navy); }
+.cc-btn { font-size:12px; font-weight:600; padding:8px 16px; border-radius:var(--radius-sm); background:var(--blue-light); color:var(--blue); border:none; cursor:pointer; transition:all 0.15s; }
+.cc-btn:hover { background:var(--blue); color:#fff; }
+
+/* CTA BOTTOM */
+.cta-bottom { background:var(--navy); padding:48px 0; text-align:center; }
+.cta-bottom h2 { font-size:24px; font-weight:800; color:#fff; margin-bottom:10px; }
+.cta-bottom p { font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:24px; }
+.cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn-white { display:inline-block; background:#fff; color:var(--navy); padding:12px 28px; border-radius:var(--radius-md); font-size:14px; font-weight:700; cursor:pointer; }
+.btn-ghost { display:inline-block; background:transparent; color:#fff; padding:11px 26px; border-radius:var(--radius-md); font-size:14px; font-weight:600; border:1.5px solid rgba(255,255,255,0.4); }
+
+/* FOOTER */
+footer { background:var(--navy); padding:40px 0 24px; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:32px; margin-bottom:32px; }
+.footer-logo-name { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#fff; }
+.footer-logo-tag { font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:12px; }
+.footer-desc { font-size:12px; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:14px; }
+.footer-col h4 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.5); margin-bottom:12px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.footer-col ul li a { font-size:12px; color:rgba(255,255,255,0.55); transition:color 0.15s; }
+.footer-col ul li a:hover { color:#fff; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+.footer-bottom p { font-size:11px; color:rgba(255,255,255,0.3); }
+
+/* MODAL */
+.modal-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(5,25,45,0.6); z-index:9999; align-items:center; justify-content:center; }
+.modal-box { background:#fff; border-radius:var(--radius-lg); padding:28px; max-width:420px; width:90%; position:relative; }
+.modal-close { position:absolute; top:12px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--gray-400); }
+.modal-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:var(--navy); margin-bottom:6px; }
+.modal-sub { font-size:13px; color:var(--gray-600); margin-bottom:20px; }
+.modal-btn-wa { display:block; background:#25D366; color:#fff; padding:12px; border-radius:var(--radius-md); text-align:center; font-weight:600; font-size:14px; margin-bottom:8px; }
+.modal-btn-email { display:block; background:var(--blue-light); color:var(--blue); padding:12px; border-radius:var(--radius-md); text-align:center; font-weight:600; font-size:14px; }
+
+/* RESPONSIVE */
+@media(max-width:900px){ .footer-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:600px){
+  .nav-links { display:none; } .hamburger { display:flex; }
+  .page-hero h1 { font-size:24px; }
+  .cursos-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; }
+  .filtros-inner { gap:6px; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Inicio</a>
+      <span style="color:var(--gray-400)">›</span>
+      <a href="index.html#areas">Áreas</a>
+      <span style="color:var(--gray-400)">›</span>
+      <span>Seguridad Integral</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-badge">🛡️ Área de Seguridad</div>
+    <h1>Seguridad Integral</h1>
+    <p>Cursos certificados en prevención de riesgos, normativa peruana y cumplimiento de la Ley 29783. Formación práctica para profesionales de SST.</p>
+    <div class="hero-meta">
+      <div class="hm-item"><span class="hm-icon">📚</span><span>17 cursos disponibles</span></div>
+      <div class="hm-item"><span class="hm-icon">🎓</span><span>Certificado incluido</span></div>
+      <div class="hm-item"><span class="hm-icon">📹</span><span>En vivo, grabado y presencial</span></div>
+      <div class="hm-item"><span class="hm-icon">📍</span><span>Lima, Perú</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTROS -->
+<div class="filtros-bar">
+  <div class="container">
+    <div class="filtros-inner">
+      <span class="filtro-label">ÁREA:</span>
+      <a href="cursos-sso.html"       class="filtro active">🛡️ Seguridad Integral</a>
+      <a href="cursos-calidad.html"   class="filtro">📊 Sist. Integrado de Gestión</a>
+      <a href="cursos-liderazgo.html" class="filtro">🎯 Desarrollo Empresarial</a>
+    </div>
+  </div>
+</div>
+
+<!-- CURSOS -->
+<section class="cursos-section">
+  <div class="container">
+    <div class="cursos-header">
+      <div>
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue-bright);margin-bottom:4px">Catálogo completo</div>
+        <div style="font-size:20px;font-weight:800;color:var(--navy)">Seguridad Integral</div>
+      </div>
+      <div class="cursos-count">Mostrando <strong id="countVisible">17</strong> de <strong>17</strong> cursos</div>
+    </div>
+
+    <div class="cursos-grid" id="cursosGrid">
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#DBEAFE">⚖️
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Introducción a la Ley 29783 de Seguridad y Salud en el Trabajo</div>
+          <div class="cc-desc">Marco legal peruano en SST, obligaciones del empleador y derechos del trabajador.</div>
+          <div class="cc-meta"><span>⏱ 8 horas</span><span>📅 Próximamente</span><span>🎓 Certificado</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 80</span><span class="cc-precio">S/ 50</span></div><button class="cc-btn" onclick="verCurso('ley-29783')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#E0F2FE">🚨
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Gestión de Accidentes de Trabajo</div>
+          <div class="cc-desc">Procedimientos de notificación, investigación y registro de accidentes laborales.</div>
+          <div class="cc-meta"><span>⏱ 8 horas</span><span>📹 4 sesiones</span><span>⭐ 4.8</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 90</span><span class="cc-precio">S/ 60</span></div><button class="cc-btn" onclick="verCurso('gestion-accidentes')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#E0F2FE">⚠️
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Gestión de Incidentes e Incidentes Peligrosos</div>
+          <div class="cc-desc">Clasificación, registro y análisis de incidentes para prevención de accidentes.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📹 3 sesiones</span><span>⭐ 4.7</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 80</span><span class="cc-precio">S/ 55</span></div><button class="cc-btn" onclick="verCurso('gestion-incidentes')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#DBEAFE">🔍
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span><span class="tag-nuevo">Nuevo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Identificación de Peligros y Evaluación de Riesgos (IPERC)</div>
+          <div class="cc-desc">Metodología IPERC, matrices de riesgo y medidas de control en el trabajo.</div>
+          <div class="cc-meta"><span>⏱ 10 horas</span><span>📅 Próximamente</span><span>🎓 Certificado</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 100</span><span class="cc-precio">S/ 70</span></div><button class="cc-btn" onclick="verCurso('iperc')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="presencial">
+        <div class="cc-thumb" style="background:#FFF3EE">👥
+          <div class="cc-thumb-badges"><span class="tag-presencial">Presencial</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Comité o Supervisor de Seguridad y Salud en el Trabajo</div>
+          <div class="cc-desc">Funciones, obligaciones y elección del Comité o Supervisor de SST según la norma.</div>
+          <div class="cc-meta"><span>⏱ 8 horas</span><span>📍 Lima</span><span>🎓 Certificado</span></div>
+          <div class="cc-footer"><div><span class="cc-precio">S/ 65</span></div><button class="cc-btn" onclick="verCurso('comite-supervisor-sst')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#E8F5E9">📝
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Análisis de Trabajo Seguro (ATS)</div>
+          <div class="cc-desc">Elaboración de ATS, identificación de riesgos por tarea y medidas preventivas.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📅 Próximamente</span><span>👥 20 cupos</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 75</span><span class="cc-precio">S/ 50</span></div><button class="cc-btn" onclick="verCurso('ats')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#E0F2FE">🔎
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Herramientas para la Investigación de Accidentes</div>
+          <div class="cc-desc">Árbol de causas, metodología 5 Por Qué y análisis de causas raíz.</div>
+          <div class="cc-meta"><span>⏱ 8 horas</span><span>📹 4 sesiones</span><span>⭐ 4.9</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 90</span><span class="cc-precio">S/ 65</span></div><button class="cc-btn" onclick="verCurso('investigacion-accidentes')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#DBEAFE">🦺
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Entrega, Conservación y Reposición de EPP's</div>
+          <div class="cc-desc">Gestión del equipo de protección personal, registros y responsabilidades legales.</div>
+          <div class="cc-meta"><span>⏱ 4 horas</span><span>📅 Próximamente</span><span>🎓 Certificado</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 60</span><span class="cc-precio">S/ 40</span></div><button class="cc-btn" onclick="verCurso('epps')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#F3E5F5">🧠
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Seguridad Basada en el Comportamiento (SBC)</div>
+          <div class="cc-desc">Cultura de seguridad, observación de comportamientos y refuerzo positivo en el trabajo.</div>
+          <div class="cc-meta"><span>⏱ 10 horas</span><span>📹 5 sesiones</span><span>⭐ 4.8</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 100</span><span class="cc-precio">S/ 70</span></div><button class="cc-btn" onclick="verCurso('seguridad-comportamiento')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#E8F5E9">🪑
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Ergonomía</div>
+          <div class="cc-desc">Principios ergonómicos, evaluación postural y prevención de trastornos musculoesqueléticos.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📅 Próximamente</span><span>👥 18 cupos</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 80</span><span class="cc-precio">S/ 55</span></div><button class="cc-btn" onclick="verCurso('ergonomia')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="presencial">
+        <div class="cc-thumb" style="background:#FFF3EE">🚑
+          <div class="cc-thumb-badges"><span class="tag-presencial">Presencial</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Primeros Auxilios</div>
+          <div class="cc-desc">RCP, atención de heridas, quemaduras y emergencias médicas en el entorno laboral.</div>
+          <div class="cc-meta"><span>⏱ 8 horas</span><span>📍 Lima</span><span>🎓 Certificado</span></div>
+          <div class="cc-footer"><div><span class="cc-precio">S/ 55</span></div><button class="cc-btn" onclick="verCurso('primeros-auxilios')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#FDE8E8">😓
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span><span class="tag-nuevo">Nuevo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Prevención del Burnout</div>
+          <div class="cc-desc">Identificación, prevención y manejo del síndrome de agotamiento laboral en las organizaciones.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📹 3 sesiones</span><span>⭐ 4.9</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 75</span><span class="cc-precio">S/ 50</span></div><button class="cc-btn" onclick="verCurso('prevencion-burnout')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#FCE4EC">⚖️
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Ley 27942 — Prevención y Sanción del Hostigamiento Sexual</div>
+          <div class="cc-desc">Marco normativo, procedimientos de denuncia y obligaciones del empleador.</div>
+          <div class="cc-meta"><span>⏱ 4 horas</span><span>📅 Próximamente</span><span>🎓 Certificado</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 60</span><span class="cc-precio">S/ 40</span></div><button class="cc-btn" onclick="verCurso('ley-27942')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#FCE4EC">🤝
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Capacitación Especializada de Hostigamiento Sexual en el Trabajo</div>
+          <div class="cc-desc">Protocolos internos, canales de atención y gestión de casos en la empresa.</div>
+          <div class="cc-meta"><span>⏱ 6 horas</span><span>📹 3 sesiones</span><span>⭐ 4.8</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 75</span><span class="cc-precio">S/ 50</span></div><button class="cc-btn" onclick="verCurso('hostigamiento-sexual')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="presencial">
+        <div class="cc-thumb" style="background:#FFF3EE">🚗
+          <div class="cc-thumb-badges"><span class="tag-presencial">Presencial</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Manejo Defensivo</div>
+          <div class="cc-desc">Técnicas de conducción segura, gestión del riesgo vial y prevención de accidentes de tránsito.</div>
+          <div class="cc-meta"><span>⏱ 8 horas</span><span>📍 Lima</span><span>🎓 Certificado</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 90</span><span class="cc-precio">S/ 65</span></div><button class="cc-btn" onclick="verCurso('manejo-defensivo')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="vivo">
+        <div class="cc-thumb" style="background:#E8F5E9">📅
+          <div class="cc-thumb-badges"><span class="tag-vivo">En vivo</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Desarrollo de las Reuniones Mensuales Obligatorias de SST</div>
+          <div class="cc-desc">Planificación, conducción y registro de las reuniones del Comité o Supervisor de SST.</div>
+          <div class="cc-meta"><span>⏱ 4 horas</span><span>📅 Próximamente</span><span>👥 25 cupos</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 55</span><span class="cc-precio">S/ 35</span></div><button class="cc-btn" onclick="verCurso('reuniones-sst')">Ver curso</button></div>
+        </div>
+      </div>
+
+      <div class="curso-card" data-modal="grabado">
+        <div class="cc-thumb" style="background:#E0F2FE">😴
+          <div class="cc-thumb-badges"><span class="tag-grabado">Grabado</span></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Fatiga y Somnolencia</div>
+          <div class="cc-desc">Impacto de la fatiga en la seguridad laboral, factores de riesgo y estrategias de prevención.</div>
+          <div class="cc-meta"><span>⏱ 4 horas</span><span>📹 2 sesiones</span><span>⭐ 4.7</span></div>
+          <div class="cc-footer"><div><span class="cc-precio-old">S/ 55</span><span class="cc-precio">S/ 35</span></div><button class="cc-btn" onclick="verCurso('fatiga-somnolencia')">Ver curso</button></div>
+        </div>
+      </div>
+
+    </div><!-- /cursos-grid -->
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <div class="container">
+    <h2>¿Necesitas capacitación para tu empresa?</h2>
+    <p>Ofrecemos programas corporativos in-house para grupos de trabajadores.</p>
+    <div class="cta-btns">
+      <a href="contacto.html" class="btn-white">Solicitar cotización corporativa</a>
+      <a href="https://wa.me/51999000000" target="_blank" class="btn-ghost">📱 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-name">PROTEQLIFE</div>
+        <div class="footer-logo-tag">Consulting — Cursos Certificados</div>
+        <p class="footer-desc">Empresa especializada en capacitaciones certificadas en modalidad virtual en vivo, grabaciones y presencial.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Áreas</h4>
+        <ul>
+          <li><a href="cursos-sso.html">Seguridad Integral</a></li>
+          <li><a href="cursos-calidad.html">Sistema Integrado de Gestión</a></li>
+          <li><a href="cursos-liderazgo.html">Desarrollo & Liderazgo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="contacto.html">Contáctanos</a></li>
+          <li><a href="#">Quiénes somos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Soporte</h4>
+        <ul>
+          <li><a href="#">Aula virtual</a></li>
+          <li><a href="#">Validar certificado</a></li>
+          <li><a href="#">Libro de reclamaciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PROTEQLIFE Consulting — Todos los derechos reservados.</p>
+      <p>Lima, Perú</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Sistema de modal, carrito y pagos compartido -->
+<script src="cursos-modal.js"></script>
+
+<script>
+// Filtro de modalidad
+function filtrar(el, tipo) {
+  document.querySelectorAll('.filtro').forEach(function(f){ f.classList.remove('active'); });
+  el.classList.add('active');
+  document.querySelectorAll('.curso-card').forEach(function(c){
+    c.style.display = (tipo === 'todos' || c.dataset.modalidad === tipo) ? '' : 'none';
+  });
+  var visibles = document.querySelectorAll('.curso-card:not([style*="none"])').length;
+  var cnt = document.getElementById('countVisible');
+  if (cnt) cnt.textContent = visibles;
+}
+// Compatibilidad con nav viejo
+function toggleMenu() { navToggleMob && navToggleMob(); }
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>
