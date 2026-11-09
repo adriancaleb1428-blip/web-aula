@@ -104,8 +104,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop
 .modal-add-btn.added{background:var(--green)}
 
 /* CARRITO FLOTANTE */
-.cart-btn{position:fixed;bottom:28px;right:28px;background:var(--gold);color:#fff;border:none;border-radius:50px;padding:12px 20px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:8px;z-index:500;transition:all .2s}
-.cart-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
 .cart-count{background:#fff;color:var(--gold-dark);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
 
 /* CTA */
@@ -592,11 +590,6 @@ footer{background:var(--navy);padding:40px 0 24px;border-top:1px solid rgba(255,
     </div>
   </div>
 </footer>
-
-<!-- BOTÓN CARRITO FLOTANTE -->
-<button class="cart-btn" id="cartFloatBtn" onclick="abrirCarrito()" style="display:none">
-  🛒 Carrito <span class="cart-count" id="cartCount">0</span>
-</button>
 
 <!-- MODAL DETALLE CURSO -->
 <div class="modal-overlay" id="cursoModal">

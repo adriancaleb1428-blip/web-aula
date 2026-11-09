@@ -960,7 +960,7 @@ function PQL_inyectarHTML() {
       transition:background .2s"
       onmouseover="this.style.background='#0C3254'"
       onmouseout="this.style.background='#1565C0'">
-      Consultar inscripción
+      Finalizar inscripción
     </button>
   </div>
 </div>
@@ -968,14 +968,14 @@ function PQL_inyectarHTML() {
 <!-- ── BOTÓN FLOTANTE CARRITO ── -->
 <button id="PQL_cartFloatBtn" onclick="(typeof toggleCarrito==='function'?toggleCarrito():PQL_abrirCarrito())"
   style="display:none;position:fixed;bottom:24px;right:24px;
-  background:#05192D;color:#fff;border:none;border-radius:50px;
-  padding:12px 20px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
-  cursor:pointer;box-shadow:0 8px 24px rgba(5,25,45,.3);
+  background:#1565C0;color:#fff;border:none;border-radius:50px;
+  padding:12px 20px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;box-shadow:0 12px 40px rgba(5,25,45,.14);
   align-items:center;gap:8px;z-index:500;transition:all .2s"
-  onmouseover="this.style.background='#1565C0';this.style.transform='translateY(-2px)'"
-  onmouseout="this.style.background='#05192D';this.style.transform='translateY(0)'">
-  🛒 Carrito
-  <span class="pql-float-count" style="background:#2196F3;border-radius:50%;
+  onmouseover="this.style.background='#0C3254';this.style.transform='translateY(-2px)'"
+  onmouseout="this.style.background='#1565C0';this.style.transform='translateY(0)'">
+  🛒 Ver carrito
+  <span class="pql-float-count" style="background:#fff;color:#1565C0;font-weight:800;border-radius:50%;
     min-width:22px;height:22px;padding:0 4px;display:inline-flex;
     align-items:center;justify-content:center;font-size:12px">0</span>
 </button>
