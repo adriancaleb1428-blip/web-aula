@@ -565,12 +565,9 @@ function PQL_renderCarritoPanel() {
   if (totalEl) totalEl.textContent = 'S/ ' + PQL_totalCarrito();
 }
 
+// El panel del carrito es el compartido de carrito.js (el mismo de la página de detalle).
 function PQL_abrirCarrito() {
-  PQL_renderCarritoPanel();
-  var panel = document.getElementById('PQL_cartPanel');
-  var overlay = document.getElementById('PQL_cartOverlay');
-  if (panel)   panel.classList.add('open');
-  if (overlay) overlay.classList.add('open');
+  if (typeof abrirCarrito === 'function') abrirCarrito();
 }
 
 function PQL_cerrarCarrito() {
@@ -918,68 +915,6 @@ function PQL_cerrarConfirmacion() {
 // ─────────────────────────────────────────────────────────
 function PQL_inyectarHTML() {
   var html = `
-<!-- ── OVERLAY CARRITO ── -->
-<div id="PQL_cartOverlay" onclick="PQL_cerrarCarrito()"
-  style="position:fixed;inset:0;background:rgba(5,25,45,0.4);z-index:3999;
-  opacity:0;visibility:hidden;transition:all 0.25s;pointer-events:none"></div>
-
-<!-- ── PANEL CARRITO ── -->
-<div id="PQL_cartPanel"
-  style="position:fixed;top:0;right:0;height:100vh;width:370px;max-width:96vw;
-  background:#fff;z-index:4000;transform:translateX(100%);
-  transition:transform 0.3s cubic-bezier(.4,0,.2,1);
-  display:flex;flex-direction:column;
-  box-shadow:-8px 0 40px rgba(5,25,45,0.15)">
-
-  <!-- Header -->
-  <div style="padding:18px 22px;border-bottom:1px solid #E8ECF0;
-    display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
-    <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#05192D;display:flex;align-items:center;gap:8px">
-      🛒 Mi carrito
-      <span style="background:#1565C0;color:#fff;font-size:12px;
-        border-radius:20px;padding:2px 9px;font-family:'DM Sans',sans-serif" class="pql-cart-count">0</span>
-    </span>
-    <button onclick="PQL_cerrarCarrito()"
-      style="background:none;border:none;font-size:22px;cursor:pointer;color:#9BA3AD;line-height:1">✕</button>
-  </div>
-
-  <!-- Items -->
-  <div id="PQL_cartItems" style="flex:1;overflow-y:auto;padding:16px 22px"></div>
-
-  <!-- Footer -->
-  <div style="padding:18px 22px;border-top:1px solid #E8ECF0;flex-shrink:0">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <span style="font-size:14px;color:#5A6472;font-weight:500">Total:</span>
-      <span id="PQL_cartTotal"
-        style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:#05192D">S/ 0</span>
-    </div>
-    <button onclick="PQL_abrirCheckout()"
-      style="width:100%;padding:13px;background:#1565C0;color:#fff;border:none;
-      border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;
-      cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
-      transition:background .2s"
-      onmouseover="this.style.background='#0C3254'"
-      onmouseout="this.style.background='#1565C0'">
-      Finalizar inscripción
-    </button>
-  </div>
-</div>
-
-<!-- ── BOTÓN FLOTANTE CARRITO ── -->
-<button id="PQL_cartFloatBtn" onclick="(typeof toggleCarrito==='function'?toggleCarrito():PQL_abrirCarrito())"
-  style="display:none;position:fixed;bottom:24px;right:24px;
-  background:#1565C0;color:#fff;border:none;border-radius:50px;
-  padding:12px 20px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;
-  cursor:pointer;box-shadow:0 12px 40px rgba(5,25,45,.14);
-  align-items:center;gap:8px;z-index:500;transition:all .2s"
-  onmouseover="this.style.background='#0C3254';this.style.transform='translateY(-2px)'"
-  onmouseout="this.style.background='#1565C0';this.style.transform='translateY(0)'">
-  🛒 Ver carrito
-  <span class="pql-float-count" style="background:#fff;color:#1565C0;font-weight:800;border-radius:50%;
-    min-width:22px;height:22px;padding:0 4px;display:inline-flex;
-    align-items:center;justify-content:center;font-size:12px">0</span>
-</button>
-
 <!-- ── MODAL DE CURSO ── -->
 <div id="PQL_modal" onclick="if(event.target===this)PQL_cerrarModal()"
   style="display:none;position:fixed;inset:0;background:rgba(5,25,45,0.65);
