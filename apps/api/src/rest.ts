@@ -6,20 +6,20 @@ import type { User } from './auth.js'
 
 type Ctx = { user: User; values: unknown[] }
 const bind = (ctx: Ctx, value: unknown) => { ctx.values.push(value); return `$${ctx.values.length}` }
-const me = (ctx: Ctx) => bind(ctx, ctx.user.id)
+const yo = (ctx: Ctx) => bind(ctx, ctx.user.id)
 
-// Cursos que el usuario administra (instructor asignado o creador) y cursos en los que está matriculado.
-const managed = (ctx: Ctx) => `(select course_id from course_instructors where instructor_id = ${me(ctx)} union select id from courses where created_by = ${me(ctx)})`
-const enrolled = (ctx: Ctx) => `(select course_id from enrollments where student_id = ${me(ctx)} and status = 'active')`
+// Cursos que el usuario administra (facilitador asignado o creador) y cursos en los que está matriculado.
+const administrados = (ctx: Ctx) => `(select curso_id from curso_facilitadores where facilitador_id = ${yo(ctx)} union select id from cursos where creado_por = ${yo(ctx)})`
+const matriculado = (ctx: Ctx) => `(select curso_id from matriculas where participante_id = ${yo(ctx)} and estado = 'activa')`
 
-/** Visibilidad de filas de un recurso ligado a un curso: admin todo, facilitador sus cursos, participante sus matrículas. */
-function courseScope(ctx: Ctx, column: string, studentRule = 'true') {
-  if (ctx.user.role === 'admin') return 'true'
-  if (ctx.user.role === 'teacher') return `${column} in ${managed(ctx)}`
-  return `(${column} in ${enrolled(ctx)} and ${studentRule})`
+/** Visibilidad de filas de un recurso ligado a un curso: administrador todo, facilitador sus cursos, participante sus matrículas. */
+function alcanceCurso(ctx: Ctx, columna: string, reglaParticipante = 'true') {
+  if (ctx.user.rol === 'administrador') return 'true'
+  if (ctx.user.rol === 'facilitador') return `${columna} in ${administrados(ctx)}`
+  return `(${columna} in ${matriculado(ctx)} and ${reglaParticipante})`
 }
-const staffScope = (ctx: Ctx, column: string) => ctx.user.role === 'student' ? 'false' : courseScope(ctx, column)
-const adminOnly = (ctx: Ctx) => ctx.user.role === 'admin' ? 'true' : 'false'
+const soloPersonal = (ctx: Ctx, columna: string) => ctx.user.rol === 'participante' ? 'false' : alcanceCurso(ctx, columna)
+const soloAdmin = (ctx: Ctx) => ctx.user.rol === 'administrador' ? 'true' : 'false'
 
 type Def = {
   read: (ctx: Ctx, a: string) => string
@@ -30,90 +30,91 @@ type Def = {
   columns?: string[]
   /** Columnas que se pueden modificar (por defecto, las mismas de `columns`). */
   updatable?: string[]
-  /** Columnas que el servidor fija con el usuario actual al insertar. */
+  /** Columna que el servidor fija con el usuario actual al insertar. */
   owner?: string
   canInsert?: (user: User, row: Record<string, unknown>) => Promise<boolean> | boolean
   conflict?: string[]
 }
 
-const managesCourse = async (user: User, courseId: unknown) => {
-  if (user.role === 'admin') return true
-  if (user.role !== 'teacher' || typeof courseId !== 'string') return false
-  const { rows } = await pool.query('select 1 from course_instructors where course_id = $1 and instructor_id = $2 union select 1 from courses where id = $1 and created_by = $2', [courseId, user.id])
+const administraCurso = async (user: User, cursoId: unknown) => {
+  if (user.rol === 'administrador') return true
+  if (user.rol !== 'facilitador' || typeof cursoId !== 'string') return false
+  const { rows } = await pool.query('select 1 from curso_facilitadores where curso_id = $1 and facilitador_id = $2 union select 1 from cursos where id = $1 and creado_por = $2', [cursoId, user.id])
   return rows.length > 0
 }
-const courseStaff = (user: User, row: Record<string, unknown>) => managesCourse(user, row.course_id)
-const inMyThread = async (user: User, row: Record<string, unknown>) => {
-  if (typeof row.conversation_id !== 'string') return false
-  const { rows } = await pool.query('select 1 from course_threads where id = $1 and (student_id = $2 or teacher_id = $2)', [row.conversation_id, user.id])
+const personalDelCurso = (user: User, row: Record<string, unknown>) => administraCurso(user, row.curso_id)
+const enMiConversacion = async (user: User, row: Record<string, unknown>) => {
+  if (typeof row.conversacion_id !== 'string') return false
+  const { rows } = await pool.query('select 1 from curso_conversaciones where id = $1 and (participante_id = $2 or facilitador_id = $2)', [row.conversacion_id, user.id])
   return rows.length > 0
 }
+const misConversaciones = (c: Ctx) => `(select id from curso_conversaciones where participante_id = ${yo(c)} or facilitador_id = ${yo(c)})`
 
 const tables: Record<string, Def> = {
-  profiles: {
-    read: (c, a) => c.user.role === 'admin' ? 'true' : c.user.role === 'teacher' ? `(${a}.id = ${me(c)} or ${a}.role = 'student')` : `${a}.id = ${me(c)}`,
-    update: (c, a) => `${a}.id = ${me(c)}`,
-    columns: ['full_name', 'phone', 'company', 'job_title', 'bio', 'avatar_url'],
+  perfiles: {
+    read: (c, a) => c.user.rol === 'administrador' ? 'true' : c.user.rol === 'facilitador' ? `(${a}.id = ${yo(c)} or ${a}.rol = 'participante')` : `${a}.id = ${yo(c)}`,
+    update: (c, a) => `${a}.id = ${yo(c)}`,
+    columns: ['nombre_completo', 'telefono', 'empresa', 'cargo', 'biografia', 'foto_url'],
   },
-  courses: {
-    read: (c, a) => c.user.role === 'admin' ? 'true' : c.user.role === 'teacher' ? `${a}.id in ${managed(c)}` : `(${a}.id in ${enrolled(c)} and ${a}.status = 'published')`,
-    update: (c, a) => c.user.role === 'admin' ? 'true' : c.user.role === 'teacher' ? `${a}.id in ${managed(c)}` : 'false',
-    remove: adminOnlyAlias,
-    columns: ['name', 'code', 'description', 'category', 'academic_period', 'modality', 'starts_on', 'ends_on', 'status', 'cover_url'],
-    owner: 'created_by',
-    canInsert: user => user.role === 'admin' || (user.role === 'teacher' && user.canCreateCourses),
+  cursos: {
+    read: (c, a) => c.user.rol === 'administrador' ? 'true' : c.user.rol === 'facilitador' ? `${a}.id in ${administrados(c)}` : `(${a}.id in ${matriculado(c)} and ${a}.estado = 'publicado')`,
+    update: (c, a) => c.user.rol === 'administrador' ? 'true' : c.user.rol === 'facilitador' ? `${a}.id in ${administrados(c)}` : 'false',
+    remove: soloAdminAlias,
+    columns: ['nombre', 'codigo', 'descripcion', 'categoria', 'periodo_academico', 'modalidad', 'inicia_el', 'termina_el', 'estado', 'portada_url'],
+    owner: 'creado_por',
+    canInsert: user => user.rol === 'administrador' || (user.rol === 'facilitador' && user.puedeCrearCursos),
   },
-  course_instructors: {
-    read: (c, a) => c.user.role === 'admin' ? 'true' : c.user.role === 'teacher' ? `(${a}.instructor_id = ${me(c)} or ${a}.course_id in ${managed(c)})` : `${a}.course_id in ${enrolled(c)}`,
-    update: adminOnly, remove: adminOnly, columns: ['course_id', 'instructor_id', 'can_manage', 'can_create_courses'],
-    canInsert: user => user.role === 'admin', conflict: ['course_id', 'instructor_id'],
+  curso_facilitadores: {
+    read: (c, a) => c.user.rol === 'administrador' ? 'true' : c.user.rol === 'facilitador' ? `(${a}.facilitador_id = ${yo(c)} or ${a}.curso_id in ${administrados(c)})` : `${a}.curso_id in ${matriculado(c)}`,
+    update: soloAdmin, remove: soloAdmin, columns: ['curso_id', 'facilitador_id', 'puede_gestionar', 'puede_crear_cursos'],
+    canInsert: user => user.rol === 'administrador', conflict: ['curso_id', 'facilitador_id'],
   },
-  enrollments: {
-    read: (c, a) => c.user.role === 'student' ? `${a}.student_id = ${me(c)}` : courseScope(c, `${a}.course_id`),
-    update: adminOnly, remove: adminOnly, columns: ['course_id', 'student_id', 'status'],
-    canInsert: user => user.role === 'admin', conflict: ['course_id', 'student_id'],
+  matriculas: {
+    read: (c, a) => c.user.rol === 'participante' ? `${a}.participante_id = ${yo(c)}` : alcanceCurso(c, `${a}.curso_id`),
+    update: soloAdmin, remove: soloAdmin, columns: ['curso_id', 'participante_id', 'estado'],
+    canInsert: user => user.rol === 'administrador', conflict: ['curso_id', 'participante_id'],
   },
-  modules: {
-    read: (c, a) => courseScope(c, `${a}.course_id`, `${a}.published`),
-    update: (c, a) => staffScope(c, `${a}.course_id`), remove: (c, a) => staffScope(c, `${a}.course_id`),
-    columns: ['course_id', 'title', 'description', 'position', 'published'], canInsert: courseStaff,
+  modulos: {
+    read: (c, a) => alcanceCurso(c, `${a}.curso_id`, `${a}.publicado`),
+    update: (c, a) => soloPersonal(c, `${a}.curso_id`), remove: (c, a) => soloPersonal(c, `${a}.curso_id`),
+    columns: ['curso_id', 'titulo', 'descripcion', 'posicion', 'publicado'], canInsert: personalDelCurso,
   },
-  lessons: {
-    read: (c, a) => c.user.role === 'admin' ? 'true' : `exists (select 1 from modules m where m.id = ${a}.module_id and ${courseScope(c, 'm.course_id', `m.published and ${a}.published`)})`,
+  lecciones: {
+    read: (c, a) => c.user.rol === 'administrador' ? 'true' : `exists (select 1 from modulos m where m.id = ${a}.modulo_id and ${alcanceCurso(c, 'm.curso_id', `m.publicado and ${a}.publicado`)})`,
   },
-  materials: {
-    read: (c, a) => courseScope(c, `${a}.course_id`, `${a}.is_published`),
-    update: (c, a) => staffScope(c, `${a}.course_id`), remove: (c, a) => staffScope(c, `${a}.course_id`),
-    columns: ['course_id', 'module_id', 'title', 'description', 'storage_path', 'mime_type', 'is_published'], owner: 'uploaded_by', canInsert: courseStaff,
+  materiales: {
+    read: (c, a) => alcanceCurso(c, `${a}.curso_id`, `${a}.publicado`),
+    update: (c, a) => soloPersonal(c, `${a}.curso_id`), remove: (c, a) => soloPersonal(c, `${a}.curso_id`),
+    columns: ['curso_id', 'modulo_id', 'titulo', 'descripcion', 'ruta_archivo', 'tipo_mime', 'publicado'], owner: 'subido_por', canInsert: personalDelCurso,
   },
-  meetings: {
-    read: (c, a) => courseScope(c, `${a}.course_id`),
-    update: (c, a) => staffScope(c, `${a}.course_id`), remove: (c, a) => staffScope(c, `${a}.course_id`),
-    columns: ['course_id', 'title', 'description', 'starts_at', 'ends_at', 'meeting_url', 'room_name', 'status', 'timezone'], owner: 'organizer_id', canInsert: courseStaff,
+  reuniones: {
+    read: (c, a) => alcanceCurso(c, `${a}.curso_id`),
+    update: (c, a) => soloPersonal(c, `${a}.curso_id`), remove: (c, a) => soloPersonal(c, `${a}.curso_id`),
+    columns: ['curso_id', 'titulo', 'descripcion', 'inicia_en', 'termina_en', 'enlace_reunion', 'sala', 'estado', 'zona_horaria'], owner: 'organizador_id', canInsert: personalDelCurso,
   },
-  course_recordings: {
-    read: (c, a) => courseScope(c, `${a}.course_id`, `${a}.is_published`),
-    update: (c, a) => staffScope(c, `${a}.course_id`), remove: (c, a) => staffScope(c, `${a}.course_id`),
-    columns: ['course_id', 'title', 'description', 'storage_path', 'mime_type', 'is_published'], owner: 'uploaded_by', canInsert: courseStaff,
+  curso_grabaciones: {
+    read: (c, a) => alcanceCurso(c, `${a}.curso_id`, `${a}.publicado`),
+    update: (c, a) => soloPersonal(c, `${a}.curso_id`), remove: (c, a) => soloPersonal(c, `${a}.curso_id`),
+    columns: ['curso_id', 'titulo', 'descripcion', 'ruta_archivo', 'tipo_mime', 'publicado'], owner: 'subido_por', canInsert: personalDelCurso,
   },
-  course_certificates: {
-    read: (c, a) => c.user.role === 'student' ? `${a}.student_id = ${me(c)}` : courseScope(c, `${a}.course_id`),
-    update: (c, a) => staffScope(c, `${a}.course_id`), remove: (c, a) => staffScope(c, `${a}.course_id`),
-    columns: ['course_id', 'student_id', 'title', 'certificate_number', 'storage_path', 'mime_type'], owner: 'issued_by', canInsert: courseStaff,
+  curso_certificados: {
+    read: (c, a) => c.user.rol === 'participante' ? `${a}.participante_id = ${yo(c)}` : alcanceCurso(c, `${a}.curso_id`),
+    update: (c, a) => soloPersonal(c, `${a}.curso_id`), remove: (c, a) => soloPersonal(c, `${a}.curso_id`),
+    columns: ['curso_id', 'participante_id', 'titulo', 'numero_certificado', 'ruta_archivo', 'tipo_mime'], owner: 'emitido_por', canInsert: personalDelCurso,
   },
-  notifications: {
-    read: (c, a) => c.user.role === 'admin' ? 'true' : `${a}.user_id = ${me(c)}`,
-    update: (c, a) => `${a}.user_id = ${me(c)}`, remove: adminOnlyAlias, columns: ['read_at'],
+  notificaciones: {
+    read: (c, a) => c.user.rol === 'administrador' ? 'true' : `${a}.usuario_id = ${yo(c)}`,
+    update: (c, a) => `${a}.usuario_id = ${yo(c)}`, remove: soloAdminAlias, columns: ['leido_en'],
   },
-  support_requests: { read: adminOnlyAlias, update: adminOnlyAlias, remove: adminOnlyAlias, columns: ['status'] },
-  course_threads: { read: (c, a) => `(${a}.student_id = ${me(c)} or ${a}.teacher_id = ${me(c)})` },
-  thread_messages: {
-    read: (c, a) => `${a}.conversation_id in (select id from course_threads where student_id = ${me(c)} or teacher_id = ${me(c)})`,
-    update: (c, a) => `${a}.conversation_id in (select id from course_threads where student_id = ${me(c)} or teacher_id = ${me(c)})`,
-    columns: ['conversation_id', 'body'], updatable: ['read_at'], owner: 'sender_id', canInsert: inMyThread,
+  solicitudes_soporte: { read: soloAdminAlias, update: soloAdminAlias, remove: soloAdminAlias, columns: ['estado'] },
+  curso_conversaciones: { read: (c, a) => `(${a}.participante_id = ${yo(c)} or ${a}.facilitador_id = ${yo(c)})` },
+  mensajes: {
+    read: (c, a) => `${a}.conversacion_id in ${misConversaciones(c)}`,
+    update: (c, a) => `${a}.conversacion_id in ${misConversaciones(c)}`,
+    columns: ['conversacion_id', 'contenido'], updatable: ['leido_en'], owner: 'remitente_id', canInsert: enMiConversacion,
   },
 }
-function adminOnlyAlias(ctx: Ctx) { return adminOnly(ctx) }
+function soloAdminAlias(ctx: Ctx) { return soloAdmin(ctx) }
 
 type ColumnInfo = Record<string, string> // columna → tipo
 const schema: Record<string, ColumnInfo> = {}
@@ -217,7 +218,7 @@ export async function runQuery(user: User, tableName: string, request: QueryRequ
       const row = (rowsIn[0] || {}) as Record<string, unknown>
       const keys = Object.keys(row).filter(key => key in columns && IDENT.test(key))
       if (!keys.length) return failure('42601', 'No hay nada que actualizar.')
-      if (user.role !== 'admin' && 'course_id' in row && !(await managesCourse(user, row.course_id))) return failure('42501', 'No tienes permiso para esta acción.')
+      if (user.rol !== 'administrador' && 'curso_id' in row && !(await administraCurso(user, row.curso_id))) return failure('42501', 'No tienes permiso para esta acción.')
       const sets = keys.map(key => `${key} = ${bind(ctx, row[key])}`).join(', ')
       const { rows } = await pool.query(`update ${tableName} ${a} set ${sets} where (${def.update(ctx, a)}) and ${filterSql} returning ${a}.*`, ctx.values)
       return request.returning ? shapeRows(rows) : { data: null, error: null }

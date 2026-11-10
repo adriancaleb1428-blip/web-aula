@@ -3,7 +3,7 @@ import { backend } from '../lib/backend'
 import type { AdminUser, Role } from '../lib/types'
 import { useFlash } from './useFlash'
 
-/** Lista de cuentas (solo administradores) a través de la función admin-users. */
+/** Lista de cuentas (solo administradores) a través de la función admin-usuarios. */
 export function useAdminUsers(role: Role, pushToast: (message: string) => void) {
   const [adminUsers, setAdminUsers] = useState<AdminUser[]>([])
   const [adminUsersReady, setAdminUsersReady] = useState(false)
@@ -11,21 +11,21 @@ export function useAdminUsers(role: Role, pushToast: (message: string) => void) 
   const [adminBusy, setAdminBusy] = useState(false)
 
   async function refreshAdminUsers() {
-    if (!backend || role !== 'admin') return
-    const { data, error } = await backend.functions.invoke('admin-users', { body: { action: 'list' } })
+    if (!backend || role !== 'administrador') return
+    const { data, error } = await backend.functions.invoke('admin-usuarios', { body: { accion: 'listar' } })
     if (error) setAdminMessage('No se pudieron cargar los usuarios. Actualiza la página.')
-    else setAdminUsers((data?.users || []) as AdminUser[])
+    else setAdminUsers((data?.usuarios || []) as AdminUser[])
   }
 
   useEffect(() => {
-    if (role !== 'admin' || !backend) { setAdminUsersReady(true); return }
+    if (role !== 'administrador' || !backend) { setAdminUsersReady(true); return }
     let alive = true
     setAdminUsersReady(false)
     setAdminBusy(true); setAdminMessage('')
-    backend.functions.invoke('admin-users', { body: { action: 'list' } }).then(({ data, error }) => {
+    backend.functions.invoke('admin-usuarios', { body: { accion: 'listar' } }).then(({ data, error }) => {
       if (!alive) return
       if (error) setAdminMessage('No se pudieron cargar los usuarios. Actualiza la página.')
-      else setAdminUsers((data?.users || []) as AdminUser[])
+      else setAdminUsers((data?.usuarios || []) as AdminUser[])
       setAdminBusy(false)
       setAdminUsersReady(true)
     })

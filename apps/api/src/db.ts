@@ -15,9 +15,9 @@ export const query = <T extends pg.QueryResultRow = any>(text: string, values: u
 
 /** Aplica en orden los archivos sql/*.sql que todavía no se hayan ejecutado. */
 export async function migrate() {
-  await pool.query('create table if not exists schema_migrations (name text primary key, applied_at timestamptz not null default now())')
+  await pool.query('create table if not exists migraciones (nombre text primary key, aplicada_en timestamptz not null default now())')
   const dir = path.join(ROOT, 'sql')
-  const applied = new Set((await pool.query('select name from schema_migrations')).rows.map(row => row.name))
+  const applied = new Set((await pool.query('select nombre from migraciones')).rows.map(row => row.nombre))
   const files = readdirSync(dir).filter(file => file.endsWith('.sql')).sort()
   let count = 0
   for (const file of files) {
@@ -26,7 +26,7 @@ export async function migrate() {
     try {
       await client.query('begin')
       await client.query(readFileSync(path.join(dir, file), 'utf8'))
-      await client.query('insert into schema_migrations (name) values ($1)', [file])
+      await client.query('insert into migraciones (nombre) values ($1)', [file])
       await client.query('commit')
       count++
       console.log(`[db] migración aplicada: ${file}`)

@@ -21,7 +21,7 @@ export type Aula = {
   selectedCourseId: string; bumpCourses: () => void; courseRefresh: number
   navigate: (page: Page) => void; openCourse: (course: Course) => void; setOpenThreadId: (id: string | null) => void
   setPreview: (file: PreviewFile | null) => void; pushToast: (message: string) => void
-  sendAcademicNotification: (resourceType: 'material' | 'meeting' | 'recording', resourceId: string) => Promise<void>
+  sendAcademicNotification: (resourceType: 'material' | 'reunion' | 'grabacion', resourceId: string) => Promise<void>
   downloadFile: (bucket: string, path: string, title: string, onError: (message: string) => void) => Promise<void>
 }
 

@@ -22,7 +22,7 @@ export function Login({ error, clearError }: { error: string; clearError: () => 
     setBusy(true)
     setIdleLogoutFlag(false)
     markActivityNow()
-    const { error: signInError } = await backend.auth.signInWithPassword({ email: emailValue, password: passwordValue })
+    const { error: signInError } = await backend.auth.signInWithPassword({ correo: emailValue, contrasena: passwordValue })
     // Same message for unknown accounts and wrong passwords (no user enumeration).
     if (signInError) setNotice(signInError.status === 429 ? 'Demasiados intentos. Espera unos minutos antes de volver a intentarlo.' : 'Correo o contraseña incorrectos.')
     setBusy(false)

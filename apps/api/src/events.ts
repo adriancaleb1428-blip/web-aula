@@ -1,5 +1,5 @@
 // Eventos en vivo (Server-Sent Events). PostgreSQL avisa con LISTEN/NOTIFY cuando cambian los avisos o los
-// mensajes (ver publish_change en el esquema) y el servidor reenvía solo lo que cada usuario puede ver.
+// mensajes (ver publicar_cambio en el esquema) y el servidor reenvía solo lo que cada usuario puede ver.
 import { Router } from 'express'
 import type { Request, Response } from 'express'
 import pg from 'pg'
@@ -10,7 +10,7 @@ import { canRead } from './rest.js'
 
 type Client = { user: User; response: Response }
 const clients = new Set<Client>()
-const TABLES = new Set(['notifications', 'thread_messages'])
+const TABLES = new Set(['notificaciones', 'mensajes'])
 
 export const events = Router()
 events.get('/', requireAuth, (request: Request, response: Response) => {
@@ -27,7 +27,7 @@ export async function listenForChanges() {
   const connect = async () => {
     try {
       await listener.connect()
-      await listener.query('listen aula_events')
+      await listener.query('listen aula_eventos')
     } catch (error) { console.error('[eventos] no se pudo escuchar la base de datos:', (error as Error).message) }
   }
   listener.on('notification', async message => {

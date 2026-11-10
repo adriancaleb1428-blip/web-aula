@@ -15,7 +15,7 @@ async function main() {
     await migrate()
     if (command === 'catalog') console.log(`[catalog] ${await loadCatalog()} cursos cargados`)
     if (command === 'seed' || command === 'reset') {
-      if (command === 'seed' && Number((await query('select count(*) from users')).rows[0].count) > 0) console.log('[seed] ya hay usuarios; usa «db:reset» para empezar de cero.')
+      if (command === 'seed' && Number((await query('select count(*) from usuarios')).rows[0].count) > 0) console.log('[seed] ya hay usuarios; usa «db:reset» para empezar de cero.')
       else await seedInitial()
     }
   } finally {

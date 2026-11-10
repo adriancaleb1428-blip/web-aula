@@ -4,8 +4,8 @@ import type { NextFunction, Request, Response } from 'express'
 import { JWT_SECRET, TOKEN_TTL_SECONDS } from './config.js'
 import { query } from './db.js'
 
-export type Role = 'admin' | 'teacher' | 'student'
-export type User = { id: string; email: string; role: Role; canCreateCourses: boolean; fullName: string | null }
+export type Rol = 'administrador' | 'facilitador' | 'participante'
+export type User = { id: string; correo: string; rol: Rol; puedeCrearCursos: boolean; nombreCompleto: string | null }
 export type AuthedRequest = Request & { user: User }
 
 export const hashPassword = (password: string) => bcrypt.hash(password, 11)
@@ -20,9 +20,9 @@ export async function userFromToken(token: string | undefined): Promise<User | n
   if (!token) return null
   let id: string
   try { id = String((jwt.verify(token, JWT_SECRET) as { sub?: string }).sub) } catch { return null }
-  const { rows } = await query('select u.id, u.email, p.role, p.can_create_courses, p.full_name from users u join profiles p on p.id = u.id where u.id = $1', [id])
+  const { rows } = await query('select u.id, u.correo, p.rol, p.puede_crear_cursos, p.nombre_completo from usuarios u join perfiles p on p.id = u.id where u.id = $1', [id])
   const row = rows[0]
-  return row ? { id: row.id, email: row.email, role: row.role, canCreateCourses: row.can_create_courses, fullName: row.full_name } : null
+  return row ? { id: row.id, correo: row.correo, rol: row.rol, puedeCrearCursos: row.puede_crear_cursos, nombreCompleto: row.nombre_completo } : null
 }
 
 const bearer = (request: Request) => request.headers.authorization?.startsWith('Bearer ') ? request.headers.authorization.slice(7) : undefined
@@ -48,14 +48,14 @@ export function rateLimit(key: string, limit: number, windowMs: number) {
 }
 setInterval(() => { const now = Date.now(); for (const [key, entry] of attempts) if (entry.resetAt < now) attempts.delete(key) }, 60_000).unref()
 
-export async function login(email: string, password: string) {
-  const { rows } = await query('select id, email, password_hash from users where lower(email) = lower($1)', [email.trim()])
+export async function login(correo: string, contrasena: string) {
+  const { rows } = await query('select id, correo, contrasena_hash from usuarios where lower(correo) = lower($1)', [correo.trim()])
   const row = rows[0]
   // Se compara siempre contra un hash para no revelar si el correo existe por el tiempo de respuesta.
-  const ok = await bcrypt.compare(password, row?.password_hash || '$2b$11$invalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidu')
+  const ok = await bcrypt.compare(contrasena, row?.contrasena_hash || '$2b$11$invalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidu')
   if (!row || !ok) return null
-  await query('update users set last_sign_in_at = now() where id = $1', [row.id])
-  return { token: signToken(row.id), user: { id: row.id, email: row.email } }
+  await query('update usuarios set ultimo_acceso_en = now() where id = $1', [row.id])
+  return { token: signToken(row.id), user: { id: row.id, correo: row.correo } }
 }
 
 export const verifyPassword = (password: string, hash: string) => bcrypt.compare(password, hash)

@@ -29,12 +29,12 @@ export function useClassroomData(session: Session, role: Role, courseRefresh: nu
     async function loadCourses() {
       try {
         let ids: string[] | null = null
-        if (role === 'student') {
-          const { data, error } = await backend!.from('enrollments').select('course_id').eq('student_id', session.user.id).eq('status', 'active')
+        if (role === 'participante') {
+          const { data, error } = await backend!.from('matriculas').select('curso_id').eq('participante_id', session.user.id).eq('estado', 'activa')
           if (error) { if (alive) setLoadError(error.message); return }
-          ids = (data || []).map((row: { course_id: string }) => row.course_id)
+          ids = (data || []).map((row: { curso_id: string }) => row.curso_id)
         }
-        let query = backend!.from('courses').select('id, name, code, description, cover_url, status, created_by, category, academic_period, modality, starts_on, ends_on', { count: 'exact' }).eq('status', 'published').order('name')
+        let query = backend!.from('cursos').select('id, nombre, codigo, descripcion, portada_url, estado, creado_por, categoria, periodo_academico, modalidad, inicia_el, termina_el', { count: 'exact' }).eq('estado', 'publicado').order('nombre')
         if (ids) query = query.in('id', ids)
         const { data, count, error } = await query
         if (!alive) return
@@ -49,13 +49,13 @@ export function useClassroomData(session: Session, role: Role, courseRefresh: nu
 
   async function refreshMaterials() {
     if (!backend || !courseIds) { setMaterials([]); return }
-    const { data, error } = await backend.from('materials').select('id, course_id, module_id, title, description, storage_path, mime_type, created_at').in('course_id', courseIds.split(',')).eq('is_published', true).order('created_at')
+    const { data, error } = await backend.from('materiales').select('id, curso_id, modulo_id, titulo, descripcion, ruta_archivo, tipo_mime, creado_en').in('curso_id', courseIds.split(',')).eq('publicado', true).order('creado_en')
     if (error) { setMaterialsError('No pudimos cargar los materiales. Intenta actualizar la página.'); return }
     setMaterialsError(''); setMaterials((data || []) as Material[])
   }
   async function refreshMeetings() {
     if (!backend || !courseIds) { setMeetings([]); return }
-    const { data } = await backend.from('meetings').select('id, course_id, title, description, starts_at, ends_at, room_name, meeting_url, status').in('course_id', courseIds.split(',')).eq('status', 'scheduled').order('starts_at')
+    const { data } = await backend.from('reuniones').select('id, curso_id, titulo, descripcion, inicia_en, termina_en, sala, enlace_reunion, estado').in('curso_id', courseIds.split(',')).eq('estado', 'programada').order('inicia_en')
     setMeetings((data || []) as Meeting[])
   }
 
@@ -63,7 +63,7 @@ export function useClassroomData(session: Session, role: Role, courseRefresh: nu
     if (!backend || !courseIds) { setMaterials([]); setMaterialsLoadedFor(courseIds); return }
     let alive = true
     setMaterialsLoadedFor(null); setMaterialsError('')
-    backend.from('materials').select('id, course_id, module_id, title, description, storage_path, mime_type, created_at').in('course_id', courseIds.split(',')).eq('is_published', true).order('created_at').then(({ data, error }) => {
+    backend.from('materiales').select('id, curso_id, modulo_id, titulo, descripcion, ruta_archivo, tipo_mime, creado_en').in('curso_id', courseIds.split(',')).eq('publicado', true).order('creado_en').then(({ data, error }) => {
       if (!alive) return
       if (error) { setMaterialsError('No pudimos cargar los materiales. Intenta actualizar la página.'); setMaterials([]) }
       else setMaterials((data || []) as Material[])
@@ -76,7 +76,7 @@ export function useClassroomData(session: Session, role: Role, courseRefresh: nu
     if (!backend || !courseIds) { setMeetings([]); setMeetingsLoadedFor(courseIds); return }
     let alive = true
     setMeetingsLoadedFor(null)
-    backend.from('meetings').select('id, course_id, title, description, starts_at, ends_at, room_name, meeting_url, status').in('course_id', courseIds.split(',')).eq('status', 'scheduled').order('starts_at').then(({ data }) => { if (alive) { setMeetings((data || []) as Meeting[]); setMeetingsLoadedFor(courseIds) } })
+    backend.from('reuniones').select('id, curso_id, titulo, descripcion, inicia_en, termina_en, sala, enlace_reunion, estado').in('curso_id', courseIds.split(',')).eq('estado', 'programada').order('inicia_en').then(({ data }) => { if (alive) { setMeetings((data || []) as Meeting[]); setMeetingsLoadedFor(courseIds) } })
     return () => { alive = false }
   }, [courseIds, courseRefresh])
 
@@ -85,8 +85,8 @@ export function useClassroomData(session: Session, role: Role, courseRefresh: nu
     if (!backend || !courseIds) { setRecordings([]); setCertificates([]); setRecordingsLoadedFor(courseIds); setCertificatesLoadedFor(courseIds); return }
     let alive = true
     setRecordingsLoadedFor(null); setCertificatesLoadedFor(null)
-    backend.from('course_recordings').select('id, course_id, title, description, storage_path, mime_type, created_at').in('course_id', courseIds.split(',')).eq('is_published', true).order('created_at', { ascending: false }).then(({ data }) => { if (alive) { setRecordings((data || []) as Recording[]); setRecordingsLoadedFor(courseIds) } })
-    backend.from('course_certificates').select('id, course_id, title, certificate_number, storage_path, issued_at').in('course_id', courseIds.split(',')).order('issued_at', { ascending: false }).then(({ data }) => { if (alive) { setCertificates((data || []) as Certificate[]); setCertificatesLoadedFor(courseIds) } })
+    backend.from('curso_grabaciones').select('id, curso_id, titulo, descripcion, ruta_archivo, tipo_mime, creado_en').in('curso_id', courseIds.split(',')).eq('publicado', true).order('creado_en', { ascending: false }).then(({ data }) => { if (alive) { setRecordings((data || []) as Recording[]); setRecordingsLoadedFor(courseIds) } })
+    backend.from('curso_certificados').select('id, curso_id, titulo, numero_certificado, ruta_archivo, emitido_en').in('curso_id', courseIds.split(',')).order('emitido_en', { ascending: false }).then(({ data }) => { if (alive) { setCertificates((data || []) as Certificate[]); setCertificatesLoadedFor(courseIds) } })
     return () => { alive = false }
   }, [courseIds, courseRefresh])
 
@@ -94,14 +94,14 @@ export function useClassroomData(session: Session, role: Role, courseRefresh: nu
     if (!backend) return
     let alive = true
     const refreshNotifications = async () => {
-      let query = backend!.from('notifications').select('id, user_id, kind, title, body, resource_type, resource_id, read_at, created_at').order('created_at', { ascending: false }).limit(role === 'admin' ? 200 : 50)
-      if (role !== 'admin') query = query.eq('user_id', session.user.id)
+      let query = backend!.from('notificaciones').select('id, usuario_id, tipo, titulo, contenido, recurso_tipo, recurso_id, leido_en, creado_en').order('creado_en', { ascending: false }).limit(role === 'administrador' ? 200 : 50)
+      if (role !== 'administrador') query = query.eq('usuario_id', session.user.id)
       const { data } = await query
       if (alive) { setNotifications((data || []) as NotificationItem[]); setNotificationsReady(true) }
     }
     void refreshNotifications()
-    const changes = { event: '*', schema: 'public', table: 'notifications', ...(role === 'admin' ? {} : { filter: `user_id=eq.${session.user.id}` }) } as const
-    const channel = backend.channel(`notifications:${role === 'admin' ? 'admin' : session.user.id}`).on('postgres_changes', changes, () => void refreshNotifications()).subscribe()
+    const changes = { event: '*', schema: 'public', table: 'notificaciones', ...(role === 'administrador' ? {} : { filter: `usuario_id=eq.${session.user.id}` }) } as const
+    const channel = backend.channel(`notifications:${role === 'administrador' ? 'administrador' : session.user.id}`).on('postgres_changes', changes, () => void refreshNotifications()).subscribe()
     return () => { alive = false; void backend!.removeChannel(channel) }
   }, [session.user.id, role])
 

@@ -1140,21 +1140,21 @@ function mostrarNotif(msg) {
 // ══ CARGAR DESDE API (cuando backend esté activo) ══
 async function cargarDesdeAPI(slug) {
   try {
-    var res  = await fetch(PQL.API + '/shop/courses/' + encodeURIComponent(slug));
+    var res  = await fetch(PQL.API + '/shop/cursos/' + encodeURIComponent(slug));
     var data = await res.json();
-    if (res.ok && data.course) {
-      var c = data.course;
+    if (res.ok && data.curso) {
+      var c = data.curso;
       DB[slug] = {
-        titulo: c.title, desc: c.description || '',
+        titulo: c.titulo, desc: c.descripcion || '',
         emoji: c.emoji || '📚', bg: '#E3F2FD',
-        area: c.category, areaHref: 'cursos-sso.html',
+        area: c.categoria, areaHref: 'cursos-sso.html',
         areaBg: '#E3F2FD', areaColor: '#1565C0',
-        duracion: c.duration || '', modalidad: c.modality || '', nivel: c.level || '',
-        precio: 'S/ ' + Number(c.price).toFixed(0),
-        precioOld: c.listPrice ? 'S/ ' + Number(c.listPrice).toFixed(0) : '',
-        precioNum: Number(c.price),
-        temario: c.syllabus || [], dirigido: c.audience || [],
-        objetivo: c.objective || '',
+        duracion: c.duracion || '', modalidad: c.modalidad || '', nivel: c.nivel || '',
+        precio: 'S/ ' + Number(c.precio).toFixed(0),
+        precioOld: c.precioLista ? 'S/ ' + Number(c.precioLista).toFixed(0) : '',
+        precioNum: Number(c.precio),
+        temario: c.temario || [], dirigido: c.dirigidoA || [],
+        objetivo: c.objetivo || '',
         relacionados: []
       };
       renderCurso(slug, DB[slug]);

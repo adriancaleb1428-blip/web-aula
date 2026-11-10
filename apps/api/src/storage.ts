@@ -12,7 +12,7 @@ import { canRead } from './rest.js'
 
 const MB = 1024 * 1024
 const limits: Record<string, number> = { 'course-materials': 50 * MB, 'course-certificates': 20 * MB, avatars: 2 * MB, 'course-recordings': MAX_UPLOAD_BYTES }
-const tableFor: Record<string, string> = { 'course-materials': 'materials', 'course-recordings': 'course_recordings', 'course-certificates': 'course_certificates' }
+const tableFor: Record<string, string> = { 'course-materials': 'materiales', 'course-recordings': 'curso_grabaciones', 'course-certificates': 'curso_certificados' }
 const types: Record<string, string> = { pdf: 'application/pdf', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', txt: 'text/plain; charset=utf-8', doc: 'application/msword', docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', ppt: 'application/vnd.ms-powerpoint', pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', mp4: 'video/mp4', webm: 'video/webm', mov: 'video/quicktime' }
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
@@ -26,14 +26,14 @@ export function filePath(bucket: string, name: string) {
 
 async function allowed(user: User, bucket: string, name: string, mode: 'read' | 'write') {
   const first = name.split('/')[0]
-  if (bucket === 'avatars') return user.role === 'admin' || first === user.id
+  if (bucket === 'avatars') return user.rol === 'administrador' || first === user.id
   if (mode === 'write') {
-    if (user.role === 'student' || !uuidPattern.test(first)) return false
-    if (user.role === 'admin') return true
-    const { rows } = await pool.query('select 1 from course_instructors where course_id = $1 and instructor_id = $2 union select 1 from courses where id = $1 and created_by = $2', [first, user.id])
+    if (user.rol === 'participante' || !uuidPattern.test(first)) return false
+    if (user.rol === 'administrador') return true
+    const { rows } = await pool.query('select 1 from curso_facilitadores where curso_id = $1 and facilitador_id = $2 union select 1 from cursos where id = $1 and creado_por = $2', [first, user.id])
     return rows.length > 0
   }
-  const { rows } = await pool.query(`select id from ${tableFor[bucket]} where storage_path = $1`, [name])
+  const { rows } = await pool.query(`select id from ${tableFor[bucket]} where ruta_archivo = $1`, [name])
   for (const row of rows) if (await canRead(user, tableFor[bucket], row.id)) return true
   return false
 }

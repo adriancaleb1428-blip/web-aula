@@ -58,7 +58,7 @@ export function App() {
     let alive = true
     setProfileLoading(true)
     setError('')
-    backend.from('profiles').select(PROFILE_FIELDS).eq('id', userId).single().then(({ data, error: profileError }) => {
+    backend.from('perfiles').select(PROFILE_FIELDS).eq('id', userId).single().then(({ data, error: profileError }) => {
       if (!alive) return
       if (profileError) setError('No pudimos validar tu perfil. Comprueba tu conexión e inténtalo de nuevo.')
       else if (data) setProfile(data as Profile)

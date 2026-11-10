@@ -45,13 +45,27 @@ Para volver a los datos iniciales: `pnpm api:reset`.
 ### Flujo de venta → aula
 
 1. `pnpm site:dev` y abre http://localhost:5500: el visitante elige un curso y lo agrega al carrito.
-2. `checkout.html` pide nombre, correo y contraseña; llama a `POST /api/shop/checkout`.
+2. `checkout.html` pide nombre, correo y contraseña; llama a `POST /api/shop/pagar`.
 3. La API crea la cuenta (o reutiliza la existente si la contraseña es correcta), registra el pedido, matricula al alumno y devuelve un token.
 4. El navegador pasa al aula con `#token=…&curso=CÓDIGO` y el aula abre directamente el curso comprado.
 
-Los precios salen siempre de la base de datos. El catálogo (49 cursos) vive en `apps/api/data/catalog.json` y se carga con `pnpm --dir apps/api db:catalog`. Las URLs de API y aula del sitio se configuran en `apps/site/config.js`.
+Los precios salen siempre de la base de datos. El catálogo (49 cursos) vive en `apps/api/data/catalogo.json` y se carga con `pnpm --dir apps/api db:catalog`. Las URLs de API y aula del sitio se configuran en `apps/site/config.js`.
 
-**Pagos:** aún no hay pasarela. En desarrollo el pago es simulado (no se piden datos de tarjeta). En producción `POST /shop/checkout` responde 503 hasta que conectes una pasarela o definas `ALLOW_SIMULATED_PAYMENTS=true`.
+**Pagos:** aún no hay pasarela. En desarrollo el pago es simulado (no se piden datos de tarjeta). En producción `POST /shop/pagar` responde 503 hasta que conectes una pasarela o definas `ALLOW_SIMULATED_PAYMENTS=true`.
+
+## Base de datos
+
+Esquema en PostgreSQL con nombres en español (`apps/api/sql/001_esquema.sql` y `002_tienda.sql`):
+
+| Grupo | Tablas |
+| --- | --- |
+| Cuentas | `usuarios`, `perfiles` (rol: `administrador`, `facilitador`, `participante`) |
+| Cursos | `cursos`, `curso_facilitadores`, `matriculas`, `modulos`, `lecciones` |
+| Contenido | `materiales`, `reuniones`, `curso_grabaciones`, `curso_certificados` |
+| Comunicación | `notificaciones`, `solicitudes_soporte`, `curso_conversaciones`, `mensajes` |
+| Ventas | `pedidos`, `pedido_items` (el catálogo vive en `cursos`, con `en_venta`, `precio`, `temario`…) |
+
+Las migraciones aplicadas se registran en `migraciones`. Los estados también van en español (`borrador/publicado/archivado`, `activa/completada`, `programada/realizada`, `pendiente/pagado`).
 
 ## Producción
 

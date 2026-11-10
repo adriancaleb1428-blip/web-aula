@@ -81,15 +81,15 @@ document.getElementById('form').addEventListener('submit', async function (ev) {
   if (!items.length) return;
   var btn = document.getElementById('pay'); btn.disabled = true; btn.textContent = 'Procesando…';
   try {
-    var res = await fetch(PQL.API + '/shop/checkout', {
+    var res = await fetch(PQL.API + '/shop/pagar', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ full_name: document.getElementById('name').value, email: document.getElementById('email').value, phone: document.getElementById('phone').value, password: document.getElementById('password').value, items: items })
+      body: JSON.stringify({ nombre_completo: document.getElementById('name').value, correo: document.getElementById('email').value, telefono: document.getElementById('phone').value, contrasena: document.getElementById('password').value, items: items })
     });
     var data = await res.json().catch(function () { return {}; });
     if (!res.ok) { showError(data.error || 'No pudimos completar la inscripción. Inténtalo de nuevo.'); return; }
     localStorage.removeItem(KEY);
     // Entra directo al primer curso comprado; el token viaja en el fragmento de la URL.
-    location.href = PQL.AULA + '/#token=' + encodeURIComponent(data.access_token) + '&curso=' + encodeURIComponent(data.courses[0].code);
+    location.href = PQL.AULA + '/#token=' + encodeURIComponent(data.access_token) + '&curso=' + encodeURIComponent(data.cursos[0].codigo);
   } catch (e) {
     showError('No hay conexión con el servidor. Comprueba que la API esté encendida.');
   } finally { btn.disabled = !cart().length; btn.textContent = 'Confirmar inscripción'; }

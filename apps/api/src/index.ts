@@ -19,7 +19,7 @@ async function main() {
   if (!DATABASE_URL) await startDevDatabase()
   await migrate()
   await loadSchema()
-  if (!DATABASE_URL && Number((await query('select count(*) from users')).rows[0].count) === 0) await seedInitial()
+  if (!DATABASE_URL && Number((await query('select count(*) from usuarios')).rows[0].count) === 0) await seedInitial()
   const stopListening = await listenForChanges()
 
   const app = express()
@@ -33,23 +33,23 @@ async function main() {
   api.get('/health', async (_request, response) => { await query('select 1'); response.json({ ok: true }) })
 
   api.post('/auth/login', async (request, response) => {
-    const email = String(request.body?.email || ''), password = String(request.body?.password || '')
-    if (!rateLimit(`login:${request.ip}:${email.toLowerCase()}`, 10, 15 * 60_000)) { response.status(429).json({ error: 'Demasiados intentos. Espera unos minutos antes de volver a intentarlo.' }); return }
-    const result = await login(email, password)
+    const correo = String(request.body?.correo || ''), contrasena = String(request.body?.contrasena || '')
+    if (!rateLimit(`login:${request.ip}:${correo.toLowerCase()}`, 10, 15 * 60_000)) { response.status(429).json({ error: 'Demasiados intentos. Espera unos minutos antes de volver a intentarlo.' }); return }
+    const result = await login(correo, contrasena)
     if (!result) { response.status(400).json({ error: 'Correo o contraseña incorrectos.' }); return }
-    response.json({ access_token: result.token, user: result.user })
+    response.json({ access_token: result.token, usuario: result.user })
   })
   api.get('/auth/session', requireAuth, (request, response) => {
     const user = (request as AuthedRequest).user
-    response.json({ user: { id: user.id, email: user.email, user_metadata: { full_name: user.fullName || '' } } })
+    response.json({ usuario: { id: user.id, correo: user.correo, nombre_completo: user.nombreCompleto || '' } })
   })
   api.post('/auth/password', requireAuth, async (request, response) => {
-    const user = (request as AuthedRequest).user, password = String(request.body?.password || '')
-    const weak = passwordProblem(password)
+    const user = (request as AuthedRequest).user, contrasena = String(request.body?.contrasena || '')
+    const weak = passwordProblem(contrasena)
     if (weak) { response.status(400).json({ error: weak }); return }
-    const current = (await query('select password_hash from users where id = $1', [user.id])).rows[0]
-    if (current && await verifyPassword(password, current.password_hash)) { response.status(400).json({ error: 'Elige una contraseña distinta a la actual.' }); return }
-    await query('update users set password_hash = $2 where id = $1', [user.id, await hashPassword(password)])
+    const current = (await query('select contrasena_hash from usuarios where id = $1', [user.id])).rows[0]
+    if (current && await verifyPassword(contrasena, current.contrasena_hash)) { response.status(400).json({ error: 'Elige una contraseña distinta a la actual.' }); return }
+    await query('update usuarios set contrasena_hash = $2 where id = $1', [user.id, await hashPassword(contrasena)])
     response.json({ ok: true })
   })
 
@@ -59,12 +59,12 @@ async function main() {
   api.post('/rpc/:name', requireAuth, async (request, response) => {
     response.json(await runRpc(String(request.params.name), (request as AuthedRequest).user, request.body || {}))
   })
-  // Funciones de la aplicación; solo «support-request» es pública (el formulario está en la pantalla de ingreso).
+  // Funciones de la aplicación; solo «solicitud-soporte» es pública (el formulario está en la pantalla de ingreso).
   api.post('/fn/:name', async (request, response) => {
     const name = String(request.params.name)
     const header = request.headers.authorization
     const user = await userFromToken(header?.startsWith('Bearer ') ? header.slice(7) : undefined)
-    const limited = name === 'support-request' && !rateLimit(`support:${request.ip}`, 5, 15 * 60_000)
+    const limited = name === 'solicitud-soporte' && !rateLimit(`support:${request.ip}`, 5, 15 * 60_000)
     const result = await runFunction(name, user, request.body || {}, request.ip || '', limited)
     response.status(result.status).json(result.body)
   })

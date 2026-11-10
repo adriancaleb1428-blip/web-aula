@@ -12,33 +12,33 @@ const problem = (message: string, status = 400): Out => ({ status, body: { error
 
 const emailPattern = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[a-z]{2,}$/i
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-const roles = ['admin', 'teacher', 'student']
+const roles = ['administrador', 'facilitador', 'participante']
 
-async function adminUsers(user: User, body: Body): Promise<Out> {
-  if (user.role !== 'admin') return problem('Solo un administrador puede gestionar usuarios.', 403)
-  const action = body.action
-  if (action === 'list') {
-    const { rows } = await query(`select u.id, u.email, p.full_name, p.role, p.can_create_courses, p.phone, p.company, p.job_title, u.last_sign_in_at, u.created_at
-      from users u join profiles p on p.id = u.id order by p.role, p.full_name`)
-    return ok({ users: rows })
+async function adminUsuarios(user: User, body: Body): Promise<Out> {
+  if (user.rol !== 'administrador') return problem('Solo un administrador puede gestionar usuarios.', 403)
+  const accion = body.accion
+  if (accion === 'listar') {
+    const { rows } = await query(`select u.id, u.correo, p.nombre_completo, p.rol, p.puede_crear_cursos, p.telefono, p.empresa, p.cargo, u.ultimo_acceso_en, u.creado_en
+      from usuarios u join perfiles p on p.id = u.id order by p.rol, p.nombre_completo`)
+    return ok({ usuarios: rows })
   }
-  const email = String(body.email || '').trim().toLowerCase()
-  const fullName = String(body.full_name || '').trim()
-  const role = String(body.role || '')
-  const password = String(body.password || '')
-  const nameOk = fullName.length >= 2 && fullName.length <= 120
+  const correo = String(body.correo || '').trim().toLowerCase()
+  const nombreCompleto = String(body.nombre_completo || '').trim()
+  const rol = String(body.rol || '')
+  const contrasena = String(body.contrasena || '')
+  const nombreValido = nombreCompleto.length >= 2 && nombreCompleto.length <= 120
 
-  if (action === 'create') {
-    if (!emailPattern.test(email) || email.length > 254 || !nameOk || !roles.includes(role)) return problem('Completa nombre, correo válido y rol válido.')
-    const weak = passwordProblem(password); if (weak) return problem(weak)
+  if (accion === 'crear') {
+    if (!emailPattern.test(correo) || correo.length > 254 || !nombreValido || !roles.includes(rol)) return problem('Completa nombre, correo válido y rol válido.')
+    const weak = passwordProblem(contrasena); if (weak) return problem(weak)
     const client = await pool.connect()
     try {
       await client.query('begin')
-      const created = await client.query('insert into users (email, password_hash) values ($1, $2) returning id', [email, await hashPassword(password)])
-      const id = created.rows[0].id
-      await client.query('insert into profiles (id, full_name, role, can_create_courses) values ($1, $2, $3, $4)', [id, fullName, role, role === 'teacher'])
+      const creado = await client.query('insert into usuarios (correo, contrasena_hash) values ($1, $2) returning id', [correo, await hashPassword(contrasena)])
+      const id = creado.rows[0].id
+      await client.query('insert into perfiles (id, nombre_completo, rol, puede_crear_cursos) values ($1, $2, $3, $4)', [id, nombreCompleto, rol, rol === 'facilitador'])
       await client.query('commit')
-      return ok({ user: { id, email, full_name: fullName, role } }, 201)
+      return ok({ usuario: { id, correo, nombre_completo: nombreCompleto, rol } }, 201)
     } catch (error) {
       await client.query('rollback')
       if ((error as { code?: string }).code === '23505') return problem('Ese correo ya pertenece a otra cuenta.')
@@ -46,109 +46,109 @@ async function adminUsers(user: User, body: Body): Promise<Out> {
     } finally { client.release() }
   }
 
-  const userId = String(body.user_id || '')
-  if (!uuidPattern.test(userId)) return problem('Selecciona un usuario válido.')
-  if (action === 'role' || action === 'update') {
-    const nextRole = String(body.role || '')
-    if (!roles.includes(nextRole)) return problem('Selecciona un usuario y un rol válido.')
-    if (userId === user.id && nextRole !== 'admin') return problem('No puedes quitarte tu propio acceso de administrador.')
-    if (action === 'role') {
-      await query('update profiles set role = $2, can_create_courses = $3 where id = $1', [userId, nextRole, nextRole === 'teacher'])
+  const usuarioId = String(body.usuario_id || '')
+  if (!uuidPattern.test(usuarioId)) return problem('Selecciona un usuario válido.')
+  if (accion === 'rol' || accion === 'actualizar') {
+    const nuevoRol = String(body.rol || '')
+    if (!roles.includes(nuevoRol)) return problem('Selecciona un usuario y un rol válido.')
+    if (usuarioId === user.id && nuevoRol !== 'administrador') return problem('No puedes quitarte tu propio acceso de administrador.')
+    if (accion === 'rol') {
+      await query('update perfiles set rol = $2, puede_crear_cursos = $3 where id = $1', [usuarioId, nuevoRol, nuevoRol === 'facilitador'])
       return ok({ success: true })
     }
-    if (!emailPattern.test(email) || email.length > 254 || !nameOk) return problem('Revisa el nombre, el correo y el rol.')
-    if (password) { const weak = passwordProblem(password); if (weak) return problem(weak) }
+    if (!emailPattern.test(correo) || correo.length > 254 || !nombreValido) return problem('Revisa el nombre, el correo y el rol.')
+    if (contrasena) { const weak = passwordProblem(contrasena); if (weak) return problem(weak) }
     const client = await pool.connect()
     try {
       await client.query('begin')
-      await client.query('update users set email = $2 where id = $1', [userId, email])
-      if (password) await client.query('update users set password_hash = $2 where id = $1', [userId, await hashPassword(password)])
-      await client.query('update profiles set full_name = $2, role = $3, can_create_courses = $4 where id = $1', [userId, fullName, nextRole, nextRole === 'teacher'])
+      await client.query('update usuarios set correo = $2 where id = $1', [usuarioId, correo])
+      if (contrasena) await client.query('update usuarios set contrasena_hash = $2 where id = $1', [usuarioId, await hashPassword(contrasena)])
+      await client.query('update perfiles set nombre_completo = $2, rol = $3, puede_crear_cursos = $4 where id = $1', [usuarioId, nombreCompleto, nuevoRol, nuevoRol === 'facilitador'])
       await client.query('commit')
-      return ok({ user: { id: userId, email, full_name: fullName, role: nextRole } })
+      return ok({ usuario: { id: usuarioId, correo, nombre_completo: nombreCompleto, rol: nuevoRol } })
     } catch (error) {
       await client.query('rollback')
       if ((error as { code?: string }).code === '23505') return problem('Ese correo ya pertenece a otra cuenta.')
       throw error
     } finally { client.release() }
   }
-  if (action === 'delete') {
-    if (userId === user.id) return problem('No puedes eliminar tu propia cuenta.')
+  if (accion === 'eliminar') {
+    if (usuarioId === user.id) return problem('No puedes eliminar tu propia cuenta.')
     const client = await pool.connect()
-    let avatar: string | null = null
+    let foto: string | null = null
     try {
       await client.query('begin')
       // Lo que creó esa persona pasa a quien la elimina.
-      for (const [table, column] of [['courses', 'created_by'], ['materials', 'uploaded_by'], ['meetings', 'organizer_id'], ['course_recordings', 'uploaded_by'], ['course_certificates', 'issued_by']])
-        await client.query(`update ${table} set ${column} = $2 where ${column} = $1`, [userId, user.id])
-      avatar = (await client.query('select avatar_url from profiles where id = $1', [userId])).rows[0]?.avatar_url ?? null
-      await client.query('delete from users where id = $1', [userId])
+      for (const [tabla, columna] of [['cursos', 'creado_por'], ['materiales', 'subido_por'], ['reuniones', 'organizador_id'], ['curso_grabaciones', 'subido_por'], ['curso_certificados', 'emitido_por']])
+        await client.query(`update ${tabla} set ${columna} = $2 where ${columna} = $1`, [usuarioId, user.id])
+      foto = (await client.query('select foto_url from perfiles where id = $1', [usuarioId])).rows[0]?.foto_url ?? null
+      await client.query('delete from usuarios where id = $1', [usuarioId])
       await client.query('commit')
     } catch (error) { await client.query('rollback'); throw error } finally { client.release() }
-    if (avatar) { try { rmSync(filePath('avatars', avatar), { force: true }) } catch { /* ya no existe */ } }
+    if (foto) { try { rmSync(filePath('avatars', foto), { force: true }) } catch { /* ya no existe */ } }
     return ok({ success: true })
   }
   return problem('Acción no reconocida.')
 }
 
-const topics = new Set(['acceso', 'cursos', 'reuniones', 'certificados', 'otro'])
-async function supportRequest(user: User | null, body: Body, ip: string, limited: boolean): Promise<Out> {
+const asuntos = new Set(['acceso', 'cursos', 'reuniones', 'certificados', 'otro'])
+async function solicitudSoporte(user: User | null, body: Body, ip: string, limitado: boolean): Promise<Out> {
   if (body.website) return ok({ ok: true }) // campo trampa para bots
-  const fullName = String(body.full_name || '').trim()
-  const email = String(body.email || '').trim()
-  const message = String(body.message || '').trim()
-  if (fullName.length < 2 || !emailPattern.test(email) || email.length > 254 || message.length < 10) return problem('Revisa tu nombre, tu correo y el mensaje (mínimo 10 caracteres).')
-  if (limited) return problem('Ya recibimos varias solicitudes. Espera unos minutos antes de enviar otra.', 429)
-  await query('insert into support_requests (user_id, full_name, email, phone, topic, message) values ($1, $2, $3, $4, $5, $6)',
-    [user?.id ?? null, fullName.slice(0, 120), email, String(body.phone || '').trim().slice(0, 40) || null, topics.has(body.topic) ? body.topic : 'otro', message.slice(0, 2000)])
+  const nombreCompleto = String(body.nombre_completo || '').trim()
+  const correo = String(body.correo || '').trim()
+  const mensaje = String(body.mensaje || '').trim()
+  if (nombreCompleto.length < 2 || !emailPattern.test(correo) || correo.length > 254 || mensaje.length < 10) return problem('Revisa tu nombre, tu correo y el mensaje (mínimo 10 caracteres).')
+  if (limitado) return problem('Ya recibimos varias solicitudes. Espera unos minutos antes de enviar otra.', 429)
+  await query('insert into solicitudes_soporte (usuario_id, nombre_completo, correo, telefono, asunto, mensaje) values ($1, $2, $3, $4, $5, $6)',
+    [user?.id ?? null, nombreCompleto.slice(0, 120), correo, String(body.telefono || '').trim().slice(0, 40) || null, asuntos.has(body.asunto) ? body.asunto : 'otro', mensaje.slice(0, 2000)])
   void ip
   return ok({ ok: true }, 201)
 }
 
-export async function runFunction(name: string, user: User | null, body: Body, ip: string, limited: boolean): Promise<Out> {
-  if (name === 'support-request') return supportRequest(user, body, ip, limited)
+export async function runFunction(name: string, user: User | null, body: Body, ip: string, limitado: boolean): Promise<Out> {
+  if (name === 'solicitud-soporte') return solicitudSoporte(user, body, ip, limitado)
   if (!user) return problem('Inicia sesión para continuar.', 401)
-  if (name === 'admin-users') return adminUsers(user, body)
-  if (name === 'send-academic-notifications') return ok({ ok: true, skipped: 'Los correos están desactivados.' })
+  if (name === 'admin-usuarios') return adminUsuarios(user, body)
+  if (name === 'enviar-avisos-academicos') return ok({ ok: true, skipped: 'Los correos están desactivados.' })
   return problem('Función no disponible.', 404)
 }
 
 // ── Mensajería ───────────────────────────────────────────────────────
-async function contacts(user: User) {
-  if (user.role === 'student') {
-    return (await query(`select c.id as course_id, c.name as course_name, p.id as user_id, coalesce(p.full_name, 'Facilitador') as full_name, 'teacher' as role
-      from enrollments e join courses c on c.id = e.course_id join course_instructors ci on ci.course_id = c.id join profiles p on p.id = ci.instructor_id
-      where e.student_id = $1 and e.status = 'active' and c.status = 'published' order by c.name, p.full_name`, [user.id])).rows
+async function contactos(user: User) {
+  if (user.rol === 'participante') {
+    return (await query(`select c.id as curso_id, c.nombre as curso_nombre, p.id as usuario_id, coalesce(p.nombre_completo, 'Facilitador') as nombre_completo, 'facilitador' as rol
+      from matriculas m join cursos c on c.id = m.curso_id join curso_facilitadores cf on cf.curso_id = c.id join perfiles p on p.id = cf.facilitador_id
+      where m.participante_id = $1 and m.estado = 'activa' and c.estado = 'publicado' order by c.nombre, p.nombre_completo`, [user.id])).rows
   }
-  return (await query(`select c.id as course_id, c.name as course_name, p.id as user_id, coalesce(p.full_name, 'Participante') as full_name, 'student' as role
-    from courses c join enrollments e on e.course_id = c.id and e.status = 'active' join profiles p on p.id = e.student_id
-    where c.id in (select course_id from course_instructors where instructor_id = $1 union select id from courses where created_by = $1)
-    order by c.name, p.full_name`, [user.id])).rows
+  return (await query(`select c.id as curso_id, c.nombre as curso_nombre, p.id as usuario_id, coalesce(p.nombre_completo, 'Participante') as nombre_completo, 'participante' as rol
+    from cursos c join matriculas m on m.curso_id = c.id and m.estado = 'activa' join perfiles p on p.id = m.participante_id
+    where c.id in (select curso_id from curso_facilitadores where facilitador_id = $1 union select id from cursos where creado_por = $1)
+    order by c.nombre, p.nombre_completo`, [user.id])).rows
 }
 
 export async function runRpc(name: string, user: User, args: Body): Promise<{ data: unknown; error: { code: string; message: string } | null }> {
-  const denied = { data: null, error: { code: '42501', message: 'No tienes permiso para esta acción.' } }
-  if (user.role === 'admin') return denied
-  if (name === 'message_contacts') return { data: await contacts(user), error: null }
-  if (name === 'my_conversations') {
-    const { rows } = await query(`select t.id, t.course_id, c.name as course_name, o.id as other_id, coalesce(o.full_name, 'Usuario') as other_name,
-        case when o.role = 'teacher' then 'teacher' else 'student' end as other_role,
-        coalesce(l.created_at, t.created_at) as last_message_at, l.body as last_body, l.sender_id as last_sender,
-        (select count(*)::int from thread_messages m where m.conversation_id = t.id and m.sender_id <> $1 and m.read_at is null) as unread
-      from course_threads t
-      join courses c on c.id = t.course_id
-      join profiles o on o.id = case when t.student_id = $1 then t.teacher_id else t.student_id end
-      left join lateral (select body, sender_id, created_at from thread_messages where conversation_id = t.id order by created_at desc limit 1) l on true
-      where t.student_id = $1 or t.teacher_id = $1
-      order by coalesce(l.created_at, t.created_at) desc`, [user.id])
+  const denegado = { data: null, error: { code: '42501', message: 'No tienes permiso para esta acción.' } }
+  if (user.rol === 'administrador') return denegado
+  if (name === 'contactos_mensajes') return { data: await contactos(user), error: null }
+  if (name === 'mis_conversaciones') {
+    const { rows } = await query(`select t.id, t.curso_id, c.nombre as curso_nombre, o.id as otro_id, coalesce(o.nombre_completo, 'Usuario') as otro_nombre,
+        case when o.rol = 'facilitador' then 'facilitador' else 'participante' end as otro_rol,
+        coalesce(l.creado_en, t.creado_en) as ultimo_mensaje_en, l.contenido as ultimo_contenido, l.remitente_id as ultimo_remitente,
+        (select count(*)::int from mensajes m where m.conversacion_id = t.id and m.remitente_id <> $1 and m.leido_en is null) as sin_leer
+      from curso_conversaciones t
+      join cursos c on c.id = t.curso_id
+      join perfiles o on o.id = case when t.participante_id = $1 then t.facilitador_id else t.participante_id end
+      left join lateral (select contenido, remitente_id, creado_en from mensajes where conversacion_id = t.id order by creado_en desc limit 1) l on true
+      where t.participante_id = $1 or t.facilitador_id = $1
+      order by coalesce(l.creado_en, t.creado_en) desc`, [user.id])
     return { data: rows, error: null }
   }
-  if (name === 'start_conversation') {
-    const course = String(args.p_course || ''), other = String(args.p_other || '')
-    if (!(await contacts(user)).some(contact => contact.course_id === course && contact.user_id === other)) return denied
-    const student = user.role === 'student' ? user.id : other, teacher = user.role === 'student' ? other : user.id
-    const { rows } = await query(`insert into course_threads (course_id, student_id, teacher_id) values ($1, $2, $3)
-      on conflict (course_id, student_id, teacher_id) do update set course_id = excluded.course_id returning id`, [course, student, teacher])
+  if (name === 'iniciar_conversacion') {
+    const curso = String(args.p_curso || ''), otro = String(args.p_otro || '')
+    if (!(await contactos(user)).some(contacto => contacto.curso_id === curso && contacto.usuario_id === otro)) return denegado
+    const participante = user.rol === 'participante' ? user.id : otro, facilitador = user.rol === 'participante' ? otro : user.id
+    const { rows } = await query(`insert into curso_conversaciones (curso_id, participante_id, facilitador_id) values ($1, $2, $3)
+      on conflict (curso_id, participante_id, facilitador_id) do update set curso_id = excluded.curso_id returning id`, [curso, participante, facilitador])
     return { data: rows[0].id, error: null }
   }
   return { data: null, error: { code: '42883', message: `La función ${name} no existe.` } }

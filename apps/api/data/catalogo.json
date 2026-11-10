@@ -1,17 +1,17 @@
 [
  {
   "slug": "ley-29783",
-  "title": "Introducción a la Ley 29783 de Seguridad y Salud en el Trabajo",
-  "description": "Conocerás el marco legal aplicable a la SST en Perú, tus derechos, obligaciones y cómo aplicar la Ley 29783 en tu organización para reducir accidentes y enfermedades ocupacionales.",
+  "titulo": "Introducción a la Ley 29783 de Seguridad y Salud en el Trabajo",
+  "descripcion": "Conocerás el marco legal aplicable a la SST en Perú, tus derechos, obligaciones y cómo aplicar la Ley 29783 en tu organización para reducir accidentes y enfermedades ocupacionales.",
   "emoji": "⚖️",
-  "category": "Seguridad Integral",
-  "duration": "8 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 50,
-  "listPrice": 80,
-  "objective": "Al finalizar el curso, el participante identificará el marco legal de SST en Perú, conocerá sus derechos y obligaciones, y aplicará los lineamientos de la Ley 29783 en su organización.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "8 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 50,
+  "precioLista": 80,
+  "objetivo": "Al finalizar el curso, el participante identificará el marco legal de SST en Perú, conocerá sus derechos y obligaciones, y aplicará los lineamientos de la Ley 29783 en su organización.",
+  "temario": [
    "Antecedentes y contexto de la seguridad laboral en Perú",
    "Marco legal: Ley 29783 y D.S. 005-2012-TR",
    "Principios de la seguridad y salud en el trabajo",
@@ -23,7 +23,7 @@
    "Documentación mínima requerida por ley",
    "Casos prácticos y aplicación en MYPES"
   ],
-  "audience": [
+  "dirigidoA": [
    "Trabajadores de todos los sectores",
    "Supervisores y jefes de área",
    "Personal de Recursos Humanos",
@@ -33,17 +33,17 @@
  },
  {
   "slug": "gestion-accidentes",
-  "title": "Gestión de Accidentes de Trabajo",
-  "description": "Aprende los procedimientos correctos para notificar, investigar y registrar accidentes laborales conforme a la normativa peruana vigente.",
+  "titulo": "Gestión de Accidentes de Trabajo",
+  "descripcion": "Aprende los procedimientos correctos para notificar, investigar y registrar accidentes laborales conforme a la normativa peruana vigente.",
   "emoji": "🚨",
-  "category": "Seguridad Integral",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 60,
-  "listPrice": 90,
-  "objective": "El participante aplicará correctamente los procedimientos de notificación, investigación y registro de accidentes conforme a la normativa peruana, reduciendo riesgos legales para la empresa.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 60,
+  "precioLista": 90,
+  "objetivo": "El participante aplicará correctamente los procedimientos de notificación, investigación y registro de accidentes conforme a la normativa peruana, reduciendo riesgos legales para la empresa.",
+  "temario": [
    "Conceptos: accidente, incidente y enfermedad ocupacional",
    "Marco legal para la notificación de accidentes",
    "Procedimiento de notificación al MINTRA (SAT)",
@@ -55,7 +55,7 @@
    "Estadísticas de accidentabilidad",
    "Casos prácticos de empresas peruanas"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores de SST",
    "Jefes de área",
    "Médicos ocupacionales",
@@ -65,17 +65,17 @@
  },
  {
   "slug": "gestion-incidentes",
-  "title": "Gestión de Incidentes e Incidentes Peligrosos",
-  "description": "Metodología para clasificar, registrar y analizar incidentes peligrosos con el fin de prevenir accidentes futuros en el entorno laboral.",
+  "titulo": "Gestión de Incidentes e Incidentes Peligrosos",
+  "descripcion": "Metodología para clasificar, registrar y analizar incidentes peligrosos con el fin de prevenir accidentes futuros en el entorno laboral.",
   "emoji": "⚠️",
-  "category": "Seguridad Integral",
-  "duration": "6 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 55,
-  "listPrice": 80,
-  "objective": "El participante gestionará correctamente la clasificación, registro y análisis de incidentes, implementando acciones preventivas eficaces para evitar accidentes laborales.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "6 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 55,
+  "precioLista": 80,
+  "objetivo": "El participante gestionará correctamente la clasificación, registro y análisis de incidentes, implementando acciones preventivas eficaces para evitar accidentes laborales.",
+  "temario": [
    "Diferencias entre incidente y accidente",
    "Tipos de incidentes: peligrosos y no peligrosos",
    "Obligación legal de notificación",
@@ -87,7 +87,7 @@
    "Reportes para la alta dirección",
    "Simulacro de gestión de incidente"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores de SST",
    "Jefes de producción y operaciones",
    "Comités de SST",
@@ -96,17 +96,17 @@
  },
  {
   "slug": "iperc",
-  "title": "Identificación de Peligros, Evaluación de Riesgos y Control (IPERC)",
-  "description": "Aprende a identificar peligros en el entorno laboral, evaluar los riesgos y aplicar medidas de control conforme a la normativa peruana.",
+  "titulo": "Identificación de Peligros, Evaluación de Riesgos y Control (IPERC)",
+  "descripcion": "Aprende a identificar peligros en el entorno laboral, evaluar los riesgos y aplicar medidas de control conforme a la normativa peruana.",
   "emoji": "🔍",
-  "category": "Seguridad Integral",
-  "duration": "10 horas",
-  "modality": "En vivo",
-  "level": "Básico-Intermedio",
-  "price": 70,
-  "listPrice": 100,
-  "objective": "El participante elaborará y actualizará la matriz IPERC de su organización, estableciendo controles efectivos para reducir accidentes.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "10 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico-Intermedio",
+  "precio": 70,
+  "precioLista": 100,
+  "objetivo": "El participante elaborará y actualizará la matriz IPERC de su organización, estableciendo controles efectivos para reducir accidentes.",
+  "temario": [
    "Conceptos: peligro, riesgo y daño",
    "Tipos de peligros: físicos, químicos, biológicos, ergonómicos",
    "Metodología IPERC paso a paso",
@@ -118,7 +118,7 @@
    "Revisión y actualización",
    "Casos prácticos por industria"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores de SST",
    "Ingenieros de seguridad",
    "Técnicos y operarios",
@@ -127,17 +127,17 @@
  },
  {
   "slug": "ats",
-  "title": "Análisis de Trabajo Seguro (ATS)",
-  "description": "Aprende a elaborar el ATS para identificar los riesgos de cada tarea y establecer medidas preventivas antes de iniciar trabajos.",
+  "titulo": "Análisis de Trabajo Seguro (ATS)",
+  "descripcion": "Aprende a elaborar el ATS para identificar los riesgos de cada tarea y establecer medidas preventivas antes de iniciar trabajos.",
   "emoji": "📋",
-  "category": "Seguridad Integral",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 50,
-  "listPrice": 75,
-  "objective": "El participante elaborará un ATS correcto y completo para cualquier tarea laboral, garantizando que los trabajadores identifiquen los riesgos antes de iniciar su trabajo.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 50,
+  "precioLista": 75,
+  "objetivo": "El participante elaborará un ATS correcto y completo para cualquier tarea laboral, garantizando que los trabajadores identifiquen los riesgos antes de iniciar su trabajo.",
+  "temario": [
    "¿Qué es el ATS y para qué sirve?",
    "Marco legal: cuando es obligatorio",
    "Pasos para elaborar un ATS",
@@ -149,7 +149,7 @@
    "ATS para trabajos de alto riesgo",
    "Ejercicio práctico completo"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores de área",
    "Trabajadores operativos",
    "Jefes de turno",
@@ -158,17 +158,17 @@
  },
  {
   "slug": "primeros-auxilios",
-  "title": "Primeros Auxilios y Evacuación",
-  "description": "Curso práctico para aprender a responder ante emergencias médicas en el trabajo. Incluye RCP básico, atención de heridas y simulaciones de evacuación.",
+  "titulo": "Primeros Auxilios y Evacuación",
+  "descripcion": "Curso práctico para aprender a responder ante emergencias médicas en el trabajo. Incluye RCP básico, atención de heridas y simulaciones de evacuación.",
   "emoji": "🚑",
-  "category": "Seguridad Integral",
-  "duration": "8 horas",
-  "modality": "Presencial",
-  "level": "Básico",
-  "price": 55,
-  "listPrice": null,
-  "objective": "El participante actuará como primer respondedor ante emergencias médicas y situaciones de evacuación, reduciendo complicaciones hasta la llegada de los servicios de emergencia.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "8 horas",
+  "modalidad": "Presencial",
+  "nivel": "Básico",
+  "precio": 55,
+  "precioLista": null,
+  "objetivo": "El participante actuará como primer respondedor ante emergencias médicas y situaciones de evacuación, reduciendo complicaciones hasta la llegada de los servicios de emergencia.",
+  "temario": [
    "Principios de primeros auxilios y marco legal",
    "Evaluación primaria: ABC del accidentado",
    "RCP básico adulto (cadena de supervivencia)",
@@ -180,7 +180,7 @@
    "Plan de evacuación: rutas y puntos de encuentro",
    "Roles en la brigada de emergencias"
   ],
-  "audience": [
+  "dirigidoA": [
    "Brigadistas de emergencias",
    "Personal administrativo y operativo",
    "Supervisores de área",
@@ -189,17 +189,17 @@
  },
  {
   "slug": "ergonomia",
-  "title": "Ergonomía Laboral",
-  "description": "Comprende los principios ergonómicos, evalúa la postura de trabajo y aplica medidas para prevenir trastornos musculoesqueléticos en el trabajo.",
+  "titulo": "Ergonomía Laboral",
+  "descripcion": "Comprende los principios ergonómicos, evalúa la postura de trabajo y aplica medidas para prevenir trastornos musculoesqueléticos en el trabajo.",
   "emoji": "🪑",
-  "category": "Seguridad Integral",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 55,
-  "listPrice": 80,
-  "objective": "El participante identificará los factores de riesgo ergonómico, aplicará métodos de evaluación y diseñará medidas de control para prevenir enfermedades ocupacionales.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 55,
+  "precioLista": 80,
+  "objetivo": "El participante identificará los factores de riesgo ergonómico, aplicará métodos de evaluación y diseñará medidas de control para prevenir enfermedades ocupacionales.",
+  "temario": [
    "¿Qué es la ergonomía? Definición y tipos",
    "Normativa nacional: R.M. 375-2008-TR",
    "Factores de riesgo ergonómico",
@@ -211,7 +211,7 @@
    "Medidas de control ergonómico",
    "Programa de ergonomía en la empresa"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores de SST",
    "Trabajadores de oficina y operaciones",
    "Médicos ocupacionales",
@@ -220,17 +220,17 @@
  },
  {
   "slug": "prevencion-burnout",
-  "title": "Prevención del Burnout",
-  "description": "Aprende a identificar las señales del Burnout, implementa estrategias de prevención y gestiona el agotamiento laboral en tu organización.",
+  "titulo": "Prevención del Burnout",
+  "descripcion": "Aprende a identificar las señales del Burnout, implementa estrategias de prevención y gestiona el agotamiento laboral en tu organización.",
   "emoji": "😓",
-  "category": "Seguridad Integral",
-  "duration": "6 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 50,
-  "listPrice": 75,
-  "objective": "El participante identificará los signos del Burnout, aplicará estrategias de prevención y promoverá una cultura de bienestar organizacional.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "6 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 50,
+  "precioLista": 75,
+  "objetivo": "El participante identificará los signos del Burnout, aplicará estrategias de prevención y promoverá una cultura de bienestar organizacional.",
+  "temario": [
    "¿Qué es el síndrome de Burnout?",
    "Diferencia entre estrés y Burnout",
    "Las 3 dimensiones: agotamiento, cinismo y eficacia",
@@ -242,7 +242,7 @@
    "Inteligencia emocional en el trabajo",
    "Plan de intervención para empresas"
   ],
-  "audience": [
+  "dirigidoA": [
    "Jefes y gerentes de área",
    "Responsables de RRHH",
    "Supervisores de SST",
@@ -251,17 +251,17 @@
  },
  {
   "slug": "manejo-defensivo",
-  "title": "Manejo Defensivo",
-  "description": "Domina las técnicas de conducción segura, gestión del riesgo vial y prevención de accidentes de tránsito en el entorno laboral.",
+  "titulo": "Manejo Defensivo",
+  "descripcion": "Domina las técnicas de conducción segura, gestión del riesgo vial y prevención de accidentes de tránsito en el entorno laboral.",
   "emoji": "🚗",
-  "category": "Seguridad Integral",
-  "duration": "8 horas",
-  "modality": "Presencial",
-  "level": "Básico",
-  "price": 65,
-  "listPrice": 90,
-  "objective": "El participante aplicará técnicas de manejo defensivo para reducir el riesgo de accidentes viales en sus desplazamientos laborales.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "8 horas",
+  "modalidad": "Presencial",
+  "nivel": "Básico",
+  "precio": 65,
+  "precioLista": 90,
+  "objetivo": "El participante aplicará técnicas de manejo defensivo para reducir el riesgo de accidentes viales en sus desplazamientos laborales.",
+  "temario": [
    "¿Qué es el manejo defensivo?",
    "Estadísticas de accidentes viales en el Perú",
    "Factores de riesgo: humano, vehículo y entorno",
@@ -273,7 +273,7 @@
    "Revisión técnica del vehículo",
    "Práctica en campo (simulador o ruta)"
   ],
-  "audience": [
+  "dirigidoA": [
    "Conductores de vehículos de empresa",
    "Repartidores y personal de logística",
    "Supervisores de flota",
@@ -282,17 +282,17 @@
  },
  {
   "slug": "tecnica-5s",
-  "title": "Técnica de las 5S — Organización y orden en el trabajo",
-  "description": "Aprende la metodología 5S (Seiri, Seiton, Seiso, Seiketsu, Shitsuke) y cómo implementarla para mejorar productividad y seguridad en tu organización.",
+  "titulo": "Técnica de las 5S — Organización y orden en el trabajo",
+  "descripcion": "Aprende la metodología 5S (Seiri, Seiton, Seiso, Seiketsu, Shitsuke) y cómo implementarla para mejorar productividad y seguridad en tu organización.",
   "emoji": "✅",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 60,
-  "listPrice": 90,
-  "objective": "El participante liderará la implementación de las 5S en su área de trabajo, mejorando productividad, seguridad y ambiente laboral.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 60,
+  "precioLista": 90,
+  "objetivo": "El participante liderará la implementación de las 5S en su área de trabajo, mejorando productividad, seguridad y ambiente laboral.",
+  "temario": [
    "Origen e historia de las 5S",
    "Seiri — Clasificar",
    "Seiton — Ordenar",
@@ -304,7 +304,7 @@
    "Pasos para implementar en tu área",
    "Resistencia al cambio y cómo superarla"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores y jefes de área",
    "Personal de operaciones y almacén",
    "Responsables de calidad",
@@ -313,17 +313,17 @@
  },
  {
   "slug": "iso-9001",
-  "title": "ISO 9001:2015 — Sistema de Gestión de la Calidad",
-  "description": "Conoce los requisitos de la norma ISO 9001:2015 e identifica cómo implementar un Sistema de Gestión de la Calidad en tu organización.",
+  "titulo": "ISO 9001:2015 — Sistema de Gestión de la Calidad",
+  "descripcion": "Conoce los requisitos de la norma ISO 9001:2015 e identifica cómo implementar un Sistema de Gestión de la Calidad en tu organización.",
   "emoji": "📊",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Intermedio",
-  "price": 75,
-  "listPrice": 110,
-  "objective": "El participante comprenderá los requisitos de ISO 9001:2015 y será capaz de iniciar el proceso de implementación y certificación en su organización.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Intermedio",
+  "precio": 75,
+  "precioLista": 110,
+  "objetivo": "El participante comprenderá los requisitos de ISO 9001:2015 y será capaz de iniciar el proceso de implementación y certificación en su organización.",
+  "temario": [
    "Historia y evolución de ISO 9001",
    "Estructura de Alto Nivel (HLS)",
    "Términos y definiciones clave",
@@ -335,7 +335,7 @@
    "Evaluación del desempeño",
    "Mejora continua y no conformidades"
   ],
-  "audience": [
+  "dirigidoA": [
    "Gerentes y directivos",
    "Responsables de calidad",
    "Consultores y asesores",
@@ -344,17 +344,17 @@
  },
  {
   "slug": "auditorias-internas",
-  "title": "Auditorías Internas de Calidad",
-  "description": "Aprende a planificar, ejecutar e informar auditorías internas del SGC conforme a la norma ISO 19011.",
+  "titulo": "Auditorías Internas de Calidad",
+  "descripcion": "Aprende a planificar, ejecutar e informar auditorías internas del SGC conforme a la norma ISO 19011.",
   "emoji": "🔍",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Intermedio",
-  "price": 70,
-  "listPrice": 100,
-  "objective": "El participante planificará y ejecutará auditorías internas del SGC, identificando no conformidades y oportunidades de mejora.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Intermedio",
+  "precio": 70,
+  "precioLista": 100,
+  "objetivo": "El participante planificará y ejecutará auditorías internas del SGC, identificando no conformidades y oportunidades de mejora.",
+  "temario": [
    "¿Qué es una auditoría interna?",
    "Tipos de auditoría: 1ra, 2da y 3ra parte",
    "Norma ISO 19011:2018",
@@ -366,7 +366,7 @@
    "Elaboración del informe de auditoría",
    "Seguimiento de acciones correctivas"
   ],
-  "audience": [
+  "dirigidoA": [
    "Auditores internos designados",
    "Responsables de calidad",
    "Supervisores de procesos",
@@ -375,17 +375,17 @@
  },
  {
   "slug": "iso-14001",
-  "title": "Gestión de Medio Ambiente — ISO 14001",
-  "description": "Comprende los requisitos de la norma ISO 14001:2015 e implementa un Sistema de Gestión Ambiental efectivo en tu organización.",
+  "titulo": "Gestión de Medio Ambiente — ISO 14001",
+  "descripcion": "Comprende los requisitos de la norma ISO 14001:2015 e implementa un Sistema de Gestión Ambiental efectivo en tu organización.",
   "emoji": "🌿",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Intermedio",
-  "price": 75,
-  "listPrice": 110,
-  "objective": "El participante implementará un SGA conforme a ISO 14001:2015, contribuyendo al cumplimiento legal ambiental y la sostenibilidad empresarial.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Intermedio",
+  "precio": 75,
+  "precioLista": 110,
+  "objetivo": "El participante implementará un SGA conforme a ISO 14001:2015, contribuyendo al cumplimiento legal ambiental y la sostenibilidad empresarial.",
+  "temario": [
    "Gestión ambiental: conceptos y legislación peruana",
    "Estructura ISO 14001:2015",
    "Aspectos e impactos ambientales",
@@ -397,7 +397,7 @@
    "Revisión por la dirección",
    "Integración ISO 14001 + ISO 9001"
   ],
-  "audience": [
+  "dirigidoA": [
    "Jefes de medio ambiente",
    "Supervisores de operaciones",
    "Auditores internos",
@@ -406,17 +406,17 @@
  },
  {
   "slug": "ia-fundamentos",
-  "title": "Fundamentos de Inteligencia Artificial para empresas",
-  "description": "Entiende qué es la IA, cómo funciona y cómo aplicarla estratégicamente en tu negocio para automatizar procesos y ser más competitivo.",
+  "titulo": "Fundamentos de Inteligencia Artificial para empresas",
+  "descripcion": "Entiende qué es la IA, cómo funciona y cómo aplicarla estratégicamente en tu negocio para automatizar procesos y ser más competitivo.",
   "emoji": "🤖",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 80,
-  "listPrice": 120,
-  "objective": "El participante comprenderá la IA y sus aplicaciones empresariales, identificando oportunidades concretas para implementarla de forma práctica en su organización.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 80,
+  "precioLista": 120,
+  "objetivo": "El participante comprenderá la IA y sus aplicaciones empresariales, identificando oportunidades concretas para implementarla de forma práctica en su organización.",
+  "temario": [
    "¿Qué es la Inteligencia Artificial?",
    "Machine Learning y Deep Learning",
    "IA generativa: ChatGPT, Gemini, Copilot",
@@ -428,7 +428,7 @@
    "Hoja de ruta para adoptar IA",
    "Taller práctico con herramientas IA"
   ],
-  "audience": [
+  "dirigidoA": [
    "Gerentes y directivos",
    "Emprendedores y dueños de negocio",
    "Personal de tecnología",
@@ -437,17 +437,17 @@
  },
  {
   "slug": "marketing-digital",
-  "title": "Marketing Digital y Ventas",
-  "description": "Aprende las estrategias de marketing digital más efectivas: SEO, redes sociales, Google Ads y técnicas de ventas para hacer crecer tu negocio.",
+  "titulo": "Marketing Digital y Ventas",
+  "descripcion": "Aprende las estrategias de marketing digital más efectivas: SEO, redes sociales, Google Ads y técnicas de ventas para hacer crecer tu negocio.",
   "emoji": "📱",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 75,
-  "listPrice": 110,
-  "objective": "El participante diseñará una estrategia de marketing digital integral para su empresa, aumentando su visibilidad y ventas online.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 75,
+  "precioLista": 110,
+  "objetivo": "El participante diseñará una estrategia de marketing digital integral para su empresa, aumentando su visibilidad y ventas online.",
+  "temario": [
    "Ecosistema del marketing digital",
    "SEO y posicionamiento web",
    "Google Ads y Meta Ads básicos",
@@ -459,7 +459,7 @@
    "Métricas y analítica digital",
    "Caso práctico: plan de marketing"
   ],
-  "audience": [
+  "dirigidoA": [
    "Emprendedores y dueños de negocio",
    "Ejecutivos de ventas y marketing",
    "Community managers",
@@ -468,17 +468,17 @@
  },
  {
   "slug": "startup-emprendimiento",
-  "title": "Creación de StartUp y Emprendimiento",
-  "description": "Aprende a validar tu idea de negocio, elaborar un Business Model Canvas, crear tu MVP y lanzar tu startup con estrategias probadas.",
+  "titulo": "Creación de StartUp y Emprendimiento",
+  "descripcion": "Aprende a validar tu idea de negocio, elaborar un Business Model Canvas, crear tu MVP y lanzar tu startup con estrategias probadas.",
   "emoji": "🚀",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "10 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 99,
-  "listPrice": 150,
-  "objective": "El participante lanzará su startup con una metodología probada, habiendo validado su idea, definido su modelo de negocio y preparado su pitch.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "10 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 99,
+  "precioLista": 150,
+  "objetivo": "El participante lanzará su startup con una metodología probada, habiendo validado su idea, definido su modelo de negocio y preparado su pitch.",
+  "temario": [
    "Mentalidad emprendedora",
    "Ideación y validación de tu idea",
    "Design Thinking aplicado",
@@ -490,7 +490,7 @@
    "Pitch y presentación a inversores",
    "Casos de startups peruanas exitosas"
   ],
-  "audience": [
+  "dirigidoA": [
    "Emprendedores con ideas de negocio",
    "Profesionales que quieran independizarse",
    "Estudiantes universitarios",
@@ -499,17 +499,17 @@
  },
  {
   "slug": "talento-humano",
-  "title": "Talento Humano y Desarrollo de Equipos de Alto Rendimiento",
-  "description": "Desarrolla habilidades de liderazgo, comunicación efectiva e inteligencia emocional para liderar equipos de alto rendimiento.",
+  "titulo": "Talento Humano y Desarrollo de Equipos de Alto Rendimiento",
+  "descripcion": "Desarrolla habilidades de liderazgo, comunicación efectiva e inteligencia emocional para liderar equipos de alto rendimiento.",
   "emoji": "👥",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 65,
-  "listPrice": 100,
-  "objective": "El participante liderará equipos de alto rendimiento aplicando herramientas de liderazgo, comunicación e inteligencia emocional.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 65,
+  "precioLista": 100,
+  "objetivo": "El participante liderará equipos de alto rendimiento aplicando herramientas de liderazgo, comunicación e inteligencia emocional.",
+  "temario": [
    "Liderazgo situacional",
    "Inteligencia emocional en el trabajo",
    "Comunicación efectiva y asertiva",
@@ -521,7 +521,7 @@
    "Evaluación de desempeño 360°",
    "Plan de desarrollo individual"
   ],
-  "audience": [
+  "dirigidoA": [
    "Gerentes y jefes de área",
    "Supervisores y líderes de equipo",
    "Personal de RRHH",
@@ -530,17 +530,17 @@
  },
  {
   "slug": "comite-supervisor-sst",
-  "title": "Comité o Supervisor de Seguridad y Salud en el Trabajo",
-  "description": "Aprende a constituir, elegir y gestionar el Comité o Supervisor de SST según la Ley 29783. Conoce sus funciones, responsabilidades y obligaciones legales.",
+  "titulo": "Comité o Supervisor de Seguridad y Salud en el Trabajo",
+  "descripcion": "Aprende a constituir, elegir y gestionar el Comité o Supervisor de SST según la Ley 29783. Conoce sus funciones, responsabilidades y obligaciones legales.",
   "emoji": "👥",
-  "category": "Seguridad Integral",
-  "duration": "8 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 65,
-  "listPrice": null,
-  "objective": "El participante constituirá correctamente el Comité o nombrará al Supervisor de SST, gestionará sus reuniones y documentación obligatoria conforme a la Ley 29783.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "8 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 65,
+  "precioLista": null,
+  "objetivo": "El participante constituirá correctamente el Comité o nombrará al Supervisor de SST, gestionará sus reuniones y documentación obligatoria conforme a la Ley 29783.",
+  "temario": [
    "¿Cuándo se forma Comité y cuándo Supervisor de SST?",
    "Marco legal: Ley 29783 y D.S. 005-2012-TR",
    "Proceso de elección de representantes de los trabajadores",
@@ -552,7 +552,7 @@
    "Libro de actas: estructura y llenado correcto",
    "Casos prácticos: empresas con menos y más de 20 trabajadores"
   ],
-  "audience": [
+  "dirigidoA": [
    "Responsables de RRHH",
    "Supervisores de SST",
    "Representantes de los trabajadores",
@@ -562,17 +562,17 @@
  },
  {
   "slug": "investigacion-accidentes",
-  "title": "Herramientas para la Investigación de Accidentes",
-  "description": "Domina las metodologías más efectivas para investigar accidentes laborales: árbol de causas, diagrama de Ishikawa y los 5 Por Qué. Identifica causas raíz y propón medidas correctivas.",
+  "titulo": "Herramientas para la Investigación de Accidentes",
+  "descripcion": "Domina las metodologías más efectivas para investigar accidentes laborales: árbol de causas, diagrama de Ishikawa y los 5 Por Qué. Identifica causas raíz y propón medidas correctivas.",
   "emoji": "🔎",
-  "category": "Seguridad Integral",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Intermedio",
-  "price": 65,
-  "listPrice": 90,
-  "objective": "El participante aplicará las principales metodologías de investigación de accidentes para identificar causas raíz y proponer medidas correctivas que eviten la repetición de incidentes.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Intermedio",
+  "precio": 65,
+  "precioLista": 90,
+  "objetivo": "El participante aplicará las principales metodologías de investigación de accidentes para identificar causas raíz y proponer medidas correctivas que eviten la repetición de incidentes.",
+  "temario": [
    "Principios y objetivos de la investigación de accidentes",
    "Marco legal: obligaciones del empleador",
    "Metodología 5 Por Qué: paso a paso",
@@ -584,7 +584,7 @@
    "Medidas correctivas: planteamiento y seguimiento",
    "Casos reales de accidentes en Perú: análisis práctico"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores de SST",
    "Ingenieros de seguridad",
    "Jefes de área y producción",
@@ -594,17 +594,17 @@
  },
  {
   "slug": "epps",
-  "title": "Entrega, Conservación y Reposición de EPP's",
-  "description": "Gestiona correctamente el equipo de protección personal: selección, entrega, registro, conservación y reposición conforme a la normativa peruana vigente.",
+  "titulo": "Entrega, Conservación y Reposición de EPP's",
+  "descripcion": "Gestiona correctamente el equipo de protección personal: selección, entrega, registro, conservación y reposición conforme a la normativa peruana vigente.",
   "emoji": "🦺",
-  "category": "Seguridad Integral",
-  "duration": "4 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 40,
-  "listPrice": 60,
-  "objective": "El participante implementará un programa completo de gestión de EPP's en su organización, cumpliendo requisitos legales y garantizando la protección efectiva de los trabajadores.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "4 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 40,
+  "precioLista": 60,
+  "objetivo": "El participante implementará un programa completo de gestión de EPP's en su organización, cumpliendo requisitos legales y garantizando la protección efectiva de los trabajadores.",
+  "temario": [
    "Obligación legal de entrega de EPP (Ley 29783)",
    "Tipos de EPP según el riesgo: cabeza, oídos, ojos, respiratorio, manos y pies",
    "Criterios de selección del EPP adecuado",
@@ -616,7 +616,7 @@
    "Responsabilidades del empleador y del trabajador",
    "Auditoría del programa de EPP"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores de SST",
    "Responsables de logística y almacén",
    "Jefes de operaciones",
@@ -626,17 +626,17 @@
  },
  {
   "slug": "seguridad-comportamiento",
-  "title": "Seguridad Basada en el Comportamiento (SBC)",
-  "description": "Implementa programas SBC para transformar la cultura de seguridad en tu organización. Aprende a observar, retroalimentar y reforzar comportamientos seguros en el trabajo.",
+  "titulo": "Seguridad Basada en el Comportamiento (SBC)",
+  "descripcion": "Implementa programas SBC para transformar la cultura de seguridad en tu organización. Aprende a observar, retroalimentar y reforzar comportamientos seguros en el trabajo.",
   "emoji": "🧠",
-  "category": "Seguridad Integral",
-  "duration": "10 horas",
-  "modality": "Grabado",
-  "level": "Intermedio",
-  "price": 70,
-  "listPrice": 100,
-  "objective": "El participante diseñará e implementará un programa SBC en su organización, transformando comportamientos para construir una cultura de seguridad sostenible y reducir accidentes.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "10 horas",
+  "modalidad": "Grabado",
+  "nivel": "Intermedio",
+  "precio": 70,
+  "precioLista": 100,
+  "objetivo": "El participante diseñará e implementará un programa SBC en su organización, transformando comportamientos para construir una cultura de seguridad sostenible y reducir accidentes.",
+  "temario": [
    "Fundamentos de psicología del comportamiento aplicada a SST",
    "El triángulo de la conducta segura",
    "Diferencia entre condición insegura y acto inseguro",
@@ -648,7 +648,7 @@
    "Cómo superar la resistencia al cambio",
    "Casos de éxito en empresas peruanas"
   ],
-  "audience": [
+  "dirigidoA": [
    "Jefes y supervisores de SST",
    "Gerentes de operaciones",
    "Psicólogos organizacionales",
@@ -658,17 +658,17 @@
  },
  {
   "slug": "ley-27942",
-  "title": "Ley 27942 — Prevención y Sanción del Hostigamiento Sexual",
-  "description": "Conoce el marco legal del hostigamiento sexual en el trabajo: la Ley 27942, sus modificatorias, obligaciones del empleador, procedimientos de denuncia y sanciones aplicables en el Perú.",
+  "titulo": "Ley 27942 — Prevención y Sanción del Hostigamiento Sexual",
+  "descripcion": "Conoce el marco legal del hostigamiento sexual en el trabajo: la Ley 27942, sus modificatorias, obligaciones del empleador, procedimientos de denuncia y sanciones aplicables en el Perú.",
   "emoji": "⚖️",
-  "category": "Seguridad Integral",
-  "duration": "4 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 40,
-  "listPrice": 60,
-  "objective": "El participante comprenderá el marco legal del hostigamiento sexual laboral, identificará sus manifestaciones, conocerá los procedimientos de denuncia y cumplirá las obligaciones legales del empleador.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "4 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 40,
+  "precioLista": 60,
+  "objetivo": "El participante comprenderá el marco legal del hostigamiento sexual laboral, identificará sus manifestaciones, conocerá los procedimientos de denuncia y cumplirá las obligaciones legales del empleador.",
+  "temario": [
    "Definición y tipos de hostigamiento sexual laboral",
    "Marco legal: Ley 27942 y sus modificatorias",
    "Principios que rigen la Ley",
@@ -680,7 +680,7 @@
    "Medidas de protección para la víctima",
    "Sanciones al hostigador y responsabilidad del empleador"
   ],
-  "audience": [
+  "dirigidoA": [
    "Responsables de RRHH",
    "Comité de intervención",
    "Jefes y supervisores de área",
@@ -690,17 +690,17 @@
  },
  {
   "slug": "hostigamiento-sexual",
-  "title": "Capacitación Especializada de Hostigamiento Sexual en el Trabajo",
-  "description": "Profundiza en los protocolos internos para prevenir y atender el hostigamiento sexual. Aprende a gestionar denuncias, investigar casos y proteger a las personas involucradas en tu empresa.",
+  "titulo": "Capacitación Especializada de Hostigamiento Sexual en el Trabajo",
+  "descripcion": "Profundiza en los protocolos internos para prevenir y atender el hostigamiento sexual. Aprende a gestionar denuncias, investigar casos y proteger a las personas involucradas en tu empresa.",
   "emoji": "🤝",
-  "category": "Seguridad Integral",
-  "duration": "6 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 50,
-  "listPrice": 75,
-  "objective": "El participante implementará un protocolo completo para prevenir y atender el hostigamiento sexual en su organización, protegiendo a las víctimas y cumpliendo la normativa peruana.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "6 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 50,
+  "precioLista": 75,
+  "objetivo": "El participante implementará un protocolo completo para prevenir y atender el hostigamiento sexual en su organización, protegiendo a las víctimas y cumpliendo la normativa peruana.",
+  "temario": [
    "Revisión del marco normativo: Ley 27942 y reglamento vigente",
    "Diseño del protocolo interno de prevención",
    "Conformación y funciones del Comité de Intervención",
@@ -712,7 +712,7 @@
    "Sanciones y acciones de mejora organizacional",
    "Difusión interna: campañas de sensibilización"
   ],
-  "audience": [
+  "dirigidoA": [
    "Comité de Intervención",
    "Responsables de RRHH",
    "Jefes de área",
@@ -722,17 +722,17 @@
  },
  {
   "slug": "reuniones-sst",
-  "title": "Desarrollo de las Reuniones Mensuales Obligatorias de SST",
-  "description": "Planifica, conduce y documenta las reuniones mensuales del Comité de SST de forma eficaz y conforme a la Ley 29783. Incluye formatos de actas y mejores prácticas.",
+  "titulo": "Desarrollo de las Reuniones Mensuales Obligatorias de SST",
+  "descripcion": "Planifica, conduce y documenta las reuniones mensuales del Comité de SST de forma eficaz y conforme a la Ley 29783. Incluye formatos de actas y mejores prácticas.",
   "emoji": "📅",
-  "category": "Seguridad Integral",
-  "duration": "4 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 35,
-  "listPrice": 55,
-  "objective": "El participante gestionará las reuniones mensuales del Comité de SST cumpliendo todos los requisitos legales, documentando correctamente los acuerdos y garantizando el seguimiento de compromisos.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "4 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 35,
+  "precioLista": 55,
+  "objetivo": "El participante gestionará las reuniones mensuales del Comité de SST cumpliendo todos los requisitos legales, documentando correctamente los acuerdos y garantizando el seguimiento de compromisos.",
+  "temario": [
    "Obligatoriedad legal: art. 42 del D.S. 005-2012-TR",
    "Frecuencia y convocatoria de las reuniones",
    "Quórum mínimo y condiciones de validez",
@@ -744,7 +744,7 @@
    "Participación de la alta dirección",
    "Infracciones y multas por incumplimiento"
   ],
-  "audience": [
+  "dirigidoA": [
    "Presidente del Comité de SST",
    "Secretario del Comité",
    "Supervisores de SST",
@@ -754,17 +754,17 @@
  },
  {
   "slug": "fatiga-somnolencia",
-  "title": "Fatiga y Somnolencia en el Trabajo",
-  "description": "Identifica y gestiona la fatiga y somnolencia como factores de riesgo críticos para la seguridad laboral. Implementa programas de prevención para proteger a tus trabajadores.",
+  "titulo": "Fatiga y Somnolencia en el Trabajo",
+  "descripcion": "Identifica y gestiona la fatiga y somnolencia como factores de riesgo críticos para la seguridad laboral. Implementa programas de prevención para proteger a tus trabajadores.",
   "emoji": "😴",
-  "category": "Seguridad Integral",
-  "duration": "4 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 35,
-  "listPrice": 55,
-  "objective": "El participante identificará factores de fatiga y somnolencia, implementará medidas de prevención individuales y organizacionales, y reducirá el riesgo de accidentes asociados.",
-  "syllabus": [
+  "categoria": "Seguridad Integral",
+  "duracion": "4 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 35,
+  "precioLista": 55,
+  "objetivo": "El participante identificará factores de fatiga y somnolencia, implementará medidas de prevención individuales y organizacionales, y reducirá el riesgo de accidentes asociados.",
+  "temario": [
    "Definición de fatiga laboral: física, mental y emocional",
    "Somnolencia: causas fisiológicas y laborales",
    "Relación entre fatiga y accidentabilidad: estadísticas",
@@ -776,7 +776,7 @@
    "Marco legal aplicable en Perú",
    "Diseño de un programa de gestión de fatiga"
   ],
-  "audience": [
+  "dirigidoA": [
    "Supervisores de SST",
    "Operadores de maquinaria y vehículos",
    "Trabajadores en turnos nocturnos",
@@ -786,17 +786,17 @@
  },
  {
   "slug": "ciclo-deming",
-  "title": "Ciclo de Deming (PHVA) — Mejora Continua",
-  "description": "Domina el ciclo PHVA (Planificar, Hacer, Verificar, Actuar) como herramienta fundamental para la mejora continua en sistemas de gestión de calidad, SST y operaciones.",
+  "titulo": "Ciclo de Deming (PHVA) — Mejora Continua",
+  "descripcion": "Domina el ciclo PHVA (Planificar, Hacer, Verificar, Actuar) como herramienta fundamental para la mejora continua en sistemas de gestión de calidad, SST y operaciones.",
   "emoji": "🔄",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "6 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 50,
-  "listPrice": 75,
-  "objective": "El participante aplicará el ciclo PHVA como metodología de mejora continua en los procesos de su organización, vinculándolo con ISO 9001 e ISO 45001.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "6 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 50,
+  "precioLista": 75,
+  "objetivo": "El participante aplicará el ciclo PHVA como metodología de mejora continua en los procesos de su organización, vinculándolo con ISO 9001 e ISO 45001.",
+  "temario": [
    "Historia y evolución del ciclo PHVA: Shewhart y Deming",
    "Planificar: diagnóstico, objetivos y planes de acción",
    "Hacer: implementación y ejecución del plan",
@@ -808,7 +808,7 @@
    "Indicadores de seguimiento del ciclo",
    "Caso práctico: mejora de proceso en empresa peruana"
   ],
-  "audience": [
+  "dirigidoA": [
    "Responsables de calidad",
    "Supervisores de operaciones",
    "Auditores internos",
@@ -818,17 +818,17 @@
  },
  {
   "slug": "cantidad-calidad",
-  "title": "Cantidad vs Calidad — Equilibrio en la Gestión Empresarial",
-  "description": "Comprende la relación entre producción y calidad, aprende a medir el costo de la no calidad y desarrolla estrategias para mantener estándares sin sacrificar la productividad.",
+  "titulo": "Cantidad vs Calidad — Equilibrio en la Gestión Empresarial",
+  "descripcion": "Comprende la relación entre producción y calidad, aprende a medir el costo de la no calidad y desarrolla estrategias para mantener estándares sin sacrificar la productividad.",
   "emoji": "⚖️",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "4 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 40,
-  "listPrice": 60,
-  "objective": "El participante establecerá un equilibrio efectivo entre producción y calidad en su organización, reduciendo el costo de la no calidad y mejorando la satisfacción del cliente.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "4 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 40,
+  "precioLista": 60,
+  "objetivo": "El participante establecerá un equilibrio efectivo entre producción y calidad en su organización, reduciendo el costo de la no calidad y mejorando la satisfacción del cliente.",
+  "temario": [
    "El falso dilema: ¿cantidad o calidad?",
    "Conceptos clave: calidad, productividad y eficiencia",
    "Costo de la no calidad: tipos y cálculo",
@@ -840,7 +840,7 @@
    "Casos de estudio: empresas que lograron el equilibrio",
    "Plan de acción para tu organización"
   ],
-  "audience": [
+  "dirigidoA": [
    "Jefes de producción y operaciones",
    "Supervisores de calidad",
    "Gerentes de planta",
@@ -850,17 +850,17 @@
  },
  {
   "slug": "info-documentada",
-  "title": "Creación, Actualización y Codificación de la Información Documentada",
-  "description": "Gestiona la información documentada según ISO 9001:2015: diseña un sistema de codificación, control de versiones y distribución controlada de documentos y registros.",
+  "titulo": "Creación, Actualización y Codificación de la Información Documentada",
+  "descripcion": "Gestiona la información documentada según ISO 9001:2015: diseña un sistema de codificación, control de versiones y distribución controlada de documentos y registros.",
   "emoji": "📁",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico-Intermedio",
-  "price": 55,
-  "listPrice": 80,
-  "objective": "El participante diseñará e implementará un sistema de gestión documental conforme a ISO 9001:2015, con criterios de codificación, control de versiones y acceso que garanticen trazabilidad.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico-Intermedio",
+  "precio": 55,
+  "precioLista": 80,
+  "objetivo": "El participante diseñará e implementará un sistema de gestión documental conforme a ISO 9001:2015, con criterios de codificación, control de versiones y acceso que garanticen trazabilidad.",
+  "temario": [
    "¿Qué es la información documentada según ISO 9001:2015?",
    "Tipos: documentos y registros",
    "Requisitos de creación y actualización (cláusula 7.5)",
@@ -872,7 +872,7 @@
    "Retención y disposición de registros",
    "Práctica: diseño de un procedimiento documentado completo"
   ],
-  "audience": [
+  "dirigidoA": [
    "Responsables de calidad",
    "Auditores internos",
    "Asistentes administrativos",
@@ -882,17 +882,17 @@
  },
  {
   "slug": "auditoria-interna",
-  "title": "Ejecución de Auditorías Internas bajo ISO 19011",
-  "description": "Forma auditores internos competentes para planificar, ejecutar y reportar auditorías de sistemas de gestión de calidad, SST y ambiental según ISO 19011:2018.",
+  "titulo": "Ejecución de Auditorías Internas bajo ISO 19011",
+  "descripcion": "Forma auditores internos competentes para planificar, ejecutar y reportar auditorías de sistemas de gestión de calidad, SST y ambiental según ISO 19011:2018.",
   "emoji": "🔍",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "12 horas",
-  "modality": "Presencial",
-  "level": "Intermedio",
-  "price": 110,
-  "listPrice": 150,
-  "objective": "El participante planificará y ejecutará auditorías internas conforme a ISO 19011:2018, identificará hallazgos, elaborará informes de calidad y gestionará el seguimiento de acciones correctivas.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "12 horas",
+  "modalidad": "Presencial",
+  "nivel": "Intermedio",
+  "precio": 110,
+  "precioLista": 150,
+  "objetivo": "El participante planificará y ejecutará auditorías internas conforme a ISO 19011:2018, identificará hallazgos, elaborará informes de calidad y gestionará el seguimiento de acciones correctivas.",
+  "temario": [
    "Principios de la auditoría según ISO 19011:2018",
    "Tipos de auditoría: primera, segunda y tercera parte",
    "Gestión del programa de auditorías",
@@ -906,7 +906,7 @@
    "Seguimiento de acciones correctivas",
    "Competencias del auditor interno"
   ],
-  "audience": [
+  "dirigidoA": [
    "Auditores internos en formación",
    "Responsables de calidad",
    "Supervisores de SST",
@@ -916,17 +916,17 @@
  },
  {
   "slug": "anticorrupcion",
-  "title": "Anticorrupción y Sistemas de Gestión Antisoborno",
-  "description": "Conoce la norma ISO 37001 y la Ley 30424, implementa controles antisoborno, diseña canales de denuncia y construye una cultura ética en tu organización.",
+  "titulo": "Anticorrupción y Sistemas de Gestión Antisoborno",
+  "descripcion": "Conoce la norma ISO 37001 y la Ley 30424, implementa controles antisoborno, diseña canales de denuncia y construye una cultura ética en tu organización.",
   "emoji": "🚫",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "6 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 50,
-  "listPrice": 75,
-  "objective": "El participante implementará un sistema de gestión antisoborno conforme a ISO 37001 y la Ley 30424, reduciendo el riesgo legal y construyendo una cultura de integridad sostenible.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "6 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 50,
+  "precioLista": 75,
+  "objetivo": "El participante implementará un sistema de gestión antisoborno conforme a ISO 37001 y la Ley 30424, reduciendo el riesgo legal y construyendo una cultura de integridad sostenible.",
+  "temario": [
    "¿Qué es el soborno y la corrupción? Definiciones legales",
    "ISO 37001:2016 — Sistema de Gestión Antisoborno",
    "Ley 30424: responsabilidad penal de personas jurídicas en Perú",
@@ -938,7 +938,7 @@
    "Investigación interna de incidentes de corrupción",
    "Cultura ética y liderazgo en integridad"
   ],
-  "audience": [
+  "dirigidoA": [
    "Gerentes generales y directivos",
    "Responsables de cumplimiento (compliance)",
    "Auditores internos",
@@ -948,17 +948,17 @@
  },
  {
   "slug": "kpis",
-  "title": "Creación de Indicadores KPI's para la Gestión Empresarial",
-  "description": "Diseña, implementa y monitorea indicadores clave de desempeño para calidad, seguridad y operaciones. Incluye construcción de dashboards básicos en Excel.",
+  "titulo": "Creación de Indicadores KPI's para la Gestión Empresarial",
+  "descripcion": "Diseña, implementa y monitorea indicadores clave de desempeño para calidad, seguridad y operaciones. Incluye construcción de dashboards básicos en Excel.",
   "emoji": "📈",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "8 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 65,
-  "listPrice": 90,
-  "objective": "El participante diseñará un sistema de KPI's alineado a los objetivos organizacionales, con fichas de seguimiento y un dashboard básico para la toma de decisiones basada en datos.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "8 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 65,
+  "precioLista": 90,
+  "objetivo": "El participante diseñará un sistema de KPI's alineado a los objetivos organizacionales, con fichas de seguimiento y un dashboard básico para la toma de decisiones basada en datos.",
+  "temario": [
    "¿Qué es un KPI y para qué sirve?",
    "Características de un buen indicador: metodología SMART",
    "Tipos de KPI: de resultado, proceso y entrada",
@@ -970,7 +970,7 @@
    "Análisis de desviaciones y planes de acción",
    "Revisión por la dirección: presentación de indicadores"
   ],
-  "audience": [
+  "dirigidoA": [
    "Responsables de calidad y SST",
    "Jefes de área y supervisores",
    "Gerentes de operaciones",
@@ -980,17 +980,17 @@
  },
  {
   "slug": "ia-gestion",
-  "title": "Uso de la Inteligencia Artificial en Sistema Integrado de Gestión",
-  "description": "Descubre cómo la IA transforma la gestión de calidad, SST y medio ambiente. Aplica herramientas para automatizar procesos, analizar datos y mejorar la toma de decisiones.",
+  "titulo": "Uso de la Inteligencia Artificial en Sistema Integrado de Gestión",
+  "descripcion": "Descubre cómo la IA transforma la gestión de calidad, SST y medio ambiente. Aplica herramientas para automatizar procesos, analizar datos y mejorar la toma de decisiones.",
   "emoji": "🤖",
-  "category": "Sistema Integrado de Gestión",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 75,
-  "listPrice": 100,
-  "objective": "El participante identificará oportunidades concretas para aplicar IA en su sistema de gestión, usará herramientas accesibles para automatizar tareas y mejorará la toma de decisiones con datos.",
-  "syllabus": [
+  "categoria": "Sistema Integrado de Gestión",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 75,
+  "precioLista": 100,
+  "objetivo": "El participante identificará oportunidades concretas para aplicar IA en su sistema de gestión, usará herramientas accesibles para automatizar tareas y mejorará la toma de decisiones con datos.",
+  "temario": [
    "¿Qué es la IA y por qué importa en gestión empresarial?",
    "IA en control de calidad: visión artificial e inspección automática",
    "Análisis predictivo para mantenimiento y prevención de accidentes",
@@ -1002,7 +1002,7 @@
    "Casos de uso en empresas peruanas",
    "Consideraciones éticas y limitaciones de la IA"
   ],
-  "audience": [
+  "dirigidoA": [
    "Responsables de calidad y SST",
    "Auditores internos",
    "Gerentes de operaciones",
@@ -1012,17 +1012,17 @@
  },
  {
   "slug": "chatgpt-productividad",
-  "title": "ChatGPT y Herramientas IA para la Productividad Profesional",
-  "description": "Aprende a usar ChatGPT, Gemini, Copilot y otras herramientas de IA generativa con técnicas de prompting avanzado para automatizar tareas y multiplicar tu productividad.",
+  "titulo": "ChatGPT y Herramientas IA para la Productividad Profesional",
+  "descripcion": "Aprende a usar ChatGPT, Gemini, Copilot y otras herramientas de IA generativa con técnicas de prompting avanzado para automatizar tareas y multiplicar tu productividad.",
   "emoji": "💬",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 65,
-  "listPrice": 100,
-  "objective": "El participante usará ChatGPT, Gemini y Copilot con técnicas de prompting para reducir hasta un 50% el tiempo en tareas administrativas y mejorar la calidad de sus entregables.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 65,
+  "precioLista": 100,
+  "objetivo": "El participante usará ChatGPT, Gemini y Copilot con técnicas de prompting para reducir hasta un 50% el tiempo en tareas administrativas y mejorar la calidad de sus entregables.",
+  "temario": [
    "Panorama de las herramientas IA generativa en 2024-2025",
    "Cómo funciona ChatGPT: conceptos básicos",
    "Ingeniería de prompts: técnicas para mejores resultados",
@@ -1034,7 +1034,7 @@
    "Automatización de tareas repetitivas con IA",
    "Casos prácticos: SST, ventas, RRHH y administración"
   ],
-  "audience": [
+  "dirigidoA": [
    "Profesionales de todas las áreas",
    "Emprendedores y dueños de negocio",
    "Estudiantes universitarios",
@@ -1044,17 +1044,17 @@
  },
  {
   "slug": "automatizacion-ia",
-  "title": "Automatización de Procesos con IA y Herramientas No-Code",
-  "description": "Crea flujos de trabajo automatizados con Make, Zapier y Notion AI. Conecta aplicaciones y elimina tareas repetitivas sin necesidad de programar.",
+  "titulo": "Automatización de Procesos con IA y Herramientas No-Code",
+  "descripcion": "Crea flujos de trabajo automatizados con Make, Zapier y Notion AI. Conecta aplicaciones y elimina tareas repetitivas sin necesidad de programar.",
   "emoji": "⚙️",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "10 horas",
-  "modality": "Grabado",
-  "level": "Básico-Intermedio",
-  "price": 90,
-  "listPrice": 130,
-  "objective": "El participante creará flujos de automatización funcionales con Make y Zapier, integrará IA en sus procesos sin código y reducirá el tiempo en tareas manuales de su negocio.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "10 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico-Intermedio",
+  "precio": 90,
+  "precioLista": 130,
+  "objetivo": "El participante creará flujos de automatización funcionales con Make y Zapier, integrará IA en sus procesos sin código y reducirá el tiempo en tareas manuales de su negocio.",
+  "temario": [
    "¿Qué es la automatización y el no-code?",
    "Ecosistema de herramientas: Make, Zapier, n8n y Pabbly",
    "Make (Integromat): creación de escenarios básicos y avanzados",
@@ -1066,7 +1066,7 @@
    "Automatización de ventas: CRM + correo + WhatsApp",
    "Caso práctico: automatización completa de un proceso empresarial"
   ],
-  "audience": [
+  "dirigidoA": [
    "Emprendedores y dueños de negocio",
    "Profesionales de marketing y ventas",
    "Responsables de operaciones",
@@ -1076,17 +1076,17 @@
  },
  {
   "slug": "ciberseguridad-basica",
-  "title": "Ciberseguridad Básica para Empresas y Profesionales",
-  "description": "Protege tu empresa de amenazas digitales: phishing, ransomware y fraudes en línea. Aprende a gestionar contraseñas, asegurar tu red y establecer políticas de seguridad digital básicas.",
+  "titulo": "Ciberseguridad Básica para Empresas y Profesionales",
+  "descripcion": "Protege tu empresa de amenazas digitales: phishing, ransomware y fraudes en línea. Aprende a gestionar contraseñas, asegurar tu red y establecer políticas de seguridad digital básicas.",
   "emoji": "🔒",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 70,
-  "listPrice": 100,
-  "objective": "El participante identificará amenazas de ciberseguridad, implementará medidas básicas de protección y reducirá el riesgo de pérdida de datos, fraudes y ataques digitales en su empresa.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 70,
+  "precioLista": 100,
+  "objetivo": "El participante identificará amenazas de ciberseguridad, implementará medidas básicas de protección y reducirá el riesgo de pérdida de datos, fraudes y ataques digitales en su empresa.",
+  "temario": [
    "¿Por qué la ciberseguridad importa a toda empresa?",
    "Principales amenazas: phishing, ransomware, ingeniería social",
    "Cómo reconocer correos y mensajes fraudulentos",
@@ -1098,7 +1098,7 @@
    "Política de seguridad digital básica para tu empresa",
    "Respuesta ante un incidente de seguridad: qué hacer"
   ],
-  "audience": [
+  "dirigidoA": [
    "Dueños de MYPES",
    "Profesionales independientes",
    "Responsables de TI sin experiencia en seguridad",
@@ -1108,17 +1108,17 @@
  },
  {
   "slug": "ventas-efectivas",
-  "title": "Técnicas de Ventas Efectivas y Cierre de Negocios",
-  "description": "Domina metodologías de ventas probadas: SPIN Selling, técnicas de cierre, manejo de objeciones y fidelización de clientes para multiplicar tus resultados comerciales.",
+  "titulo": "Técnicas de Ventas Efectivas y Cierre de Negocios",
+  "descripcion": "Domina metodologías de ventas probadas: SPIN Selling, técnicas de cierre, manejo de objeciones y fidelización de clientes para multiplicar tus resultados comerciales.",
   "emoji": "💰",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 70,
-  "listPrice": 100,
-  "objective": "El participante aplicará metodologías de ventas profesionales para incrementar su tasa de cierre, manejar objeciones con confianza y construir relaciones comerciales duraderas.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 70,
+  "precioLista": 100,
+  "objetivo": "El participante aplicará metodologías de ventas profesionales para incrementar su tasa de cierre, manejar objeciones con confianza y construir relaciones comerciales duraderas.",
+  "temario": [
    "Mentalidad del vendedor exitoso: actitud y disciplina",
    "El proceso de ventas: etapas y gestión del embudo",
    "Prospección efectiva: cómo encontrar clientes ideales",
@@ -1130,7 +1130,7 @@
    "Ventas B2B vs B2C: diferencias y estrategias",
    "Role play: práctica con casos reales peruanos"
   ],
-  "audience": [
+  "dirigidoA": [
    "Vendedores y ejecutivos comerciales",
    "Emprendedores con negocio propio",
    "Profesionales que negocian contratos",
@@ -1140,17 +1140,17 @@
  },
  {
   "slug": "redes-sociales",
-  "title": "Redes Sociales para Empresas y Marcas Personales",
-  "description": "Gestiona profesionalmente Instagram, Facebook, LinkedIn y TikTok para tu negocio o marca personal. Aprende estrategia de contenidos, comunidades y métricas de rendimiento.",
+  "titulo": "Redes Sociales para Empresas y Marcas Personales",
+  "descripcion": "Gestiona profesionalmente Instagram, Facebook, LinkedIn y TikTok para tu negocio o marca personal. Aprende estrategia de contenidos, comunidades y métricas de rendimiento.",
   "emoji": "📣",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 65,
-  "listPrice": 95,
-  "objective": "El participante creará una estrategia de redes sociales coherente, producirá contenido de valor consistente y medirá el rendimiento para mejorar continuamente los resultados de su negocio.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 65,
+  "precioLista": 95,
+  "objetivo": "El participante creará una estrategia de redes sociales coherente, producirá contenido de valor consistente y medirá el rendimiento para mejorar continuamente los resultados de su negocio.",
+  "temario": [
    "Estrategia de redes sociales: por qué y cómo",
    "Instagram para negocios: perfil, posts, reels y stories",
    "Facebook: páginas, grupos y gestión de comunidades",
@@ -1162,7 +1162,7 @@
    "Gestión de comentarios negativos y crisis en redes",
    "Caso práctico: plan de redes para MYPE peruana"
   ],
-  "audience": [
+  "dirigidoA": [
    "Dueños de MYPES",
    "Community managers",
    "Emprendedores y marcas personales",
@@ -1172,17 +1172,17 @@
  },
  {
   "slug": "atencion-cliente",
-  "title": "Atención al Cliente y Fidelización",
-  "description": "Transforma la experiencia de tus clientes con estrategias profesionales de atención, manejo de quejas y fidelización que generen recomendaciones y retención.",
+  "titulo": "Atención al Cliente y Fidelización",
+  "descripcion": "Transforma la experiencia de tus clientes con estrategias profesionales de atención, manejo de quejas y fidelización que generen recomendaciones y retención.",
   "emoji": "😊",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 55,
-  "listPrice": 80,
-  "objective": "El participante diseñará e implementará protocolos de atención al cliente de alta calidad, gestionará quejas de forma efectiva y establecerá estrategias de fidelización que incrementen la retención.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 55,
+  "precioLista": 80,
+  "objetivo": "El participante diseñará e implementará protocolos de atención al cliente de alta calidad, gestionará quejas de forma efectiva y establecerá estrategias de fidelización que incrementen la retención.",
+  "temario": [
    "¿Qué es la experiencia del cliente (CX) y por qué importa?",
    "El customer journey: mapeo de la experiencia",
    "Comunicación efectiva: escucha activa y empatía",
@@ -1194,7 +1194,7 @@
    "Estrategias de fidelización: programas y beneficios",
    "Caso práctico: diseño de protocolo para MYPE peruana"
   ],
-  "audience": [
+  "dirigidoA": [
    "Personal de atención al cliente",
    "Supervisores de tiendas y servicios",
    "Emprendedores con negocio de cara al público",
@@ -1204,17 +1204,17 @@
  },
  {
   "slug": "plan-negocios",
-  "title": "Plan de Negocios y Modelo Canvas",
-  "description": "Elabora un plan de negocios profesional usando el Business Model Canvas. Aprende a validar tu idea, proyectar financieramente y presentar ante inversores o instituciones financieras.",
+  "titulo": "Plan de Negocios y Modelo Canvas",
+  "descripcion": "Elabora un plan de negocios profesional usando el Business Model Canvas. Aprende a validar tu idea, proyectar financieramente y presentar ante inversores o instituciones financieras.",
   "emoji": "📋",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 65,
-  "listPrice": 90,
-  "objective": "El participante elaborará un plan de negocios completo usando el Business Model Canvas y proyecciones financieras básicas, listo para presentar ante inversores o solicitar financiamiento.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 65,
+  "precioLista": 90,
+  "objetivo": "El participante elaborará un plan de negocios completo usando el Business Model Canvas y proyecciones financieras básicas, listo para presentar ante inversores o solicitar financiamiento.",
+  "temario": [
    "¿Para qué sirve un plan de negocios?",
    "Business Model Canvas: los 9 bloques",
    "Propuesta de valor: cómo diferenciar tu negocio",
@@ -1226,7 +1226,7 @@
    "Plan operativo y recursos clave",
    "Estructura del plan para inversores y bancos"
   ],
-  "audience": [
+  "dirigidoA": [
    "Emprendedores con idea de negocio",
    "Estudiantes de administración y negocios",
    "Dueños de negocios que quieren formalizar",
@@ -1236,17 +1236,17 @@
  },
  {
   "slug": "financiamiento-startup",
-  "title": "Financiamiento y Acceso a Capital para Startups",
-  "description": "Conoce todas las fuentes de financiamiento para startups y MYPES en Perú: Startupperú, capital ángel, crowdfunding y fondos. Aprende a preparar tu pitch para conseguir capital.",
+  "titulo": "Financiamiento y Acceso a Capital para Startups",
+  "descripcion": "Conoce todas las fuentes de financiamiento para startups y MYPES en Perú: Startupperú, capital ángel, crowdfunding y fondos. Aprende a preparar tu pitch para conseguir capital.",
   "emoji": "💼",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 60,
-  "listPrice": 85,
-  "objective": "El participante identificará las mejores fuentes de financiamiento para su etapa de negocio, preparará materiales convincentes para atraer inversión y conocerá los programas de apoyo en Perú.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 60,
+  "precioLista": 85,
+  "objetivo": "El participante identificará las mejores fuentes de financiamiento para su etapa de negocio, preparará materiales convincentes para atraer inversión y conocerá los programas de apoyo en Perú.",
+  "temario": [
    "Panorama del ecosistema emprendedor peruano",
    "Bootstrapping: cómo crecer con recursos propios",
    "Programas del Estado: Startupperú, COFIDE, PRODUCE",
@@ -1258,7 +1258,7 @@
    "El pitch deck: estructura y contenido para cada tipo de inversor",
    "Errores comunes al buscar financiamiento"
   ],
-  "audience": [
+  "dirigidoA": [
    "Emprendedores en etapa temprana",
    "Fundadores de startups",
    "Dueños de MYPES que buscan crecer",
@@ -1268,17 +1268,17 @@
  },
  {
   "slug": "costos-empresariales",
-  "title": "Gestión de Costos y Presupuestos Empresariales",
-  "description": "Aprende a estructurar los costos de tu negocio, calcular el punto de equilibrio, elaborar presupuestos anuales y tomar decisiones financieras basadas en datos para mejorar la rentabilidad.",
+  "titulo": "Gestión de Costos y Presupuestos Empresariales",
+  "descripcion": "Aprende a estructurar los costos de tu negocio, calcular el punto de equilibrio, elaborar presupuestos anuales y tomar decisiones financieras basadas en datos para mejorar la rentabilidad.",
   "emoji": "📊",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 70,
-  "listPrice": 100,
-  "objective": "El participante elaborará la estructura de costos de su negocio, calculará el punto de equilibrio y construirá un presupuesto anual básico para tomar decisiones que mejoren la rentabilidad.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 70,
+  "precioLista": 100,
+  "objetivo": "El participante elaborará la estructura de costos de su negocio, calculará el punto de equilibrio y construirá un presupuesto anual básico para tomar decisiones que mejoren la rentabilidad.",
+  "temario": [
    "Conceptos básicos: costos, gastos e inversión",
    "Costos fijos vs variables: clasificación y ejemplos",
    "Costeo directo y costeo por absorción",
@@ -1290,7 +1290,7 @@
    "Análisis de variaciones presupuestarias",
    "Indicadores financieros clave para MYPES: ROI, ROE, margen neto"
   ],
-  "audience": [
+  "dirigidoA": [
    "Dueños y gerentes de MYPES",
    "Emprendedores con negocio en marcha",
    "Contadores y asistentes contables",
@@ -1300,17 +1300,17 @@
  },
  {
   "slug": "marco-legal",
-  "title": "Marco Legal para Empresas y Emprendedores en Perú",
-  "description": "Conoce el marco legal esencial para operar en Perú: tipos de empresa, formalización, contratos laborales, INDECOPI y propiedad intelectual básica para proteger tu negocio.",
+  "titulo": "Marco Legal para Empresas y Emprendedores en Perú",
+  "descripcion": "Conoce el marco legal esencial para operar en Perú: tipos de empresa, formalización, contratos laborales, INDECOPI y propiedad intelectual básica para proteger tu negocio.",
   "emoji": "⚖️",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "6 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 55,
-  "listPrice": 80,
-  "objective": "El participante elegirá la forma jurídica más adecuada para su negocio, cumplirá con los requisitos legales de constitución y operación, y conocerá sus derechos ante el Estado peruano.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "6 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 55,
+  "precioLista": 80,
+  "objetivo": "El participante elegirá la forma jurídica más adecuada para su negocio, cumplirá con los requisitos legales de constitución y operación, y conocerá sus derechos ante el Estado peruano.",
+  "temario": [
    "Formas jurídicas: Persona Natural, EIRL, SRL, SAC",
    "Proceso de constitución: pasos y costos",
    "Registro en SUNAT y obtención de RUC",
@@ -1322,7 +1322,7 @@
    "Propiedad intelectual: marcas, patentes y derechos de autor",
    "Resolución de conflictos empresariales"
   ],
-  "audience": [
+  "dirigidoA": [
    "Emprendedores con negocio en formación",
    "Dueños de MYPES en crecimiento",
    "Profesionales independientes",
@@ -1332,17 +1332,17 @@
  },
  {
   "slug": "tributacion-basica",
-  "title": "Tributación Básica para Negocios y Emprendedores",
-  "description": "Comprende los regímenes tributarios del Perú, declara correctamente el IGV e Impuesto a la Renta, y gestiona las planillas sin necesidad de ser contador.",
+  "titulo": "Tributación Básica para Negocios y Emprendedores",
+  "descripcion": "Comprende los regímenes tributarios del Perú, declara correctamente el IGV e Impuesto a la Renta, y gestiona las planillas sin necesidad de ser contador.",
   "emoji": "🏛️",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "6 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 55,
-  "listPrice": 80,
-  "objective": "El participante elegirá el régimen tributario adecuado para su negocio, declarará correctamente sus impuestos al SUNAT y gestionará las obligaciones laborales básicas de su empresa.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "6 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 55,
+  "precioLista": 80,
+  "objetivo": "El participante elegirá el régimen tributario adecuado para su negocio, declarará correctamente sus impuestos al SUNAT y gestionará las obligaciones laborales básicas de su empresa.",
+  "temario": [
    "Regímenes tributarios: NRUS, RER, RMT y Régimen General",
    "Criterios para elegir tu régimen tributario",
    "Impuesto General a las Ventas (IGV): cómo funciona",
@@ -1354,7 +1354,7 @@
    "Régimen MYPE tributario: ventajas",
    "Infracciones tributarias comunes y cómo evitarlas"
   ],
-  "audience": [
+  "dirigidoA": [
    "Emprendedores y dueños de MYPES",
    "Personas que quieren aprender contabilidad básica",
    "Profesionales independientes",
@@ -1364,17 +1364,17 @@
  },
  {
   "slug": "control-interno",
-  "title": "Control Interno y Gestión de Riesgos Empresariales",
-  "description": "Implementa un sistema de control interno efectivo usando el marco COSO: identifica riesgos, diseña controles, detecta fraudes y mejora la eficiencia operativa de tu organización.",
+  "titulo": "Control Interno y Gestión de Riesgos Empresariales",
+  "descripcion": "Implementa un sistema de control interno efectivo usando el marco COSO: identifica riesgos, diseña controles, detecta fraudes y mejora la eficiencia operativa de tu organización.",
   "emoji": "🛡️",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "Grabado",
-  "level": "Intermedio",
-  "price": 80,
-  "listPrice": 120,
-  "objective": "El participante diseñará e implementará un sistema de control interno basado en COSO, identificando riesgos de su organización y estableciendo controles que prevengan fraudes y mejoren la eficiencia.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "Grabado",
+  "nivel": "Intermedio",
+  "precio": 80,
+  "precioLista": 120,
+  "objetivo": "El participante diseñará e implementará un sistema de control interno basado en COSO, identificando riesgos de su organización y estableciendo controles que prevengan fraudes y mejoren la eficiencia.",
+  "temario": [
    "¿Qué es el control interno y por qué es crucial?",
    "Marco COSO: cinco componentes",
    "Entorno de control: cultura y valores organizacionales",
@@ -1386,7 +1386,7 @@
    "Control interno en procesos clave: compras, tesorería, ventas",
    "Auditoría interna como herramienta de control"
   ],
-  "audience": [
+  "dirigidoA": [
    "Gerentes generales y directivos",
    "Auditores internos",
    "Responsables de finanzas y contabilidad",
@@ -1396,17 +1396,17 @@
  },
  {
   "slug": "seguridad-empresarial",
-  "title": "Seguridad Empresarial y Protección de Activos",
-  "description": "Diseña estrategias integrales de seguridad para proteger los activos físicos, humanos e información de tu empresa. Incluye protocolos de emergencia y gestión de riesgos de seguridad.",
+  "titulo": "Seguridad Empresarial y Protección de Activos",
+  "descripcion": "Diseña estrategias integrales de seguridad para proteger los activos físicos, humanos e información de tu empresa. Incluye protocolos de emergencia y gestión de riesgos de seguridad.",
   "emoji": "🔒",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 85,
-  "listPrice": 130,
-  "objective": "El participante diseñará un plan integral de seguridad empresarial, estableciendo protocolos de protección de activos físicos y humanos, sistemas de control de acceso y planes de respuesta ante emergencias.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 85,
+  "precioLista": 130,
+  "objetivo": "El participante diseñará un plan integral de seguridad empresarial, estableciendo protocolos de protección de activos físicos y humanos, sistemas de control de acceso y planes de respuesta ante emergencias.",
+  "temario": [
    "Concepto de seguridad empresarial integral",
    "Análisis de riesgos de seguridad: metodología",
    "Seguridad física: accesos, perímetros y vigilancia",
@@ -1418,7 +1418,7 @@
    "Seguridad de la información: lo básico para gerentes",
    "Coordinación con fuerzas de seguridad y autoridades"
   ],
-  "audience": [
+  "dirigidoA": [
    "Gerentes y dueños de empresa",
    "Jefes de seguridad",
    "Administradores de instalaciones",
@@ -1428,17 +1428,17 @@
  },
  {
   "slug": "proteccion-datos",
-  "title": "Protección de Datos Personales — Ley 29733",
-  "description": "Conoce y cumple la Ley 29733 en el Perú: registra bancos de datos, gestiona el consentimiento, atiende los derechos ARCO y evita sanciones de la ANPD.",
+  "titulo": "Protección de Datos Personales — Ley 29733",
+  "descripcion": "Conoce y cumple la Ley 29733 en el Perú: registra bancos de datos, gestiona el consentimiento, atiende los derechos ARCO y evita sanciones de la ANPD.",
   "emoji": "🔐",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "6 horas",
-  "modality": "Grabado",
-  "level": "Básico",
-  "price": 50,
-  "listPrice": null,
-  "objective": "El participante implementará un sistema de cumplimiento de la Ley 29733, gestionando correctamente el consentimiento, registrando bancos de datos y atendiendo los derechos ARCO de los titulares.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "6 horas",
+  "modalidad": "Grabado",
+  "nivel": "Básico",
+  "precio": 50,
+  "precioLista": null,
+  "objetivo": "El participante implementará un sistema de cumplimiento de la Ley 29733, gestionando correctamente el consentimiento, registrando bancos de datos y atendiendo los derechos ARCO de los titulares.",
+  "temario": [
    "Ley 29733 y su Reglamento (D.S. 003-2013-JUS)",
    "Datos personales vs datos sensibles: diferencias",
    "Principios rectores del tratamiento de datos",
@@ -1450,7 +1450,7 @@
    "Medidas de seguridad técnicas y organizativas",
    "Sanciones de la ANPD y casos recientes en Perú"
   ],
-  "audience": [
+  "dirigidoA": [
    "Gerentes generales y directivos",
    "Responsables de TI y sistemas",
    "Abogados corporativos",
@@ -1460,17 +1460,17 @@
  },
  {
   "slug": "habilidades-blandas",
-  "title": "Taller de Habilidades Blandas para Profesionales",
-  "description": "Desarrolla las habilidades interpersonales más demandadas: comunicación efectiva, inteligencia emocional, trabajo en equipo, resolución de conflictos y gestión del tiempo.",
+  "titulo": "Taller de Habilidades Blandas para Profesionales",
+  "descripcion": "Desarrolla las habilidades interpersonales más demandadas: comunicación efectiva, inteligencia emocional, trabajo en equipo, resolución de conflictos y gestión del tiempo.",
   "emoji": "🧠",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "En vivo",
-  "level": "Básico",
-  "price": 65,
-  "listPrice": 100,
-  "objective": "El participante fortalecerá sus habilidades interpersonales más demandadas, mejorando su comunicación, gestión emocional y capacidad de trabajo colaborativo para avanzar profesionalmente.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "En vivo",
+  "nivel": "Básico",
+  "precio": 65,
+  "precioLista": 100,
+  "objetivo": "El participante fortalecerá sus habilidades interpersonales más demandadas, mejorando su comunicación, gestión emocional y capacidad de trabajo colaborativo para avanzar profesionalmente.",
+  "temario": [
    "¿Qué son las habilidades blandas y por qué son clave hoy?",
    "Comunicación efectiva: verbal, no verbal y escrita",
    "Escucha activa: técnicas y práctica",
@@ -1482,7 +1482,7 @@
    "Adaptabilidad y resiliencia ante el cambio",
    "Plan de mejora personal: compromiso con el desarrollo"
   ],
-  "audience": [
+  "dirigidoA": [
    "Profesionales de cualquier área",
    "Estudiantes universitarios",
    "Líderes y supervisores",
@@ -1492,17 +1492,17 @@
  },
  {
   "slug": "formacion-equipos",
-  "title": "Formación de Equipos de Alto Rendimiento",
-  "description": "Construye, lidera y potencia equipos de alto rendimiento. Domina el modelo Tuckman, los roles Belbin, las metodologías ágiles y las técnicas para maximizar resultados colectivos.",
+  "titulo": "Formación de Equipos de Alto Rendimiento",
+  "descripcion": "Construye, lidera y potencia equipos de alto rendimiento. Domina el modelo Tuckman, los roles Belbin, las metodologías ágiles y las técnicas para maximizar resultados colectivos.",
   "emoji": "🤝",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "8 horas",
-  "modality": "Presencial",
-  "level": "Básico",
-  "price": 90,
-  "listPrice": 130,
-  "objective": "El participante aplicará metodologías y herramientas para construir y liderar equipos de alto rendimiento, gestionando conflictos, fomentando la colaboración y alineando al equipo hacia objetivos comunes.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "8 horas",
+  "modalidad": "Presencial",
+  "nivel": "Básico",
+  "precio": 90,
+  "precioLista": 130,
+  "objetivo": "El participante aplicará metodologías y herramientas para construir y liderar equipos de alto rendimiento, gestionando conflictos, fomentando la colaboración y alineando al equipo hacia objetivos comunes.",
+  "temario": [
    "¿Qué diferencia a un equipo de alto rendimiento?",
    "Modelo de Tuckman: formación, conflicto, normalización y desempeño",
    "Roles de equipo: modelo Belbin",
@@ -1514,7 +1514,7 @@
    "Reconocimiento y motivación del equipo",
    "Caso práctico: diagnóstico y plan de mejora para tu equipo"
   ],
-  "audience": [
+  "dirigidoA": [
    "Jefes y supervisores de equipo",
    "Gerentes de área",
    "Líderes de proyectos",
@@ -1524,17 +1524,17 @@
  },
  {
   "slug": "mentoria-profesional",
-  "title": "Mentoría Profesional y Coaching Laboral",
-  "description": "Desarrolla competencias de mentor y coach para potenciar a tus colaboradores. Aprende el modelo GROW, feedback efectivo y diseño de planes de desarrollo individual.",
+  "titulo": "Mentoría Profesional y Coaching Laboral",
+  "descripcion": "Desarrolla competencias de mentor y coach para potenciar a tus colaboradores. Aprende el modelo GROW, feedback efectivo y diseño de planes de desarrollo individual.",
   "emoji": "🎯",
-  "category": "Desarrollo Empresarial y Liderazgo",
-  "duration": "10 horas",
-  "modality": "En vivo",
-  "level": "Intermedio",
-  "price": 95,
-  "listPrice": 140,
-  "objective": "El participante aplicará el modelo GROW y técnicas de coaching para conducir conversaciones de desarrollo efectivas, elaborar planes de desarrollo individuales y establecer relaciones de mentoría productivas.",
-  "syllabus": [
+  "categoria": "Desarrollo Empresarial y Liderazgo",
+  "duracion": "10 horas",
+  "modalidad": "En vivo",
+  "nivel": "Intermedio",
+  "precio": 95,
+  "precioLista": 140,
+  "objetivo": "El participante aplicará el modelo GROW y técnicas de coaching para conducir conversaciones de desarrollo efectivas, elaborar planes de desarrollo individuales y establecer relaciones de mentoría productivas.",
+  "temario": [
    "Diferencias entre mentoría, coaching, consultoría y psicoterapia",
    "El rol del mentor: características y competencias",
    "El modelo GROW: Goal, Reality, Options, Will",
@@ -1546,7 +1546,7 @@
    "Ética en la mentoría y el coaching",
    "Cómo establecer un programa de mentoría interna"
   ],
-  "audience": [
+  "dirigidoA": [
    "Gerentes y líderes de equipo",
    "Profesionales de RRHH",
    "Coaches en formación",

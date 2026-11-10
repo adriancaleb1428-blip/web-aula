@@ -5,7 +5,7 @@ type Row = Record<string, unknown>
 const API = String(import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '')
 const TOKEN_KEY = 'aula-token'
 
-export type Session = { access_token: string; user: { id: string; email?: string; user_metadata?: Record<string, unknown> } }
+export type Session = { access_token: string; user: { id: string; correo?: string; nombre_completo?: string } }
 type DbError = { code?: string; message: string }
 type Result = { data: any; error: DbError | null; count?: number | null } // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -113,14 +113,14 @@ async function currentSession(): Promise<Session | null> {
   try {
     const response = await fetch(`${API}/auth/session`, { headers: authHeader() })
     if (!response.ok) { if (response.status === 401) writeToken(null); return null }
-    return { access_token: token, user: (await response.json()).user }
+    return { access_token: token, user: (await response.json()).usuario }
   } catch { return null }
 }
 const auth = {
   async getSession(): Promise<{ data: { session: Session | null }; error: { message: string } | null }> { return { data: { session: await currentSession() }, error: null } },
-  async signInWithPassword({ email, password }: { email: string; password: string }) {
+  async signInWithPassword({ correo, contrasena }: { correo: string; contrasena: string }) {
     try {
-      const { status, json } = await post('/auth/login', { email, password }, false)
+      const { status, json } = await post('/auth/login', { correo, contrasena }, false)
       if (status !== 200) return { data: { session: null, user: null }, error: { status, message: json?.error || 'Invalid login credentials' } }
       writeToken(json.access_token)
       const session = await currentSession()
@@ -129,9 +129,9 @@ const auth = {
     } catch { return { data: { session: null, user: null }, error: { status: 0, message: networkError.message } } }
   },
   async signOut() { writeToken(null); stream?.abort(); stream = null; authListeners.forEach(callback => callback('SIGNED_OUT', null)); return { error: null } },
-  async updateUser({ password }: { password?: string }) {
+  async updateUser({ contrasena }: { contrasena?: string }) {
     try {
-      const { status, json } = await post('/auth/password', { password })
+      const { status, json } = await post('/auth/password', { contrasena })
       return status === 200 ? { data: { user: null }, error: null } : { data: { user: null }, error: { message: json?.error || 'No se pudo cambiar la contraseña.' } }
     } catch { return { data: { user: null }, error: networkError } }
   },
@@ -208,7 +208,7 @@ export const apiClient = {
   functions: {
     // Los errores de negocio llegan en `data.error`.
     async invoke(name: string, options?: { body?: Record<string, unknown> }) {
-      try { const { json } = await post(`/fn/${name}`, options?.body, name !== 'support-request' || Boolean(readToken())); return { data: json, error: null } } catch { return { data: null, error: networkError } }
+      try { const { json } = await post(`/fn/${name}`, options?.body, name !== 'solicitud-soporte' || Boolean(readToken())); return { data: json, error: null } } catch { return { data: null, error: networkError } }
     },
   },
   channel: (_name?: string) => new Channel(),

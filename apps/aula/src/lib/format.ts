@@ -12,7 +12,7 @@ export const limaTime = (iso: string, options: Intl.DateTimeFormatOptions) => ne
 // Only HTTPS destinations are rendered as links, whatever is stored in the row.
 // Upcoming and live classes first (soonest on top), finished ones below (latest first).
 export function orderedMeetings(list: Meeting[]) {
-  const now = Date.now(), ends = (m: Meeting) => new Date(m.ends_at).getTime(), starts = (m: Meeting) => new Date(m.starts_at).getTime()
+  const now = Date.now(), ends = (m: Meeting) => new Date(m.termina_en).getTime(), starts = (m: Meeting) => new Date(m.inicia_en).getTime()
   return [...list.filter(m => ends(m) > now).sort((a, b) => starts(a) - starts(b)), ...list.filter(m => ends(m) <= now).sort((a, b) => starts(b) - starts(a))]
 }
 // Turns database errors into messages a person can act on.
@@ -23,5 +23,5 @@ export function friendlyDbError(error: { code?: string; message: string }) {
   return error.message
 }
 export function meetingHref(meeting: Meeting) {
-  return asHttpsUrl(meeting.meeting_url || (meeting.room_name.startsWith('https://') ? meeting.room_name : `https://meet.google.com/${encodeURIComponent(meeting.room_name)}`))
+  return asHttpsUrl(meeting.enlace_reunion || (meeting.sala.startsWith('https://') ? meeting.sala : `https://meet.google.com/${encodeURIComponent(meeting.sala)}`))
 }
